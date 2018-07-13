@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模糊搜索</title>
+    <script>
+        var str='abcdefg';
+
+        alert(str.search('c'));  //结果是2  在字符串的第二位
+        alert(str.search('de'));   //结果是3  从字符串第三位起
+        alert(str.search('dfg'));  //结果是-1  表示不存在（因为中间不可以间隔）
+        alert(str.search('n'));    //结果是-1  不存在
+    </script>
+</head>
+<body>
+
+</body>
+</html>

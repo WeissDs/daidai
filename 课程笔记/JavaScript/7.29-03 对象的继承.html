@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象的继承</title>
+    <script>
+        function A()
+        {
+            this.dd=12;
+        }
+        A.prototype.show=function()
+        {
+          alert(this.dd);
+        };
+
+        //继承A
+        function B()
+        {
+            A.call(this);  //继承A的属性？？？
+        }
+//        B.prototype=A.prototype;    //继承A的方法  这是 ‘引用’ 所以导致 B的新方法A也有了
+
+        for(var i in A.prototype)
+        {
+            B.prototype[i]=A.prototype[i];
+        }
+
+
+        B.prototype.fn=function()   //给B的新方法
+        {
+            alert('给B的新方法');
+        };
+
+        var obj=new B();
+        var objA=new A();
+
+        alert(obj.dd);   //B继承的A的属性
+        obj.show();      //B继承的A的方法
+
+//        objA.fn();    //B的新方法A也有了
+        obj.fn();     //B的新方法
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

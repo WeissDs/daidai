@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<input type="button" value="dian">
+
+<script>
+    $(function(){
+
+        $('input').click(function(){
+            $.ajax({
+                type: 'POST',
+                url: 'txt/1.php',
+                data: {'url':'dai'},
+                dataType: 'php'
+            })
+        })
+
+    })
+    
+</script>
+
+</body>
+</html>

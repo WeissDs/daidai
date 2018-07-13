@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象的拖拽</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: #ffa7de;
+            position: absolute;
+        }
+    </style>
+    <script>
+//        window.onload=function()
+//        {
+//            var oDiv=document.getElementById('div1');
+//
+//            oDiv.onmousedown=function(ev)
+//            {
+//                var oEvent=ev||event;
+//                var disX=oEvent.clientX-oDiv.offsetLeft;
+//                var disY=oEvent.clientY-oDiv.offsetTop;
+//
+//                document.onmousemove=function(ev)
+//                {
+//                    var oEvent=ev||event;
+//                    oDiv.style.left=oEvent.clientX-disX+'px';
+//                    oDiv.style.top=oEvent.clientY-disY+'px';
+//                };
+//                document.onmouseup=function()
+//                {
+//                    document.onmousemove=null;
+//                    document.onmouseup=null;
+//                };
+//            };
+//        };
+
+        //改写成面向对象
+
+function DivMove(div)
+{
+    var _this=this;
+    this.oDiv=document.getElementById(div);
+    this.oDiv.onmousedown=function()
+    {
+        _this.fnDown();
+    }
+}
+
+DivMove.prototype.fnDown=function(ev)
+{
+    var _this=this;
+    var oEvent=ev||event;
+    this.disX=oEvent.clientX-this.oDiv.offsetLeft;
+    this.disY=oEvent.clientY-this.oDiv.offsetTop;
+    document.onmousemove=function()
+    {
+        _this.fnMove();
+    };
+    document.onmouseup=function()
+    {
+        _this.fnUp();
+    }
+};
+DivMove.prototype.fnMove=function(ev)
+{
+    var oEvent=ev||event;
+    this.oDiv.style.left=oEvent.clientX-this.disX+'px';
+    this.oDiv.style.top=oEvent.clientY-this.disY+'px';
+};
+DivMove.prototype.fnUp=function()
+{
+    document.onmousemove=null;
+    document.onmouseup=null;
+};
+
+window.onload=function()
+{
+    new DivMove('div1');
+};
+
+    </script>
+</head>
+<body>
+
+<div id="div1"></div>
+
+</body>
+</html>

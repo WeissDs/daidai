@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D转换模块</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: #ff9f51;
+            border: 1px solid #000;
+            margin:100px auto;
+            transform:rotateY(0deg);
+            perspective:500px;
+
+            /*
+            1.什么是2D和3D
+            2D就是一个平面，只有宽度和高度，没有厚度
+            3D就是一个立体，有宽度、高度、厚度
+            默认情况下所有的元素都是2D展现的
+            2.如何让莫个元素呈现3D
+            和透视一样 想要某个元素有3D效果
+            就给它的父元素添加一个transform-style属性 设置值为preserve-3d
+            */
+            transform-style:preserve-3d;
+        }
+        .son1{
+            width: 100px;
+            height: 100px;
+            background-color: #ffed3e;
+            border: 1px solid #000;
+            margin:50px auto;
+            transform:rotateY(45deg);
+        }
+
+        ul{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            box-sizing:border-box;
+            margin:100px auto;
+            position: relative;
+            transform-style:preserve-3d;
+            transform:rotateY(0deg) rotateX(0deg);
+        }
+        ul li{
+            width: 200px;
+            height: 200px;
+            list-style: none;
+            font-size: 60px;
+            text-align:center;
+            line-height:200px;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+
+        /*长方体的简单写法 直接在transform里增加 scale参数 后修改左右平移的数值*/
+
+        ul li:nth-child(1){
+            background-color: #cfffef;
+            transform:translate(-150px) rotateY(-90deg);
+
+        }
+        ul li:nth-child(2){
+            background-color: #55cbff;
+            transform:translateY(-100px) rotateX(90deg) scale(1.5,1);
+        }
+        ul li:nth-child(3){
+            background-color: #ff6f7d;
+            transform:translateZ(-100px) rotateX(-180deg) scale(1.5,1);
+        }
+        ul li:nth-child(4){
+            background-color: #ffc846;
+            transform:translateZ(100px) rotateY(0deg) scale(1.5,1);
+        }
+        ul li:nth-child(5){
+            background-color: #d460ff;
+            transform:translateY(100px) rotateX(-90deg) scale(1.5,1);
+        }
+        ul li:nth-child(6){
+            background-color: #a5ff33;
+            transform:translate(150px) rotateY(90deg);
+        }
+    </style>
+</head>
+<body>
+
+<div class="box1">
+    <div class="son1"></div>
+</div>
+
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+
+</body>
+</html>

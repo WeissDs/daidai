@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建DOM元素</title>
+    <script>
+        window.onload=function()
+        {
+            var oBtn=document.getElementById('btn1');
+            var oUl=document.getElementById('ul1');
+            var oTxt=document.getElementById('txt1');
+
+            oBtn.onclick=function()
+            {
+                var oLi=document.createElement('li');
+                var aLi=oUl.getElementsByTagName('li');
+
+//                oUl.appendChild(oLi);    //appendChild给父级添加元素  insertBefore也是给父级添加元素但 可以指定在谁之前插入
+
+//                oUl.insertBefore(oLi,aLi[0]);   //创建的li一直往最前插入
+
+                //IE里ul中的li创建后还是被判定为空 所以需要兼容写法
+                if(aLi.length>0)
+                {
+                    oUl.insertBefore(oLi,aLi[0]);
+                }
+                else
+                {
+                    oUl.appendChild(oLi);
+                }
+                oLi.innerHTML=oTxt.value;
+            }
+        }
+    </script>
+</head>
+<body>
+
+<input id="txt1" type="text">
+<input id="btn1" type="button" value="创建li">
+<ul id="ul1"></ul>
+
+</body>
+</html>

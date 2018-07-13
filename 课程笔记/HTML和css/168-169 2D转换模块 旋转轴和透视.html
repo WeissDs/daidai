@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2D转换模块 旋转轴和透视</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box1 ul{
+            width: 800px;
+            height: 800px;
+            margin:100px auto;
+            perspective:500px;
+        }
+        .box1 ul li{
+            list-style: none;
+            width: 200px;
+            height: 200px;
+            margin:50px auto;
+            border: 1px solid #000;
+            /*
+            透视属性
+            透视属性的值代表观看物体的距离px
+            注意：！透视效果属性一定要写在父元素或祖先元素中，不能在自身内添加
+            */
+
+        }
+        .box1 ul li img{
+            width: 200px;
+            height: 200px;
+        }
+        .box1 ul li:nth-child(1){
+            /*默认情况下所有元素都是绕Z轴旋转 绕Z轴旋转时Z可以省略不写*/
+            /*transform:rotateZ(45deg);*/
+            transform:rotate(45deg);
+        }
+        .box1 ul li:nth-child(2){
+            /*让元素绕X轴旋转*/
+            transform:rotateX(45deg);
+        }
+        .box1 ul li:nth-child(3){
+            /*让元素绕Y轴旋转*/
+            transform:rotateY(45deg);
+        }
+    </style>
+</head>
+<body>
+
+<div class="box1">
+    <ul>
+        <li><img src="../../images/2501.jpg"></li>
+        <li><img src="../../images/mmexport1442827934749.jpg"></li>
+        <li><img src="../../images/mmexport1442827938937.jpg"></li>
+    </ul>
+</div>
+
+
+</body>
+</html>

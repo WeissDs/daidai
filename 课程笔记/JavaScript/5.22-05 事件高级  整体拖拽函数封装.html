@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>整体拖拽函数封装</title>
+</head>
+<style>
+    #div1{
+        width: 200px;
+        height: 200px;
+        background-color: #ffa994;
+        position: absolute;
+    }
+</style>
+<script>
+    window.onload=function()
+    {
+        var oDiv=document.getElementById('div1');
+        var disX=0;
+        var disY=0;
+
+        oDiv.onmousedown=function(ev)
+        {
+            var oEvent=ev||event;
+
+            disX=oEvent.clientX-oDiv.offsetLeft;
+            disY=oEvent.clientY-oDiv.offsetTop;
+
+            document.onmousemove=function(ev)
+            {
+                var oEvent=ev||event;
+                var l=oEvent.clientX-disX;
+                var t=oEvent.clientY-disY;
+
+
+//                    oDiv.style.left=oEvent.clientX-disX+'px';
+//                    oDiv.style.top=oEvent.clientY-disY+'px';
+
+                //防止拖拽中途拖出显示框
+                if(l<0)
+                {
+                    l=0
+                }
+                else if(l>document.documentElement.clientWidth-oDiv.offsetWidth)
+                {
+                    l=document.documentElement.clientWidth-oDiv.offsetWidth;
+                }
+                if(t<0)
+                {
+                    t=0
+                }
+                else if(t>document.documentElement.clientHeight-oDiv.offsetHeight)
+                {
+                    t=document.documentElement.clientHeight-oDiv.offsetHeight;
+                }
+                oDiv.style.left=l+'px';
+                oDiv.style.top=t+'px';
+
+            };
+
+            function mouseUp()
+            {
+                document.onmousemove=null;
+                document.onmouseup=null;
+
+                if(oDiv.releaseCapture)
+                {
+                    oDiv.releaseCapture();
+                }
+            }
+
+            if(oDiv.setCapture)
+            {
+
+//                document.onmouseup=function()
+//                {
+//                    document.onmousemove=null;
+//                    document.onmouseup=null;
+//
+//                    oDiv.releaseCapture();
+//                };
+                document.onmouseup=mouseUp;
+                oDiv.setCapture();
+            }
+            else
+            {
+//                document.onmouseup=function()
+//                {
+//                    document.onmousemove=null;
+//                    document.onmouseup=null;
+//                };
+                document.onmouseup=mouseUp;
+            }
+
+
+            //拖拽在火狐下有bug 拖拽空div会有重影 解决方式如下(还能解决文字选中问题)
+
+            return false;
+
+        };
+
+
+    }
+</script>
+</head>
+<body>
+
+<div>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+<div>aaaaaaaaaaaaaaaaaaaaaaaaadaaaaaaaaaaaa</div>
+<div id="div1">aaaaa</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</body>
+</html>

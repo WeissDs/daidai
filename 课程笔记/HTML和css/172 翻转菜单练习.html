@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>翻转菜单练习</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        
+        .content{
+            width: 1020px;
+            height: 600px;
+            background-color: #ffa25a;
+            margin:20px auto;
+        }
+        ul li{
+            width: 300px;
+            height: 50px;
+            list-style: none;
+            text-align: center;
+            line-height:50px;
+        }
+        .out{
+            width: 1020px;
+            height: 50px;
+            background-color: #929292;
+
+
+        }
+        .out>li{
+            color: #ffffff;
+            background-color: #181a1a;
+            float: left;
+            margin-left:30px;
+            position: relative;
+        }
+        .out{
+
+        }
+        .in>li{
+            background-color: rgb(255, 54, 120);
+            opacity:0;
+            /*border: 1px solid #000;*/
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+            -ms-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+            transition: all 1s ease;
+
+        }
+        .in{
+            margin-top:50px;
+            position: absolute;
+            top:0;
+            left:0;
+        }
+        .out>li:hover .in li{
+            -webkit-transform: none;
+            -moz-transform: none;
+            -ms-transform: none;
+            -o-transform: none;
+            transform: none;
+            background-color: rgb(255, 54, 120);
+            /*半透明的另一种写法*/
+            opacity:1;
+        }
+        .out>li:hover .in li:nth-child(1){
+            transition-delay: 0ms;
+        }
+        .out>li:hover .in li:nth-child(2){
+            transition-delay:200ms;
+        }
+        .out>li:hover .in li:nth-child(3){
+            transition-delay:400ms;
+        }
+        .out>li:hover .in li:nth-child(4){
+            transition-delay:600ms;
+        }
+        .out>li:hover .in li:nth-child(5){
+            transition-delay:800ms;
+        }
+        .out>li .in li:nth-child(1){
+            transition-delay: 800ms;
+        }
+        .out>li .in li:nth-child(2){
+            transition-delay:600ms;
+        }
+        .out>li .in li:nth-child(3){
+            transition-delay:400ms;
+        }
+        .out>li .in li:nth-child(4){
+            transition-delay:200ms;
+        }
+        .out>li .in li:nth-child(5){
+            transition-delay:0ms;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <ul class="out">
+        <li>一级菜单
+            <ul class="in">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+        <li>一级菜单
+            <ul class="in">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+        <li>一级菜单
+            <ul class="in">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+    </ul>
+    <p>dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</p>
+</div>
+
+</body>
+</html>

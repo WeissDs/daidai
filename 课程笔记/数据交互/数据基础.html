@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据基础</title>
+</head>
+<body>
+
+<input id="txt1" type="text">
+<input id="txt2" type="text">
+<input id="btn1" type="button" value="求和">
+<div id="div1"></div>
+
+<script>
+//    let a = function(){};
+//    console.log(typeof a);
+
+let a = '04';
+console.log(parseFloat(a));
+console.log(parseInt(a));
+
+    let oTxt1 = document.getElementById('txt1');
+    let oTxt2 = document.getElementById('txt2');
+    let oBtn = document.getElementById('btn1');
+    let oDiv = document.getElementById('div1');
+
+    oBtn.onclick = function(){
+        let n1 = parseInt(oTxt1.value);
+        let n2 = parseInt(oTxt2.value);
+        if(isNaN(n1)&&isNaN(n2))
+        {
+            alert('都不是数字');
+        }else if(isNaN(n2)){
+            alert('第二个输入框不是数字');
+        }else if(isNaN(n1)){
+            alert('第一个输入框不是数字');
+        }else{
+            oDiv.innerHTML=n1+n2;
+        }
+//        oDiv.innerHTML=parseInt(oTxt1.value)+parseInt(oTxt2.value);
+    }
+
+
+</script>
+
+</body>
+</html>

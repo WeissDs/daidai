@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Json的对象</title>
+    <script>
+//        var json={
+//            a:12,
+//            show:function(){
+//             alert(this.a);
+//            }
+//        };
+//
+//        json.show();
+
+        var json={
+            name:'dai',
+            qq:'123456',
+
+            showName:function(){
+                alert('我的名字叫'+this.name);
+            },
+            showQQ:function(){
+                alert('我的QQ是'+this.qq);
+            }
+        };
+
+        json.showName();
+
+        //json实现的对象     简单   不适合多个对象
+
+        //单体方式
+        //Json实现的对象适合:整个程序里只有一个，写起来比较简单
+        //                   多个对象就用之前的方法
+
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>

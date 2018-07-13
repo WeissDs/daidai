@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象的继承使用</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: #ff5825;
+            position: absolute;
+        }
+        #div2{
+            width: 100px;
+            height: 100px;
+            background-color: #81fff6;
+            position: absolute;
+        }
+    </style>
+    <script src="DivMove.js"></script>
+    <script src="LimitDivMove.js"></script>
+    <script>
+        window.onload=function()
+        {
+            new DivMove('div1');
+            new LimitDivMove('div2');
+        }
+    </script>
+</head>
+<body>
+
+<div id="div1"></div>
+<div id="div2"></div>
+
+</body>
+</html>

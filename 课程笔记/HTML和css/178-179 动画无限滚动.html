@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画无限滚动</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box1{
+            width: 600px;
+            height: 188px;
+            border: 1px solid #000;
+            margin:100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .box1 ul{
+            /*随便给一个比li元素总和宽度大的宽度*/
+            /*width: 3000px;*/
+            /*height: 188px;*/
+            background-color: #000000;
+            position: absolute;
+            top:0;
+            left:0;
+            /*animation:move 8s linear infinite ;*/
+        }
+        /*@keyframes move{*/
+            /*from{*/
+                /*margin-left:0;*/
+            /*}*/
+            /*to{*/
+                /*margin-left:-2400px;*/
+            /*}*/
+        /*}*/
+        .box1 ul:hover{
+            animation-play-state:paused;
+        }
+
+
+        /*给图片添加蒙版的方式 给父元素添加一个底色 修改图片的透明度*/
+        .box1 ul:hover li{
+            opacity:0.5;
+        }
+        .box1 ul li:hover{
+            opacity:1;
+        }
+        .box1 ul li{
+            float: left;
+            list-style: none;
+            width: 600px;
+            height: 188px;
+            background-color: rgba(255, 133, 152, 0.74);
+        }
+        .box1 img{
+            width: 600px;
+            height: 188px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box1" >
+    <ul id="ul1">
+        <li><img src="images/mmexport1442827934749.jpg" alt=""></li>
+        <li><img src="images/mmexport1442827938937.jpg" alt=""></li>
+        <li><img src="images/mmexport1442827934749.jpg" alt=""></li>
+        <li><img src="images/mmexport1442827938937.jpg" alt=""></li>
+        <!--做无限循环效果的时候 需要将第一张图片复制放到最后 这样在跳转的时候才不会有间隙-->
+        <li><img src="images/mmexport1442827934749.jpg" alt=""></li>
+    </ul>
+</div>
+
+<!--<script>-->
+    <!--var oUl=document.getElementById('ul1');-->
+    <!--var aLi=oUl.getElementsByTagName('li');-->
+<!--//    var oLi=document.createElement('li');-->
+
+    <!--function move(obj,iTarget)-->
+    <!--{-->
+        <!--obj.timer=setInterval(function(){-->
+            <!--if(obj.offsetLeft+iTarget<6)-->
+            <!--{-->
+                <!--obj.style.left=0;-->
+            <!--}-->
+            <!--else{-->
+                <!--obj.style.left=parseInt(obj.offsetLeft)-6+'px';-->
+<!--//                alert(oUl.offsetLeft);-->
+            <!--}-->
+        <!--},20);-->
+    <!--}-->
+
+    <!--(function(){-->
+        <!--oUl.style.width=aLi.length*600+'px';-->
+<!--//        oLi.innerHTML=aLi[0].innerHTML;-->
+<!--//        oUl.appendChild(oLi);-->
+
+        <!--move(oUl,(aLi.length-1)*600);-->
+
+
+        <!--oUl.onmouseover=function()-->
+        <!--{-->
+            <!--clearInterval(oUl.timer);-->
+        <!--};-->
+        <!--oUl.onmouseout=function()-->
+        <!--{-->
+            <!--move(oUl,(aLi.length-1)*600);-->
+        <!--}-->
+    <!--})();-->
+<!--</script>-->
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>yes</title>
+    <link rel="stylesheet" href="css/layout.css">
+    <script>
+            document.documentElement.style.fontSize=100*document.documentElement.clientWidth/1080+'px';
+    </script>
+</head>
+<body>
+
+<!--顶部区域-->
+<header>
+    <ul>
+        <li class="location">武汉
+            <a href="#"><img src="image/unfold.svg" alt=""></a>
+        </li>
+        <li class="search-out">
+
+            <input class="search" type="text" placeholder="上品牛肉火锅">
+            <img class="search-img" src="image/search.svg" alt="">
+        </li>
+        <li>
+            <img src="" alt="">
+        </li>
+    </ul>
+</header>
+
+<!--banner区域-->
+<div class="home-banner">
+    <ul class="banner-img">
+        <li><img src="image/home-banner.png" alt=""></li>
+        <li><img src="image/home-banner.png" alt=""></li>
+        <li><img src="image/home-banner.png" alt=""></li>
+    </ul>
+    <div class="banner-btn">
+        <a class="li banner-btn-active"></a>
+        <a class="li"></a>
+        <a class="li"></a>
+    </div>
+</div>
+
+
+<!--icon选择区域-->
+<div class="home-icons">
+    <ul>
+        <li>
+            <a href="#">
+                <img src="image/home-icon3.svg" alt=""><p>美食</p>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="image/home-icon1.svg" alt=""><p>电影</p>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="image/home-icon2.svg" alt=""><p>健康</p>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="image/home-icon4.svg" alt=""><p>娱乐</p>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="image/home-icon5.svg" alt=""><p>丽人</p>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="home-gap"></div>
+
+<!--优惠券区域-->
+<div class="home-coupon">
+    <a href="#">
+        <img class="coupon-image" src="image/组1拷贝@2x.png" alt="">
+        <div class="coupon-btn">
+            <p>你有优惠券没有领取哦~</p>
+            <div>点击领取</div>
+        </div>
+    </a>
+</div>
+
+<div class="home-gap"></div>
+
+<!--推荐商家区域-->
+<div class="home-recommend">
+    
+</div>
+
+
+
+<script>
+    var oUl=document.getElementsByTagName('header')[0];
+
+    alert(oUl.offsetWidth+"$$"+document.documentElement.clientWidth+"$$"+document.documentElement.style.fontSize);
+</script>
+</body>
+</html>

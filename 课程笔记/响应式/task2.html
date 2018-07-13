@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width , user-scalable=no">
+    <meta name="description" content="A basic responsive web page - an example from Chapter 1">
+    <title>Title</title>
+    <style>
+        .CardLink{
+            display: block;
+            color: #666;
+            text-decoration: none;
+            height: 2.75em;
+            line-height:2.75em;
+            border-bottom:1px solid #bbb;
+
+            /*IE10 及以上才能用*/
+            text-shadow: 0 2px 0 #efefef;
+
+            position: relative;
+        }
+
+        @media(min-width: 900px){
+            .CardLink {
+                padding-left: 1.8rem;
+                font-size: 1.6rem;
+            }
+            .CardLink:before{
+                content: '';
+                display: block;
+                position: absolute;
+                top:50%;
+                transform:translateY(-50%);
+                left:0;
+            }
+
+            .CardLink-Hearts:before{
+                content: '♥';
+            }
+            .CardLink-Clubs:before{
+                content: '♣';
+            }
+            .CardLink-Spades:before{
+                content: '♠';
+            }
+            .CardLink-Diamonds:before{
+                content: '♦';
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<a href="#" class="CardLink CardLink-Hearts">Hearts</a>
+<a href="#" class="CardLink CardLink-Clubs">Clubs</a>
+<a href="#" class="CardLink CardLink-Spades">Spades</a>
+<a href="#" class="CardLink CardLink-Diamonds">Diamonds</a>
+
+</body>
+</html>

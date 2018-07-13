@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2D转换模块练习1</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 400px;
+            height: 700px;
+            border: 1px solid #000;
+            margin:100px auto;
+            /*position: relative;*/
+            perspective:900px;
+        }
+        div img{
+            width: 400px;
+            height: 700px;
+            transition:all 3s linear;
+        }
+        div:hover img{
+            transform:rotateY(69deg);
+        }
+        /*transform-origin:;不能写在悬浮的属性中 要写在原属性中*/
+        div img{
+            transform-origin:0% 50%;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div>
+    <img src="../../images/mmexport1442827938937.jpg">
+</div>
+
+</body>
+</html>

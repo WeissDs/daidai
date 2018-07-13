@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任意值运动框架</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: #643446;
+            float: left;
+            margin:10px;
+            border:3px solid #000000;
+            filter:alpha(opacity:30);
+            opacity:0.3;
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            //单个运动
+
+            var oDiv1=document.getElementById('div1');
+            var oDiv2=document.getElementById('div2');
+
+            oDiv1.onmouseover=function()
+            {
+                startMove(this,'height',300);
+            };
+            oDiv1.onmouseout=function()
+            {
+                startMove(this,'height',100);
+            };
+
+            oDiv2.onmouseover=function()
+            {
+                startMove(this,'width',300);
+            };
+            oDiv2.onmouseout=function()
+            {
+                startMove(this,'width',100);
+            };
+
+
+            //多个运动
+            var oDiv=document.getElementsByTagName('div');
+
+//            for(var i=0;i<oDiv.length;i++)
+//            {
+//                oDiv[i].timer=null;
+////                oDiv[i].alpha=30;
+////                oDiv[i].width=100+'px';
+//
+//                oDiv[i].onmouseover=function()
+//                {
+//                    startMove(this,'opacity',100);
+//                };
+//                oDiv[i].onmouseout=function()
+//                {
+//                    startMove(this,'opacity',30);
+//                };
+//            }
+        };
+
+        function getStyle(obj,name)     //取非行间样式的兼容函数（限用于单位值为px）
+        {
+            if(obj.currentStyle)
+            {
+                return obj.currentStyle[name];
+            }
+            else
+            {
+                return getComputedStyle(obj,false)[name];
+            }
+        }
+        function startMove(obj,arr,iTarget)       //任意值运动函数
+        {
+            //用了obj.timer就不需要在外面定义一个空的timer了 为什么？！！！
+            clearInterval(obj.timer);
+            obj.timer=setInterval(function(){
+                var cur;
+                if(arr=='opacity')
+                {
+                    cur=Math.round(parseFloat(getStyle(obj,arr))*100);
+                }
+                else
+                {
+                    cur=parseInt(getStyle(obj,arr));   //将要改变的元素的那个参数带入
+                }
+
+                var speed=(iTarget-cur)/6;
+                speed=speed>0?Math.ceil(speed):Math.floor(speed);
+
+                if(speed==0)
+                {
+                    clearInterval(obj.timer);
+                }
+                else
+                {
+                    if(arr=='opacity')
+                    {
+                        obj.style.filter='alpha(opacity:'+(cur+speed)+')';
+                        obj.style.opacity=(cur+speed)/100;
+                        document.getElementById('txt').value=obj.style.opacity;
+                    }
+                    else
+                    {
+                        obj.style[arr]=cur+speed+'px';
+                    }
+                }
+            },30);
+        }
+    </script>
+</head>
+<body>
+
+<div id="div1">变宽</div>
+<div id="div2">变高</div>
+<input id="txt" type="text">
+
+</body>
+</html>

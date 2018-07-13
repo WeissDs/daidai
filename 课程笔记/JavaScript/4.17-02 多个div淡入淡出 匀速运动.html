@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多个div淡入淡出</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: #318f86;
+            opacity:0.3;
+            filter:alpha(opacity:30);
+            margin:10px;
+            float: left;
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var oDiv=document.getElementsByTagName('div');
+            oDiv.timer=null;
+
+            for(var i=0;i<oDiv.length;i++)
+            {
+                oDiv[i].alpha=30;
+                oDiv[i].onmouseover=function()
+                {
+                    startMove(this,100);
+                };
+                oDiv[i].onmouseout=function()
+                {
+                    startMove(this,30);
+                }
+            }
+        };
+
+//        var alpha=30;  //多物体运动的情况下所有的东西都不能公用
+
+
+        function startMove(obj,iTarget)
+        {
+            clearInterval(obj.timer);
+            obj.timer=setInterval(function(){
+                var speed=null;
+                if(iTarget>obj.alpha)
+                {
+                    speed=7;
+                }
+                else
+                {
+                    speed=-7;
+                }
+
+                if(Math.abs(iTarget-obj.alpha)<7)
+                {
+                    clearInterval(obj.timer);
+                    obj.style.filter='alpha(opacity:'+iTarget+')';
+                    obj.style.opacity=iTarget/100;
+                }
+                else
+                {
+                    obj.alpha+=speed;
+                    obj.style.filter='alpha(opacity:'+obj.alpha+')';
+                    obj.style.opacity=obj.alpha/100;
+                }
+            },30);
+        }
+
+    </script>
+</head>
+<body>
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+</body>
+</html>

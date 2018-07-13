@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS基本用法5</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width: 200px;
+            margin:50px auto;
+        }
+        .box1 input{
+            border: 1px dashed #6d7f9e;
+            width: 50px;
+            height: 22px;
+            border-radius:20% 20% 0 0;
+            background: #ff7b69;
+        }
+        #div1 div{
+            width: 200px;
+            height: 200px;
+            background: #1d537d;
+            display:none;
+            border: 5px dashed #5f90b2;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            color: #ffffff;
+            font:20px/200px '黑体';
+            text-align: center;
+        }
+        #div1 .active{
+            background-color: #fff156;
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var oDiv1=document.getElementById('div1');
+            var oBtn=oDiv1.getElementsByTagName('input');
+            var oDivs=oDiv1.getElementsByTagName('div');
+            for(var i=0;i<oBtn.length;i++)
+            {
+                oBtn[i].index=i;
+                oBtn[i].onclick=function()
+                {
+                    for(var i=0;i<oBtn.length;i++)
+                    {
+                        oBtn[i].className='';
+                        oDivs[i].style.display='none';
+                    }
+                    this.className='active';
+                    oDivs[this.index].style.display='block';
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+
+<!--选项卡-->
+
+<div id="div1" class="box1">
+        <input type="button" value="教育"><input type="button" value="培训"><input type="button" value="招生"><input type="button" value="出国">
+    <div style="display:block;">111</div>
+    <div>222</div>
+    <div>333</div>
+    <div>444</div>
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变宽和变高</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: #643446;
+            float: left;
+            margin:10px;
+            border:3px solid #000000;
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var oDiv1=document.getElementById('div1');
+            var oDiv2=document.getElementById('div2');
+
+            oDiv1.onmouseover=function()
+            {
+                startMove(this,'height',300);
+            };
+            oDiv1.onmouseout=function()
+            {
+                startMove(this,'height',100);
+            };
+
+            oDiv2.onmouseover=function()
+            {
+                startMove(this,'width',300);
+            };
+            oDiv2.onmouseout=function()
+            {
+                startMove(this,'width',100);
+            }
+        };
+
+        function getStyle(obj,name)
+        {
+            if(obj.currentStyle)
+            {
+                return obj.currentStyle[name];
+            }
+            else
+            {
+                return getComputedStyle(obj,false)[name];
+            }
+        }
+        function startMove(obj,arr,iTarget)
+        {
+            clearInterval(obj.timer);
+            obj.timer=setInterval(function(){
+                var cur=parseInt(getStyle(obj,arr));   //将要改变的元素的那个参数带入
+
+                var speed=(iTarget-cur)/6;
+                speed=speed>0?Math.ceil(speed):Math.floor(speed);
+
+                if(speed==0)
+                {
+                    clearInterval(obj.timer);
+                }
+                else
+                {
+//                    obj.style.height=cur+speed+'px';   //将要改变的元素的那个参数带入写法如下
+                    obj.style[arr]=cur+speed+'px';
+                }
+            },30);
+        }
+    </script>
+</head>
+<body>
+
+<div id="div1">变宽</div>
+<div id="div2">变高</div>
+
+</body>
+</html>

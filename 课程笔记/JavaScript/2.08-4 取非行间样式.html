@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>取非行间样式</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: #ff5c67;
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var oDiv=document.getElementById('div1');
+
+//            currentStyle获取非行间样式，chrome和ff都不兼容
+//            alert(oDiv.currentStyle.width);
+
+//            getComputedStyle（计算后的样式）获取非行间样式，IE7不兼容
+//            alert(getComputedStyle(oDiv,false).width);   //false换成什么都可以
+
+//            兼容问题大多可以用真假来处理
+            if(oDiv.currentStyle)
+            {
+                alert(oDiv.currentStyle.width);
+            }
+            else
+            {
+                alert(getComputedStyle(oDiv,false).width);
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+
+<div id="div1"></div>
+
+</body>
+</html>

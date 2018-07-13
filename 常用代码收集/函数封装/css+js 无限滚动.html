@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            width: 300px;
+            height: 300px;
+        }
+        
+        
+        .box{
+             width:1200px;
+             height: 300px;
+             margin:100px auto;
+             background-color: #ff8ca4;
+             overflow: hidden;
+         }
+        .box ul{
+            /*width:2400px;*/
+            background-color: #4579ff;
+
+        }
+        .moveleft{
+            animation:move 5s linear infinite;
+        }
+        @keyframes move{
+            from{
+                margin-left:0;
+
+            }
+            to{
+                margin-left:-1200px;
+            }
+        }
+        .moveright{
+            animation:move1 5s linear infinite;
+        }
+        @keyframes move1{
+            from{
+                margin-left:-1200px;
+            }
+            to{
+                margin-left:0;
+            }
+        }
+        .box ul li{
+            width: 300px;
+            list-style: none;
+            float: left;
+        }
+        .box ul:hover{
+           animation-play-state:paused;
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var oDiv=document.getElementById('div1');
+            var oUl=oDiv.getElementsByTagName('ul')[0];
+            var oLi=oDiv.getElementsByTagName('li');
+
+            if(oLi[0].currentStyle)
+            {
+                oUl.style.width=parseInt(oLi[0].currentStyle.width)*oLi.length*2+'px';
+            }
+            else
+            {
+                oUl.style.width=parseInt(getComputedStyle(oLi[0],false).width)*oLi.length*2+'px';
+            }
+            oUl.innerHTML+=oUl.innerHTML;
+
+            var oBtn=document.getElementsByTagName('input');
+
+            oBtn[0].onclick=function()
+            {
+                oUl.className='moveleft';
+            };
+            oBtn[1].onclick=function()
+            {
+                oUl.className='moveright';
+            };
+        }
+    </script>
+</head>
+<body>
+
+<input type="button" value="向左">
+<input type="button" value="向右">
+
+<div class="box" id="div1">
+    <ul class="">
+        <li><img src="image/89e87bfb828ba61e2e49595c4934970a314e5978.jpg" alt=""></li>
+        <li><img src="image/377adab44aed2e73a84f5adb8301a18b86d6faa7.jpg" alt=""></li>
+        <li><img src="image/aa989e89d43f87940158d95dda1b0ef41ad53a78.jpg" alt=""></li>
+        <li><img src="image/gamersky_02small_04_20157815426CC.jpg" alt=""></li>
+    </ul>
+</div>
+
+</body>
+</html>

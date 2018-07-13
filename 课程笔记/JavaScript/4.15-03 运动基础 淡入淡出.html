@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>淡入淡出</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            display: block;
+            margin-top:8px;
+            filter:alpha(opacity:30);    /*IE*/
+            opacity:0.3;
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var oImg=document.getElementsByTagName('img');
+
+            for(i=0;i<oImg.length;i++)
+            {
+                oImg[i].alpha=30;
+                oImg[i].timer=null;
+                oImg[i].onmouseover=function()
+                {
+                    move(this,1,100);
+                };
+                oImg[i].onmouseout=function()
+                {
+                    move(this,-1,30);
+                };
+            }
+
+        };
+
+//        var timer=null;
+//        var alpha=30;
+
+        function move(obj,speed,iTarget)
+        {
+//            var oImg=document.getElementsByTagName('img');
+//            var speed=10;
+
+                clearInterval(obj.timer);
+                obj.timer=setInterval(function(){
+                        if(obj.alpha==iTarget)
+                        {
+                            clearInterval(obj.timer);
+                        }
+                        else
+                        {
+                            obj.alpha+=speed;
+
+                            obj.style.filter='alpha(opacity:'+obj.alpha+')';
+                            obj.style.opacity=obj.alpha/100;
+                        }
+                },30);
+        }
+    </script>
+</head>
+<body>
+
+<div>
+    <img src="image/377adab44aed2e73a84f5adb8301a18b86d6faa7.jpg" alt="">
+    <img src="image/377adab44aed2e73a84f5adb8301a18b86d6faa7.jpg" alt="">
+    <img src="image/377adab44aed2e73a84f5adb8301a18b86d6faa7.jpg" alt="">
+</div>
+
+</body>
+</html>

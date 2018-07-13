@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>清空默认边距 行高 字号</title>
+    <style type="text/css">
+        /*
+        1.为什么要清空默认边距（外边距和内边距）
+        在企业开发中为了更好的控制盒子的宽高和计算盒子的宽高等等
+        2.如何清空默认边距？
+        *{
+            margin:0;
+            padding:0;
+        }
+        3.注意点
+        通配符选择器会找到（遍历）当前界面中所有的标签，所以性能不好
+        4.另一种更好的方法方法
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+            margin:0;padding:0;
+        }
+        */
+
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+            margin:0;padding:0;
+        }
+
+        /*
+        规律
+        1.文字在行高中默认是垂直居中的
+        2.p:first-child
+        在企业开发中我们经常将盒子的高度和行高设置为一样，那么
+        这样就可以保证一行文字在盒子的高度中是垂直居中的
+        所以：要想  一行  文字在盒子中垂直居中，只需要设置这行文字行高等于盒子高度
+        3.p:nth-child(2)
+        在企业开发中如果一个盒子有多行文字，那么我们就只能设置padding来让文字居中
+
+
+        */
+        p:first-child{
+            width:300px;
+            height:50px;
+            background-color: #cdcdcd;
+            line-height:50px;
+            text-align: center;
+            /*font-size:30px;*/
+            font-size: 30px;
+            font-family:'黑体';
+        }
+        p:nth-child(2){
+            width:610px;
+            height:40px;
+            padding:35px 0;
+            background-color:#cdcdcd;
+            border: 1px solid #000;
+            line-height:20px;
+        }
+        /*
+        注意点
+        1.在企业开发中，如果一个盒子中储存的是文字，那么
+        一般情况下我们以盒子左边的内边距为基准，右边距有
+        误差
+        2.右边内边距的误差怎么来的？
+        因为右边如果放不下一个文字，那么文字就会换行显示，
+        所以文字和内边距之间的距离就有了误差
+        3.顶部的内边距并不是边框到文字顶部的距离，而是边
+        框到行高顶部的距离。
+        */
+        p:last-child{
+            width:590px;
+            height:80px;
+            background-color: #cdcdcd;
+            border:1px solid #000;
+            line-height:40px;
+            font-family: '黑体';
+            font-size:20px;
+            color:#676767;
+            padding:15px 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!--
+1.什么是行高
+line-height 一行文字所占的高度
+
+2.行高和盒子高度的区别
+height 盒子的高度
+
+-->
+<p>代代是个天才</p>
+<p>葬爱：非主流文化的常用词，是当今网络流行术语，且流行与非主流杀马特之中。葬，即埋葬，爱即爱情，翻译成外语就是bury love</p>
+<br>
+<br>
+<br>
+<p>葬爱:非主流文化的常用词，是当今网络流行术语，且流行与非主流杀马特之中。葬，即埋葬，爱即爱情，翻译成外语就是bury love</p>
+
+</body>
+</html>

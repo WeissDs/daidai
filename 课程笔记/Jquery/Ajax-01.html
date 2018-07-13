@@ -1,0 +1,48 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>load方法</title>
+    <style>
+        .blue{
+            color: #87bbe1;
+        }
+        .red{
+            color: #ff524d;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!--[if IE 8]>
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <![endif]-->
+    <script>
+        $(function(){
+            //取消缓存
+            // $.ajaxSetup({cache: false});
+            $('.btn').click(function(){
+                //默认GET方法
+                // $('#oDiv').load('test1.html?t='+new Date().getTime());
+
+                //只选取class为red的数据 也可以获取后再处理，简写方式
+                // $('#oDiv').load('test1.html .red');
+
+                //加入参数默认POST方法
+                $('#oDiv').load('data/test1.html', {url:'www.baidu.com'}, function(response,status,xhr){
+                    if(status=='success'){    //成功后的处理
+                        $('#oDiv').html(response[1]);
+                    }
+                    alert(xhr.responseText);
+                    alert(xhr.responseXML);
+                    alert(xhr.status)
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+<input class="btn" type="button" value="获取ajax">
+<div id="oDiv"></div>
+
+</body>
+</html>

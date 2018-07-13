@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>React控制class替换</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+		}
+		.active{
+			background-color: #FFCC00;
+		}
+		.normal{
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="div1"></div>
+
+	<script type="text/babel">
+		class ChangeClass extends React.Component{
+			constructor(...args){
+				super(...args);
+
+				this.state={flag: 0}
+			}
+
+			fn(){
+				if(this.state.flag){
+					this.setState({flag: 0});
+				}else{
+					this.setState({flag: 1});
+				}
+			}
+
+			render(){
+				console.log(this.state.flag)
+
+				let arr = [];
+				if(this.state.flag){
+					arr = ['box', 'active'];
+				}else{
+					arr = ['box', 'normal'];
+				}
+				return <div>
+					<div className={arr.join(" ")}></div>
+					<input type="button" value="点击" onClick={this.fn.bind(this)}/>
+				</div>
+			}
+		}
+
+		window.onload = function(){
+			
+			let oDiv = document.getElementById('div1');
+
+			ReactDOM.render(
+				<ChangeClass></ChangeClass>,
+				oDiv	
+			)
+		}
+	</script>
+	
+</body>
+</html>

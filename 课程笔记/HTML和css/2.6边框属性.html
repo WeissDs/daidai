@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>边框属性</title>
+    <style type="text/css">
+        .a{
+            height: 200px;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border: 2px solid blue;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-top:8px solid blue;
+            border-bottom:5px solid gray;
+            border-right:15px solid black;
+            border-left:8px solid palevioletred;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-width:8px 15px 5px 8px;
+            border-style:solid dashed dotted double;
+            border-color:blue black gray palevioletred;
+        }
+    </style>
+</head>
+<body>
+
+<!--
+1.什么是边框
+边框就是环绕在标签宽度和高度周围的线条
+
+2.边框属性的格式
+    2.1 连写（同时设置四条边的边框）
+    border:边框的宽度 边框的样式 边框的颜色
+    快捷键:
+    bd+   border: 1px solid #000;
+    注意点：样式 不可以省略
+            宽度省略后可以看到一点边框
+            颜色省略后默认边框为黑色
+
+    2.2 连写（分别设置四条边的边框）
+    border-top:边框的宽度 边框的样式 边框的颜色
+    border-right:边框的宽度 边框的样式 边框的颜色
+    border-left:边框的宽度 边框的样式 边框的颜色
+    border-bottom:边框的宽度 边框的样式 边框的颜色
+
+    快捷键:
+    bt+
+    br+
+    bl+
+    bb+
+
+    2.3连写（分别设置四条边的边框）
+    border-width:上 右 下 左;(一定是上右下左的顺序)
+    border-style:上 右 下 左;
+    border-color:上 右 下 左;
+
+    2.4非连写
+    border-top-width
+    border-top-style
+    border-top-color
+
+    border-right-width
+    border-right-style
+    border-right-color
+
+    border-bottom-width
+    border-bottom-style
+    border-bottom-color
+
+    border-left-width
+    border-left-style
+    border-left-color
+
+3.边框的样式：dotted/dashed虚线/solid实线/double/groove/ridge/inset/outset
+
+-->
+<div class="a">
+    <div class="box"></div>
+</div>
+
+<div class="a">
+    <div class="box1"></div>
+</div>
+
+<div class="box2"></div>
+
+</body>
+</html>

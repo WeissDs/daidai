@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS基本用法5-2</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .calendar{
+            width: 218px;
+            background-color: #e2d1b5;
+            margin:100px auto;
+            padding:10px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .calendar ul li{
+            list-style: none;
+            width: 50px;
+            height: 50px;
+            margin:8px;
+            background-color: #3f3f3f;
+            float: left;
+            color: #ffffff;
+            text-align: center;
+            cursor: default;
+        }
+        .text{
+            width: 182px;
+            height: 50px;
+            float: left;
+            margin:8px;
+            background-color: #ff1955;
+        }
+        /*ul li:hover{*/
+            /*background-color: #d4fbca;*/
+            /*color: #232323;*/
+        /*}*/
+        #tab .active{
+            background-color: #d4fbca;
+            color: #232323;
+        }
+
+    </style>
+    <script>
+        window.onload=function()
+        {
+            //            alert(oLi.length);
+            var arr=['aaaaaaaaaa','bbbbbbbbb','ccccccccccc','dddddddddd','ffffffffffff'];
+
+            var oDiv=document.getElementById('tab');
+            var oLi=document.getElementsByTagName('li');
+            var oTxt=oDiv.getElementsByTagName('div')[0];
+
+            for(var i=0;i<oLi.length;i++)
+            {
+                oLi[i].index=i;
+                oLi[i].onmouseover=function()
+                {
+                    for(var i=0;i<oLi.length;i++)
+                    {
+                        oLi[i].className='';
+                    }
+                    this.className='active';
+                    oTxt.innerHTML='<h2>'+(this.index+1)+'月活动</h2><p>'+arr[this.index]+'</p>';
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+<div class="calendar" id="tab">
+    <ul>
+        <li><h2>1</h2><p>JAN</p></li>
+        <li><h2>2</h2><p>FER</p></li>
+        <li><h2>3</h2><p>MAR</p></li>
+        <li><h2>4</h2><p>APR</p></li>
+        <li><h2>5</h2><p>MAY</p></li>
+        <li><h2>6</h2><p>JUN</p></li>
+        <li><h2>7</h2><p>JUL</p></li>
+        <li><h2>8</h2><p>AUG</p></li>
+        <li><h2>9</h2><p>SEP</p></li>
+        <li><h2>10</h2><p>OCT</p></li>
+        <li><h2>11</h2><p>NOV</p></li>
+        <li><h2>12</h2><p>DEC</p></li>
+    </ul>
+    <div class="text">
+        <h2>1月活动</h2>
+        <p>aaaaaaaaaa</p>
+    </div>
+</div>
+
+
+</body>
+</html>

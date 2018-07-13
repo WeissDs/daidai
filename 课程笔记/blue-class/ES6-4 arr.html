@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>arr</title>
+</head>
+<body>
+
+<!--arr.from()方法可以将类数组例如length转化成数组-->
+
+<script>
+    let arr=[10,20,30,20];
+    let a=arr.map(function(item){
+        return item*3;
+    });
+    let b=arr.filter(function(item){
+        // if(item>=20)
+        // {
+        //     return true;
+        // }
+        return item>=20;
+    });
+    let result=arr.reduce(function(tmp, item, index){
+
+        if(index==arr.length-1)
+        {
+            return (tmp+item)/(index+1);
+        }else{
+            return tmp+item;
+        }
+    });
+
+    arr.forEach(function(item){
+        alert(item);
+    });
+
+    alert(a);
+    alert(b);
+    alert(result);
+
+</script>
+
+</body>
+</html>

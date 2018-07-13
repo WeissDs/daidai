@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3d转换模块练习</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            perspective:700px;
+        }
+        ul{
+            width: 200px;
+            height: 200px;
+            margin:100px auto;
+            position: relative;
+            transform-style:preserve-3d;
+            transform:rotateY(0deg) rotateX(0deg);
+            animation:rot 10s linear infinite;
+        }
+        @keyframes rot{
+            from{
+                transform:rotateX(0deg);
+            }
+            to{
+                transform:rotateX(360deg);
+            }
+        }
+        ul li{
+            width: 200px;
+            height: 200px;
+            list-style: none;
+            font-size: 60px;
+            text-align:center;
+            line-height:200px;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+
+        /*长方体的简单写法 直接在transform里增加 scale参数 后修改左右平移的数值*/
+
+        ul li:nth-child(1){
+            background-color: #cfffef;
+            transform:translate(-150px) rotateY(-90deg);
+
+        }
+        ul li:nth-child(2){
+            background-color: #55cbff;
+            transform:translateY(-100px) rotateX(90deg) scale(1.5,1);
+        }
+        ul li:nth-child(3){
+            background-color: #ff6f7d;
+            transform:translateZ(-100px) rotateX(-180deg) scale(1.5,1);
+        }
+        ul li:nth-child(4){
+            background-color: #ffc846;
+            transform:translateZ(100px) rotateY(0deg) scale(1.5,1);
+        }
+        ul li:nth-child(5){
+            background-color: #d460ff;
+            transform:translateY(100px) rotateX(-90deg) scale(1.5,1);
+        }
+        ul li:nth-child(6){
+            background-color: #a5ff33;
+            transform:translate(150px) rotateY(90deg);
+        }
+        ul li img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+</head>
+<body>
+
+<ul>
+    <li></li>
+    <li><img src="../../images/mmexport1442827938937.jpg" alt=""></li>
+    <li><img src="../../images/mmexport1442827934749.jpg" alt=""></li>
+    <li><img src="../../images/Slideshow_01_new_2015-11_MartinAufmuth.d407e388cf17160919aeea7b81e300cd3.jpg" alt=""></li>
+    <li><img src="../../images/1.JPG" alt=""></li>
+    <li></li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>画个正方体</title>
+	<style type="text/css">
+	  /*解决transform运行时滚动条消失 页面左右跳动的问题*/
+		body { overflow-y: scroll; }
+
+		/*正方体外框*/
+		.rectangle{
+			width: 200px;
+			height: 200px;
+			background-color: #efefef;
+			margin: 100px auto;
+			transition: 3s all ease;
+			transform: perspective(700px) rotateY(0deg) rotateX(0deg);
+			transform-style: preserve-3d;
+			position: relative;
+		}
+		.rectangle div{
+			width: 100%;
+			height: 100%;
+			position: absolute;  		/*每个面必须设定绝对定位。。*/
+			top: 0;
+			left: 0;
+		}
+		.rectangle:active{
+			transform: perspective(700px) rotateY(360deg) rotateX(180deg);
+		}
+		
+
+		/*正方体设置六个面*/
+		.rectangle > .front{
+			background-color: #F8CFF1;
+			transform: translateZ(100px);
+		}
+		.rectangle > .back{
+			background-color: #F4E19A;
+			transform: translateZ(-100px);
+		}
+		.rectangle > .left{
+			background-color: #93B8D0;
+			transform: rotateY(-90deg) translateZ(100px);
+		}
+		.rectangle > .right{
+			background-color: #ED858C;
+			transform: rotateY(90deg) translateZ(100px);
+		}
+		.rectangle > .down{
+			background-color: #F7F7F5;
+			transform: rotateX(-90deg) translateZ(100px);
+		}
+		.rectangle > .top{
+			background-color: #C0BAF5;
+			transform: rotateX(90deg) translateZ(100px);
+		}
+
+
+		/*第二个正方体*/
+		.rec1{
+			width: 200px;
+			height: 200px;
+			margin: 100px auto;
+			transition: 3s all ease;
+			transform: perspective(700px) rotateY(0deg) rotateX(0deg);
+			transform-style: preserve-3d;
+			position: relative;
+		}
+		.rec1 div{
+			width: 100%;
+			height: 100%;
+			position: absolute;  		/*每个面必须设定绝对定位。。*/
+			border: 1px solid #888;
+			top: 0;
+			left: 0;
+			background-color: rgba(0,0,255,0.1);
+		}
+		.rec1:active{
+			transform: perspective(700px) rotateY(360deg) rotateX(180deg);
+		}
+		.rec1 > .front{
+			transform: translateZ(100px);
+		}
+		.rec1 > .back{
+			transform: translateZ(-100px);
+		}
+		.rec1 > .left{
+			transform: rotateY(-90deg) translateZ(100px);
+		}
+		.rec1 > .right{
+			transform: rotateY(90deg) translateZ(100px);
+		}
+		.rec1 > .down{
+			transform: rotateX(-90deg) translateZ(100px);
+		}
+		.rec1 > .top{
+			transform: rotateX(90deg) translateZ(100px);
+		}
+	</style>
+</head>
+<body>
+	<div class="rectangle">
+		<div class="front"></div>
+		<div class="back"></div>
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="top"></div>
+		<div class="down"></div>
+	</div>
+
+	<div class="rec1">
+		<div class="front"></div>
+		<div class="back"></div>
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="top"></div>
+		<div class="down"></div>
+	</div>
+
+</body>
+</html>

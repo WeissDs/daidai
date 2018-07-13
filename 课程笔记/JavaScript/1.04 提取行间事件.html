@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS基本用法4</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+    </style>
+    <script>
+        function div()
+        {
+            var oDiv1=document.getElementById('div1');
+//            JS中这样写style是设置的行间样式
+//            oDiv1.style.background=('#ccc');
+//            而读取style同样是读取的行间样式 如果写在样式表里是读取不到任何值的
+            alert(oDiv1.style.background);
+        }
+
+////       提取行间事件的第三种方式
+//        window.onload=function()
+//        {
+//            var oBtn=document.getElementById('btn1');
+//            oBtn.onclick=function()
+//            {
+//                alert('vvv');
+//            };
+//        }
+    </script>
+
+</head>
+<body>
+
+<!--JS 中style的赋值和取值-->
+<input type="button" value="点" onclick="div()">
+<div id="div1" style="background:red;"></div>
+
+<!--
+JS 将行间事件写进script  提取行间事件
+
+因为我们需要 行为（JS） 样式（CSS） 结构（HTML）三者分离
+-->
+<input id="btn1" type="button" value="点我">
+<!--
+注意：
+1.提取事件的函数值时不能加括号.....
+2.要将代码写在body里有效  写在head里的写法如上 （提取行间事件的第三种方式）.....
+-->
+<script>
+    var oBtn=document.getElementById('btn1');
+
+//   函数可以不取名字 称为匿名函数（开发中大多数函数是没有名字的）
+    function div1()
+    {
+        alert('sss');
+    }
+    oBtn.onclick=div1;
+
+//    提取行间事件的第二种方法
+//    oBtn.onclick=function()
+//    {
+//        alert('bbb')
+//    }
+</script>
+<div id="div2"></div>
+
+
+</body>
+</html>

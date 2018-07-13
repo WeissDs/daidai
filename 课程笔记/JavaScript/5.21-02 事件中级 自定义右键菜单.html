@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> 自定义右键菜单</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        div{
+            display: none;
+            position: absolute;
+        }
+        ul{
+            border:1px solid #6d7f9e;
+            width: 130px;
+        }
+        li{
+            text-align: center;
+            line-height:28px;
+        }
+    </style>
+    <script>
+        document.oncontextmenu=function(ev)
+        {
+            var oEvent=ev||event;
+            var oDiv=document.getElementById('div1');
+
+            oDiv.style.display='block';
+            oDiv.style.top=oEvent.clientY+'px';
+            oDiv.style.left=oEvent.clientX+'px';
+            return false;
+        };
+        document.onclick=function()
+        {
+            var oDiv=document.getElementById('div1');
+            oDiv.style.display='none';
+        };
+        window.onload=function()
+        {
+            var oDiv=document.getElementById('div1');
+            oDiv.onclick=function(ev)
+            {
+                var oEvent=ev||event;
+                oEvent.cancelBubble=true;
+                oDiv.style.display='block';
+                oDiv.style.backgroundColor='red';
+            }
+        }
+
+    </script>
+</head>
+<body>
+
+<div id="div1">
+    <ul>
+        <li>aaaaaaaaaaaaa</li>
+        <li>aaaaaaaaaaaaa</li>
+        <li>ccccccccccccc</li>
+        <li>bbbbbbbbbbbbb</li>
+        <li>ddddddddddddd</li>
+    </ul>
+</div>
+
+</body>
+</html>

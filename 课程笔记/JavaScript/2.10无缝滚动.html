@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无缝滚动</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            width: 300px;
+            height: 300px;
+        }
+        .box{
+            width:1200px;
+            height: 300px;
+            margin:100px auto;
+            position: relative;
+            background-color: #ff8ca4;
+            overflow: hidden;
+        }
+        ul li{
+            list-style: none;
+            float: left;
+        }
+        ul li:hover{
+
+        }
+        ul{
+            position:absolute;
+            left:0;
+            top:0;
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var oDiv=document.getElementById('div1');
+            var oUl=document.getElementsByTagName('ul')[0];
+            var oLi=document.getElementsByTagName('li');
+            var aA=document.getElementsByTagName('a');
+
+            oUl.innerHTML=oUl.innerHTML+oUl.innerHTML;
+            oUl.style.width=oLi[0].offsetWidth*oLi.length+'px';
+
+
+
+            function move(){
+                if(oUl.offsetLeft<-oUl.offsetWidth/2)
+                {
+                    oUl.style.left='0';
+                }
+//                oUl.style.left=oUl.offsetLeft-4+'px';  //往左
+                if(oUl.offsetLeft>0)
+                {
+                    oUl.style.left=-oUl.offsetWidth/2+'px';
+                }
+                oUl.style.left=oUl.offsetLeft+speed+'px';    //往右
+            }
+            var timer=setInterval(move,30);
+            oDiv.onmouseover=function()
+            {
+                clearInterval(timer);
+            };
+            oDiv.onmouseout=function()
+            {
+                timer=setInterval(move,30);
+            };
+
+            var speed;
+            aA[0].onclick=function()
+            {
+               speed=-4;
+            };
+            aA[1].onclick=function()
+            {
+                speed=4;
+            }
+
+        }
+    </script>
+</head>
+<body>
+<a href="javascript:;">向左</a>
+<a href="javascript:;">向右</a>
+
+<div class="box" id="div1">
+    <ul>
+        <li><img src="image/89e87bfb828ba61e2e49595c4934970a314e5978.jpg" alt=""></li>
+        <li><img src="image/377adab44aed2e73a84f5adb8301a18b86d6faa7.jpg" alt=""></li>
+        <li><img src="image/aa989e89d43f87940158d95dda1b0ef41ad53a78.jpg" alt=""></li>
+        <li><img src="image/gamersky_02small_04_20157815426CC.jpg" alt=""></li>
+    </ul>
+</div>
+
+</body>
+</html>

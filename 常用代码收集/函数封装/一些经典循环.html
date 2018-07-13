@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环</title>
+    <style>
+        #btn,#btn1{
+            width: 100px;
+            height: 50px;
+            margin:20px;
+            background-color: #725c87;
+            color: #ffffff;
+            border:none;
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            //求最大公约数
+            //找到两个非负整数u和v的最大公约数gcd.
+            var oBtn=document.getElementById('btn');
+            var oTxt1=document.getElementById('txt1');  //u
+            var oTxt2=document.getElementById('txt2');  //v
+
+            oBtn.onclick=function()
+            {
+                var temp=null;
+                var u=oTxt1.value;
+                var v=oTxt2.value;
+                while(v!=0)
+                {
+                    temp=u%v;
+                    u=v;
+                    v=temp;
+                }
+                alert("最大公约数是"+u);
+            };
+
+            //数字反向
+            var oBtn1=document.getElementById('btn1');
+            var oTxt3=document.getElementById('txt3');
+
+            oBtn1.onclick=function()
+            {
+                var num=parseInt(oTxt3.value);
+                var reverse=0;
+                while(num>0)
+                {
+                    var lastDigit=num%10;
+                    reverse=(reverse*10)+lastDigit;
+                    num=parseInt(num/10);
+                }
+                alert(reverse);
+            };
+
+
+            //找零的程序
+            var oBtn2=document.getElementById('btn2');
+            var oTxt4=document.getElementById('txt4');
+
+            oBtn2.onclick=function()
+            {
+                var money=oTxt4.value;
+
+
+
+                for(var fifty=0;fifty<=money/50-1;fifty++)
+                {
+                    for(var one=0;one<=money/1-1;one++)
+                    {
+
+                    }
+                }
+
+
+                alert(fifty);
+                alert(one);
+            };
+
+        };
+    </script>
+</head>
+<body>
+
+<!--求最大公约数-->
+u:<input id="txt1" type="text">
+<br>
+<br>
+v:<input id="txt2" type="text">
+<br>
+<br>
+<input id="btn" type="button" value="最大公约数">
+
+
+<!--数字反向-->
+<br>
+<br>
+v:<input id="txt3" type="text">
+<br>
+<br>
+<input id="btn1" type="button" value="reverse number">
+
+
+
+<!--找零的程序-->
+<br>
+<br>
+v:<input id="txt4" type="text">
+<br>
+<br>
+<input id="btn2" type="button" value="找零">
+
+</body>
+</html>

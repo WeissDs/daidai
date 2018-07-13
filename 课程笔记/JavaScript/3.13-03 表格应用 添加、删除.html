@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加、删除</title>
+    <style>
+        table{
+            width: 500px;
+            background-color: #6f6f6f;
+        }
+        table thead,tbody{
+            background-color: #fff;
+            text-align: center;
+        }
+
+        /*css的隔行变色*/
+        /*table tbody tr:nth-child(2n+1){*/
+        /*background-color: #6d7a7e;*/
+        /*}*/
+
+        /*css的悬停变色*/
+        /*table tbody tr:hover{*/
+        /*background-color: #feffa2;*/
+        /*}*/
+    </style>
+    <script>
+        window.onload=function()
+        {
+//            JS的隔行变色
+            var oTab=document.getElementById('tab1');
+            var oldColor;
+
+            for(i=0;i<oTab.tBodies[0].rows.length;i++)
+            {
+                if(i%2)  //i%2如果不是0就是真 就有数值
+                {
+                    oTab.tBodies[0].rows[i].style.backgroundColor='#6d7a7e';
+                }
+                else    //i%2等于0
+                {
+                    oTab.tBodies[0].rows[i].style.backgroundColor='';
+                }
+
+//              JS的悬停变色
+                oTab.tBodies[0].rows[i].onmouseover=function()
+                {
+                    oldColor=this.style.backgroundColor;
+                    this.style.backgroundColor='#feffa2'
+                };
+                oTab.tBodies[0].rows[i].onmouseout=function()
+                {
+                    this.style.backgroundColor=oldColor;
+                }
+            }
+
+//            JS添加行信息(CSS的隔行变色可以作用在添加行里 儿js的这种写法不行)
+            var oBtn=document.getElementById('btn');
+            var oName=document.getElementById('name');
+            var oAge=document.getElementById('age');
+            var id=oTab.tBodies[0].rows.length+1;
+
+            oBtn.onclick=function()
+            {
+                var oTr=document.createElement('tr');
+                var oTd=document.createElement('td');
+
+                oTd.innerHTML=id++;
+                oTr.appendChild(oTd);
+
+                var oTd=document.createElement('td');
+                oTd.innerHTML=oName.value;
+                oTr.appendChild(oTd);
+
+                var oTd=document.createElement('td');
+                oTd.innerHTML=oAge.value;
+                oTr.appendChild(oTd);
+
+                var oTd=document.createElement('td');
+                oTd.innerHTML='<a href="javascript:;">删除</a>';
+                oTr.appendChild(oTd);
+
+//                JS表格删除行
+                oTd.getElementsByTagName('a')[0].onclick=function()
+                {
+                    oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+                };
+
+                oTab.tBodies[0].appendChild(oTr);
+            }
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+
+姓名：<input id="name" type="text">
+年龄：<input id="age" type="text">
+<input id="btn" type="button" value="添加">
+<br>
+<br>
+<table id="tab1">
+    <thead>
+    <td>ID</td>
+    <td>姓名</td>
+    <td>年龄</td>
+    <td>操作</td>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td>eee</td>
+        <td>23</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>bbb</td>
+        <td>24</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>ccc</td>
+        <td>25</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>ddd</td>
+        <td>26</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>eee</td>
+        <td>27</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>fff</td>
+        <td>28</td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

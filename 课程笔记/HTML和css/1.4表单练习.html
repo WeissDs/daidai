@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>表单练习</title>
+    <style type="text/css">
+        textarea{
+            resize:none;
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    <!--明文输入框-->
+    账号：<input type="text"><br><br>
+    <!--暗文输入框-->
+    密码：<input type="password"><br><br>
+    <!--给输入框设置默认值-->
+    账号：<input type="text" value="123"><br><br>
+    密码：<input type="password" value="123"><br><br>
+    
+    
+    <!--单选框-->
+    性别：
+    <input type="radio">男 <input type="radio">女 <input type="radio">保密
+    <br>
+    <!--单选框
+    默认情况下不会互斥，互斥：给每一个单选框设置一个name属性，name属性设置相同的值-->
+    性别：
+    <input type="radio" name="1" checked>男 <input type="radio" name="1">女 <input type="radio" name="1">保密
+    <br>
+    <br>
+    <!--多选框-->
+    <input type="checkbox" checked>音乐
+    <input type="checkbox" checked>美术
+    <input type="checkbox">动漫
+</form>
+<br>
+<br>
+<br>
+<br>
+<hr>
+
+
+<form action="http://www.baidu.com">
+    <p>账号：<input type="text" value="222244@qq.com"></p>
+    <p>密码：<input type="password"></p>
+    <!--普通按钮 通过value属性来制定标题-->
+    <input type="button" value="我是按钮"><br><br><br>
+    <!--图片按钮-->
+    <input type="image" src="../../images/提交注册.png"><br><br><br>
+    <!--重置按钮 默认文字为重置 可用value修改-->
+    <input type="reset" value="清空">
+    <!--
+    提交按钮
+    作用：将表单中已经填好的数据，提交到远程服务器
+    注意：两个条件
+    1.需要给form表单添加一个action的属性，通过这个action属性指定需要提交到的服务器地址
+    2.需要给需要提交到服务器的表单元素添加一个name属性
+    -->
+    <input type="submit">
+    <!--
+    隐藏域
+    作用：配合提交按钮将一些数据悄悄提交到服务器  学习Ajax后会使用
+    -->
+    <input type="hidden" name="cc" value="kkk">
+</form>
+<br>
+<br>
+<br>
+<br>
+<hr>
+
+<!--label标签 使文字和输入框绑定在一起-->
+<form action="http://www.baidu.com">
+    <h3>文字与输入框绑定</h3>
+    <p>
+        <label for="1">账号：</label><input type="text" value="222244@qq.com" id="1">
+    </p>
+    <p>
+        <label for="2">密码：</label><input type="password" id="2">
+    </p>
+    <p>
+        <input type="reset">  <input type="submit">
+    </p>
+</form>
+<br>
+<br>
+<br>
+<br>
+<hr>
+
+<!--因为各大浏览器不都支持datalist待选列表 标签 见W3Cschool 所以不常用-->
+<form>
+    <h3>待选列表 不常用</h3>
+    待选列表：<input type="text" list="shu">
+    <datalist id="shu">
+        <option>111</option>
+        <option>222</option>
+        <option>333</option>
+        <option>444</option>
+    </datalist>
+</form>
+<br>
+<br>
+<br>
+<br>
+<hr>
+
+<!--因为各大浏览器不都支持这些html5 input的这些新输入类型 见W3Cschool 所以不常用-->
+<form action="">
+    <h3>H5新增输入类型 不常用</h3>
+    <p>
+        邮箱：<input type="email">
+        域名：<input type="url">
+        电话：<input type="number">
+        <input type="submit">
+    </p>
+    <input type="color">
+    <input type="date">
+</form>
+<br>
+<br>
+<br>
+<br>
+<hr>
+
+<!--表单中的select标签-->
+<form>
+    <h3>select下拉列表 标签</h3>
+    <select name="" id="">
+        <optgroup label="英文">
+            <option>banana</option>
+            <option>apple</option>
+            <!--seleted属性设置option列表的默认值-->
+            <option selected="selected">water</option>
+        </optgroup>
+        <optgroup label="中文">
+            <option>中国</option>
+            <option>武汉</option>
+            <option>电脑</option>
+        </optgroup>
+    </select>
+</form>
+<br>
+<br>
+<br>
+<br>
+<hr>
+
+<!--表单中的textarea标签-->
+<form action="">
+    <h3>textarea 多行输入框(文本域) 标签</h3>
+    <!--默认情况下多行输入框的大小可以通过右下角无限拉伸，通过css修改
+        <style type="text/css">
+            textarea{
+                resize:none;
+            }
+        </style>
+    -->
+    <textarea cols="5" rows="3"></textarea>
+</form>
+<br>
+<br>
+<br>
+<br>
+<hr>
+
+<!--表单练习-->
+<form action="http://www.baidu.com">
+    <fieldset>
+        <legend>表单练习</legend>
+    <h3>注册界面</h3>
+    <p>
+        <label for="z">账号：<input type="text" id="z" name="account"></label>
+    </p>
+    <p>
+        <label for="m">密码：<input type="password" id="m" name="pwd"></label>
+    </p>
+    <p>
+        <!--
+        1.在提交表单信息到服务器时我们要为每个单项添加name属性
+        2.除了按钮类的input标签以外，其他的类型的标签都可以通过一个value属性来指定将来要提交到服务器的值
+        -->
+        性别：
+        <input type="radio" name="gender" value="male">男
+        <input type="radio" name="gender" value="female">女
+        <input type="radio" name="gender" checked value="secret">保密
+    </p>
+    <p>
+        爱好：
+        <input type="checkbox" name="sport" value="basketball">篮球
+        <input type="checkbox" name="sport" value="football">足球
+        <input type="checkbox" name="sport" checked value="zuyu">足浴
+    </p>
+    <p>
+        <label for="g">个人简介：<textarea cols="15" rows="3" id="g" name="desc"></textarea></label>
+    </p>
+    <p>
+        <label for="s">生日：<input type="date" id="s" name="birthday"></label>
+    </p>
+    <p>
+        <label for="y">邮箱：<input type="email" id="y" name="email"></label>
+    </p>
+    <p>
+        <label for="sj">手机：<input type="number" id="sj" name="phone"></label>
+    </p>
+    <p>
+        <input type="submit" value="注册">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="reset" value="清空">
+    </p>
+        </fieldset>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>touch事件</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no"/>
+	<meta charset="utf-8">
+	<style type="text/css">
+	/*学生提出的jquery的slideUp效果能不能用css3实现，我来随手一写*/
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: #F55656;
+/*			position: absolute;
+			top: 40px;
+			left: 10px;*/
+			transition: height 1s ease;
+			margin: 0 auto;
+			transform: translate(10px,0px);
+		}
+		.box-active{
+			/*width: 200px;*/
+			height: 0;
+			/*background-color: #F55656;
+			margin: 0 auto;*/
+			/*transition: all 1s ease;*/
+		}
+
+
+		*{
+			margin: 0; padding: 0;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- 
+		mouse事件： mousedown mouseup mousemove
+
+		touch事件： touchstart touchmove touchend
+
+		mouse、touch 融合： pointer事件
+
+		
+
+
+	 -->
+
+	<!--学生提出的jquery的slideUp效果能不能用css3实现，我来随手一写-->
+	<input id="btn" type="button" name="" value="请点击" style="display:block;width: 200px; margin: 10px;">
+	<div class="box"></div>
+
+
+<script type="text/javascript">
+	var oBtn = document.getElementById('btn');
+	var oDiv = document.getElementsByClassName('box')[0];
+	// document.documentElement.addEventListener('touchstart',function(ev){
+	// 	console.log('clientX:'+ev.targetTouches[0].clientY+'、pageX'+ev.targetTouches[0].pageY);
+	// })
+
+
+	//oDiv绝对定位的 手指拖动写法 
+	// oDiv.addEventListener('touchstart', function(ev){
+	// 	// var oEvent = ev||window.event;   //兼容IE8不需要了
+		
+	// 	var disX = ev.targetTouches[0].clientX-oDiv.offsetLeft;
+	// 	var disY = ev.targetTouches[0].clientY-oDiv.offsetTop;
+	// 	console.log(ev.targetTouches[0]);   //打印
+
+	// ev.cancelBubble=true;
+    // ev.preventDefault();   //让touch不影响滚动条 
+
+	// 	function fnMove(ev){
+	// 		oDiv.style.left = ev.targetTouches[0].clientX-disX+'px';
+	// 		oDiv.style.top = ev.targetTouches[0].clientY-disY+'px';
+	// 	}
+	// 	function fnEnd(ev){
+	// 		oDiv.removeEventListener('touchmove', fnMove, false);   //false是为了兼容ff2.版本 可省略
+	// 		oDiv.removeEventListener('touchend', fnEnd, false);
+	// 	}
+
+	// 	oDiv.addEventListener('touchmove', fnMove, false);
+	// 	oDiv.addEventListener('touchend', fnEnd, false);
+	// })
+
+	
+	//oDiv用transform定位  实现手指拖拽
+	// var x=10,y=0;
+	// oDiv.addEventListener('touchstart', function(ev){
+	// 	var disX = ev.targetTouches[0].clientX-x;
+	// 	var disY = ev.targetTouches[0].clientY-y;
+
+	// ev.cancelBubble=true;
+    // ev.preventDefault();   //让touch不影响滚动条
+
+	// 	function fnMove(ev){
+	// 		x = ev.targetTouches[0].clientX-disX;
+	// 		y = ev.targetTouches[0].clientY-disY;
+
+	// 		oDiv.style.transform='translate('+x+'px,'+y+'px)';
+	// 		console.log(x+','+y);
+	// 	}
+	// 	function fnEnd(ev){
+	// 		document.removeEventListener('touchstart', fnMove);
+	// 		document.removeEventListener('touchend', fnEnd);
+	// 	}
+
+	// 	document.addEventListener('touchmove', fnMove);    //pc端需要用document.addEventListener,防止甩脱了。。。
+	// 	oDiv.addEventListener('touchend', fnEnd);
+	// })
+
+
+	//判断横向竖向拖拽  竖向时禁止横向，横向时禁止竖向
+	var x=10,y=0;
+	oDiv.addEventListener('touchstart', function(ev){
+		var dir='';
+		var disX = ev.targetTouches[0].clientX-x;
+		var disY = ev.targetTouches[0].clientY-y;
+
+		var startX = ev.targetTouches[0].clientX;
+		var startY = ev.targetTouches[0].clientY;
+
+		ev.cancelBubble=true;
+    	ev.preventDefault();   //让touch不影响滚动条
+
+		function fnMove(ev){
+			if(dir=='')
+			{
+				if(Math.abs(ev.targetTouches[0].clientY-startY)>=10)    //如果同时超出10px 则优先执行第一条if
+				{
+					dir = 'y';
+				}else if(Math.abs(ev.targetTouches[0].clientX-startX)>=10)
+				{
+					dir = 'x';
+				}
+			}else{
+				if(dir=='x')
+				{
+					x = ev.targetTouches[0].clientX-disX;
+				}else if(dir=='y'){
+					y = ev.targetTouches[0].clientY-disY;
+				}
+				
+			}
+			oDiv.style.transform = 'translate('+x+'px,'+y+'px)';
+		}
+		function fnEnd(){
+			oDiv.removeEventListener('touchmove', fnMove);
+			oDiv.removeEventListener('touchend', fnEnd);
+		}
+
+		oDiv.addEventListener('touchmove', fnMove);
+		oDiv.addEventListener('touchend', fnEnd);
+	})
+
+
+
+
+	//点击按钮 让oDiv消失和出现（学生提出的jquery的slideUp效果能不能用css3实现，我来随手一写）
+	oBtn.addEventListener('touchend',function(){
+		// if(oDiv.className=='box')
+		// {
+		// 	oDiv.className='box-active box';
+		// }else{
+		// 	oDiv.className='box';
+		// }
+
+		// es6写法
+		//Array.from是es6语法，classList是指定节点的class列表
+		if(Array.from(oDiv.classList).includes('box-active')) 
+		{
+			oDiv.className='box';
+		}else{
+			oDiv.className='box box-active';
+		}
+		
+	})
+</script>
+</body>
+</html>

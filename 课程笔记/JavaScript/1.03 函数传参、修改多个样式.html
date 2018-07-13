@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS基本用法3</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: #aaaaaa;
+        }
+        #div2{
+            width:100px;
+            height:100px;
+            background: #cccccc;
+        }
+    </style>
+    <script>
+        function color(num)
+        {
+            var oDiv=document.getElementById('div1');
+            oDiv.style.background=num;
+        }
+        function settext()
+        {
+            var oTxt=document.getElementById('txt1');
+//           第一种操作属性的方式
+//           oTxt.value='dddddd';
+//           第二种操作属性的方式 可以写字符串也可以写占位符
+            oTxt['value']='dddddd';
+        }
+        function setStyle(w,c)
+        {
+            var oDiv2=document.getElementById('div2');
+            oDiv2.style[w]=c;
+        }
+    </script>
+</head>
+<body>
+
+<!--
+函数传参
+参数就是占位符
+-->
+<input type="button" value="黄" onclick="color('yellow');">
+<input type="button" value="红" onclick="color('red');">
+<input type="button" value="蓝" onclick="color('blue');">
+<div id="div1"></div>
+
+
+<!--
+操作属性的两种方式
+-->
+
+<input  id="txt1" type="text">
+<input type="button" value="改变文字" onclick="settext()">
+
+<br>
+<br>
+<br>
+<!--
+修改多个样式
+-->
+
+<input type="button" value="宽" onclick="setStyle('width','200px')">
+<input type="button" value="高" onclick="setStyle('height','200px')">
+<input type="button" value="颜色" onclick="setStyle('background','red')">
+<div id="div2"></div>
+
+
+<!--
+字面量（常量）：看到就知道是什么 比如数字 12 和字符串 ‘ddd’
+变量：var a=？
+-->
+</body>
+</html>

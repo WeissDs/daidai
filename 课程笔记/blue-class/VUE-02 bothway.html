@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双向绑定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+    <div id="double">
+        <div>{{a}}</div>
+        <input type="text" v-model="a">
+    </div>
+
+
+
+<script>
+    let vm=new Vue({
+        el:'#double',
+        data:{
+            a:33
+        }
+    });
+    setInterval(function(){
+        vm.a++
+    },100)
+</script>
+
+</body>
+</html>

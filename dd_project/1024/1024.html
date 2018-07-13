@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1024</title>
+    <style>
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+            margin:0;padding:0;
+        }
+        .outBox{
+            width: 424px;
+            height: 424px;
+            background-color: #272348;
+            position: relative;
+            margin:100px auto;
+            padding:10px;
+            border-radius:8px;
+        }
+        .background div{
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            float: left;
+            margin:3px;
+            border-radius:4px;
+            filter:Alpha(opacity:30);
+            opacity:0.3;
+        }
+        .all{
+            width: 100px;
+            height: 100px;
+            background-color: #fff9b6;
+            position: absolute;
+            border-radius:4px;
+            margin:6px;
+            font-size:70px;
+            font-weight:bold;
+            font-family:'微软雅黑 Light';
+            text-align: center;
+            line-height:100px;
+            color: #282828;
+            /*display: none;*/
+        }
+        .create{
+            width: 50px;
+            height: 50px;
+            background-color: #fff9b6;
+            position: absolute;
+            border-radius:4px;
+            margin:34px;
+            font-size:40px;
+            font-weight:bold;
+            font-family:'微软雅黑 Light';
+            text-align: center;
+            line-height:50px;
+            color: #282828;
+        }
+        .n2{
+            background-color: #fff9b6;
+        }
+        .n4{
+            background-color: #ffcfbf;
+        }
+        .n8{
+            background-color: #ff8776;
+        }
+        .n16{
+            background-color: #d9a1be;
+            font-size:60px;
+        }
+        .n32{
+            background-color: #e3d4ff;
+            font-size:60px;
+
+        }
+        .n64{
+            background-color: #d1c7ff;
+            font-size:60px;
+
+        }
+        .n128{
+            background-color: #c07bff;
+            font-size:50px;
+        }
+        .n256{
+            background-color: #c0ecff;
+            font-size:50px;
+        }
+        .n512{
+            background-color: #fff9b6;
+            font-size:50px;
+        }
+        .n1024{
+            background-color: #fff9b6;
+            font-size:40px;
+        }
+        .n2048{
+            background-color: #fff9b6;
+            font-size:40px;
+        }
+        .n4096{
+            background-color: #fff9b6;
+            font-size:40px;
+        }
+
+
+
+
+        .block div:nth-child(1){
+            top:6px;
+            left:6px;
+        }
+        .block div:nth-child(2){
+            top:6px;
+            left:112px;
+        }
+        .block div:nth-child(3){
+            top:6px;
+            left:218px;
+        }
+        .block div:nth-child(4){
+            top:6px;
+            left:324px;
+        }
+        .block div:nth-child(5){
+            top:112px;
+            left:6px;
+        }
+        .block div:nth-child(6){
+            top:112px;
+            left:112px;
+        }
+        .block div:nth-child(7){
+            top:112px;
+            left:218px;
+        }
+        .block div:nth-child(8){
+            top:112px;
+            left:324px;
+        }
+        .block div:nth-child(9){
+            top:218px;
+            left:6px;
+        }
+        .block div:nth-child(10){
+            top:218px;
+            left:112px;
+        }
+        .block div:nth-child(11){
+            top:218px;
+            left:218px;
+        }
+        .block div:nth-child(12){
+            top:218px;
+            left:324px;
+        }
+        .block div:nth-child(13){
+            top:324px;
+            left:6px;
+        }
+        .block div:nth-child(14){
+             top:324px;
+             left:112px;
+         }
+        .block div:nth-child(15){
+            top:324px;
+            left:218px;
+        }
+        .block div:nth-child(16){
+            top:324px;
+            left:324px;
+        }
+    </style>
+    <script src="Move.js"></script>
+    <script>
+
+        var arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        var gameState=0;
+
+        function isFull() {
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i] == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function isGameOver()
+        {
+            if(isFull())
+            {
+                if(!canLeft()&&!canRight()&&!canBottom()&&!canTop())
+                {
+                    return true;
+                }
+            }
+        }
+
+        function createNumber() {
+//                if (isFull()) return;   //三种写法都可以
+//                if(!isFull())
+            var oBlock = document.getElementById('block');
+            var aDivBlock = oBlock.getElementsByTagName('div');
+            if (isFull() == false) {
+                while (true) {
+                    var rand = Math.floor(Math.random() * 16);
+                    if (arr[rand] == 0) {
+                        arr[rand] = Math.random()<0.2?4:2;
+
+                        aDivBlock['div' + rand].className = 'all n'+arr[rand];
+                        aDivBlock['div' + rand].innerHTML = arr[rand];
+                        break;
+                    }
+                }
+            }
+        }
+
+        //判断是否可以往左、右、上、下移动
+        function canLeft() {
+            for (var i = 0; i < arr.length; i++) {
+                if (!(i == 0 || i == 4 || i == 8 || i == 12)) // 最左列
+                {
+                    if (arr[i] != 0) {
+                        if (arr[i - 1] == 0 || arr[i - 1] == arr[i]) {
+                            return true;
+                        }
+                    }
+                }
+
+            }
+            return false;
+        }
+
+        function canTop() {
+            for (var i = 0; i < arr.length; i++) {
+                if (!(i == 0 || i == 1 || i == 2 || i == 3)) // 最上列
+                {
+                    if (arr[i] != 0) {
+                        if (arr[i - 4] == 0 || arr[i - 4] == arr[i]) {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        function canRight() {
+            for(var i=0;i<arr.length;i++)
+            {
+                if(!(i==3||i==7||i==11||i==15))
+                {
+                    if(arr[i]!=0)
+                    {
+                        if(arr[i+1]==0||arr[i+1]==arr[i])
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        function canBottom() {
+            for (var i = 0; i < arr.length; i++) {
+                if (!(i == 12|| i == 13 || i == 14 || i == 15)) // 最下列
+                {
+                    if (arr[i] != 0) {
+                        if (arr[i + 4] == 0 || arr[i + 4] == arr[i]) {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+
+        //找到 上下左右  移动中 下上右左  的不为零的值
+        function RightOne(i) {
+            for (var r = i + 1; r < arr.length; r++) {
+                if (r == 4 || r == 8 || r == 12) {
+                    break;
+                }
+                if (arr[r] != 0) {
+                    return r;
+                }
+            }
+            return -1;
+        }
+
+        function BottomOne(i) {
+            for (var r = i + 4; r < arr.length; r+=4) {
+                if (r == 16) {
+                    break;
+                }
+                if (arr[r] != 0) {
+                    return r;
+                }
+            }
+            return -1;
+        }
+
+        function LeftOne(i) {
+            for (var r = i - 1; r > -1; r--) {
+                if (r == 3 || r == 7 || r == 11) {
+                    break;
+                }
+                if (arr[r] != 0) {
+                    return r;
+                }
+            }
+            return -1;
+        }
+
+        function TopOne(i) {
+            for (var r = i - 4; r >-1; r-=4) {
+//                    if (r == 16) {
+//                        break;
+//                    }
+                if (arr[r] != 0) {
+                    return r;
+                }
+            }
+            return -1;
+        }
+
+
+        function isWin()
+        {
+            for(var i=0;i<arr.length;i++)
+            {
+                if(arr[i]==2048)
+                {
+                    alert('恭喜你 么么哒~');
+                    gameState=1;
+                }
+            }
+        }
+
+
+
+
+
+        //样式
+        function updateView()
+        {
+            var oBlock = document.getElementById('block');
+            var aDivBlock = oBlock.getElementsByTagName('div');
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i] == 0) {
+                    aDivBlock[i].innerHTML = '';
+                    aDivBlock[i].className = '';
+//                            aDivBlock[i].style.display = 'none';
+                }
+                else {
+                    aDivBlock[i].innerHTML = arr[i];
+                    aDivBlock[i].className = 'all n'+arr[i];
+//                            aDivBlock[i].style.display = 'block';
+                }
+
+            }
+        }
+
+        //运动
+        var animation = {
+            times : 10, // 每个动画分10步完成
+            interval : 10, // 每一步用10毫秒
+            timer : null,
+            tasks : [], // 保存每次移动的任务
+
+            addTask : function (source, target) {
+                var sourceDiv = document.getElementById(source);
+                var targetDiv = document.getElementById(target);
+                var sourceStyle = getComputedStyle(sourceDiv);
+                var targetStyle = getComputedStyle(targetDiv);
+                var topStep = (parseInt(targetStyle.top) - parseInt(sourceStyle.top)) / this.times;
+                var leftStep = (parseInt(targetStyle.left) - parseInt(sourceStyle.left)) / this.times;
+                var task = new Task(sourceDiv, topStep, leftStep);
+                this.tasks.push(task);
+            },
+
+            start : function () {
+                this.timer = setInterval(function () {
+                    for (var i = 0; i < animation.tasks.length; i++) {
+                        animation.tasks[i].moveStep();
+                    }
+                    animation.times--;
+                    if (animation.times == 0) {
+                        for (var i = 0; i < animation.tasks.length; i++) {
+                            animation.tasks[i].clear();
+                        }
+                        clearInterval(animation.timer);
+                        animation.timer = null;
+                        animation.tasks = [];
+                        animation.times = 10;
+                    }
+                }, this.interval);
+            }
+        };
+
+        function Task(obj, topStep, leftStep) {
+            this.obj = obj;
+            this.topStep = topStep;
+            this.leftStep = leftStep;
+        }
+
+        Task.prototype.moveStep = function () {
+            var style = getComputedStyle(this.obj);
+            var top = parseInt(style.top);
+            var left = parseInt(style.left);
+            this.obj.style.top = top + this.topStep + "px";
+            this.obj.style.left = left + this.leftStep + "px";
+        };
+
+        Task.prototype.clear = function () {
+            this.obj.style.top = "";
+            this.obj.style.left = "";
+        };
+
+
+
+        window.onload=function() {
+            var oBlock = document.getElementById('block');
+            var aDivBlock = oBlock.getElementsByTagName('div');
+
+
+            for (var i = 0; i < aDivBlock.length; i++) {
+                aDivBlock[i].id = 'div' + i;
+            }
+
+            createNumber();
+            createNumber();
+
+            document.onkeydown = function (ev) {
+                var oEvent = ev || event;
+                if(isGameOver()==true)
+                {
+                    alert('你GG了hhhhhh');
+                    for(var i=0;i<arr.length;i++)
+                    {
+                        arr[i]=0;
+                    }
+                    createNumber();
+                    updateView();
+                }
+
+
+
+                if (oEvent.keyCode == 37) {
+                    if (canLeft()) {
+                        for (var i = 0; i < arr.length; i++) {
+                            if (i == 3 || i == 7 || i == 11 || i == 15) {
+                                //continue;
+                            } else {
+                                var rightOne = RightOne(i);
+                                if (rightOne == -1) {
+                                    continue;
+                                } else {
+                                    //alert(rightOne);
+                                    if (arr[i] == 0) {
+                                        arr[i] = arr[rightOne];
+                                        arr[rightOne] = 0;
+                                        animation.addTask("div"+rightOne,"div"+i);
+//                                        startMove(aDivBlock[rightOne],{left:aDivBlock[i].style.left});
+//                                        aDivBlock[rightOne].style.left=
+//                                        aDivBlock['div'+i].innerHTML=arr[i];
+//                                        aDivBlock['div'+rightOne].innerHTML=0;
+//                                        aDivBlock['div'+i].style.display='block';
+//                                        aDivBlock['div'+rightOne].style.display='none';
+                                        i--;
+                                    }
+                                    else if (arr[i] == arr[rightOne]) {
+                                        arr[i] = arr[i] * 2;
+                                        arr[rightOne] = 0;
+                                        animation.addTask("div"+rightOne,"div"+i);
+
+
+//                                        aDivBlock['div'+i].innerHTML=arr[i];
+//                                        aDivBlock['div'+rightOne].innerHTML=0;
+//                                        aDivBlock['div'+i].style.display='block';
+//                                        aDivBlock['div'+rightOne].style.display='none';
+                                    }
+                                }
+                            }
+                        }
+
+                        animation.start();
+                        setTimeout(function () {
+                            createNumber();
+                            updateView();
+                        },animation.times * animation.interval);
+                        if(gameState!=1)
+                        {
+                            isWin();
+                        }
+                    }
+                }
+
+                else if (oEvent.keyCode == 38) {
+                    if (canTop()) {
+                        for (var i = 0; i < arr.length; i++) {
+                            if (i == 12 || i == 13 || i == 14 || i == 15) {
+                                //continue;
+                            } else {
+                                var bottomone = BottomOne(i);
+                                if (bottomone == -1) {
+                                    continue;
+                                } else {
+                                    //alert(rightOne);
+                                    if (arr[i] == 0) {
+                                        arr[i] = arr[bottomone];
+                                        arr[bottomone] = 0;
+                                        animation.addTask("div"+bottomone,"div"+i);
+
+                                        i -= 4;
+                                    }
+                                    else if (arr[i] == arr[bottomone]) {
+                                        arr[i] = arr[i] * 2;
+                                        arr[bottomone] = 0;
+                                        animation.addTask("div"+bottomone,"div"+i);
+                                    }
+                                }
+                            }
+                        }
+
+                        animation.start();
+                        setTimeout(function () {
+                            createNumber();
+                            updateView();
+                        },animation.times * animation.interval);
+                        if(gameState!=1)
+                        {
+                            isWin();
+                        }
+                    }
+                }
+
+                else if (oEvent.keyCode == 39) {
+                    if (canRight()) {
+                        for (var i = 15; i > -1; i--) {
+                            if (i == 0 || i == 4 || i == 8 || i == 12) {
+                                //continue;
+                            } else {
+                                var leftOne = LeftOne(i);
+                                if (leftOne == -1) {
+                                    continue;
+                                } else {
+                                    //alert(rightOne);
+                                    if (arr[i] == 0) {
+                                        arr[i] = arr[leftOne];
+                                        arr[leftOne] = 0;
+                                        animation.addTask("div"+leftOne,"div"+i);
+                                        i++;
+                                    }
+                                    else if (arr[i] == arr[leftOne]) {
+                                        arr[i] = arr[i] * 2;
+                                        arr[leftOne] = 0;
+                                        animation.addTask("div"+leftOne,"div"+i);
+                                    }
+                                }
+                            }
+                        }
+
+
+                        animation.start();
+                        setTimeout(function () {
+                            createNumber();
+                            updateView();
+                        },animation.times * animation.interval);
+                        if(gameState!=1)
+                        {
+                            isWin();
+                        }
+                    }
+                }
+
+                else if (oEvent.keyCode == 40) {
+                    if (canBottom()) {
+                        for (var i = 15; i >-1; i--) {
+                            if (i == 0 || i == 1 || i == 2 || i == 3) {
+                                //continue;
+                            } else {
+                                var topone = TopOne(i);
+                                if (topone == -1) {
+                                    continue;
+                                } else {
+                                    //alert(rightOne);
+                                    if (arr[i] == 0) {
+                                        arr[i] = arr[topone];
+                                        arr[topone] = 0;
+                                        animation.addTask("div"+topone,"div"+i);
+                                        i += 4;
+                                    }
+                                    else if (arr[i] == arr[topone]) {
+                                        arr[i] = arr[i] * 2;
+                                        arr[topone] = 0;
+                                        animation.addTask("div"+topone,"div"+i);
+                                    }
+                                }
+                            }
+                        }
+
+                        animation.start();
+                        setTimeout(function () {
+                            createNumber();
+                            updateView();
+                        },animation.times * animation.interval);
+                        if(gameState!=1)
+                        {
+                            isWin();
+                        }
+                    }
+                }
+
+            };
+
+
+
+
+                //随机选取两个的写法
+//            var rand1=Math.floor(Math.random() * 16);
+//            var rand2=Math.floor(Math.random() * 16);
+//            while(rand1==rand2)
+//            {
+//                rand2=Math.floor(Math.random() * 16);
+//            }
+//            document.getElementById('div'+rand1).style.display='block';
+//            document.getElementById('div'+rand2).style.display='block';
+
+//            alert(num);
+
+        }
+    </script>
+</head>
+<body>
+
+<div id="outBox" class="outBox">
+    <div id="block" class="block">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+
+    <div id="background" class="background">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+</body>
+</html>

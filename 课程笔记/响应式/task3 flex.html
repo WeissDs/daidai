@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .flex{
+            display: flex;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: -webkit-box;
+
+            flex:1;
+            -ms-flex:1;
+            -webkit-flex:1;
+            -webkit-box-flex:1;
+
+            -webkit-box-pack: justify;
+            -webkit-justify-content:space-between;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+        }
+        .CenterMe{
+            background-color: indigo;
+            font-size:2rem;
+            height: 200px;
+            display: flex;
+            flex-direction:row;
+            justify-content:space-between;
+            align-items:center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="CenterMe flex">
+    Hello, I'm centered with FlexBox!
+    <div>1111</div>
+    <div>1111</div>
+    <div>1111</div>
+</div>
+
+</body>
+</html>

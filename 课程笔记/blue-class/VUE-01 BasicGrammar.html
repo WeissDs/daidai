@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VUE</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<!--
+1.  前台渲染： 用户体验（不用重新刷新）、数据量小 [ VUE\Angular\React ]
+    后台渲染： 利于SEO、简单、安全性高、稳定性
+
+2.  MVC模式:  M——————Model           数据
+              V——————View            表现
+              C——————Controller      逻辑   逻辑C庞大
+    MVP模式： 逻辑p庞大
+    MVVM模式： M V VM
+-->
+
+<div id="box" v-bind:title="a">   <!-- 'v-bind:' 可简写为 ':' -->
+    {{a+b}}
+    <!--<input type="button" v-on:click="a++">-->
+    <input type="button" v-on:click="fn">
+</div>
+
+
+<script>
+    let vm=new Vue({
+        el:'#box',
+        data:{
+            a:12, b: 5
+        },
+        methods:{
+            fn(){
+                alert(this.a);
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

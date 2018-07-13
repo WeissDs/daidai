@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script>
+        let $$=jQuery.noConflict();
+    </script>
+
+</head>
+<body>
+
+    <input type="button" value="点我我就不见了">
+
+    <script>
+        $$(document).ready(function(){
+
+            $$('input').click(function(){
+                $$(this).hide();
+            })
+
+        })
+    </script>
+
+</body>
+</html>

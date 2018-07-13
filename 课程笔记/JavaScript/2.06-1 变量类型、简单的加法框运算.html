@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS基础知识</title>
+    <script>
+//        var a='123';  //string
+//        var a=2;    //number
+//        var a=false;    //boolean
+//        var a=function() {};    //function
+//        var a=document;    //object
+//        alert(typeof a);
+//        var b;    //undefined
+//        alert(typeof b);
+
+        window.onload=function()
+        {
+            var oTxt1=document.getElementById('txt1');
+            var oTxt2=document.getElementById('txt2');
+            var oBtn=document.getElementById('btn');
+
+            oBtn.onclick=function()
+            {
+//                alert(parseInt(oTxt1.value)+parseInt(oTxt2.value));   //未优化方式
+                var n1=parseInt(oTxt1.value);
+                var n2=parseInt(oTxt2.value);
+
+                if(isNaN(n1))
+                {
+                    alert('您输入的第一个数字有误');
+                }
+                else if(isNaN(n2))
+                {
+                    alert('您输入的第二个数字有误');
+                }
+                else
+                {
+                    alert(n1+n2);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+
+<input id="txt1" type="text">
+<input id="txt2" type="text">
+<input id="btn" type="button" value="求和">
+
+
+</body>
+</html>

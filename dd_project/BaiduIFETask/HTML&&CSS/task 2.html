@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task 2 HTML练习</title>
+    <style type="text/css">
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+            margin:0;padding:0;
+        }
+        textarea{
+            resize:none;
+        }
+        *{
+            font-family:'黑体';
+            color: #333333;
+            font-size: 14px;
+            box-sizing:border-box;
+        }
+
+        /*head开始*/
+        .header{
+            width: 1280px;
+            height: 60px;
+            background-color: #333333;
+            padding-left:40px;
+            /*padding-top:10px;*/
+        }
+        .header img{
+            width: 118px;
+            height: 40px;
+            float: left;
+            margin-top:10px;
+        }
+        .header li{
+            float: right;
+            width: 90px;
+            line-height:60px;
+            color: #000;
+        }
+        .header a{
+            text-decoration: none;
+            color: #ffffff;
+        }
+        /*head 结束*/
+
+
+        /*内容部分统一样式*/
+        .content{
+            width: 1280px;
+            height: 3940px;
+            background-color: #dddddd;
+            padding:20px;
+
+        }
+        .content a{
+            color: dodgerblue;
+        }
+        .content img{
+            height: 243px;
+        }
+        .content p{
+            margin-top:14px;
+            line-height:26px;
+        }
+        .content h1{
+            font-size: 22px;
+        }
+        .content h2{
+            margin-top:14px;
+            font-size:16px;
+            color: #787878;
+        }
+        /*内容部分统一样式*/
+
+        .content .article1{
+            width: 1240px;
+            height: 710px;
+            background-color: #ffffff;
+            padding:40px 21px;
+        }
+        .content .article1 p:first-of-type{
+            font-size:12px;
+            color: #787878;
+        }
+        .content .article1 img{
+            margin-top:14px;
+        }
+
+
+
+        .content .article2{
+            width: 1240px;
+            height: 658px;
+            background-color: #ffffff;
+            margin-top:20px;
+            padding:40px 21px;
+        }
+        .content .article2 p:first-of-type {
+            font-size: 12px;
+            color: #787878;
+        }
+        .content .article2 img{
+            margin-top:14px;
+        }
+        .content .article2 ul{
+            margin-left:20px;
+            list-style: none;
+            line-height:26px;
+        }
+
+
+
+        .content .photo{
+            width: 1240px;
+            height: 1520px;
+            background-color: #ffffff;
+            margin-top:20px;
+            padding:40px 21px;
+        }
+        .content .photo .box1{
+            width: 150px;
+            height: 126px;
+            border:1px solid #333333;
+            margin:16px 40px;
+        }
+        .content .photo p{
+            text-align:center;
+            margin-top:8px;
+        }
+        .content .photo img{
+            display: block;
+            height: 80px;
+            margin:0 auto;
+        }
+
+
+        .content .article3{
+            width: 1240px;
+            height: 423px;
+            background-color: #ffffff;
+            margin-top:20px;
+            padding:40px 21px;
+        }
+        .content .article3 p:first-of-type{
+            font-size:12px;
+            color: #787878;
+        }
+        .content .article3 ol{
+            font-weight:bold;
+            margin:8px 40px;
+            line-height:20px;
+        }
+        .content .article3 table{
+            width: 1198px;
+            height: 148px;
+            background-color: #cccccc;
+            margin-top:30px;
+
+        }
+        .content .article3 tr:first-child{
+            background-color: #353535;
+        }
+        .content .article3 tr:first-child td{
+            color: #ffffff;
+        }
+        .content .article3 tr{
+            background-color: #ffffff;
+        }
+        .content .article3 td{
+            padding-left:6px;
+        }
+        .content .article3 tr:last-child{
+            background-color: #cccccc;
+            font-weight:bold;
+        }
+
+
+        .box-last{
+            width: 1240px;
+            height: 500px;
+            background-color: #ffffff;
+            margin-top:20px;
+            padding:40px 21px;
+        }
+        .box-last h1{
+            font-size:16px;
+        }
+        .box-last .apply-form ul{
+            list-style:none;
+        }
+        .box-last .apply-form{
+            width: 934px;
+            height: 368px;
+            float: right;
+            margin-top:20px;
+        }
+        .box-last .apply-form .box-1{
+            width: 940px;
+            height: 56px;
+        }
+        .box-last .apply-form p{
+            color: #a4a4a4;
+            margin:5px 0 0 140px;
+        }
+        .box-last .apply-form .box-2{
+            width: 940px;
+            height: 46px;
+        }
+        .box-last .apply-form .box-3{
+            width: 940px;
+            height: 64px;
+        }
+        .box-last .apply-form .box-4{
+            width: 940px;
+            height: 29px;
+        }
+        .box-last .apply-form .box-5{
+            width: 940px;
+            height: 104px;
+        }
+        .box-last .apply-form span{
+            float: left;
+            display: inline-block;
+            width: 120px;
+            text-align: right;
+            margin-right:20px;
+        }
+        .box-last .apply-form textarea{
+            width: 766px;
+            height: 104px;
+        }
+        .box-last input[type='submit']{
+            width: 1178px;
+            height: 38px;
+            background-color: #3355d0;
+            border-radius:5px;
+            border:0;
+            color: #ffffff;
+            font-size:16px;
+        }
+        .box-last input[type="radio"]{
+            background-color: #3355d0;
+        }
+        .box-last .submit{
+            text-align:center;
+
+            /*margin-top: 394px;*/
+        }
+
+
+        .footer {
+            width: 1280px;
+            height: 70px;
+            background-color: #000000;
+            padding-top:20px;
+        }
+        .footer p{
+            text-align: center;
+            color: #ffffff;
+
+        }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <img src="../../images/“bd_logo1_31bdc765”为智能对象-1.png">
+    <ul>
+        <li>
+            <a href="#">导航链接四</a>
+        </li>
+        <li>
+            <a href="#">导航链接三</a>
+        </li>
+        <li>
+            <a href="#">导航链接二</a>
+        </li>
+        <li>
+            <a href="#">导航链接一</a>
+        </li>
+    </ul>
+</div>
+
+<div class="content">
+    <div class="article1">
+        <h1>文章一级标题</h1>
+        <h2>文章二级标题</h2>
+        <p>文章作者 文章发布时间</p>
+        <p>
+            这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，<br>
+            换行了<br>
+            这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，换行了<br>
+            这是一个很长很长的段落，这是一个很长很长的段落，<a href="http://ife.baidu.com">这里有一个链接到http://ife.baidu.com</a>这是一个很长很长的段落，这是一个很长很长的段落，<b>这里有个粗体字</b>这是一个很长<br>很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落。</p>
+        <img src="../../images/2501.jpg"><br>
+        <p>
+            这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，<br>
+            这是一个很长很长的段落，换行了<br>
+            这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，<b>这里有个粗体字</b>这是一个很长很长的段落，这是一个很长很长的段落，<a href="http://ife.baidu.com" target="_blank">这里有一个链接<br>点击后打开新窗口到http://ife.baidu.com</a>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落。
+        </p>
+    </div>
+
+
+    <div class="article2">
+        <h1>另一篇文章一级标题</h1>
+        <h2>文章二级标题</h2>
+        <p>文章作者 文章发布时间</p>
+        <p>
+            这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，<br>
+            换行了<br>
+            这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，换行了<br>
+            这是一个很长很长的段落，这是一个很长很长的段落，<a href="http://ife.baidu.com">这里有一个链接到http://ife.baidu.com</a>这是一个很长很长的段落，这是一个很长很长的段落，<b>这里有个粗体字</b>这是一个很长很长的段<br>
+            落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落。</p>
+        <img src="../../images/2501.jpg"><br>
+        <ul>
+            <li>列表项目一</li>
+            <li>列表项目二</li>
+            <li>列表项目三</li>
+        </ul>
+    </div>
+
+
+    <div class="photo">
+        <h1>图片</h1>
+        <div class="box1">
+            <p>好看的图片</p>
+            <img src="../../images/2501.jpg">
+        </div>
+        <div class="box1">
+            <p>好看的图片</p>
+            <img src="../../images/2501.jpg">
+        </div>
+        <div class="box1">
+            <p>好看的图片</p>
+            <img src="../../images/2501.jpg">
+        </div>
+        <div class="box1">
+            <p>好看的图片</p>
+            <img src="../../images/2501.jpg">
+        </div>
+        <div class="box1">
+            <p>好看的图片</p>
+            <img src="../../images/2501.jpg">
+        </div>
+        <div class="box1">
+            <p>好看的图片</p>
+            <img src="../../images/2501.jpg">
+        </div>
+        <div class="box1">
+            <p>好看的图片</p>
+            <img src="../../images/2501.jpg">
+        </div>
+        <div class="box1">
+            <p>好看的图片</p>
+            <img src="../../images/2501.jpg">
+        </div>
+        <div class="box1">
+            <p>好看的图片</p>
+            <img src="../../images/2501.jpg">
+        </div>
+        <div class="box1">
+            <p>好看的图片</p>
+            <img src="../../images/2501.jpg">
+        </div>
+
+    </div>
+
+    <div class="article3">
+        <h1>最后一篇文章一级标题</h1>
+        <h2>文章二级标题</h2>
+        <p>文章作者 文章发布时间</p>
+        <ol>
+            <li>排名1</li>
+            <li>排名2</li>
+            <li>排名3</li>
+        </ol>
+        <!--<div>下面是一个表格，给表格加个border="1"</div>-->
+            <table>
+                <tr>
+                    <td class="tableh">表头</td>
+                    <td>表头</td>
+                    <td>表头</td>
+                </tr>
+                <tr>
+                    <td>表内容单元格</td>
+                    <td>表内容单元格</td>
+                    <td>
+                        <a href="#">操作</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>表内容单元格</td>
+                    <td>表内容单元格</td>
+                    <td>
+                        <a href="#">操作</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>表内容单元格</td>
+                    <td>表内容单元格</td>
+                    <td>
+                        <a href="#">操作</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>表内容单元格</td>
+                    <td>表内容单元格</td>
+                    <td>
+                        <a href="#">操作</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>总计</td>
+                    <td colspan="2">1000</td>
+                    <!--<td></td>-->
+                </tr>
+            </table>
+    </div>
+
+
+    <div class="box-last">
+        <h1>这里以后是一个侧栏，这是侧栏的标题</h1>
+            <div class="apply-form">
+                <ul>
+                    <li class="box-1">
+                        <span>
+                            <label for="email1">请输入邮箱地址</label>
+                        </span>
+                        <input type="email" id="email1" name="" value="这是一个文本输入框">
+                        <p>邮箱地址请按要求格式输入</p>
+                    </li>
+                    <li class="box-2">
+                        <span>
+                            <label for="password1">请输入密码</label>
+                        </span>
+                        <input type="password" value="22222222" id="password1">
+
+                    </li>
+                    <li class="box-3">
+                        <span>
+                            <label for="password2">请重复输入密码</label>
+                        </span>
+                        <input type="password" value="22222222" id="password2">
+                        <p>密码请为6-16位英文数字</p>
+                    </li>
+                    <li class="box-4">
+                        <span>性别</span>
+                        <input type="radio" name="sex" id="" checked>男 <input type="radio" name="sex" id="">女
+                    </li>
+                    <li class="box-4">
+                    <span>城市</span>
+                        <select name="" id="">
+                            <option>北京</option>
+                            <option>上海</option>
+                            <option>武汉</option>
+                        </select>
+                    </li>
+                    <li class="box-4">
+                        <span>爱好</span>
+                        <input type="checkbox">运动 <input type="checkbox">艺术 <input type="checkbox">科学
+                    </li>
+                    <li class="box-5">
+                        <span>个人描述</span>
+                        <textarea tows="2" cols="24" placeholder="这是一个多行输入框，输入您的个人描述"></textarea>
+                    </li>
+
+                </ul>
+            </div>
+        <div class="submit"><input type="submit" value="确认提交"></div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>版权所有&copy</p>
+</div>
+
+</body>
+</html>

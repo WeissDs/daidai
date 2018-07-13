@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>固定悬浮框写法2</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        header img{
+            width: 100%;
+            position:absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+    <script>
+        window.onscroll=function()
+        {
+//            var oImg=document.getElementById('img1');
+
+
+//            oImg.style.top=scrollTop+'px'; //scrollTop是scrollbar距离页面顶端的值，不是一次滑动的值
+            startMove();
+        };
+
+        var timer=null;
+
+        function startMove()
+        {
+            var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+            var oImg=document.getElementById('img1');
+
+            clearInterval(timer);
+            timer=setInterval(function(){
+                var speed=(scrollTop-oImg.offsetTop)/4;
+                speed=speed>0?Math.ceil(speed):Math.floor(speed);
+
+                if(scrollTop==oImg.offsetTop)
+                {
+                    clearInterval(timer);
+                }
+                else
+                {
+                    oImg.style.top=oImg.offsetTop+speed+'px';
+                }
+            },30);
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <img id="img1" src="../image/Slideshow_01_new_2015-11_MartinAufmuth.d407e388cf17160919aeea7b81e300cd3.jpg" alt="">
+</header>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</body>
+</html>

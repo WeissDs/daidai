@@ -1,0 +1,54 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-color: #456187;
+            /*width:100%;*/
+        }
+        div{
+            width: 400px;
+            margin:300px auto;
+        }
+        input{
+            outline:none;
+            width: 400px;
+            height: 50px;
+            background-color: #ffa56f;
+            border: 2px dashed #ffffff;
+            border-radius:30px;
+            font:20px '黑体';
+            color: #ffffff;
+            margin:0 auto;
+            /*overflow: hidden;*/
+        }
+        input:hover{
+            background-color: #ffd388;
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var oBtn=document.getElementById('btn1');
+            var timer=null;
+
+            oBtn.onclick=function()
+            {
+                timer=setInterval(function(){
+                    alert('我爱你！');
+                    alert('你关不掉~~~~~');
+                },50);
+            };
+        }
+    </script>
+</head>
+<body>
+
+<div>
+    <input id="btn1" type="button" value="点我点我 么么哒">
+</div>
+
+</body>
+</html>

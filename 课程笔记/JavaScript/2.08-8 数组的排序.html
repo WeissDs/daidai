@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组的排序</title>
+    <script>
+        var a=['left','good','width','alpha'];
+        var b=[33,2,57,12,145];
+
+        a.sort();//给数组排序(首字母排序)
+        b.sort(function (n1,n2){
+            return n1-n2;
+//            if(n1<n2)
+//            {
+//                return -1;
+//            }
+//            else if(n1>n2)
+//            {
+//                return 1;
+//            }
+//            else
+//            {
+//                return 0;
+//            }
+                }
+        );
+
+        alert(b);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

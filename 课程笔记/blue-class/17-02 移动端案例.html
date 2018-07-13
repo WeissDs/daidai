@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>淘宝移动端页面练习</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		html,body{
+			height: 100%;
+			width: 100%;
+		}
+		/*头部开始*/
+		header{
+			width: 100%;
+			height: 4rem;
+			background-color: #efefef;
+			position: relative;
+			z-index: 99;
+		}
+		header h1{
+			text-indent: -999px;   /*让文字隐藏*/
+		}
+
+		.page_content{
+			height: 400%;
+			width: 100%;
+			background-color: #303344;
+			margin-top: -4rem;
+		}
+
+		/*下拉加载*/
+		.load{
+			text-align: center;
+			line-height: 4rem;
+			height: 4rem;
+			font-size: 1.5rem;
+		}
+
+
+		/*banner开始*/
+		.banner{
+			width: 36rem;    /*用100%在pc端浏览器不会有滚动条，大概是因为rem在计算时有小数点的误差？所以最好全屏宽度还是用100%*/
+			overflow: hidden;
+			position: relative;
+		}
+			/*图片li*/
+		.banner ul{
+			width: 999rem;
+			height: 10rem;
+			transform: translateX(-36rem);
+		}
+		.banner ul li{
+			float: left;
+			width: 36rem;
+			height: 10rem;
+			overflow: hidden;
+		}
+		.banner ul li img{
+			width: 36rem;
+		}
+		.banner ol{
+			position: absolute;
+			bottom: 0.5rem;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+			/*小按钮li*/
+		.banner ol li{
+			list-style: none;
+			width: 0.5rem;
+			height: 0.5rem;
+			border: 1px solid #ccc;
+			border-radius: 50%;
+			background-color: #fff;
+			opacity: 0.9;
+			float: left;
+			margin: 0 0.3rem;
+		}
+		.banner ol li.active{
+			background-color: #FF620F;
+			border: 1px solid #FF620F;
+		}
+	</style>
+	<script type="text/javascript">
+		// document.documentElement.clientWidth/document.documentElement.style.fontSize = 720/20
+		// document.documentElement 就是<html> 是文档的根节点
+		window.onresize=function(){
+			document.documentElement.style.fontSize = document.documentElement.clientWidth*20/720+'px';
+		}
+		window.onresize();
+	</script>
+</head>
+<body>
+
+	<header>
+		<h1>产品名称用于seo</h1>  <!--只是为了seo写h1-->
+	</header>
+	<div class="load">下拉加载</div>
+	<div class="page_content">
+		<section class="banner" id="home-banner">
+			<ul>
+				<li><img src="image/a316d77207e3466e811d099d19e9a05886d442e14d086-qQwXw7_fw658.jpg"></li>
+				<li><img src="image/df5ac1700f7a261506346414f208eb7c11b1276ebfcd-iVj9bB_fw658.jpg"></li>
+				<li><img src="image/home-banner.png"></li>
+			</ul>
+			<ol>
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+			</ol>
+		</section>
+		<nav class="btn"></nav>
+	</div>
+	
+
+	<script type="text/javascript">
+
+
+		var oBanner = document.getElementById('home-banner');     //banner
+		var oUl = oBanner.getElementsByTagName('ul')[0];          //banner的ul
+		var oPage = document.getElementsByClassName('page_content')[0];    //整个页面
+		var aLi = oUl.getElementsByTagName('li');    //banner中ul的li
+		// var aOli = oBanner.getElementsByTagName('ol')[0].getElementsByTagName('li');  //banner中ol的li
+		var aOli = document.querySelectorAll('.banner ol li');
+
+
+		//为了无限滚动，前后各加一张图
+		oUl.appendChild(aLi[0].cloneNode(true));
+		oUl.insertBefore(aLi[aLi.length-2].cloneNode(true),oUl.childNodes[0]);
+
+		//为了使用transform来控制滑动，给它设置一个移动的初始值
+		var x=-aLi[0].offsetWidth,y=0;
+		oUl.addEventListener('touchstart', function(ev){
+			var dir='';  //为了判断是x改变还是y改变
+
+			//获取按下时的坐标
+			var startX = ev.targetTouches[0].clientX;
+			var startY = ev.targetTouches[0].clientY;
+
+			//获取差值
+			var disX = startX-x;
+			var disY = startY-y;
+
+			ev.cancelBubble=true;   //还不知道这里取消冒泡有什么用
+            ev.preventDefault();   //让touch不影响滚动条 
+
+			function fnMove(ev){
+				//判断是x轴移动还是y轴移动 *1
+				if(dir=='')
+				{
+					if(Math.abs(ev.targetTouches[0].clientY-startY)>=10){
+						dir = 'y';
+					}else if(Math.abs(ev.targetTouches[0].clientX-startX)>=10){
+						dir = 'x';
+					}
+					
+				}else{
+					//移动时取消transition动画
+					oPage.style.transition='none';
+					oUl.style.transition='none';
+
+					//判断是x轴移动还是y轴移动（设置移动的距离） *2
+					if(dir=='x'){
+						x = ev.targetTouches[0].clientX-disX;
+					}else if(dir=='y'){
+						y = ev.targetTouches[0].clientY-disY;
+					}
+					
+					//判断边界，控制移动(不无限滚动的写法)
+					// if(x>0){
+					// 	oUl.style.transform='translateX('+x/4+'px)';
+					// }else if(x<-(aLi.length-1)*aLi[0].offsetWidth){
+					// 	oUl.style.transform='translateX('+(-(aLi.length-1)*aLi[0]).offsetWidth-50+'px)';
+					// }else{
+					// 	oUl.style.transform='translateX('+x+'px)';
+					// }
+
+
+
+					//无限滚动的移动写法
+					oUl.style.transform = 'translateX('+x+'px)';
+					
+
+					if(y>0){
+						oPage.style.transform='translateY('+y/4+'px)';
+					}else{
+						oPage.style.transform='translateY('+y+'px)';
+					}
+					
+				}
+				
+			}
+			function fnEnd(){
+
+				//手指放开时移除move和end
+				oUl.removeEventListener('touchmove', fnMove);
+				oUl.removeEventListener('touchend', fnEnd);
+				
+				//n为transform移动距离x和li宽度比，用来判断banner应该移回哪一张图片
+				n = Math.round(-x/aLi[0].offsetWidth);
+				// //判断banner移动到边界，控制放开时应该滑动到的位置
+				//放开手指如果n小于等于0，则oUl移动到倒数第二张
+
+				//动画
+				oUl.style.transition='transform 0.3s ease'; 
+
+				if(n<=0){
+					x=0;
+					oUl.style.transform='translateX('+x+'px)';
+					// if(n=-1){
+						// alert(111);
+						oUl.style.transition='none';
+					// }
+					console.log(`n:${n}`);
+					n=aLi.length-2;
+					x=-n*aLi[0].offsetWidth;
+					oUl.style.transform='translateX('+x+'px)';
+					console.log(`x:${x}`);
+
+					//小点点到最左后的移动
+					for(var i=0;i<aOli.length;i++){
+						aOli[i].className='';
+						aOli[aOli.length-1].className='active';
+					}
+
+					
+				}else if(n>aLi.length-2){
+					console.log(`n:${n}`);
+					x=-(aLi.length-1)*aLi[0].offsetWidth;
+					oUl.style.transform='translateX('+x+'px)';
+					//判断没有作用
+					oUl.style.transition='none';
+					n=1;
+					x=-n*aLi[0].offsetWidth;
+					oUl.style.transform='translateX('+x+'px)';
+					console.log(`x:${x}`);
+
+					//小点点到最右后的移动
+					for(var i=0;i<aOli.length;i++){
+						aOli[i].className='';
+						aOli[0].className='active';
+					}
+				}else{
+					console.log(`n:${n}`);
+					x = -n*aLi[0].offsetWidth;
+					oUl.style.transform='translateX('+x+'px)';
+					console.log(`x:${x}`);
+
+					//ES6写法
+					if(0<n<aLi.length){
+						Array.from(aOli).forEach((li,index)=>{
+							li.className=index==n-1?'active':'';
+						})
+					}
+					
+				}
+				
+
+				// for(var i=0;i<aOli.length;i++){
+				// 	aOli[i].className='';
+				// 	if(i==n){
+				// 		aOli[i].className='active';
+				// 	}
+				// }
+
+				
+				//下拉加载的写法
+				if(y>0)
+				{
+					if(y>200)
+					{
+						// alert('加载数据');
+						// ajax();
+					}
+					y=0;
+					oPage.style.transform='translateY('+y+'px)';
+					oPage.style.transition='transform 0.3s ease';
+					
+				}
+				
+			}
+			oUl.addEventListener('touchmove', fnMove);
+			oUl.addEventListener('touchend', fnEnd);
+		})
+
+		
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>hello</title>
+
+    <link href="style/bootstrap.min3.3.5.css" rel="stylesheet">
+    <style type="text/css">
+        .border{
+            border: 1px solid #f00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 border" id="canvas-container" style="padding: 0; margin: 0; height: 200px;">
+                <canvas id="canvas" style="border: 1px solid #0f0; margin: 0; padding: 0">
+                    Sorry. your browser not support canvas.
+                </canvas>
+            </div>
+        </div>
+    </div>
+    <script src="javascript/jquery.min1.11.3.js"></script>
+    <script src="javascript/bootstrap.min3.3.5.js"></script>
+    <script src="javascript/canvas_auto_resize.js"></script>
+
+
+    <script>
+        var CanvasAutoResize = {
+            draw: function() {
+                var ctx = document.getElementById('canvas').getContext('2d');
+                var canvasContainer = document.getElementById('canvas-container');
+                ctx.canvas.width  = canvasContainer.offsetWidth-2;
+                ctx.canvas.height = canvasContainer.offsetHeight-2;
+            },
+
+            initialize: function(){
+                var self = CanvasAutoResize;
+                self.draw();
+                $(window).on('resize', function(event){
+                    self.draw();
+                });
+            }
+        }
+
+        $(function(argument) {
+            CanvasAutoResize.initialize();
+        });
+    </script>
+</body>
+</html>

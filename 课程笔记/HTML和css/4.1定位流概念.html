@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位流概念</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+        }
+        .box1{
+            background-color: #75ffb4;
+        }
+        /*相对定位b*/
+        .box2{
+            position: relative;
+            top:;
+            right:;
+            bottom:20px;
+            left:;
+            background-color: #ffd79d;
+        }
+        /*相对定位e*/
+        .box3{
+            background-color: #ffa5a9;
+        }
+
+        /*绝对定位b*/
+        .box4{
+            margin-top:100px;
+            background-color: #5d5d5d;
+        }
+        .box5{
+            position: absolute;
+            right:0;
+            background-color: #000000;
+        }
+        .box6{
+            background-color: #cccccc;
+        }
+        /*绝对定位e*/
+
+
+        /*固定定位b*/
+        .box7{
+            margin-top:100px;
+            background-color: #ff181e;
+        }
+        .box8{
+            position: fixed;
+            background-color: #ff5948;
+        }
+        .box9{
+            height: 3000px;
+            background-color: #ffc8c2;
+        }
+        /*固定定位e*/
+
+    </style>
+</head>
+
+<body>
+
+<!--
+1.定位流分类
+    1.1相对定位 (相对于以前在标准流中的位置来移动）
+        注意点：
+        （1）相对定位不会脱离标准流，会继续在标准流中占用一份空间
+        （2）在相对定位中同一方向的定位属性只能使用一个
+        （3）由于相对定位是不脱离标准流的，所以在相对定位中是区分 块级元素/行内元素 内嵌元素/行内块级元素 的
+        所以margin和padding对相对定位的元素是有影响的 但他只对元素最开始未设置相对定位的那个位置起作用
+        应用：
+        （1）用于对元素进行微调
+        （2）配合绝对定位来使用
+
+    1.2绝对定位（相对于body来定位）
+        注意点：
+        （1）绝对定位的元素是脱离标准流的
+        （2）绝对定位的元素是不区分 块级元素/行内元素 内嵌元素/行内块级元素
+
+        （3）默认情况下所有的绝对定位元素 无论有没有祖先元素，都会以body作为参考点
+        （4）如果一个绝对定位的元素有祖先元素，并且祖先元素也是！定位流！【除了静态定位】，那么这个绝对定位的元素就会以定位流的那个祖先元素为参考点
+        （5）如果一个绝对定位的元素有祖先元素，并且祖先元素也是！定位流！【除了静态定位】，而且祖先元素中有多个元素都是定位流，那么这个绝对定位的元素会以最近的那个定位流的祖先元素为参考点
+
+        （6）如果一个绝对定位的元素是以body作为参考点，那么其实是以网页首屏的宽度和高度作为参考点，而不是以整个网页的宽高为参考点
+        （7）一个绝对定位的元素会忽略祖先元素的padding
+        应用：
+        （1）父元素相对定位 relative 子元素绝对定位 absolute
+
+    1.3固定定位
+        注意点：
+        （1）固定定位的元素是脱离标准流的，不会占用标准流中的空间
+        （2）固定定位的元素是不区分 块级元素/行内元素 内嵌元素/行内块级元素
+    1.4静态定位
+
+
+-->
+
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+
+
+<div class="box4"></div>
+<div class="box5"></div>
+<div class="box6"></div>
+
+
+<div class="box7"></div>
+<div class="box8"></div>
+<div class="box9"></div>
+
+</body>
+</html>

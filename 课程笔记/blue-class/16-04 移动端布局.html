@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>移动端布局</title>
+	<meta charset="UTF-8">
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+	}
+		div{
+			width: 375px;
+			height: 200px;
+			padding: 20px;
+			border: 1px solid black;
+			box-sizing: border-box;    
+			/*box-sizing: content-box;*/
+			background-color: #ccc;
+		}
+	</style>
+	<!-- 
+	1.viewport 可视区 
+
+	最早为了照顾pc端，所有H5页面都按照1080的宽度来解析
+
+	2.flex布局
+
+	flex布局在移动端的适配良好，跟 max-width 和 min-width 配合使用的效果也不错
+
+	3.盒模型
+
+	box-sizing: content-box; 普通盒模型的宽度=width+padding+border
+	box-sizing: border-box; 此时盒模型的宽度=width（padding&&border被包含在width里）
+
+	4.单页应用
+
+	不刷新，用ajax之类的方法去加载
+	SPA 用在app比较多
+
+	-->
+	<meta name="viewport" content="width = device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable = no">
+</head>
+<body>
+
+	<div>111</div>
+
+	<script type="text/javascript">
+		console.log(window.screen.width);   //两个值相同 都取的手机宽度
+		console.log(window.innerWidth);     //device-width 就是屏幕分辨率宽  是逻辑像素
+
+	</script>
+
+</body>
+</html>

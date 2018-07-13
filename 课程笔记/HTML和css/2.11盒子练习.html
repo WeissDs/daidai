@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子练习</title>
+    <style type="text/css">
+        /*
+        1.用padding来使嵌套的box2居中，注意元素宽高会因为padding改变而改变
+        增加box-sizing属性 或者 修改内容宽高
+        */
+        .box1{
+            box-sizing:border-box;
+            width: 500px;
+            height: 500px;
+            background-color: cadetblue;
+            padding:150px;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: brown;
+        }
+        /*
+        注意点：
+        1.如果两个盒子是嵌套关系，那么设置了里面一个盒子的顶部外边距，外面一个盒子也会被顶下来。
+        2.如果外面的盒子不想被一起顶下来那么可以给外面的盒子加一个边框属性
+        3.在企业开发中，一般情况下如果需要控制嵌套关系盒子之间的距离，应该首先考虑padding，其次再考虑margin
+        margin本质上是用于控制兄弟关系之间的间隙的
+        */
+        .box3{
+            width: 500px;
+            height: 500px;
+            background-color: cadetblue;
+            border: 1px solid #000;
+        }
+        .box4{
+            width: 200px;
+            height: 200px;
+            background-color: brown;
+            margin:150px;
+        }
+        /*
+        注意点：
+        1.在嵌套关系的盒子中，我们可以利用margin：0 auto；的方式来让里面的盒子在外面的盒子水平居中
+        2.margin：0 auto；只对水平方向有效。
+        */
+        .box5{
+            width: 500px;
+            height: 500px;
+            background-color: cadetblue;
+        }
+        .box6{
+            width: 200px;
+            height: 200px;
+            background-color: brown;
+            margin:0 auto;
+        }
+        /*
+        text-align:center;  和margin:0 auto;区别
+        text-align:center;作用
+        设置盒子中储存的文字/图片水平居中
+        margin:0 auto;作用
+        让盒子自己水平居中
+        */
+        .box7{
+            width: 800px;
+            height: 500px;
+            background-color: red;
+            /*text-align:center;*/
+            margin:0 auto;
+        }
+        .box8{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box1">
+    <div class="box2"></div>
+</div>
+<br>
+<div class="box3">
+    <div class="box4"></div>
+</div>
+<br>
+<div class="box5">
+    <div class="box6"></div>
+</div>
+<br>
+<div class="box7">
+    我是文字<br/>
+    <img src="../../images/宠爱logo.png" alt="">
+    <div class="box8"></div>
+</div>
+<br>
+</body>
+</html>

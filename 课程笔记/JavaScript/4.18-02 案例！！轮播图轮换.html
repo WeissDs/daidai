@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图轮换</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .play{
+
+            width: 400px;
+            height: 400px;
+            position: relative;
+            margin:50px auto 0;
+            overflow: hidden;
+            /*background-color: #ff5172;*/
+        }
+        .big_pic{
+            width: 400px;
+            height: 320px;
+            position: relative;
+            /*margin:50px auto 0;*/
+        }
+        .mark_left{
+            width: 200px;
+            height: 320px;
+            position: absolute;
+            left:0;
+            top:0;
+            background-color: red;
+            filter:alpha(opacity:0);
+            opacity:0;
+            z-index: 3000;
+        }
+        .mark_right{
+            width: 200px;
+            height: 320px;
+            position: absolute;
+            right:0;
+            top:0;
+            background-color: green;
+            filter:alpha(opacity:0);
+            opacity:0;
+            z-index: 3000;
+        }
+        .big_pic .prev{
+            width: 60px;
+            height: 60px;
+            background: url(../image/377adab44aed2e73a84f5adb8301a18b86d6faa7.jpg) no-repeat;
+            position: absolute;
+            top: 130px;
+            left: 10px;
+            z-index: 3001;
+            filter:alpha(opacity:0);
+            opacity:0;
+            cursor: pointer;
+        }
+        .big_pic .next{
+            width: 60px;
+            height: 60px;
+            background: url(../image/377adab44aed2e73a84f5adb8301a18b86d6faa7.jpg) no-repeat;
+            position: absolute;
+            top: 130px;
+            right: 10px;
+            z-index: 3001;
+            filter:alpha(opacity:0);
+            opacity:0;
+            cursor: pointer;
+        }
+        .big_pic li{
+            width: 400px;
+            height: 320px;
+            list-style: none;
+            position: absolute;
+            overflow: hidden;
+        }
+        .big_pic li img{
+            width: 400px;
+            height: 320px;
+        }
+        .small_pic ul{
+            height: 80px;
+            position: absolute;
+        }
+        .small_pic li{
+            width: 80px;
+            list-style: none;
+            float: left;
+            opacity:0.6;
+            filter:alpha(opacity:60);
+        }
+        .small_pic li:first-child{
+            opacity:1;
+            filter:alpha(opacity:100);
+        }
+        .small_pic li img{
+            width: 80px;
+            height: 80px;
+            /*margin-top:320px;*/
+            /*float: left;*/
+        }
+    </style>
+    <script src="move.js"></script>
+    <!--<script src="用className选取元素.js"></script>-->
+    <script>
+
+        //用className选取元素
+        function getByClass(oParent,sClass)
+        {
+            var aResult=[];
+            var aEle=oParent.getElementsByTagName('*');
+
+            for(var i=0;i<aEle.length;i++)
+            {
+                if(aEle[i].className==sClass)
+                {
+                    aResult.push(aEle[i]);
+                }
+            }
+            return aResult;
+        }
+
+
+        window.onload=function()
+        {
+            var oDiv=document.getElementById('play_images');
+            var oBtnPrev=getByClass(oDiv,'prev')[0];
+            var oBtnNext=getByClass(oDiv,'next')[0];
+            var oMarkLeft=getByClass(oDiv,'mark_left')[0];
+            var oMarkRigth=getByClass(oDiv,'mark_right')[0];
+
+//            var oMarkLeft=document.getElementById('left');
+//           var oBtnPrev=document.getElementById('left1');
+
+
+            //左右按钮的隐现
+
+            oBtnPrev.onmouseover=oMarkLeft.onmouseover=function()
+            {
+                startMove(oBtnPrev,'opacity',100);
+            };
+            oBtnPrev.onmouseout=oMarkLeft.onmouseout=function()
+            {
+                startMove(oBtnPrev,'opacity',0);
+            };
+            oBtnNext.onmouseover=oMarkRigth.onmouseover=function()
+            {
+                startMove(oBtnNext,'opacity',100);
+            };
+            oBtnNext.onmouseout=oMarkRigth.onmouseout=function()
+            {
+                startMove(oBtnNext,'opacity',0);
+            };
+
+            //大图切换(点击小图切换)
+
+//            var oDivSmall=getByClass(oDiv,'small_pic')[0];
+            var oDivSmall=document.getElementById('text');
+            var aLiSmall=oDivSmall.getElementsByTagName('li');
+
+            var oUlBig=getByClass(oDiv,'big_pic')[0];
+            var aLiBig=oUlBig.getElementsByTagName('li');
+            var nowZIndex=2;
+
+            var now=0;
+
+            for(var i=0;i<aLiSmall.length;i++)
+            {
+                aLiSmall[i].index=i;
+
+                aLiSmall[i].onclick=function()
+                {
+                    if(this.index==now)return;
+                    now=this.index;
+//                    for(var j=0;j<aLiBig.length;j++)   //为什么会出现bug！！！
+//                    {
+//                        aLiBig[j].style.zIndex=0;
+//                        aLiBig[this.index].style.zIndex=1;
+//                    }
+
+                    //封装一个函数
+                    /*for(var i=0;i<aLiSmall.length;i++)
+                    {
+                        startMove(aLiSmall[i],'opacity',60);
+                    }
+                    startMove(this,'opacity',100);
+
+                    aLiBig[this.index].style.zIndex=nowZIndex++;
+
+                    aLiBig[this.index].style.height=0;
+                    startMove(aLiBig[this.index],'height',320);*/
+                    chang();
+                };
+
+                aLiSmall[i].onmouseover=function()
+                {
+                    startMove(this,'opacity',100)
+                };
+                aLiSmall[i].onmouseout=function()
+                {
+                    if(this.index!=now)
+                    {
+                        startMove(this,'opacity',60);
+                    }
+
+                };
+
+            }
+
+
+
+            //封装的函数
+            var oUlSmall=getByClass(oDivSmall,'ul')[0];
+
+            function chang()
+            {
+                for(var i=0;i<aLiSmall.length;i++)
+                {
+                    startMove(aLiSmall[i],'opacity',60);
+                }
+                startMove(aLiSmall[now],'opacity',100);
+
+                aLiBig[now].style.zIndex=nowZIndex++;
+
+                aLiBig[now].style.height=0;
+                startMove(aLiBig[now],'height',320);
+
+                if(now<2)
+                {
+                    startMove(oUlSmall,'left',0);
+                }
+                else if(now>aLiSmall.length-4)
+                {
+                    startMove(oUlSmall,'left',-(aLiSmall.length-5)*aLiSmall[0].offsetWidth);
+                }
+                else
+                {
+                    startMove(oUlSmall,'left',-(now-2)*aLiSmall[0].offsetWidth);
+                }
+            }
+
+
+            //大图切换(点击左右按钮切换)
+            oBtnPrev.onclick=function()
+            {
+                now--;
+                if(now==-1)
+                {
+                    now=aLiSmall.length-1;
+                }
+                chang();
+            };
+            oBtnNext.onclick=function()
+            {
+                now++;
+                if(now==aLiSmall.length)
+                {
+                    now=0;
+                }
+                chang();
+            };
+
+
+            //自动播放
+            var timer=setInterval(oBtnNext.onclick,3000);
+
+            oDiv.onmouseover=function()
+            {
+                clearInterval(timer);
+            };
+            oDiv.onmouseout=function()
+            {
+                timer=setInterval(oBtnNext.onclick,3000);
+            };
+
+
+
+            oUlSmall.style.width=aLiSmall[0].offsetWidth*aLiSmall.length+'px';
+        }
+    </script>
+</head>
+<body>
+
+<div id="play_images" class="play">
+
+    <ul class="big_pic">
+        <div class="prev" id="left1"></div>
+        <div class="next"></div>
+
+        <!--<div class="text">加载图片说明</div>-->
+        <!--<div class="length">计算图片数量</div>-->
+
+        <a class="mark_left" id="left" href="javascript:;"></a>
+        <a class="mark_right" href="javascript:;"></a>
+        <div class="bg"></div>
+
+
+        <li style="z-index:1;"><img src="../image/615ffab6d0a20cf477f46fac7e094b36adaf99bf.jpg"></li>
+        <li><img src="image/89e87bfb828ba61e2e49595c4934970a314e5978.jpg"/></li>
+        <li><img src="image/93b94b4e78f0f736895835f60c55b319e9c41384.jpg"/></li>
+        <li><img src="image/abcef87fca8065388346c5e491dda144af3482f3.jpg"/></li>
+        <li><img src="image/gamersky_02small_04_20157815426CC.jpg"/></li>
+        <li><img src="image/89e87bfb828ba61e2e49595c4934970a314e5978.jpg"/></li>
+        <li><img src="image/93b94b4e78f0f736895835f60c55b319e9c41384.jpg"/></li>
+        <li><img src="image/aa989e89d43f87940158d95dda1b0ef41ad53a78.jpg"/></li>
+        <li><img src="image/89e87bfb828ba61e2e49595c4934970a314e5978.jpg"/></li>
+        <li><img src="image/93b94b4e78f0f736895835f60c55b319e9c41384.jpg"/></li>
+        <li><img src="image/aa989e89d43f87940158d95dda1b0ef41ad53a78.jpg"/></li>
+    </ul>
+    <div class="small_pic" id="text">
+        <ul class="ul" style="font-size:0;">  <!--font-size:0;是解决图片在li中间隙的方法-->
+            <li><img src="image/615ffab6d0a20cf477f46fac7e094b36adaf99bf.jpg"></li>
+            <li><img src="image/89e87bfb828ba61e2e49595c4934970a314e5978.jpg"/></li>
+            <li><img src="image/93b94b4e78f0f736895835f60c55b319e9c41384.jpg"/></li>
+            <li><img src="image/abcef87fca8065388346c5e491dda144af3482f3.jpg"/></li>
+            <li><img src="image/gamersky_02small_04_20157815426CC.jpg"/></li>
+            <li><img src="image/89e87bfb828ba61e2e49595c4934970a314e5978.jpg"/></li>
+            <li><img src="image/93b94b4e78f0f736895835f60c55b319e9c41384.jpg"/></li>
+            <li><img src="image/aa989e89d43f87940158d95dda1b0ef41ad53a78.jpg"/></li>
+            <li><img src="image/89e87bfb828ba61e2e49595c4934970a314e5978.jpg"/></li>
+            <li><img src="image/93b94b4e78f0f736895835f60c55b319e9c41384.jpg"/></li>
+            <li><img src="image/aa989e89d43f87940158d95dda1b0ef41ad53a78.jpg"/></li>
+
+</ul>
+</div>
+</div>
+</body>
+</html>
