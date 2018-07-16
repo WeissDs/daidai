@@ -37,7 +37,14 @@ sublime控制台粘贴代码回车安装package control
 查看Perferences->package settings中是否有要删除的插件
 使用ctrl+shift+p调出命令面板 输入remove 选择 Remove Channel 点击要删除的插件后回车
 
+
+
 ---
+
+
+##AutoFileName
+
+自动提示路径
 
 ##markdown插件安装使用
 
@@ -61,6 +68,16 @@ sublime控制台粘贴代码回车安装package control
 
 该插件不需要额外配置，在打开.js或.jsx后缀的文件，直接选择Babel为对应的语法就可以了。
 选择方法：view->Syntax->babel->JavaScript(babel)
+
+##colorpicker插件安装使用
+
+功能：插入颜色选择器
+
+安装：
+
+    command（ctrl）+shift+p -> install package -> colorpicker
+
+使用：Ctrl+Shift+c
 
 
 ##Emmet插件安装使用

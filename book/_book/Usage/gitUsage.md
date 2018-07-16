@@ -124,6 +124,10 @@ Mac直接从AppStore安装Xcode（apple官方IDE），Xcode集成了git
     
     回车后可更改路径
     设置密码
+
+阿里云 ssh密钥对设置
+
+        home/Profile/sshKeys
     
 
 

@@ -13,6 +13,18 @@
 
     npm start
 
+####webpack的修改路径
+
+    \node_modules\react-scripts\config
+
+####修改项目端口
+
+    package.json文件
+    
+    "scripts": {
+    "start": "set PORT=5000 && react-app-rewired start",
+    
+    }
 
 ##JSX事件
 ####鼠标事件：
