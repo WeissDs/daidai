@@ -7,6 +7,7 @@
 <body>
 	
 	<script>
+
 		let a = null;
 		
 		console.log(typeof a)
@@ -21,6 +22,35 @@
         let c="111"
 		console.log(c&&b)
 		console.log(c||b)
+
+		function toPrice(num){
+			       if(num){
+			       	  num = num.toString();
+			       	  
+			       	  let result = [];
+
+			       	  if(num.length == 2){
+			       	     num = '0.' + num;
+			       	     result = num;
+			       	  }else if(num.length == 1){
+			       	     num = '0.0' + num;
+			       	     result = num;
+			       	  }else{
+			       	      for(let i=0;i<num.length;i++){
+			       	          result = result + num.charAt(i);
+
+			       	          if(i==num.length-3){
+			       	              result = result + '.';
+			       	          }
+			       	      }
+			       	  }
+
+			       	  
+			       	  return result;
+			       }
+		        }
+
+		toPrice();
 	</script>
 	
 </body>
