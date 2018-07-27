@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>arrow function</title>
+</head>
+<body>
+
+<div id="box">
+    <div class="box-1">111
+        <div class="box4"></div>
+    </div>
+    <div class="box-2">222</div>
+    <div class="box-3">333</div>
+</div>
+
+<script>
+    // 箭头函数 一个参数可省() 两个参数可省{}
+
+    let getClass=(item,name)=>{
+        let aChildList=item.getElementsByTagName('*');
+        let aResult=[];
+        for(let i=0;i<aChildList.length;i++)
+        {
+            if(aChildList[i].className==name)
+            {
+                aResult.push(aChildList[i]);
+            }
+
+        }
+        return aResult;
+    };
+
+    let oDiv=document.getElementById('box');
+    getClass(oDiv,'box-2')[0].style.color='red';
+
+    let arr=[24,4,6,22,43,18];
+    // arr.sort(function(n1, n2){
+    //     return n1-n2;
+    // });
+    arr.sort((n1,n2)=>n1-n2);
+    alert(arr);
+</script>
+</body>
+</html>

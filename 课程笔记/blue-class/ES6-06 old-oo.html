@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>老版本的面向对象</title>
+    <script>
+        // function NamePass(name,pass)   //构造函数
+        // {
+        //     let obj=new Object();
+        //
+        //     obj.name=name;
+        //     obj.pass=pass;
+        //
+        //     obj.showName=function(){
+        //         alert(obj.name);
+        //     };
+        //     obj.showPass=function(){
+        //         alert(obj.pass)
+        //     };
+        //     return obj;
+        // }
+        // let a=NamePass('dai','123');
+        // a.showName();
+
+
+        // function NamePass(name,pass)   //构造函数
+        // {
+        //     //在我们new一个函数（NamePass）的时候 浏览器为我们 var this=new Object(); 并return了这个Object
+        //     //这时this就不再指向window了
+        //     this.name=name;
+        //     this.pass=pass;
+        //
+        //     this.showName=function(){
+        //         alert(this.name);
+        //     };
+        //     this.showPass=function(){
+        //         alert(this.pass)
+        //     };
+        // }
+        // let a= new NamePass('dai','123');
+        // a.showName();
+
+
+        function NamePass(name,pass)   //构造函数加属性，因为属性是不同的（类似行间样式）
+        {
+            //在我们new一个函数（NamePass）的时候 浏览器为我们 var this=new Object(); 并return了这个Object
+            //这时this就不再指向window了
+            this.name=name;
+            this.pass=pass;
+        }
+
+        NamePass.prototype.showName=function(){     //原型里面加方法 因为方法是相同的（类似class），避免重复定义影响性能
+            alert(this.name);
+        };
+        NamePass.prototype.showPass=function(){
+            alert(this.pass)
+        };
+        let a= new NamePass('dai','123');
+        a.showName();
+        a.showPass();
+
+
+
+
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OO</title>
+    <script>
+        // //User既是构造函数又是类
+        // function User(name, pass){
+        //     this.name=name;
+        //     this.pass=pass;
+        // }
+        // User.prototype.showName=function(){
+        //     alert(this.name);
+        // };
+        // User.prototype.showPass=function(){
+        //     alert(this.pass);
+        // };
+        //
+        // //原面向对象的继承
+        // function VipUser(name, pass, level){
+        //     User.call(this, name, pass);
+        //     this.level=level;
+        // }
+        // VipUser.prototype=new User();
+        // VipUser.prototype.constructor=VipUser;
+        //
+        // VipUser.prototype.showLevel=function(){
+        //     alert(this.level);
+        // };
+
+
+        //ES6面向对象
+        class User{                      //User是类
+            constructor(name,pass){      //constructor是构造函数
+                this.name=name;
+                this.pass=pass;
+            }
+
+            showName(){
+                alert(this.name);
+            }
+            showPass(){
+                alert(this.pass);
+            }
+        }
+
+        //新的继承方法
+        class VipUser extends User{
+            constructor(name, pass, level){
+                super(name,pass);
+                this.level=level;
+            }
+
+            showLevel(){
+                alert(this.level);
+            }
+        }
+
+        var u1=new VipUser('daidai', '123',2);
+        u1.showName();
+        u1.showPass();
+        u1.showLevel();
+    </script>
+</head>
+<body>
+
+</body>
+</html>
