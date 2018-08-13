@@ -7,9 +7,30 @@
 <body>
 	<script>
 		let arr=[12,5,9,3,88,46,7];
+		let obj = {a: 12, b: '12222', c: {d:111, e:222}}
 		let a = arr.join('+');
 
 		console.log(typeof(a)+':'+a);
+		console.log(new Date().getDay());
+
+		for( a in arr){
+			console.log(arr[a]);
+		}
+		for( a in obj ){
+			console.log(obj[a]);
+		}
+		console.log(Object.keys(obj));
+
+		let o = 9
+		while(o>=1)
+		{
+			console.log('hihihi');
+			o--;
+		}
+
+		do{
+			console.log('do-while');
+		}while(o<1)
 	</script>
 </body>
 </html>
