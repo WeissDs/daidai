@@ -7,6 +7,7 @@
     * [3.gitbook教程](Usage/gitbookUsage.md)
     * [4.github教程]()
     * [5.sublime教程](Usage/sublimeUsage.md)
+    * [6.wamp教程](Usage/wampUsage.md)
 * [Frame]()
     * [1.vue教程](Frame/vue.md)
     * [2.vue中的Swiper](Frame/useSwiperInVUE.md)
