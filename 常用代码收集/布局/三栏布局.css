@@ -1,0 +1,140 @@
+		body,html{
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0; 
+		}
+		/*左右浮动*/
+		/*浮动布局是有局限性的，浮动元素是脱离文档流，要做清除浮动，这个处理不好的话，会带来很多问题，比如高度塌陷等。 
+		浮动布局的优点就是比较简单，兼容性也比较好。只要清除浮动做的好，是没有什么问题的。*/
+		.main{
+			width: 100%;
+			height: 500px;
+			background: #BB1F7A;
+		}
+		/*去除浮动*/
+		.main:after{
+			content:"";
+			display:inline-block;
+			clear: both;
+		}
+		.main:before{
+			content:"";
+			display:inline-block;
+		}
+		.left{
+			width: 300px;
+			height: 500px;
+			background: #EAD423;
+			float: left;
+		}
+		.right{
+			width: 300px;
+			height: 500px;
+			background: #EAD423;
+			float: right;
+		}
+
+
+		/*整体左浮动，调整margin-left*/
+		.left1{
+			width: 300px;
+			height: 500px;
+			background-color: red;
+			float: left;
+			margin-left: -100%;
+		}
+		.main1{
+			width: 100%;
+			height: 500px;
+			float: left;
+			background-color: green;
+			padding: 0 300px;
+			-webkit-box-sizing: border-box;
+			   -moz-box-sizing: border-box;
+			        box-sizing: border-box;
+		}
+		.right1{
+			width: 300px;
+			height: 500px;
+			background-color: blue;
+			float: left;
+			margin-left: -300px;
+		}
+
+		/*flex方法*/
+		/*felxbox的缺点就是不能兼容IE8及以下浏览器*/
+		.flex-box{
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -moz-box;
+			display: -ms-flexbox;
+			display: flex;     
+			width: 100%;
+			height: 500px;
+		}
+		.left-box{
+			width: 300px;
+			height: 500px;
+			background: blue;
+		}
+		.right-box{
+			width: 300px;
+			height: 500px;
+			background: #ccc;
+		}
+		.main-box{
+			-webkit-box-flex:1;
+			-webkit-flex:1;
+			   -moz-box-flex:1;
+			    -ms-flex:1;
+			        flex:1;
+
+			height: 500px;
+		}
+
+		/*1.百分比方式 内部三栏宽度25%、100%、25%
+
+		  2.绝对定位方式
+		    缺点就是，绝对定位是脱离文档流的，意味着下面的所有子元素也会脱离文档流，这就导致了这种方法的有效性和可使用性是比较差的。
+			.layout.absolute .left-center-right>div{
+			          position: absolute;
+			        }
+			        .layout.absolute .left{
+			          left:0;
+			          width: 300px;
+			          background: red;
+			        }
+			        .layout.absolute .center{
+			          left: 300px;
+			          right: 300px;
+			          background: yellow;
+			        }
+			        .layout.absolute .right{
+			          right:0;
+			          width: 300px;
+			          background: blue;
+			        }
+		  3.表格方式
+		    表格布局也是有缺陷的，当其中一个单元格高度超出的时候，两侧的单元格也是会跟着一起变高的，而有时候这种效果不是我们想要的
+		    父级：display:table、子集：display:table-cell 
+		    .layout.table .left-center-right{
+		              width:100%;
+		              height: 100px;
+		              display: table;
+		            }
+		            .layout.table .left-center-right>div{
+		              display: table-cell;
+		            }
+		            .layout.table .left{
+		              width: 300px;
+		              background: red;
+		            }
+		            .layout.table .center{
+		              background: yellow;
+		            }
+		            .layout.table .right{
+		              width: 300px;
+		              background: blue;
+		            }
+		*/

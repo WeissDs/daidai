@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>一元购</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" href="css/index.css">
+
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/jquery_lazyload.js"></script>
+	<script>
+		window.onresize=function(){
+			document.documentElement.style.fontSize = document.documentElement.clientWidth*40/750+'px';
+		}
+		window.onresize();
+	</script>
+	
+</head>
+<body>
+	<div class="top">
+		<img src="https://xg-img.oss-cn-hangzhou.aliyuncs.com/jiqingjie/banner1.png" alt="">
+		<img src="https://xg-img.oss-cn-hangzhou.aliyuncs.com/jiqingjie/banner2.png" alt="">
+	</div>
+	<div class="slogan">
+		<img src="https://xg-img.oss-cn-hangzhou.aliyuncs.com/jiqingjie/slogan.png" alt="">
+	</div>
+	
+	<div class="btn">
+		<a class="jump" data-link="https://elife.icbc.com.cn/ELIFECUSTOMH5/dist/#/discount/customers/32020015430/g03202180813022831"><img src="https://xg-img.oss-cn-hangzhou.aliyuncs.com/jiqingjie/01.png" alt=""></a>
+		<a class="jump" data-link="https://elife.icbc.com.cn/ELIFECUSTOMH5/dist/#/discount/customers/32020058771/g03202180813022800"><img src="https://xg-img.oss-cn-hangzhou.aliyuncs.com/jiqingjie/02.png" alt=""></a>
+		<a class="jump" data-link="https://elife.icbc.com.cn/ELIFECUSTOMH5/dist/#/discount/customers/32020058774/g03202180810022785"><img class="lazy" data-original="https://xg-img.oss-cn-hangzhou.aliyuncs.com/jiqingjie/03.png" alt=""></a>
+		<a class="jump" data-link="https://elife.icbc.com.cn/ELIFECUSTOMH5/dist/#/discount/customers/32020058877/g03202180813022815"><img class="lazy" data-original="https://xg-img.oss-cn-hangzhou.aliyuncs.com/jiqingjie/04.png" alt=""></a>
+		<a class="jump" data-link="https://elife.icbc.com.cn/ELIFECUSTOMH5/dist/#/discount/customers/32020058859/g03202180813022809"><img class="lazy" data-original="https://xg-img.oss-cn-hangzhou.aliyuncs.com/jiqingjie/05.png" alt=""></a>
+		<a class="jump" data-link="https://elife.icbc.com.cn/ELIFECUSTOMH5/dist/#/discount/customers/32020058769/g03202180813022803"><img class="lazy" data-original="https://xg-img.oss-cn-hangzhou.aliyuncs.com/jiqingjie/06.png" alt=""></a>
+		<a class="jump" data-link="https://elife.icbc.com.cn/ELIFECUSTOMH5/dist/#/discount/customers/32020058757/g03202180810022773"><img class="lazy" data-original="https://xg-img.oss-cn-hangzhou.aliyuncs.com/jiqingjie/07.png" alt=""></a>
+		<a class="sjump" data-link=""><img class="lazy" data-original="https://xg-img.oss-cn-hangzhou.aliyuncs.com/jiqingjie/08.png" alt=""></a>
+	</div>
+
+	<script type="text/javascript" charset="utf-8">
+	  $(function() {
+
+	      $("img.lazy").lazyload({
+	      	effect: "fadeIn",
+	      	placeholder: "http://xg-img.oss-cn-hangzhou.aliyuncs.com/jiqingjie/placeholder.png"
+	      });
+
+	  });
+	</script>
+	<script src="js/icbc.js"></script>
+</body>
+</html>

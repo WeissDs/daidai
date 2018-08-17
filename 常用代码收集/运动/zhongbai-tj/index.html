@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>中百</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" href="css/index.css">
+
+	<link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+
+	<script>
+		window.onresize=function(){
+			document.documentElement.style.fontSize = document.documentElement.clientWidth*40/720+'px';
+		}
+		window.onresize();
+	</script>
+</head>
+<body>
+	<div class="banner">
+		<div class="top">
+				<ul class="nivoSlider" id="slider">
+					<li><img src="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/1-t.png" data-thumb="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/1-t.png" alt=""></li>
+					<li><img src="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/2-t.png" data-thumb="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/2-t.png" alt=""></li>
+					<li><img src="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/3-t.png" data-thumb="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/3-t.png" alt=""></li>
+					<li><img src="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/1-t.png" data-thumb="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/1-t.png" alt=""></li>
+					<li><img src="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/2-t.png" data-thumb="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/2-t.png" alt=""></li>
+				</ul>
+				<div class="page-txt">
+					<ol class="nivoSlider" id="slider1">
+						<li><img src="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/1.png" data-thumb="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/1.png" alt=""></li>
+						<li><img src="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/2.png" data-thumb="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/2.png" alt=""></li>
+						<li><img src="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/3.png" data-thumb="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/3.png" alt=""></li>
+						<li><img src="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/4.png" data-thumb="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/4.png" alt=""></li>
+						<li><img src="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/5.png" data-thumb="http://xg-img.oss-cn-hangzhou.aliyuncs.com/zhongbai/5.png" alt=""></li>
+					</ol>
+				</div>
+				
+		</div>
+	</div>
+	<div class="background"></div>
+
+	<script type="text/javascript" src="jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="jquery.nivo.slider.pack.js"></script>
+	<script type="text/javascript">
+	$(window).load(function() {
+	    $('#slider').nivoSlider({
+	    	directionNav:false,
+	    	controlNav: false,
+	    });
+	    $('#slider1').nivoSlider({
+	    	directionNav: false,
+	    	controlNav: false,
+	    });
+	});
+	</script>
+</body>
+</html>
