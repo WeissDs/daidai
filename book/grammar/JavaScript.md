@@ -20,6 +20,7 @@
     parseInt(12px) ============ 12
     parseInt(122.56) ========== 122
     parseInt(we) ============== NaN
+    parseInt(12, 8) =========== 10(将八进制的12转化为十进制 === 10)
     
 2.parseFloat()将字符串转化为小数数字（显式类型转换||强制类型转换）
 
@@ -120,3 +121,8 @@ if的两种用法
     屏幕分辨率的高： window.screen.height;
     屏幕分辨率的宽： window.screen.width;
     屏幕可用工作区高度： window.screen.availHeight;
+
+##面向对象
+
+类，对象，实例，构造函数的理解：
+所谓“类”就是对象的模板，对象就是“类”的实例。JavaScript语言没有“类”，而改用构造函数（constructor）作为对象的模板。

@@ -1,6 +1,8 @@
-const fs = require('fs');
-const assert = require('assert');
+const fs = require('fs');  //file system
 
+const assert = require('assert'); 
+
+//文件系统
 fs.readFile('1.txt', function(err, data){
 	//没有错误时err=null
 	if(err){
@@ -11,6 +13,7 @@ fs.readFile('1.txt', function(err, data){
 	}
 })
 
+//断言
 function sum(a,b){
 	assert(typeof a=='number', '第一个参数要是数字');
 	assert(typeof b=='number', '第二个参数要是数字');
