@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+	用户名：<input id="userVal" type="text">
+	密码：<input id="passVal" type="password">
+	<input type="button" value="get登录" id="btn1">
+	<input type="button" value="Post注册" id="btn2">
+
+	<script>
+		$('#btn1').on('click', ()=>{
+			let data={"user": $('#userVal').val(),"pass": $('#passVal').val()}
+			$.ajax({
+				url:'http://localhost:8050/login',   //不可以省略http:// 也可以写成'/login'
+				type:'GET',
+				data: data,
+				dataType: 'json',
+				success(data){
+					if(data.err){
+						alert('错误'+data.msg);
+					}else{
+						alert('注册成功')
+					}
+				},
+				error(){
+					alert('error');
+				}
+			})
+		})
+		
+	</script>
+	
+
+</body>
+</html>
