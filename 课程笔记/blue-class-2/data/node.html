@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<!-- 
+		FILE数据？
+
+		file上传，也是post
+
+		表单的三种post enctype属性可设置的三种值：
+		1. text/plain									用的很少，纯文字
+		2. application/x-www-form-urlencoded			表单post默认，url编码方式，xxx=xxx&xxxx=xx..
+		3. multipart/form-data							上传文件内容
+
+
+
+	 -->
+
+	<form action="http://localhost:8050/upload" method="post" enctype="multipart/form-data">
+		<input type="file" name="f1">
+	</form>
+	<form action="http://localhost:8050/upload" method="post">
+		<input type="file" name="f2">
+	</form>
+	
+</body>
+</html>

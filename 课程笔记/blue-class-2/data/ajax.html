@@ -24,6 +24,26 @@
 					if(data.err){
 						alert('错误'+data.msg);
 					}else{
+						alert('登录成功')
+					}
+				},
+				error(){
+					alert('error');
+				}
+			})
+		})
+
+		$('#btn2').on('click', ()=>{
+			let data={"user": $('#userVal').val(),"pass": $('#passVal').val()}
+			$.ajax({
+				url:'http://localhost:8050/reg',   //不可以省略http:// 也可以写成'/login'
+				type:'POST',
+				data: data,
+				dataType: 'json',
+				success(data){
+					if(data.err){
+						alert('错误'+data.msg);
+					}else{
 						alert('注册成功')
 					}
 				},

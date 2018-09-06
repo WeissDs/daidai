@@ -1,3 +1,5 @@
+//测试前端代码路径 data/ajax.html
+
 const http = require('http');
 const url = require('url');
 const querystring = require('querystring');
@@ -5,6 +7,7 @@ const fs = require('fs');
 let users = {};
 
 let server = http.createServer((req, res)=>{
+	console.log(req.url);
 	if(req.url!=='/favicon.ico'){
 		// res.setHeader('Access-Control-Allow-Origin', '*');
 		let { pathname, query: getData }=url.parse(req.url, true);
@@ -13,18 +16,23 @@ let server = http.createServer((req, res)=>{
 		req.on('data',(data)=>{
 			str+=data;
 		})
-		req.on('end', ()=>{
+		req.on('end', ()=>{ 
 			let postData = querystring.parse(str);
-			console.log(getData, postData);
-
+			// console.log(getData, postData);
+ 			
+ 			let { user, pass }=postData;
+ 			let { user: guser, pass: gpass }=getData;
 			switch(pathname){
-				case '/login':
-					let { user, pass }=getData;
+				case '/reg':
 
 					if(!user){
 						res.write('{"err": 1, "msg": "user master be write"}');
 					}else if(!pass){
 						res.write('{"err": 1, "msg": "pass master be write"}');
+					}else if(!/^[a-zA-Z]\w{5,17}$/.test(pass)){
+						res.write('{"err": 1, "msg": "密码以字母开头，长度在6~18之间，只能包含字母、数字和下划线"}');
+					}else if(users[user]){
+						res.write('{"err": 1, "msg": "此用户名已被占用"}');
 					}else{
 						res.write('{"err": 0, "msg": "OK"}');
 						users[user]=pass;
@@ -32,7 +40,23 @@ let server = http.createServer((req, res)=>{
 					}
 					res.end();
 					break;
-				case '/reg':
+				case '/login':
+					
+
+					if(!guser){
+						res.write('{"err": 1, "msg": "user master be write"}');
+					}else if(!gpass){
+						res.write('{"err": 1, "msg": "pass master be write"}');
+					}else if(!users[guser]){
+						res.write('{"err": 1, "msg": "没有这个用户"}');
+					}else if(users[guser]!=gpass){
+						res.write('{"err": 1, "msg": "用户名或密码错误"}');
+					}else if(users[guser]==gpass){
+						res.write('{"err": 0, "msg": "OK login"}');
+					}else{
+						res.write('{"err": 1, "msg": "no"}');
+					}
+					res.end();
 					break;
 				default:
 					fs.readFile(`data${pathname}`,(err, data)=>{
