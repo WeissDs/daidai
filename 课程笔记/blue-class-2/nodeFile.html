@@ -11,7 +11,7 @@
 
 		file上传，也是post
 
-		表单的三种post enctype属性可设置的三种值：
+		表单的三种post enctype属性可设置的三种值：enctype属性规定在发送到服务器之前应该如何对表单数据进行编码
 		1. text/plain									用的很少，纯文字
 		2. application/x-www-form-urlencoded			表单post默认，url编码方式，xxx=xxx&xxxx=xx..
 		3. multipart/form-data							上传文件内容
@@ -20,13 +20,13 @@
 
 	 -->
 
-	<form action="http://localhost:8050/upload" method="post" enctype="multipart/form-data">
+	<form action="http://localhost:8050/upload" method="post" enctype="multipart/form-data">   <!--   multipart/form-data 表示不编码直接传输-->
 		<input type="file" name="f1">
 		<input type="text" name="user1">
 		<input type="password" name="pass1">
 		<input type="submit" value="提交">
 	</form>
-	<form action="http://localhost:8050/upload" method="post">
+	<form action="http://localhost:8050/upload" method="post">  <!-- 默认为application/x-www-form-urlencoded url编码 -->
 		<input type="file" name="f2">
 		<input type="text" name="user2">
 		<input type="password" name="pass2">
