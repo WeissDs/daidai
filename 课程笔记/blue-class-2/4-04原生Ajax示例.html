@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>编写Ajax</title>
-    <script src="Ajax.js"></script>
+    <script src="4-04原生Ajax示例.js"></script>
 <body>
 
 
 <input id="btn" type="button" value="读取">
 
 <script>
+	//本地路径无法访问 用法示例
     let oBtn = document.getElementById('btn');
     oBtn.onclick=function(){
         ajax1('1.php?a=12&b=3');

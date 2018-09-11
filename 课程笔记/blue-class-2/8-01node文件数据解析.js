@@ -1,6 +1,8 @@
 const http = require('http');
 const fs = require('fs');
 
+//用testNode/nodeFile.html测试
+
 let server = http.createServer((req, res)=>{
 	if(req.url!=='favicon.ico'){
 		console.log(req.url)
@@ -53,7 +55,7 @@ let server = http.createServer((req, res)=>{
 						res.end();
 						break;
 					default:
-						fs.readFile(`./${req.url}`, (err, data)=>{
+						fs.readFile(`testNode/${req.url}`, (err, data)=>{
 							if(err){
 								res.writeHeader(404);
 								res.write('Not Found');

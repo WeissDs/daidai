@@ -1,4 +1,4 @@
-//测试前端代码路径 data/ajax.html
+//测试前端代码路径 testNode/ajax.html
 
 const http = require('http');
 const url = require('url');
@@ -59,7 +59,7 @@ let server = http.createServer((req, res)=>{
 					res.end();
 					break;
 				default:
-					fs.readFile(`data${pathname}`,(err, data)=>{
+					fs.readFile(`testNode${pathname}`,(err, data)=>{
 						if(err){
 							res.writeHeader(404);
 							res.write('Not Found');
