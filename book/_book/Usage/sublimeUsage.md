@@ -136,4 +136,27 @@ https://github.com/sergeche/emmet-sublime#how-to-expand-abbreviations-with-tab-i
         ]
     }]
 
+##Autoprefixer
 
+功能：自动补全css兼容前缀
+
+安装：
+
+    ctrl(command)+shift+p -> install package -> Autoprefixer
+
+配置：
+安装完成后，设置快捷键：
+打开Preferences > Key Bindings
+在右侧填入设置的快捷键：
+    
+    [
+    { "keys": ["ctrl+alt+o"], "command": "autoprefixer" }
+    ]
+
+默认的补齐前缀是没有-moz-和-ms-的，需要自定义
+点击Preferences > Package Settings会出现Autoprefixer选项，点击打开该选项：
+设置左侧browsers属性值：
+
+    "browsers": ["last 2 version", "> 0.1%", "> 5% in US", "ie 6-8","Firefox < 20"],
+
+使用ctrl+alt+o进行补全前缀

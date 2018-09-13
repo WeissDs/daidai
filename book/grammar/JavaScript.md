@@ -95,13 +95,17 @@ if的两种用法
 
 ##Json
 
-1. 
+
+##异步
+####Ajax
+
+######实现方式：
+XMLHttpRequset          (follow the same-origin policy)
+
+####Fetch
+Fetch API 是基于 Promise 设计的
 
 
-
-##Ajax
-
-1. 
 
     
     
@@ -122,7 +126,35 @@ if的两种用法
     屏幕分辨率的宽： window.screen.width;
     屏幕可用工作区高度： window.screen.availHeight;
 
+
+##常用js方法
+
+####数组：
+    concat()    连接数组
+    push()      添加元素到数组末尾
+    join('&')   以&连接数组的元素 返回字符串
+    slice()
+
+####字符串：
+    slice()
+    split()
+    indexOf()
+
+
+
+
 ##面向对象
 
 类，对象，实例，构造函数的理解：
 所谓“类”就是对象的模板，对象就是“类”的实例。JavaScript语言没有“类”，而改用构造函数（constructor）作为对象的模板。
+
+##闭包
+######javascript特殊的变量作用域（"链式作用域"结构）： 函数外部无法读取函数内部的局部变量，js的子对象会一级一级向上找所有父对象的变量。
+
+
+######闭包：闭包就是能够读取其他函数内部变量的函数
+
+
+##事件冒泡、事件捕捉、事件委托
+
+##this

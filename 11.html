@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#showImg{ display: none; width: 200px; height: 200px; background-color: red; color: #fff; }
+	</style>
+</head>
+<body>
+	<img id="showImg"></img>
+
+	<img class="img" style="width:100px;height:100px;background-color: blue;"></img>
+	<img class="img" style="width:100px;height:100px;background-color: #ccc;"></img>
+	<img class="img" style="width:100px;height:100px;background-color: #aaa;"></img>
+	<img class="img" style="width:100px;height:100px;background-color: yellow;"></img>
+	<img class="img" style="width:100px;height:100px;background-color: black;"></img>
+
+	<script>
+		function show(now){
+			var oShow = document.getElementById('showImg');
+			oShow.setAttribute('style',now+'display: block;');
+			document.onclick=function(){
+				oShow.style.display='none';
+			}
+			// alert(this.getAttribute('style'));
+			// alert(now);
+		}
+
+
+		window.onload=function(){
+			let aImg = document.getElementsByClassName('img');
+
+			for(let i=0;i<aImg.length;i++){
+				aImg[i].onclick=function(ev){
+					var oEvent=ev||event;
+					oEvent.cancelBubble=true;
+					let now = this.getAttribute('style');
+					show(now);
+				}
+			}
+		}
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.none{ display: none; width: 10%; height:200px; background-color: red; transition: all 2s; }
+		.show{ width: 100%; }
+	</style>
+</head>
+<body>
+	<div class="none"></div>
+	<input type="button">
+
+	<script>
+		document.getElementsByTagName('input')[0].onclick=function(){
+			document.getElementsByTagName('div')[0].style.display="block";
+			setTimeout(function(){
+				document.getElementsByTagName('div')[0].className="none show";
+			},100);
+		}
+
+		// 今天在工作中无意发现，当元素本身为display：none 时，若此时我们想通过js先将其变为display:block 并且随后再触发其他想要的transition过渡效果，需要在 js改变其为display:block 后延迟100ms左右的时间再去设置其他过渡动画，否则该过渡动画不会触发。 
+	</script>
+</body>
+</html>
