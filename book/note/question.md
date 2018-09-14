@@ -80,3 +80,5 @@ jquery的 $('#products').on('click', 'img', function(){})
     }
 
 为什么这也叫做闭包？
+
+8. 阻塞IO、非阻塞IO、和同步异步有关系吗？ node.js的非阻塞IO是什么？
