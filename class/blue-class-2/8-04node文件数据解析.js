@@ -24,28 +24,44 @@ http.createServer((req, res)=>{
 
 
 
-					console.log(arr2);
-					console.log(req.headers);
+					// console.log(arr2);
+					// console.log(req.headers);
 
-					let fileIndex = null;
+
+					// let fileIndex = null;
 					let keyValue = {};
 					arr2.forEach(item=>{
 						let n=item.indexOf('\r\n\r\n');
-						if(item.slice(0,n).indexOf('\r\n')!=-1){
-							fileIndex = new Buffer(item.slice(n+4));
+
+						let disposition = item.slice(0,n);
+						let content = item.slice(n+4);
+						disposition = disposition.toString();
+
+						if(disposition.indexOf('\r\n')!=-1){
+							let [line1, line2] = disposition.split('\r\n');
+							let [, name, fileName] = line1.split('; ');
+							let type = line2.split(': ')[1];
+
+							fileName = fileName.split('=')[1].slice(1,-1);
+							name = name.split('=')[1].slice(1,-1);
+							console.log(name,fileName,type);
+							fs.writeFile(`testNode/${fileName}`,content,(err)=>{
+								if(err){
+									console.log('error', err);
+								}else{
+									console.log('success');
+								}
+							})
 						}else{
-							let key = item.slice(0,n).split('; ')[1].split('=')[1];
-							let value = item.slice(n+4);
-							keyValue[key]=value;
+							let key = disposition.split('; ')[1].split('=')[1];
+							key = key.substring(1,key.length-1);
+							content = content.toString();
+							keyValue[key]=content;
 						}
 					});
 
 
-
-					console.log(arr2);
-					console.log(fileIndex);
 					console.log(keyValue);
-					// fs.writeFile(`textNode/333.png`,fileIndex);
 					res.end();
 					break;
 				default:

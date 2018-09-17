@@ -1,0 +1,15 @@
+{
+  "name": "blue-class-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "4-04原生Ajax示例.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "uuid": "^3.3.2"
+  }
+}
