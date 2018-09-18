@@ -3,11 +3,31 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<script>
+		//js动态加入script标签 src为sss.js
+		function createScript(src){
+			let script1 = document.createElement('script');
+			script1.src= src;
+			document.head.appendChild(script1);
+		}
+		//回调函数a
+		function a(){
+			alert(11111);
+		}
+
+		window.onload=function(){
+			//异步载入sss.js文件 执行回调函数
+			setTimeout(function(){createScript('sss.js');},2000);
+		}
+		
+	</script>
+	<!-- <script src="sss.js"></script> -->
 </head>
 <body>
 
 
-	<script>
+<!-- 收藏写法 -->
+<!-- 	<script>
 	    var script = document.createElement('script');
 	    script.type = 'text/javascript';
 
@@ -19,6 +39,31 @@
 	    function onBack(res) {
 	        alert(JSON.stringify(res));
 	    }
+	</script> -->
+
+	<script>
+		//https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=sd&json=1&p=3&sid=26525_1425_21091_20719&req=2&csor=2&pwd=s&cb=jQuery110209345348064010695_1537176634535&_=1537176634538
+
+		// function(){
+
+		// }
+
+		
+		// setTimeout(ajax({
+		// 	url: 'localhost:8050',
+		// 	data: {a:1,b:2},
+		// 	type: 'GET',
+		// 	success(data){
+		// 		alert(11111);
+		// 	},
+		// 	error(){
+		// 		alert(222);
+		// 	}
+		// }),1000000000)
+
+
+		
+		
 	</script>
 	
 </body>
