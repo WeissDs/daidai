@@ -44,6 +44,7 @@ http.createServer((req, res)=>{
 
 							fileName = fileName.split('=')[1].slice(1,-1);
 							name = name.split('=')[1].slice(1,-1);
+							
 							console.log(name,fileName,type);
 							fs.writeFile(`testNode/${fileName}`,content,(err)=>{
 								if(err){

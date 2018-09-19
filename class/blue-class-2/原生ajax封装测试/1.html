@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="5-01ajax.js"></script>
+</head>
+<body>
+
+	<p>aaaaaaaa</p>
+	<p>aaaaaaaa</p>
+	<p>aaaaaaaa</p>
+
+	<!-- 测下自己写的ajax封装 用port.js起服务器测试请求接口 -->
+	<script>
+		ajax({
+			url: '/aa',
+			type: 'GET',
+			data: {a:2,b:'是啊ww&ee'},
+			success(){
+				console.log('111');
+			},
+			error(){
+				console.log('222');
+			}
+		})
+	</script>
+	
+</body>
+</html>

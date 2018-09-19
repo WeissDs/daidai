@@ -4,7 +4,7 @@ const url = require('url');
 const querystring = require('querystring');
 
 let server = http.createServer((req, res)=>{
-	fs.readFile(`data/${req.url}`, (err, data)=>{
+	fs.readFile(`${req.url}`, (err, data)=>{
 		if(err){
 			res.writeHeader(404);
 			res.write('Not Found');

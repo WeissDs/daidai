@@ -2,7 +2,7 @@
  * Created by daixiyu on 2017/8/7.
  */
 
- // 原生js兼容IE6写法
+ // 原生js兼容IE6写法 GET请求
 
 function ajax(url,fnSucc,fnFaild)
 {
@@ -41,7 +41,7 @@ function ajax(url,fnSucc,fnFaild)
     };
 }
 
-//原生JS
+//原生JS GET请求
 function ajax1(url, fnSucc, fnFaild)
 {
     let xhr = new XMLHttpRequest();   //(xhr.readyState==0)
