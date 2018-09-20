@@ -4,9 +4,13 @@
 
 下载node.js
 
+##cnpm安装方法 npm镜像
+
+地址 https://npm.taobao.org/ 网站有下载命令
+
 ##npm项目搭建
 
-####初始化项目
+####初始化项目 简写 i
 
     npm init
     
@@ -23,6 +27,6 @@
 
 2. 开发依赖
 
--save-dev是指将包信息添加到devDependencies，表示你开发时依赖的包裹。 
+-save-dev是指将包信息添加到devDependencies，表示你开发时依赖的包裹。  简写 -D
 
     npm install <下载的依赖包名称> --save-dev

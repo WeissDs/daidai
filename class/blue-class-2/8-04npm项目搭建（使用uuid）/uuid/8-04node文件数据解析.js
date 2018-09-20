@@ -1,13 +1,13 @@
 //用testNode/nodeFile.html测试
-//没有uuid的版本 有uuid的版本在8-04npm项目搭建（使用uuid）文件中
 
 const http = require('http');
 const fs = require('fs');
-const split = require('./8-03node.Buffer.split');
+const split = require('../../8-03node.Buffer.split');
+const uuid = require('uuid/v4');
 
 http.createServer((req, res)=>{
 	if(req.url!=='/favicon.cio'){
-		console.log(uuid4());
+		console.log(req.url);
 		let arr=[];
 		req.on('data', (data)=>{
 			arr.push(data);
@@ -24,11 +24,8 @@ http.createServer((req, res)=>{
 					let arr1 = postData.split(boundary).slice(1,-1);
 					let arr2 = arr1.map(item=>item.slice(2,-4));
 
-
-
-					// console.log(arr2);
+					// console.log(arr2.toString());
 					// console.log(req.headers);
-
 
 					// let fileIndex = null;
 					let keyValue = {};
@@ -39,7 +36,8 @@ http.createServer((req, res)=>{
 						let content = item.slice(n+4);
 						disposition = disposition.toString();
 
-						if(disposition.indexOf('\r\n')!=-1){
+						if(disposition.indexOf('\r\n')!=-1&&content!=''){
+							// console.log(content.toString());
 							let [line1, line2] = disposition.split('\r\n');
 							let [, name, fileName] = line1.split('; ');
 							let type = line2.split(': ')[1];
@@ -47,8 +45,8 @@ http.createServer((req, res)=>{
 							fileName = fileName.split('=')[1].slice(1,-1);
 							name = name.split('=')[1].slice(1,-1);
 							
-							console.log(name,fileName,type);
-							fs.writeFile(`testNode/${fileName}`,content,(err)=>{
+							console.log(`{name: ${name},fileName: ${fileName},type: ${type}}`);
+							fs.writeFile(`../../testNode/${uuid()}${fileName}`,content,(err)=>{
 								if(err){
 									console.log('error', err);
 								}else{
@@ -63,12 +61,11 @@ http.createServer((req, res)=>{
 						}
 					});
 
-
 					console.log(keyValue);
 					res.end();
 					break;
 				default:
-					fs.readFile( `testNode/${req.url}`,(err, file)=>{
+					fs.readFile( `../../testNode/${req.url}`,(err, file)=>{
 						if(err){
 							res.writeHeader(404);
 							res.write('Not Found!');
