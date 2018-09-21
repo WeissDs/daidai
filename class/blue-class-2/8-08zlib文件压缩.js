@@ -1,8 +1,8 @@
 const zlib = require('zlib');
 const fs = require('fs');
 
-let rs = fs.createReadStream('6-01node.js');
-let ws = fs.createWriteStream('6-01node.js.zg');
+let rs = fs.createReadStream('js/jquery-3.2.1.min.js');
+let ws = fs.createWriteStream('js/jquery-3.2.1.min.js.rar');
 
 let gz = zlib.createGzip();
 

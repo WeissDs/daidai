@@ -17,10 +17,12 @@
 			document.getElementsByTagName('div')[0].style.display="block";
 			setTimeout(function(){
 				document.getElementsByTagName('div')[0].className="none show";
-			},100);
+			},0);
 		}
 
-		// 今天在工作中无意发现，当元素本身为display：none 时，若此时我们想通过js先将其变为display:block 并且随后再触发其他想要的transition过渡效果，需要在 js改变其为display:block 后延迟100ms左右的时间再去设置其他过渡动画，否则该过渡动画不会触发。 
+		// 今天在工作中无意发现，当元素本身为display：none 时，若此时我们想通过js先将其变为display:block 并且随后再触发其他想要的transition过渡效果，需要在 js改变其为display:block 后setTimeout再去设置其他过渡动画，否则该过渡动画不会触发。 
+
+		//原理： setTimeout被触发时，浏览器的定时触发器线程会将事件添加到待处理列队的末尾，保证在div设置block之后再添加className:show???????
 	</script>
 </body>
 </html>
