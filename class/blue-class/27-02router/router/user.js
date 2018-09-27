@@ -5,6 +5,11 @@
 const router = require('../router');
 
 router.on('/login', (req, res)=>{
-	console.log(222);
-	res.write('1111');
+	console.log(req.post);
+	
+})
+
+router.on('/reg', (req, res)=>{
+	console.log(req.post);
+
 })
