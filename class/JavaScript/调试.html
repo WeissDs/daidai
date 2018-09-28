@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js调试</title>
+</head>
+<body>
+	<input id="btn1" type="button" value="点击">
+
+	<script>
+		let oBtn1 = document.getElementById('btn1');
+		
+		
+		oBtn1.addEventListener('click', ()=>{
+			console.time();
+			for(let i=0; i<10; i++){
+				console.count('调用次数'); //console.count(); 记录次数
+				console.trace(); //显示函数调用轨迹（访问调用栈）？？？并不知道怎么用。。。。。。
+			}
+			console.timeEnd();
+		})
+		
+
+		function a(){
+			let b=30;
+			for(let i=0;i<100;i++){
+				b+=1;
+			}
+		}
+
+		console.profile(); //性能分析 并不知道怎么用。。。。。。
+		a();
+		console.profileEnd(); //性能分析
+		
+	</script>
+	
+</body>
+</html>
