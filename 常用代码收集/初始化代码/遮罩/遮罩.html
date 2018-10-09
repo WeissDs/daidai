@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>遮罩</title>
+
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body,html{
+			width: 100%;
+			height: 100%;
+		}
+		.try{
+			width: 100%;
+			height: 600px;
+			background-color: red;
+		}
+		
+		.father{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			/*display: none;*/
+		}
+		#aa{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,0.5);
+			z-index: 9999;
+		}
+
+		/*两种居中方式*/
+		.txt{
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			margin: auto;
+			z-index: 99999;
+			/*必须设置宽高*/
+			width: 200px;
+			height: 30px;
+			text-align: center;
+			line-height: 30px;
+			background: #fff;
+		}
+/*		.txt{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			background: #fff;
+			z-index: 99999;
+
+		}*/
+	</style>
+
+</head>
+<body>
+
+	<div class="try"></div>
+
+	<div class="father">
+		<p class="txt">111111</p>
+		<div id="aa"></div>
+	</div>
+	
+</body>
+</html>
