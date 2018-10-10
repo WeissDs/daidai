@@ -1,1 +1,0 @@
-1. correct access rights  正确的访问权限

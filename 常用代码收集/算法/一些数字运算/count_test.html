@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="count.js"></script>
+</head>
+<body>
+
+	<input id="d" type="button" value="点击">
+
+	<input id="n1" type="text">
+	<input id="n2" type="text">
+	<input id="d1" type="button" value="最大公约数">
+	
+
+	<script>
+		//工厂方式？
+		var A={
+			alert: function(){
+				alert(333);
+				alert(this.contents);
+				alert(this.contents());
+			},
+			contents: function(){
+				return 'daidai';
+			}
+		}
+
+		A.alert();
+
+		//面向对象方式——count.js
+		window.onload=function(){
+			//数字反向
+			let B = new Count;
+			// console.log(B);
+			let oBtn = document.getElementById('d');
+			oBtn.onclick=function(){
+					console.log(B.reverse('123'));
+			}
+
+			//最大公约数
+			let num1 = document.getElementById('n1');
+			let num2 = document.getElementById('n2');
+			let oBtn1 = document.getElementById('d1');
+			oBtn1.onclick = function(){
+				console.log(B.gcd(num1.value,num2.value));
+			}
+
+
+		}
+	</script>
+</body>
+</html>
