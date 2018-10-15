@@ -36,4 +36,9 @@ if(cluster.isMaster){
 
 	2. node框架
 		Express、KOA、egg、thinkjs
+
+		Express : 基于回调
+		KOA1.X ： 基于generator 和 yield
+		KOA2.X ： 过渡 yield 和 await 都可以使用
+		KOA3.X ： 基于async 和 await（KOA1.x 写的项目不兼容）
 */
