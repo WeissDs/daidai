@@ -1,4 +1,5 @@
 const express = require('express');
+const mysql = require('mysql');
 
 let server = express();
 server.listen(8050);
@@ -8,9 +9,10 @@ server.get('/www', (req, res)=>{
 	res.write('12222');
 	res.end();
 })
-server.post('/aa', (req, res)=>{
+server.post('/', (req, res)=>{
 
 })
 
 //静态文件
-server.use(express.static('./'));
+server.use(express.static('www/'));
+
