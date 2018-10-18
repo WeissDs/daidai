@@ -72,3 +72,10 @@
     Enter password:
 
 ######输入 exit 或 quit 退出登录
+
+
+##Navicat for MySQL用法
+
+####快捷键
+
+    chrl+D  设计表
