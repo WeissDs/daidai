@@ -1,1 +1,16 @@
-[Tue, 23 Oct 2018 03:43:05 GMT] GET /::1 [Tue, 23 Oct 2018 03:43:44 GMT] GET /::1 [Tue, 23 Oct 2018 03:45:44 GMT] GET /
+::1 [Wed, 24 Oct 2018 06:14:15 GMT] GET /login
+::1 [Wed, 24 Oct 2018 06:14:26 GMT] POST /login
+::1 [Wed, 24 Oct 2018 06:15:05 GMT] GET /reg?username=xiaohuang&password=122345
+::1 [Wed, 24 Oct 2018 06:16:26 GMT] POST /login
+::1 [Wed, 24 Oct 2018 08:57:07 GMT] GET /reg?pass=1357
+::1 [Wed, 24 Oct 2018 08:57:42 GMT] GET /reg?pass=1357
+::1 [Wed, 24 Oct 2018 08:59:51 GMT] GET /reg?pass=1357&name=dai
+::1 [Wed, 24 Oct 2018 09:01:28 GMT] GET /reg?pass=1357&name=dai1
+::1 [Wed, 24 Oct 2018 09:06:59 GMT] GET /reg?pass=1357&name=dai1
+::1 [Wed, 24 Oct 2018 09:07:16 GMT] GET /reg?pass=1357&name=dai2
+::1 [Wed, 24 Oct 2018 09:10:29 GMT] GET /reg?pass=555&name=dai2
+::1 [Wed, 24 Oct 2018 09:10:45 GMT] GET /aaa?pass=aaa
+::1 [Wed, 24 Oct 2018 09:11:21 GMT] GET /login?pass=aaa
+::1 [Wed, 24 Oct 2018 09:13:21 GMT] GET /login?pass=aaa
+::1 [Wed, 24 Oct 2018 09:13:23 GMT] POST /login
+::1 [Wed, 24 Oct 2018 09:18:34 GMT] POST /login
