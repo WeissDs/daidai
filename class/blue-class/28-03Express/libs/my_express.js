@@ -34,13 +34,13 @@ module.exports = function(){
 									_run(i);
 								});
 								break;
-							}else if(queue[i].method=='get' && pathname == queue[i].path){
+							}else if(queue[i].method=='get'&& req.method == 'GET' && pathname == queue[i].path){
 								queue[i].fn(req, res, ()=>{
 									i++;
 									_run(i);
 								});
 								break;
-							}else if(queue[i].method=='post' && pathname == queue[i].path){
+							}else if(queue[i].method=='post' && req.method == 'POST' && pathname == queue[i].path){
 								queue[i].fn(req, res, ()=>{
 									i++;
 									_run(i);

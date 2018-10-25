@@ -2,7 +2,7 @@ const express = require('./libs/my_express');
 const logger = require('./libs/my_logger.js')
 
 let server = express();
-server.listen(8050);
+server.listen(8050, '0.0.0.0');
 
 server.use(logger);
 
@@ -14,11 +14,10 @@ server.get('/reg', (req, res, next)=>{
 server.get('/reg', (req, res, next)=>{
 	console.log(req.query);
 	res.end();
-	next();
 })
 server.get('/aaa', (req, res, next)=>{
-	console.log('aaa');
-	next();
+	console.log(req.method);
+	res.end();
 })
 
 server.post('/login', (req, res, next)=>{
@@ -26,5 +25,6 @@ server.post('/login', (req, res, next)=>{
 	next();
 })
 server.post('/login', (req, res, next)=>{
-	console.log(1111);
+	console.log(req.method);
+	res.end();
 })
