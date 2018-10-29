@@ -32,9 +32,26 @@ cookie、session：
 
 	风险：如果sess_ID泄露了  ———— 就叫做session劫持
 
+	
+	需要先添加cookie-parser：
+	[1].设置：res.cookie(name, value, options{
+		domain:
+		expires: date
+		maxAge: int
+		path
+		secure: true
+		signed: true
+	})
+	[2].读取：res.cookies
+	[3].安全（防篡改）：
+
 2. session——只存在服务器端
 	优点：容量无限（服务器容量多大就能多大）、安全（用户无法看见和篡改）
 	session是基于cookie的
+
+	[1].设置：
+	[2].读取：
+	[3].安全（防篡改）：
 
 
 
@@ -57,7 +74,12 @@ const path = require('path');
 let server = express();
 server.listen(8050, '0.0.0.0');
 
+//访问根目录会自动打开www中的index.html文件
 server.use(express.static('www/'))
+
+server.get('/favicon.ico', (req, res)=>{
+	res.end();
+})
 
 
 //sendFile向浏览器发送文件【可控的】----------------------------------------------------------------
@@ -142,5 +164,21 @@ server.post('/upload', (req, res, next)=>{
 
 })
 
+
+
+//cookie 和 session-----------------------------------------------------------------------------
+
+//下载 cookie-parser 和 cookie-session  -D
+
+const cookieParser = require('cookie-parser');
+
+server.use(cookieParser('dfiiii')) //值可以是数组，也可以是字符串
+
+server.get('/cookie', (req, res, next)=>{
+	console.log(req.cookies);
+	console.log(req.signedCookies);
+	res.cookie('dd', 'ofisoneonnennn', {signed: true});
+	res.end();
+})
 
 
