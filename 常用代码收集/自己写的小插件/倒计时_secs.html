@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#move-cir{
+			stroke-dashoffset: 628;
+			stroke-dasharray: 628;
+			transition: stroke-dashoffset 1s linear;
+		}
+		.timer{
+			position: relative;
+			width: 280px;
+			height: 280px;
+			/*background-color: red;*/
+		}
+		.timer #num{
+			position: absolute;
+			left: 140px;
+			top: 140px;
+			transform: translate(-50%, -50%);
+			font-size: 70px;
+			color: #ccc;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="timer">
+		<svg width="280" height="280">
+			<circle cx="140" cy="140" r="100" fill="transparent" stroke="#F4F1F1" stroke-width="17"></circle>
+			<circle id="move-cir" cx="140" cy="140" r="100" fill="transparent" stroke="#FF7472" stroke-width="18" stroke-linecap="round"  transform="rotate(-90 140 140)"></circle>
+		</svg>
+		<div id="num">10</div>
+	</div>
+	
+
+	<script>
+		var cir = document.getElementById('move-cir');
+		let t = 10;
+
+		timer = setInterval((e)=>{
+			if(t == 0){
+				location.href="#";
+				clearInterval(timer);
+			}else{
+				t--;
+				e = t/10*628
+				cir.style.strokeDashoffset = e;
+				document.getElementById('num').innerHTML=t;
+			}
+		},1000)
+	</script>
+	
+	
+</body>
+</html>
