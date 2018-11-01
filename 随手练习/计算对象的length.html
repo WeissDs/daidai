@@ -8,7 +8,7 @@
 
 	<script>
 		//用Object.keys()取出对象key生成的数组，获取length  || 或者使用 for in计算出来
-		let a = [{ 	fieldname: 'f1',
+		let a = { 	fieldname: 'f1',
 	    			originalname: 'Git.jpg',
 	    			encoding: '7bit',
 	    			mimetype: 'image/jpeg',
@@ -16,9 +16,21 @@
 	    			filename: '6c6cce430c75c68430e521bc1f1342b4',
 	    			path: 'images\\6c6cce430c75c68430e521bc1f1342b4',
 	    			size: 435873 
-	    		}]
+	    		}
 
 	    console.log(Object.keys(a).length);
+
+	    let b = [12,5,8];
+	    let c = {};
+	    b.a = 3
+	    b.aa = 4
+	    c.d = 5
+	    c.dd = 6
+
+	    console.log(b)
+	    console.log(c)
+	    console.log(c)
+
 	</script>
 
 	
