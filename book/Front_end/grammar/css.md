@@ -54,10 +54,16 @@
     div{ transition: transform 2s; }
 ```
 
-#####4. 强制不换行
+#####4. 强制换行和强制不换行
 
 ```javascript
-    white-space: nowrap;
+    white-space: nowrap;     强制不换行
+
+    强制换行
+    1、word-break: break-all;        只对英文起作用，以字母作为换行依据。
+    2、word-wrap: break-word;        只对英文起作用，以单词作为换行依据。
+    3、white-space: pre-wrap;        只对中文起作用，强制换行
+
 ```
 
 #####5. 宽高等比缩放的方法
@@ -70,3 +76,11 @@ div:before{
     padding-bottom: 10%;   //宽度的10%
     }
 ```
+
+
+
+##CSS适配问题
+
+width\height: min-content/max-content/fit-content
+css3出的最新width值（IE和低级浏览器全部不支持
+
