@@ -2,7 +2,7 @@ const express = require('express');    //node框架
 const mysql = require('mysql');		//数据库连接
 const multer = require('multer');		//文件传输
 const ejs = require('ejs');			//模板引擎 用于服务端渲染
-const consolidate = require('consolidate');			//模板 nnn引擎库 支持ejs等
+const consolidate = require('consolidate');			//模板引擎库 支持ejs等
 const cookieParser = require('cookie-parser');		//cookie中间件
 const cookieSession = require('cookie-session');	//session中间件
 const bodyParser = require('body-parser');		//解析post数据
@@ -34,4 +34,29 @@ server.get('', (req, res)=>{
 })
 
 //中间件配置
+
+//普通POST数据
+server.use(bodyParser.urlencoded({extended: false})) //不需要扩展模式
+//文件POST数据
+let multerObj = multer({dest: './upload'});
+server.use(multerObj.any());
+//cookie
+server.use(cookieParser(require('./secret/cookie_key.js')));
+//session
+server.use(cookieSession({
+	keys: require('./secret/session_key.js')
+}));
+//模板
+server.set('html', consolidate.ejs);
+server.set('view engine', 'ejs');
+server.set('views', './template')
+
+//处理请求
+
+server.use('/admin', require('./routers/admin.js'));
+server.use('/', require('./routers/www.js'));
+
+//静态文件
+server.use(express.static('./www'));
+
 
