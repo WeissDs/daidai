@@ -7,7 +7,7 @@ const uuid = require('uuid/v4');
 //AES  几个G
 //MD5（流行）几百G
 //SHA（美军）几千G
-const crypto = require('crypto');
+const crypto = require('crypto');  //nodejs 的crypto模块封装了MD5 
 //express的插件，用来解析post数据（消息体body里的数据）需要安装 npm i body-parser -D 为什么放在开发环境？？？
 const bodyParser = require('body-parser');
 

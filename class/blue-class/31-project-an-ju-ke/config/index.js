@@ -7,6 +7,9 @@ module.exports = {
 	mysql_port: '3306',
 	mysql_user: 'root',
 	mysql_password: '',
-	mysql_dbname: 'an_ju_ke'
+	mysql_dbname: 'an_ju_ke',
 
+	//超级管理员配置（正式项目中还是存到数据库）
+	root_username: 'daixiyu',
+	root_password: 'e10adc3949ba59abbe56e057f20f883e'
 }
