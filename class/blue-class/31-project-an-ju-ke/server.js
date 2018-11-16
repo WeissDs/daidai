@@ -26,7 +26,11 @@ const config = require('./config');
 let server = express();
 server.listen(config.port, '0.0.0.0');
 
-mysql.createPool({ host: config.mysql_host, port: config.mysql_port, user: config.mysql_user, password: config.mysql_password, database: config.mysql_dbname })
+let db = mysql.createPool({ host: config.mysql_host, port: config.mysql_port, user: config.mysql_user, password: config.mysql_password, database: config.mysql_dbname })
+server.use((req, res, next)=>{
+	req.db = db;
+	next();
+})
 
 server.get('', (req, res)=>{
 	console.log('hello');

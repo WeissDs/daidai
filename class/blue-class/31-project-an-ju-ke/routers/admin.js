@@ -17,10 +17,14 @@ admin_router.use((req, res, next)=>{
 		
 })
 
+admin_router.get('/house', (req, res, next)=>{
+	res.render('index');
+})
+
 //RESTful风格 （ 按照请求方法或者路径等 来区分请求对象 ）如下：
 //展现login页面
 admin_router.get('/login', (req, res, next)=>{
-	res.render('login');
+	res.render('login', {error_msg: ''});
 })
 //提交登录请求
 admin_router.post('/login', (req, res, next)=>{
@@ -28,10 +32,40 @@ admin_router.post('/login', (req, res, next)=>{
 	if(username == config.root_username){
 		if(common.md5(password) == config.root_password){
 			console.log('热烈欢迎超级管理员！！！');
+			req.session['admin_ID']='1';
+			res.redirect('/admin/house');
+		}else{
+			console.log('超级管理员登录失败');
+			error('用户名或密码有误');
 		}
 	}else{
-		
+		req.db.query(`SELECT ID,username,password FROM admin_table WHERE username='${username}'`, (err, data)=>{
+			console.log(data);
+			if(err){
+				console.log('服务器出错');
+				error('服务器出错');
+			}else if(data.length==0){
+				console.log('该用户名不存在');
+				error('用户名或密码有误');
+			}else{
+				if(data[0].password == common.md5(password)){
+						console.log('管理员登录成功！');
+						req.session['admin_ID']=data[0].ID;
+						res.redirect('/admin/house');
+					}else{
+						console.log('管理员登录失败');
+						error('用户名或密码有误');
+					}
+			}
+		})
 	}
+	function error(msg){
+		error_msg = '用户名或密码有误';
+		res.render('login', {error_msg: msg});
+		res.end();
+	}
+})
 
-	res.end();
+admin_router.get('/', (req, res, next)=>{
+	res.redirect('/admin/house');
 })
