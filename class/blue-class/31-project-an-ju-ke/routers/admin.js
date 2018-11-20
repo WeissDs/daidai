@@ -17,9 +17,6 @@ admin_router.use((req, res, next)=>{
 		
 })
 
-admin_router.get('/house', (req, res, next)=>{
-	res.render('index');
-})
 
 //RESTful风格 （ 按照请求方法或者路径等 来区分请求对象 ）如下：
 //展现login页面
@@ -40,7 +37,6 @@ admin_router.post('/login', (req, res, next)=>{
 		}
 	}else{
 		req.db.query(`SELECT ID,username,password FROM admin_table WHERE username='${username}'`, (err, data)=>{
-			console.log(data);
 			if(err){
 				console.log('服务器出错');
 				error('服务器出错');
@@ -66,6 +62,22 @@ admin_router.post('/login', (req, res, next)=>{
 	}
 })
 
+//router的根目录重定向到/house
 admin_router.get('/', (req, res, next)=>{
 	res.redirect('/admin/house');
+})
+
+//渲染/house主页面 index.ejs
+admin_router.get('/house', (req, res, next)=>{
+	req.db.query('SELECT * FROM house_table', (err, data)=>{
+		if(err){
+			console.log('服务器错误');
+			res.end();
+		}else{
+			res.render('index', {data})
+			res.end();
+		}
+		
+	})
+
 })

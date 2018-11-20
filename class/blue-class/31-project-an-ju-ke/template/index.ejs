@@ -61,27 +61,40 @@
                 </label>
               </th>
               <th>名称</th>
-              <th>名称</th>
-              <th>名称</th>
+              <th>价格</th>
+              <th>地址</th>
+              <th>电话</th>
               <th>操作</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <label>
-                  <input type="checkbox">
-                  1
-                </label>
-              </td>
-              <td>aaa</td>
-              <td>aaa</td>
-              <td>aaa</td>
-              <td>
-                <a href="javascript:;">编辑</a>
-                <a href="javascript:;">删除</a>
-              </td>
-            </tr>
+            <%for(let i=0; i<data.length; i++){%>
+              <tr>
+                <td>
+                  <label>
+                    <input type="checkbox">
+                    <%=data[i].ID %>
+                  </label>
+                </td>
+                <td>
+                  <%=data[i].title %>
+                </td>
+                <td>
+                  <%=data[i].ave_price %>
+                </td>
+                <td>
+                  <%=data[i].position_main %>
+                </td>
+                <td>
+                  <%=data[i].tel %>
+                </td>
+                <td>
+                  <a href="javascript:;">编辑</a>
+                  <a href="javascript:;">删除</a>
+                </td>
+              </tr>
+            <%}%>
+            <%=data[0].ID %>
           </tbody>
         </table>
       </div>

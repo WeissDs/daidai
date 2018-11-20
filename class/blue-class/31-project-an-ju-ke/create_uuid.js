@@ -6,4 +6,4 @@ console.log(common.uuid());
 console.log(common.uuid());
 console.log(common.uuid());
 
-console.log(common.md5('13579'));
+// console.log(common.md5('13579'));
