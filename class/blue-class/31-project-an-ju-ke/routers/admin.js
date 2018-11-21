@@ -8,12 +8,19 @@ module.exports = admin_router;
 
 //进入所有的admin相关页面之前，都要校验用户身份——如果没有登录过（到登录页/admin/login）
 admin_router.use((req, res, next)=>{
+	//用session的写法
+
 	if(!req.session['admin_ID'] && req.url!='/login'){
 		res.redirect('/admin/login');
 		res.end();
 	}else{
+		console.log(req.session['admin_ID']);
 		next();
 	}
+
+	//用token的写法
+
+	// if(!req.cookie
 		
 })
 
@@ -26,6 +33,18 @@ admin_router.get('/login', (req, res, next)=>{
 //提交登录请求
 admin_router.post('/login', (req, res, next)=>{
 	let {username,password} = req.body;
+	//用token的写法
+
+	// function setToken(){
+		let oDate = new Date();
+		//设置分钟数
+		oDate.setMinutes(oDate.getMinutes()+20);
+		let t = Math.floor(oDate.getTime()/1000);
+
+		
+
+	// }
+	// setToken();
 	if(username == config.root_username){
 		if(common.md5(password) == config.root_password){
 			console.log('热烈欢迎超级管理员！！！');
