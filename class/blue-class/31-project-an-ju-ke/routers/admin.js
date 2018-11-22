@@ -14,13 +14,13 @@ admin_router.use((req, res, next)=>{
 		res.redirect('/admin/login');
 		res.end();
 	}else{
-		console.log(req.session['admin_ID']);
+		// console.log(req.session['admin_ID']);
 		next();
 	}
 
 	//用token的写法
 
-	// if(!req.cookie
+	// if(!req.cookie[''] ){}
 		
 })
 
@@ -33,18 +33,18 @@ admin_router.get('/login', (req, res, next)=>{
 //提交登录请求
 admin_router.post('/login', (req, res, next)=>{
 	let {username,password} = req.body;
-	//用token的写法
 
-	// function setToken(){
+	//用token的写法
+	function setToken(){
 		let oDate = new Date();
 		//设置分钟数
 		oDate.setMinutes(oDate.getMinutes()+20);
 		let t = Math.floor(oDate.getTime()/1000);
 
-		
+	}
+	setToken();
 
-	// }
-	// setToken();
+
 	if(username == config.root_username){
 		if(common.md5(password) == config.root_password){
 			console.log('热烈欢迎超级管理员！！！');
@@ -99,4 +99,10 @@ admin_router.get('/house', (req, res, next)=>{
 		
 	})
 
+})
+
+admin_router.post('/house', (req, res, next)=>{
+	console.log(req.body);
+	console.log(req.files);
+	res.end();
 })

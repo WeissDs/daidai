@@ -21,7 +21,7 @@
         <div class="navbar navbar-default">
           <form class="navbar-form navbar-left" action="index.html" method="post">
             <div class="form-group" style="margin-right:20px;">
-              <button type="button" class="btn btn-default glyphicon glyphicon-plus">新建</button>
+              <button id="new_data" type="button" class="btn btn-default glyphicon glyphicon-plus">新建</button>
             </div>
             <div class="form-group" style="margin-right:20px;">
               <button type="button" class="btn btn-default glyphicon glyphicon-remove">删除</button>
@@ -100,17 +100,18 @@
       </div>
     </div>
 
-    <div class="shadow"></div>
-    <div class="panel panel-default add_modify_dialog" style="display:block;">
+    <div id="shadow" class="shadow"></div>
+    <div id="dialog" class="panel panel-default add_modify_dialog">
       <div class="panel-heading">
         <h3 class="panel-title">
           添加/修改
-          <a href="#" class="pull-right glyphicon glyphicon-remove"></a>
+          <a id="btn_close" href="#" class="pull-right glyphicon glyphicon-remove"></a>
         </h3>
       </div>
       <div class="panel-body" style="overflow:auto; height:460px;">
-        <form class="form-horizontal" method="post">
-          <div class="form-group">
+        <!-- enctype="multipart/form-data" 用来转换form文件类型 使表单可以提交文件，图片数据 -->
+        <form id="form_contrainer" action="?" class="form-horizontal" method="post" enctype="multipart/form-data">
+          <!-- <div class="form-group">
             <label for="id1" class="col-sm-2 control-label">数据1</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" id="id1" placeholder="请输入数据...">
@@ -143,21 +144,70 @@
             </div>
           </div>
 
-          <div class="form-group">
+           <div class="form-group">
             <label for="id4" class="col-sm-2 control-label">文件</label>
             <div class="col-sm-10">
               <input type="file" class="form-control">
             </div>
-          </div>
+          </div> -->
 
           <div class="form-group">
             <div class="col-sm-10 col-sm-offset-2">
               <button type="submit" class="btn btn-primary">提交</button>
-              <button type="button" class="btn btn-danger">取消</button>
+              <button id="btn_cancel" type="button" class="btn btn-danger">取消</button>
             </div>
           </div>
         </form>
       </div>
     </div>
+
+    <script>
+      let $ = document.querySelectorAll.bind(document);
+
+
+      let btnNewData = $('#new_data')[0];
+      let shadow = $('#shadow')[0];
+      let dialog = $('#dialog')[0];
+
+      let btnClose = $('#btn_close')[0];
+      let btnCancel = $('#btn_cancel')[0];
+
+      btnNewData.onclick = function (){
+        shadow.style.display = 'block';
+        dialog.style.display = 'block';
+      }
+
+      btnClose.onclick = btnCancel.onclick = function (){
+        shadow.style.display = 'none';
+        dialog.style.display = 'none';
+      }
+
+      let oFormContrainer = $('#form_contrainer')[0];
+
+      let form_inputs = [
+        {type: 'text', name: 'title', title: '标题'},
+        {type: 'text', name: 'sub_title', title: '副标题'},
+        {type: 'text', name: 'position_main', title: '主位置'},
+        {type: 'text', name: 'position_second', title: '副位置'},
+        {type: 'tel', name: 'tel', title: '电话'},
+        {type: 'file', name: 'image_main', title:'主图'},
+        {type: 'file', name: 'image_banner', title:'小图', multiple: true}
+      ];
+
+      //multiple 是form表单input的属性 可以用来控制多文件上传
+      for(let i=0; i<form_inputs.length; i++){
+        let oDiv = document.createElement('div');
+        oDiv.innerHTML='';
+        oDiv.className='form-group';
+        oDiv.innerHTML=`
+          <label for="id${i}" class="col-sm-2 control-label">${form_inputs[i].title}</label>
+          <div class="col-sm-10">
+            <input type="${form_inputs[i].type}" id="id${i}" class="form-control" name="${form_inputs[i].name}" placeholder="请输入${form_inputs[i].title}" ${form_inputs[i].multiple?'multiple':'' }>
+          </div> 
+        `
+        oFormContrainer.appendChild(oDiv);
+      }
+    </script>
+
   </body>
 </html>
