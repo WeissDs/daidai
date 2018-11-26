@@ -7,7 +7,7 @@ let server = http.createServer((req, res)=>{
 
 	rs.on('error', err=>{
 		console.log('读取失败', err);
-		res.writeHeader(404);
+		// res.writeHeader(404);
 		res.write('Not Found');
 		res.end();
 	})

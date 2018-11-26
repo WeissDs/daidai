@@ -8,13 +8,24 @@ module.exports = admin_router;
 
 //进入所有的admin相关页面之前，都要校验用户身份——如果没有登录过（到登录页/admin/login）
 admin_router.use((req, res, next)=>{
-	//用session的写法
 
-	if(!req.session['admin_ID'] && req.url!='/login'){
+	//用token的写法
+
+	if(!req.cookie['admin_token'] && req.url!='/login' ){
 		res.redirect('/admin/login');
-		res.end();
 	}else{
-		// console.log(req.session['admin_ID']);
+		req.db.query(`SELECT * FROM admin_token_table WHERE ID='${req.cookie['admin_token']}'`, (err, data)=>{
+			if(err){
+				res.sendStatus(500);
+			}else if(data.length==0){
+				console.log('admin_token未找到');
+				res.redirect('/admin/login');
+			}else{
+				//将查找到的token对应的damin_ID存到req.admin_ID中, 方便在后面做比对
+				req.admin_ID = data[0]['admin_ID'];
+				next();
+			}
+		}
 		next();
 	}
 		
@@ -29,6 +40,17 @@ admin_router.get('/login', (req, res, next)=>{
 //提交登录请求
 admin_router.post('/login', (req, res, next)=>{
 	let {username,password} = req.body;
+
+	//用token的写法
+	function setToken(){
+		let oDate = new Date();
+		//设置分钟数
+		oDate.setMinutes(oDate.getMinutes()+20);
+		let t = Math.floor(oDate.getTime()/1000);
+
+	}
+	setToken();
+
 
 	if(username == config.root_username){
 		if(common.md5(password) == config.root_password){

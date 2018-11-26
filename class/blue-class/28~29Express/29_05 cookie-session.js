@@ -64,6 +64,9 @@ server.get('/favicon.ico', (req, res)=>{
 
 //cookie 和 session-----------------------------------------------------------------------------
 
+//原生设置cookie的方法
+res.setHeader('Set-Cookie',['ID=123']);
+
 //下载 cookie-parser 和 cookie-session  -D
 
 
