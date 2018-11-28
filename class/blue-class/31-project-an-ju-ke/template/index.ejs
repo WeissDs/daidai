@@ -110,6 +110,7 @@
       </div>
       <div class="panel-body" style="overflow:auto; height:460px;">
         <!-- enctype="multipart/form-data" 用来转换form文件类型 使表单可以提交文件，图片数据 -->
+        <!-- action="?" 黑科技 提交到本页面url -->
         <form id="form_contrainer" action="?" class="form-horizontal" method="post" enctype="multipart/form-data">
           <!-- <div class="form-group">
             <label for="id1" class="col-sm-2 control-label">数据1</label>
@@ -186,9 +187,20 @@
         {type: 'text', name: 'sub_title', title: '副标题'},
         {type: 'text', name: 'position_main', title: '主位置'},
         {type: 'text', name: 'position_second', title: '副位置'},
+        {type: 'number', name: 'ave_price', title: '均价'}
+        {type: 'number', name: 'area_min', title: '最小面积'}
+        {type: 'number', name: 'area_max', title: '最大面积'}
         {type: 'tel', name: 'tel', title: '电话'},
+        {type: 'date' name: 'sale_time', title: '开盘日期'}
+        {type: 'date' name: 'submit_time', title: '交房日期'}
+        {type: 'text' name: 'building_type', title: '建筑类型'}
         {type: 'file', name: 'image_main', title:'主图'},
-        {type: 'file', name: 'image_banner', title:'小图', multiple: true}
+        {type: 'file', name: 'image_banner1', title:'小图1', multiple: true},
+        {type: 'file', name: 'image_banner2', title:'小图2', multiple: true},
+        {type: 'file', name: 'image_banner3', title:'小图3', multiple: true},
+        {type: 'file', name: 'image_banner4', title:'小图4', multiple: true},
+        {type: 'file', name: 'image_banner5', title:'小图5', multiple: true},
+        {type: 'text', name: 'property_type', title:'户型'},
       ];
 
       //multiple 是form表单input的属性 可以用来控制多文件上传

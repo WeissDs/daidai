@@ -10,53 +10,71 @@ module.exports = admin_router;
 admin_router.use((req, res, next)=>{
 
 	//用token的写法
-
-	if(!req.cookie['admin_token'] && req.url!='/login' ){
-		res.redirect('/admin/login');
+	if(!req.cookies['admin_token'] && req.path!='/login' ){
+		res.redirect('/admin/login?ref='+req.path);
 	}else{
-		req.db.query(`SELECT * FROM admin_token_table WHERE ID='${req.cookie['admin_token']}'`, (err, data)=>{
-			if(err){
-				res.sendStatus(500);
-			}else if(data.length==0){
-				console.log('admin_token未找到');
-				res.redirect('/admin/login');
-			}else{
-				//将查找到的token对应的damin_ID存到req.admin_ID中, 方便在后面做比对
-				req.admin_ID = data[0]['admin_ID'];
-				next();
-			}
+		if(req.path=='/login'){
+			next();
+		}else{
+			req.db.query(`SELECT * FROM admin_token_table WHERE ID='${req.cookies['admin_token']}'`, (err, data)=>{
+				if(err){
+					res.sendStatus(500);
+				}else if(data.length==0){
+					console.log('admin_token未找到');
+					res.redirect('/admin/login?ref'+req.path);
+				}else{
+					//将查找到的token对应的damin_ID存到req.admin_ID中, 方便在后面做比对
+					req.admin_ID = data[0]['admin_ID'];
+					next();
+				}
+			})
 		}
-		next();
 	}
-		
+	
 })
 
 
 //RESTful风格 （ 按照请求方法或者路径等 来区分请求对象 ）如下：
 //展现login页面
 admin_router.get('/login', (req, res, next)=>{
-	res.render('login', {error_msg: ''});
+	res.render('login', {error_msg: '', ref: req.query.ref||''});
 })
+
 //提交登录请求
 admin_router.post('/login', (req, res, next)=>{
 	let {username,password} = req.body;
 
-	//用token的写法
-	function setToken(){
+	//登录通过设置token的函数
+	function setToken(token){
+		//生成一个token 也就是数据库中的ID
+		let ID = common.uuid();
+		//生成结束时间为20分钟后
 		let oDate = new Date();
-		//设置分钟数
 		oDate.setMinutes(oDate.getMinutes()+20);
 		let t = Math.floor(oDate.getTime()/1000);
-
+		//将数据写入数据库的admin_token_table表
+		req.db.query(`INSERT INTO admin_token_table (ID, admin_ID, expires) VALUES('${ID}', '${token}', '${t}')`, err=>{
+			if(err){
+				res.sendStatus(500);
+			}else{
+				res.cookie('admin_token', ID);
+				res.redirect('/admin'+req.query['ref']);
+			}
+		})
 	}
-	setToken();
 
+	//登录输入错误时的函数
+	function error(msg){
+		error_msg = '用户名或密码有误';
+		res.render('login', {error_msg: msg});
+		res.end();
+	}
 
+	//登录验证
 	if(username == config.root_username){
 		if(common.md5(password) == config.root_password){
 			console.log('热烈欢迎超级管理员！！！');
-			req.session['admin_ID']='1';
-			res.redirect('/admin/house');
+			setToken(1);		
 		}else{
 			console.log('超级管理员登录失败');
 			error('用户名或密码有误');
@@ -64,28 +82,23 @@ admin_router.post('/login', (req, res, next)=>{
 	}else{
 		req.db.query(`SELECT ID,username,password FROM admin_table WHERE username='${username}'`, (err, data)=>{
 			if(err){
-				console.log('服务器出错');
+				console.log('服务器出错'); 
 				error('服务器出错');
 			}else if(data.length==0){
 				console.log('该用户名不存在');
 				error('用户名或密码有误');
 			}else{
 				if(data[0].password == common.md5(password)){
-						console.log('管理员登录成功！');
-						req.session['admin_ID']=data[0].ID;
-						res.redirect('/admin/house');
-					}else{
-						console.log('管理员登录失败');
-						error('用户名或密码有误');
-					}
+					console.log('欢迎管理员！');
+					setToken(data[0].ID);	
+				}else{
+					console.log('管理员登录失败');
+					error('用户名或密码有误');
+				}
 			}
 		})
 	}
-	function error(msg){
-		error_msg = '用户名或密码有误';
-		res.render('login', {error_msg: msg});
-		res.end();
-	}
+	
 })
 
 //router的根目录重定向到/house

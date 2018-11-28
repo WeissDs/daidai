@@ -57,7 +57,7 @@ server.set('views', './template')
 
 //处理请求
 
-server.use('/admin', require('./routers/admin.js'));
+server.use('/admin', require('./routers/admin_token.js'));
 server.use('/', require('./routers/www.js'));
 
 //静态文件
