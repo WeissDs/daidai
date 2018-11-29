@@ -123,6 +123,16 @@ admin_router.get('/house', (req, res, next)=>{
 
 admin_router.post('/house', (req, res, next)=>{
 	console.log(req.body);
+	console.log(req.admin_ID);
 	console.log(req.files);
+	req.body['ID'] = common.uuid();
+	req.db.query(`INSERT INTO house_table (ID, admin_ID, title, sub_title) VALUES('${req.body.ID}','${req.admin_ID}','${req.body.title}','${req.body.sub_title}')`, err=>{
+		if(err){
+			console.log('服务器错误',err);
+			res.end();
+		}else{
+			console.log('写入house信息成功')
+		}
+	})
 	res.end();
 })
