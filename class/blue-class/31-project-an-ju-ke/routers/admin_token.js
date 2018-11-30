@@ -122,17 +122,65 @@ admin_router.get('/house', (req, res, next)=>{
 })
 
 admin_router.post('/house', (req, res, next)=>{
-	console.log(req.body);
-	console.log(req.admin_ID);
-	console.log(req.files);
 	req.body['ID'] = common.uuid();
-	req.db.query(`INSERT INTO house_table (ID, admin_ID, title, sub_title) VALUES('${req.body.ID}','${req.admin_ID}','${req.body.title}','${req.body.sub_title}')`, err=>{
+	req.body['admin_ID'] = req.admin_ID;
+
+	req.body['sale_time'] = Math.floor(new Date(req.body['sale_time']).getTime()/1000);
+	req.body['submit_time'] = Math.floor(new Date(req.body['submit_time']).getTime()/1000);
+
+	let oImgPath = [];
+	let oImgRealPaht = [];
+	let oPropertyPath = [];
+	let oPropertyRealPath = []
+	for(i=0; i<req.files.length; i++){
+		if(i==0){
+			oImgPath = [];
+			oImgRealPaht = [];
+		}
+		switch( req.files[i].fieldname ){
+			case 'image_main':
+				req.body.main_img_path = req.files[i].filename;
+				req.body.main_img_real_path = req.files[i].path;
+				break;
+			case 'image_banner':
+				oImgPath.push(req.files[i].filename);
+				oImgRealPaht.push(req.files[i].path);
+				break;
+			case 'property_img':
+				oPropertyPath.push(req.files[i].filename);
+				oPropertyRealPath.push(req.files[i].path);
+				break;
+		}
+	}
+	req.body.img_paths = oImgPath.join(',');
+	req.body.img_real_paths = oImgRealPaht.join(',');
+	req.body.property_img_paths = oPropertyPath.join(',');
+	req.body.property_img_real_paths = oPropertyRealPath.join(',');
+	console.log(req.body);
+	console.log(req.files);
+
+
+
+	let arrField = [];
+	let arrValue = [];
+
+	console.log(arrField);
+	for(let name in req.body){
+		arrField.push(name);
+		arrValue.push(req.body[name]);   //????
+	}
+	console.log(arrField);
+	console.log(arrValue);
+	let sql = `INSERT INTO house_table (${arrField.join(',')}) VALUES ('${arrValue.join("','")}')`;
+
+	req.db.query(sql, err=>{
 		if(err){
-			console.log('服务器错误',err);
-			res.end();
+			res.sendStatus(500);
+			console.log('服务器错误', err);
 		}else{
-			console.log('写入house信息成功')
+			console.log('写入house成功');
+			res.redirect('/admin/house');
 		}
 	})
-	res.end();
+
 })
