@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img{ width: 100px; height: 100px; }
+	</style>
+</head>
+<body>
+
+	<input id="button" type="file">
+	<img src="image/img3.png" alt="">
+
+	<script>
+		window.onload = function(){
+			let oButton = document.getElementById('button');
+
+			oButton.onchange = function(){
+				console.log(this.files)
+			}
+		}
+	</script>
+	
+</body>
+</html>
