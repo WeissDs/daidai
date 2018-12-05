@@ -85,6 +85,25 @@
 	 readAsDataURL			file					将文件读取为 DataURL
 	 readAsText				file, [encoding] 		将文件读取为文本
 
+####js的事件绑定
+
+	内联事件（被嗤之以鼻的写法）
+	obj.onclick  (和内联事件一样，多个事件会被复写，不能绑定多个事件)
+	obj.addEventListener(ev, fn, bool)	(ie8+)
+	obj.attachEvent('on'+ev, fn, bool)	(ie8_)
+
+
+```script	
+	function addEvent(element, ev, fn){
+	  // if else 结构可用三元运算符 ? : 来精简
+	  // 这里之所以要这样写，是便于读者理解
+	  if (element.attachEvent) // IE 8 及更低版本浏览器
+	   return element.attachEvent('on'+ev, fn);
+	  else // IE 8 及以上，或其它浏览器
+	   return element.addEventListener(ev, fn, false);
+	}
+```
+
 
 ####Mui框架的新跳转方式？
 

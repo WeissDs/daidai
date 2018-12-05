@@ -16,9 +16,30 @@
 		window.onload = function(){
 			let oButton = document.getElementById('button');
 
-			oButton.onchange = function(){
-				console.log(this.files)
-			}
+			oButton.addEventListener('change', (e)=>{
+				//e.target代替this指向oButton
+				console.log(e.target.files);
+				//为神马没有反应呀呀呀
+				let reader = new FileReader();
+				reader.onload = function(evt){
+					console.log(evt.target.result);
+				}
+			})
+
+			// oButton.onchange = function(){
+			// 	console.log(this.files);
+			// }
+
+
+
+			//svg无法被node加载的问题  ".svg":"image/svg+xml" (貌似需要设置mime类型为'image/svg+xml')
+			//FileReader的问题
+			//call bind 的问题
+			//mui跳转页面的方法和a标签跳转的区别
+
+			//window.onresize , window.onload (页面load事件？) , DOMContentLoaded事件 ?
+			//浏览器适配： animation需要-webkit-前缀, img在ie显示异常？ ，事件绑定addEventListener和attachEvent(ie8-)...
+
 		}
 	</script>
 	

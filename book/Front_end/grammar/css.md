@@ -82,5 +82,5 @@ div:before{
 ##CSS适配问题
 
 width\height: min-content/max-content/fit-content
-css3出的最新width值（IE和低级浏览器全部不支持
+css3出的最新width值（IE和低级浏览器全部不支持）
 
