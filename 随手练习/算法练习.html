@@ -20,6 +20,7 @@
 		for( a in obj ){
 			console.log(obj[a]);
 		}
+
 		console.log(Object.keys(obj));
 
 		// let o = 9
@@ -32,6 +33,81 @@
 		// do{
 		// 	console.log('do-while');
 		// }while(o<1)
+
+		//2018/12/7
+
+		let str1 = 'doiwonwon  owieoijr';
+
+		console.log(str1.charAt(10));
+		console.log(str1.indexOf('o'));
+		alert(str1.slice(2));
+		alert(str1)
+		alert(str1.replace(/o/g, '*'));
+
+		//查找所有子字符串的方法
+		var str = "I think of other ages that floated upon the stream of life and love and death";
+		var positions = new Array();
+		function searchSubStr(str,subStr){
+		    var pos = str.indexOf(subStr);
+		    while(pos>-1){
+		        positions.push(pos);
+		        pos = str.indexOf(subStr,pos+1);
+		    }
+		}
+		searchSubStr(str,"o");
+		console.log(positions);//8,11,29,37,51,64
+
+		//判断str是否以某个字符串开头
+
+		//方法1:substr() 方法
+		if("123".substr(0, 2) == "12"){
+		    console.log(true);
+		}
+
+		//方法2:substring() 方法
+		if("123".substring(0, 2) == "12"){
+		    console.log(true);
+		}
+
+		//方法3:slice()方法
+		if("123".slice(0,2) == "12"){
+		    console.log(true);
+		}
+
+		//方法4:indexOf() 方法
+		if("123".indexOf("12") == 0) {
+		    console.log(true);
+		}
+
+		//方法5:startsWith(),endsWith(),不过兼容不好
+		console.log("123".startsWith("12")); //true
+
+		console.log("123".endsWith("23"));　//true
+
+			// 兼容
+		if (typeof String.prototype.startsWith != 'function') {
+		 String.prototype.startsWith = function (prefix){
+		  return this.slice(0, prefix.length) === prefix;
+		 };
+		}
+
+		//方法6:正则
+		if("123".search("12") != -1) {
+		    console.log(true);
+		}
+
+		if(new RegExp("^12.*$").test(12)) {
+		    console.log(true);
+		}
+
+		if("12".match(new RegExp("^12.*$"))) {
+		    console.log(true);
+		}
+
+
+		
+
+		
 	</script>
 </body>
 </html>
