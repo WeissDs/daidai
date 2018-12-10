@@ -140,15 +140,15 @@ admin_router.post('/house', (req, res, next)=>{
 		switch( req.files[i].fieldname ){
 			case 'image_main':
 				req.body.main_img_path = req.files[i].filename;
-				req.body.main_img_real_path = req.files[i].path;
+				req.body.main_img_real_path = req.files[i].path.replace(/\\/g, '\\\\');
 				break;
 			case 'image_banner':
 				oImgPath.push(req.files[i].filename);
-				oImgRealPaht.push(req.files[i].path);
+				oImgRealPaht.push(req.files[i].path).replace(/\\/g, '\\\\');
 				break;
 			case 'property_img':
 				oPropertyPath.push(req.files[i].filename);
-				oPropertyRealPath.push(req.files[i].path);
+				oPropertyRealPath.push(req.files[i].path).replace(/\\/g, '\\\\');
 				break;
 		}
 	}

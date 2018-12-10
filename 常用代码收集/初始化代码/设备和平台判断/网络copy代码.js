@@ -1,6 +1,6 @@
 //移动端判断 安卓、苹果、ipad
 
-	//avigator是HTML中的内置对象，包含浏览器的信息；
+	//navigator是HTML中的内置对象，包含浏览器的信息；
 	//userAgent是navigator的属性方法，可以返回由客户机发送服务器的头部的值，作用其实就是就是返回当前用户所使用的是什么浏览器
 	//toLowerCase(）是将转换为小写。
 var ua = navigator.userAgent.toLowerCase();  
