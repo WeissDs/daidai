@@ -31,11 +31,16 @@ server.use((req, res, next)=>{
 	req.db = db;
 	next();
 })
-
-server.get('', (req, res)=>{
-	console.log('hello');
+//自己加的
+server.get('/favicon.ico', (req, res)=>{
 	res.end();
 })
+
+//测试服务能否正常运行
+// server.get('', (req, res)=>{
+// 	console.log('hello');
+// 	res.end();
+// })
 
 //中间件配置
 

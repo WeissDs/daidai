@@ -1,6 +1,7 @@
 const express = require('express');
 const config = require('../config');
-const common = require('../libs/common')
+const common = require('../libs/common');
+const fs = require('fs');
 
 let admin_router = express.Router();
 
@@ -39,7 +40,6 @@ admin_router.use((req, res, next)=>{
 admin_router.get('/login', (req, res, next)=>{
 	res.render('login', {error_msg: '', ref: req.query.ref||''});
 })
-
 //提交登录请求
 admin_router.post('/login', (req, res, next)=>{
 	let {username,password} = req.body;
@@ -100,12 +100,10 @@ admin_router.post('/login', (req, res, next)=>{
 	}
 	
 })
-
 //router的根目录重定向到/house
 admin_router.get('/', (req, res, next)=>{
 	res.redirect('/admin/house');
 })
-
 //渲染/house主页面 index.ejs
 admin_router.get('/house', (req, res, next)=>{
 	req.db.query('SELECT * FROM house_table', (err, data)=>{
@@ -120,7 +118,7 @@ admin_router.get('/house', (req, res, next)=>{
 	})
 
 })
-
+//增： 将新增数据添加到数据库
 admin_router.post('/house', (req, res, next)=>{
 	req.body['ID'] = common.uuid();
 	req.body['admin_ID'] = req.admin_ID;
@@ -144,11 +142,11 @@ admin_router.post('/house', (req, res, next)=>{
 				break;
 			case 'image_banner':
 				oImgPath.push(req.files[i].filename);
-				oImgRealPaht.push(req.files[i].path).replace(/\\/g, '\\\\');
+				oImgRealPaht.push(req.files[i].path.replace(/\\/g, '\\\\'));
 				break;
 			case 'property_img':
 				oPropertyPath.push(req.files[i].filename);
-				oPropertyRealPath.push(req.files[i].path).replace(/\\/g, '\\\\');
+				oPropertyRealPath.push(req.files[i].path.replace(/\\/g, '\\\\'));
 				break;
 		}
 	}
@@ -183,4 +181,40 @@ admin_router.post('/house', (req, res, next)=>{
 		}
 	})
 
+})
+//删： 将所删除条目在数据库所有相关的数据删除
+admin_router.get('/house/delete', (req, res, next)=>{
+	console.log(req.query['id']);
+
+	let ID = req.query['id'];
+
+	req.db.query(`SELECT * FROM house_table WHERE ID='${ID}'`, (err, data)=>{
+		if(err){
+			console.log('数据库错误',err);
+			res.sendStatus(500);
+			res.end();
+		}else if(data.length==0){
+			res.sendStatus(404, 'no this data');
+			res.end();
+			// res.status(404).send('no this data');
+		}else{
+			let arr = [];
+			// console.log(data);
+
+			data[0].img_real_paths.split(',').forEach(item=>{
+				arr.push(item);
+			})
+			console.log(arr);
+
+			// let i=0;
+			// function (){}
+			for(i=0; i<arr.length; i++){
+				fs.unlink(arr[i], err=>{
+					if(err){
+						console.log('a');
+					}
+				})
+			}
+		}
+	})
 })
