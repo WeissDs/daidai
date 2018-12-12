@@ -185,7 +185,6 @@ admin_router.post('/house', (req, res, next)=>{
 //删： 将所删除条目在数据库所有相关的数据删除
 admin_router.get('/house/delete', (req, res, next)=>{
 	console.log(req.query['id']);
-
 	let ID = req.query['id'];
 
 	req.db.query(`SELECT * FROM house_table WHERE ID='${ID}'`, (err, data)=>{
@@ -194,24 +193,57 @@ admin_router.get('/house/delete', (req, res, next)=>{
 			res.sendStatus(500);
 			res.end();
 		}else if(data.length==0){
-			res.sendStatus(404, 'no this data');
+			//res.sendStatus(404, 'no this data');    教程这样写发送不了文字
+			res.status(500).send('no this data');
 			res.end();
-			// res.status(404).send('no this data');
 		}else{
+		//删除本地的关联图片
 			let arr = [];
 			// console.log(data);
-
 			data[0].img_real_paths.split(',').forEach(item=>{
 				arr.push(item);
 			})
 			console.log(arr);
+			
+			// for(i=0; i<arr.length; i++){
+			// 	fs.unlink(arr[i], err=>{
+			// 		if(err){
+			// 			console.log('a');
+			// 			res.end();
+			// 		}else{
 
-			// let i=0;
-			// function (){}
-			for(i=0; i<arr.length; i++){
+			// 			res.end();
+			// 		}
+					
+			// 	})
+			// }
+			// //循环结束后执行，node不能写在外部，会异步执行 所以需要使用以下递归方法
+			// res.redirect('/admin/house');
+
+			let i=0;
+			next();
+			function next(){
 				fs.unlink(arr[i], err=>{
 					if(err){
-						console.log('a');
+						// res.sendStatus(404, '没有'+arr[i]+'文件');   教程这样写发送不了文字
+						res.status(500).send('没有找到'+arr[i]+'文件，删除数据失败');
+						console.log('没有'+arr[i]+'文件');
+					}else{
+						i++
+						if(i>=arr.length){
+		//在数据库删除该数据
+							req.db.query(`DELETE FROM house_table WHERE ID='${ID}'`, err=>{
+								if(err){
+									res.sendStatus(500);
+									console.log('数据库错误，删除数据失败', err);
+								}else{
+									res.redirect('/admin/house');
+								}
+							})
+						}else{
+							next();
+						}
+						
 					}
 				})
 			}

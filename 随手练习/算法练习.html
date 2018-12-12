@@ -5,12 +5,17 @@
 	<title>算法练习</title>
 </head>
 <body>
+	<button id='btn' >111</button>
 	
 	<script>
-
+		
+		document.getElementById('btn').disable='true';
 		let arr=[12,5,9,3,88,46,7];
 		let obj = {a: 12, b: '12222', c: {d:111, e:222}}
 		let a = arr.join('+');
+
+
+		console.log(typeof 1.2=='float');
 
 		console.log(typeof(a)+':'+a);
 		console.log(new Date().getDay());
