@@ -12,7 +12,7 @@
 
 	var url = location.search();
 
-2.网上的一个获取方法
+2.获取方法
 
 	function GetRequest() {  
 	   var url = location.search; //获取url中"?"符后的字串  
@@ -27,10 +27,6 @@
 	   return theRequest;  
 	}  
 	
-3.自己项目的获取方法
-
-	var url = location.search();
-	var oTxt = url.split("=")[1];
 
 
 
