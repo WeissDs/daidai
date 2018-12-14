@@ -20,6 +20,11 @@ var timeOne = "2018/12/8 12:50:33";  //正确字符串格式 或2018/12/8/12：5
 var strToTime1 = new Date(timeOne);
 console.log(strToTime1);
 
+//获取时间精确到秒
+Date.parse(new Date());
+//获取时间精确到毫秒
+new Date().getTime();
+
 //处理字符串为new Date()可以操作的格式
 var time = "2018-05-03";
 var timeTwo = time.replace(/-/g,"/");  // /a/g全局更换a字符

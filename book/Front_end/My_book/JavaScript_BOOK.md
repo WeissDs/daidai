@@ -148,6 +148,22 @@ Fetch API 是基于 Promise 设计的
 类，对象，实例，构造函数的理解：
 所谓“类”就是对象的模板，对象就是“类”的实例。JavaScript语言没有“类”，而改用构造函数（constructor）作为对象的模板。
 
+###new 操作符 都做了什么
+
+#####传统面向对象的class + new的方式创建对象，在javascript中，我们将这类方式成为Pseudoclassical。
+
+#####执行如下代码：
+
+  var obj = new Base();  
+
+#####new操作符具体干了什么呢?其实很简单，就干了三件事情。
+
+    var obj  = {}; obj.__proto__ = Base.prototype; Base.call(obj);  
+
+    第一行，我们创建了一个空对象obj
+    第二行，我们将这个空对象的__proto__成员指向了Base函数对象prototype成员对象
+    第三行，我们将Base函数对象的this指针替换成obj，然后再调用Base函数，于是我们就给obj对象赋值了一个id成员变量，这个成员变量的值是”base”
+
 ##闭包
 ######javascript特殊的变量作用域（"链式作用域"结构）： 函数外部无法读取函数内部的局部变量，js的子对象会一级一级向上找所有父对象的变量。
 

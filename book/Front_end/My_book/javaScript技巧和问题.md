@@ -1,19 +1,28 @@
-##浏览器相关
+##JS技巧
 
-####获取和赋值url
 
+####url相关
+
+---
+
+#####获取和赋值url
+
+```javascript
 	window.location
 	window.location = 'http://www.baidu.com/'
+```
 
-
-####获取url问号后的字符串
+#####获取url问号后的字符串
 
 1.方法
 
+```javascript
 	var url = location.search();
+```
 
 2.获取方法
 
+```javascript
 	function GetRequest() {  
 	   var url = location.search; //获取url中"?"符后的字串  
 	   var theRequest = new Object();  
@@ -25,8 +34,63 @@
 	      }  
 	   }  
 	   return theRequest;  
-	}  
-	
+	}
+```
+<br>
+
+
+
+
+####获取定位
+
+---
+
+#####此方法需要验证，和扩展
+
+```javascript
+	navigator.geolocation.getCurrentPosition(); 
+```
+<br>
+
+
+####获取浏览器版本信息（能以此判断浏览器和设备类型）
+
+---
+
+#####返回客户机发送的 user-agent 头部值
+```javascript
+	window.Navigator.userAgent();
+```
+<br>
+
+
+
+####cloneNode方法
+
+---
+
+#####cloneNode() 方法可创建指定的节点的精确拷贝， 拷贝所有属性和值。
+
+#####该方法将复制并返回调用它的节点的副本。如果传递给它的参数是true，它还将递归复制当前节点的所有子孙节点。否则，它只复制当前节点。
+
+```javascript
+	cloneNode(true)......克隆所有后代
+	cloneNode(false).....克隆当前元素
+	oDiv.appendChild(oBannerLi[0].cloneNode(true));
+```
+<br>
+
+####Dom变动事件监听
+
+---
+
+    DOMSubtreeModified      Dom结构发生变化
+    DOMNodeInserted         被作为子节点插入另一个节点时触发
+    DOMNodeRemoved          移除节点时触发
+
+
+
+
 
 
 
@@ -35,9 +99,13 @@
 
 ####网页小图标写法
 
+---
+
 	<link rel="favicon" href="/images/fav.png">
 
 ####隐藏的元素点击后设置transition动画效果失效的解决方法
+
+---
 
 	let oBtn = document.getElementsByTagName('input')[0];
 	let oDiv = document.getElementsByTagName('div')[0];

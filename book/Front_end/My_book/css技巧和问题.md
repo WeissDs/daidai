@@ -77,6 +77,17 @@ div:before{
     }
 ```
 
+#####6.不规则图片点击写法
+
+######1分开切图： 将多个切好的图片放入<a>标签的<div>中（注意a标签不可以给宽高否则空隙部分也会触发点击事件，可以给主图定宽高后，覆土用绝对定位 ps: 师父说这里可以用map标签）， 用绝对定位排好。
+
+        <a>
+            <div 设置宽高 position: relative;>
+                <img src="" alt="" position: absolute; top: -x;>
+                <img src="" alt="" position: absolute;>
+            </div>
+        </a>
+
 
 
 ##CSS适配问题
