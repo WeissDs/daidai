@@ -8,6 +8,7 @@ const cookieSession = require('cookie-session');	//session中间件
 const bodyParser = require('body-parser');		//解析post数据
 
 const config = require('./config');
+const common = require('./libs/common');
 
 
 
@@ -47,7 +48,19 @@ server.get('/favicon.ico', (req, res)=>{
 //普通POST数据
 server.use(bodyParser.urlencoded({extended: false})) //不需要扩展模式
 //文件POST数据
-let multerObj = multer({dest: './upload'});
+// let multerObj = multer({dest: './upload'});
+
+		// 通过 filename 属性定制(自己找到的初始化方法可以更改上传文件的文件名)
+		let storage = multer.diskStorage({
+		    destination: function (req, file, cb) {
+		        cb(null, './upload');    // 保存的路径，备注：需要自己创建
+		    },
+		    filename: function (req, file, cb) {
+		        // 将保存文件名设置为 字段名 + 时间戳，比如 logo-1478521468943
+		        cb(null, file.fieldname + '-' + common.uuid()+'.'+ file.originalname.split('.')[1]);  
+		    }
+		});
+		let multerObj = multer({ storage: storage });
 server.use(multerObj.any());
 //cookie
 server.use(cookieParser(require('./secret/cookie_key.js')));

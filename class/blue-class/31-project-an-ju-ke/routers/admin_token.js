@@ -154,6 +154,7 @@ admin_router.post('/house', (req, res, next)=>{
 	req.body.img_real_paths = oImgRealPaht.join(',');
 	req.body.property_img_paths = oPropertyPath.join(',');
 	req.body.property_img_real_paths = oPropertyRealPath.join(',');
+
 	console.log(req.body);
 	console.log(req.files);
 
@@ -189,7 +190,7 @@ admin_router.get('/house/delete', (req, res, next)=>{
 
 	req.db.query(`SELECT * FROM house_table WHERE ID='${ID}'`, (err, data)=>{
 		if(err){
-			console.log('数据库错误',err);
+			console.log('服务器错误',err);
 			res.sendStatus(500);
 			res.end();
 		}else if(data.length==0){
@@ -200,26 +201,48 @@ admin_router.get('/house/delete', (req, res, next)=>{
 		//删除本地的关联图片
 			let arr = [];
 			// console.log(data);
+
+			//arr加入banner图片
 			data[0].img_real_paths.split(',').forEach(item=>{
 				arr.push(item);
 			})
+			//arr加入房型图
+			data[0].property_img_real_paths.split(',').forEach(item=>{
+				arr.push(item);
+			})
+			//arr加入主图
+			arr.push(data[0].main_img_real_path);
 			console.log(arr);
-			
+
+			// //循环方法（同时删除多个数据），向磁盘同时并发多个请求，容易卡死，性能低。
+			// let complete=0;
+			// 	// //用forEach()写法
+			// 	// arr.forEach(item=>{fs.unlink(item, err=>{...})})
 			// for(i=0; i<arr.length; i++){
 			// 	fs.unlink(arr[i], err=>{
 			// 		if(err){
-			// 			console.log('a');
-			// 			res.end();
+			// 			//这里会重复报错，服务器会崩溃
+			// 			res.sendStatus(500);
+			// 			console.log('服务器错误', err);
 			// 		}else{
-
-			// 			res.end();
+			// 			complete++;
+			// 			if(complete==arr.length){
+			// 				req.db.query(`DELETE FROM house_table WHERE ID='${ID}'`, err=>{
+			// 					if(err){
+			// 						res.sendStatus(500);
+			// 						console.log('服务器错误', err);
+			// 					}else{
+			// 						res.redirect('/admin/house');
+			// 					}
+			// 				})
+			// 			}
 			// 		}
-					
 			// 	})
 			// }
-			// //循环结束后执行，node不能写在外部，会异步执行 所以需要使用以下递归方法
-			// res.redirect('/admin/house');
+			
+			
 
+			//递归方法（一条删完再删后一条数据），这种方式优于循环。
 			let i=0;
 			next();
 			function next(){
@@ -235,7 +258,7 @@ admin_router.get('/house/delete', (req, res, next)=>{
 							req.db.query(`DELETE FROM house_table WHERE ID='${ID}'`, err=>{
 								if(err){
 									res.sendStatus(500);
-									console.log('数据库错误，删除数据失败', err);
+									console.log('服务器错误，删除数据失败', err);
 								}else{
 									res.redirect('/admin/house');
 								}
