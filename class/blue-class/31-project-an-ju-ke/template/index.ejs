@@ -24,7 +24,7 @@
               <button id="new_data" type="button" class="btn btn-default glyphicon glyphicon-plus">新建</button>
             </div>
             <div class="form-group" style="margin-right:20px;">
-              <button type="button" class="btn btn-default glyphicon glyphicon-remove">删除</button>
+              <button id="btn_del" type="button" class="btn btn-default glyphicon glyphicon-remove">删除</button>
             </div>
             <div class="form-group">
               <input type="search" class="form-control">
@@ -56,7 +56,7 @@
             <tr>
               <th>
                 <label>
-                  <input type="checkbox">
+                  <input id="check_all" type="checkbox">
                   ID
                 </label>
               </th>
@@ -72,7 +72,7 @@
               <tr>
                 <td>
                   <label>
-                    <input type="checkbox">
+                    <input class="id-check" type="checkbox" name="ID_check" value="<%=data[i].ID %>">
                     <%=data[i].ID %>
                   </label>
                 </td>
@@ -152,7 +152,7 @@
             </div>
           </div> -->
 
-          <div class="form-group">
+          <div id="form-sub" class="form-group">
             <div class="col-sm-10 col-sm-offset-2">
               <button type="submit" class="btn btn-primary">提交</button>
               <button id="btn_cancel" type="button" class="btn btn-danger">取消</button>
@@ -181,6 +181,7 @@
       }
 
       let oFormContrainer = $('#form_contrainer')[0];
+      let oFormDiv = $('#form-sub')[0];
 
       let form_inputs = [
         {type: 'text', name: 'title', title: '标题'},
@@ -211,8 +212,35 @@
             <input type="${form_inputs[i].type}" id="id${i}" class="form-control" name="${form_inputs[i].name}" placeholder="请输入${form_inputs[i].title}" ${form_inputs[i].multiple?'multiple':'' }>
           </div> 
         `
-        oFormContrainer.appendChild(oDiv);
+          oFormContrainer.insertBefore(oDiv,oFormDiv);
+          // $(oDiv).insertBefore(oFormDiv);    //jquery写法
+        
       }
+
+      //数据全选功能
+      let ocheckAll = $('#check_all');
+      let ocheckAll1 = $('#check_all')[0];
+      console.log(ocheckAll)
+      console.log(ocheckAll1)
+      let acheck = $('.id-check');
+
+      //如果总按钮是没有选中的状态  设置点击后acheck[i].checked = true; ，else 。。。
+        ocheckAll.click(function(){
+          if(ocheckAll[0].checked){
+            for(let i=0; i<acheck.length; i++){
+              acheck[i].checked = true;
+            }
+          }else{
+            for(let i=0; i<acheck.length; i++){
+              acheck[i].checked = false;
+            }
+          }
+          
+        })
+
+      //多条数据删除功能的 多个选择数据的id拼接
+
+
     </script>
 
   </body>
