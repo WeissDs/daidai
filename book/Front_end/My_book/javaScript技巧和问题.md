@@ -90,6 +90,18 @@
 
 
 
+##JS问题
+
+#####window.navigator.geolocation.getCurrentPosition，在IOS10系统中无法定位问题:
+
+[网络资料](9https://blog.csdn.net/for12/article/details/52803787)
+
+
+#####跨域问题的解决方法
+[网络资料](https://blog.csdn.net/lambert310/article/details/51683775)
+
+
+
 
 
 
@@ -124,6 +136,8 @@
 
 ####js的FileReader对象
 
+---
+
 [FileReader](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/FileReader)
 
 	function printFile(file) {
@@ -151,6 +165,8 @@
 
 ####js的事件绑定
 
+---
+
 	内联事件（被嗤之以鼻的写法）
 	obj.onclick  (和内联事件一样，多个事件会被复写，不能绑定多个事件)
 	obj.addEventListener(ev, fn, bool)	(ie8+)
@@ -169,6 +185,25 @@
 ```
 
 
-####Mui框架的新跳转方式？
+####从微信公众号栏目（H5页面）退回到微信公众号
 
-####a标签的onclick="return confirm('xxx')"  ; A instanceof B
+---
+
+也就是关闭微信的内置浏览器
+
+    function weixinClosePage() {
+    if (typeof WeixinJSBridge == "undefined") {
+        if (document.addEventListener) {
+            document.addEventListener('WeixinJSBridgeReady', weixin_ClosePage, false);
+        } else if (document.attachEvent) {
+            document.attachEvent('WeixinJSBridgeReady', weixin_ClosePage);
+            document.attachEvent('onWeixinJSBridgeReady', weixin_ClosePage);
+        }
+    } else {
+        weixin_ClosePage();
+    }
+    }
+    function weixin_ClosePage() {
+    WeixinJSBridge.call('closeWindow');
+    }
+

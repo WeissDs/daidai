@@ -242,3 +242,84 @@ Fetch API 是基于 Promise 设计的
     其中自动生成的：
     session    就是  sess_ID
     session.sig   就是  sess_ID的签名（防止篡改）
+
+##js深拷贝和浅拷贝
+
+```javascript
+function arr_copy(){
+    let arr1 = [2,56,24242,266];
+    let arr2 = arr1;
+
+    arr2.push(5);
+
+    console.log('arr2 = arr1的测试结果：')
+    console.log(arr1);  
+    console.log(arr2);  
+     
+}
+
+function arr_deep_copy(){
+    let arr1 = [2,56,[34,66],24242,266];
+    let arr2 = deepClone(arr1);
+
+    arr2[2].push(5);
+
+    console.log('深拷贝函数的测试结果：')
+    console.log(arr1);
+    console.log(arr2);
+
+}
+
+//深拷贝的函数封装
+function deepClone(obj){
+    let result = Array.isArray(obj)?[]:{};
+    if(obj && typeof obj === 'object'){
+            for(key in obj){
+                 //obj.hasOwnProperty(key)是什么意思？
+                 if(obj.hasOwnProperty(key)){
+                    if(obj[key] && typeof obj[key] === 'object'){
+                        result[key] = deepClone(obj[key]);
+                    }else{
+                        result[key] = obj[key];
+                    }
+                 }
+            }
+    }
+    return result;
+}
+
+//js 里concat 和 slice会浅拷贝对象，但它不是深拷贝（只拷贝了一级属性）, 其余方法都不是拷贝而是引用。
+
+function slice_shallow_copy(){
+    let arr = [23, 45, 18, 29, 1, 1, 1, 2, [23, 4], 1];
+
+    console.log('slice方法的测试结果：')
+    console.log(arr.slice(3));
+    console.log(arr);
+    console.log(arr.pop(2));
+    console.log(arr);
+    console.log(arr.sort());
+    console.log(arr);
+}
+
+
+//除了递归，我们还可以借用JSON对象的parse和stringify(jquery里有extend方法)
+//JSON.stringify与JSON.parse除了实现深拷贝，还能结合localStorage实现对象数组存储？？？？
+function json_deep_copy(){
+    let a = [0, [1, 2], 3, 4];
+
+    let b = JSON.stringify(a);
+    let c = JSON.parse(b);
+
+    a[1].push(6);
+
+    console.log('JSON方法的测试结果：');
+    console.log(a);
+    console.log(b);
+    console.log(c);
+}
+arr_copy();
+arr_deep_copy();
+slice_shallow_copy();
+json_deep_copy();
+```

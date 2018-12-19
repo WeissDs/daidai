@@ -20,10 +20,11 @@
         * [2.javaScript技巧和问题](Front_end/My_book/javaScript技巧和问题.md)
         * [3.CSS/HTML读书笔记](Front_end/My_book/CSS_BOOK.md)
         * [4.CSS/HTML技巧和问题](Front_end/My_book/css技巧和问题.md)
-        * [5.正则](Front_end/My_book/正则.md)
-        * [6.数据网络](Front_end/My_book/数据网络.md)
-        * [7.计算机基础](Front_end/My_book/计算机基础.md)
-        * [8.算法]
+        * [5.Jquery笔记](Front_end/My_book/jquery笔记.md)
+        * [6.正则](Front_end/My_book/正则.md)
+        * [7.数据网络](Front_end/My_book/数据网络.md)
+        * [8.计算机基础](Front_end/My_book/计算机基础.md)
+        * [9.算法]
        
 * [2.note]()
     * [1.news](note/news.md)

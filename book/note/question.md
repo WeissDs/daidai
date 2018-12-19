@@ -3,6 +3,10 @@
 
 #####jquery不支持ES6语法？？？
 
+####Mui框架的新跳转方式？
+
+####a标签的onclick="return confirm('xxx')"  ; A instanceof B
+
 ######问题
 
 1. DOM操作的原理，怎么影响性能的
