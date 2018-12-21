@@ -22,7 +22,7 @@ admin_router.use((req, res, next)=>{
 					res.sendStatus(500);
 				}else if(data.length==0){
 					console.log('admin_token未找到');
-					res.redirect('/admin/login?ref'+req.path);
+					res.redirect('/admin/login?ref='+req.path);
 				}else{
 					//将查找到的token对应的damin_ID存到req.admin_ID中, 方便在后面做比对
 					req.admin_ID = data[0]['admin_ID'];
@@ -31,13 +31,13 @@ admin_router.use((req, res, next)=>{
 			})
 		}
 	}
-	
 })
 
 
 //RESTful风格 （ 按照请求方法或者路径等 来区分请求对象 ）如下：
 //展现login页面
 admin_router.get('/login', (req, res, next)=>{
+	console.log(req.query.ref);
 	res.render('login', {error_msg: '', ref: req.query.ref||''});
 })
 //提交登录请求
@@ -66,7 +66,7 @@ admin_router.post('/login', (req, res, next)=>{
 	//登录输入错误时的函数
 	function error(msg){
 		error_msg = '用户名或密码有误';
-		res.render('login', {error_msg: msg});
+		res.render('login', {error_msg: msg, ref: req.query.ref});
 		res.end();
 	}
 
@@ -106,17 +106,34 @@ admin_router.get('/', (req, res, next)=>{
 })
 //渲染/house主页面 index.ejs
 admin_router.get('/house', (req, res, next)=>{
-	req.db.query('SELECT * FROM house_table', (err, data)=>{
+	const size = 10;
+	let page = req.query.page;
+	if(!page){
+		page = 1;
+	}else if(!/^[1-9]\d*$/){
+		page = 1;
+	}
+
+	let start = (page-1)*10;
+
+	//第一层查询分页数据 和第二层查询总数据量 
+	req.db.query(`SELECT * FROM house_table LIMIT ${start}, ${size}`, (err, data)=>{
 		if(err){
 			console.log('服务器错误');
 			res.end();
 		}else{
-			res.render('index', {data})
-			res.end();
+			req.db.query(`SELECT COUNT('*') AS page FROM house_table`, (err, count_data)=>{
+				if(err){
+					console.log('服务器错误');
+					res.sendStatus(500);
+				}else{
+					res.render('index', {data, page_count: Math.ceil(count_data[0].page/size)});
+					res.end();
+				}
+			});
 		}
 		
 	})
-
 })
 //增： 将新增数据添加到数据库
 admin_router.post('/house', (req, res, next)=>{
@@ -138,7 +155,7 @@ admin_router.post('/house', (req, res, next)=>{
 		switch( req.files[i].fieldname ){
 			case 'image_main':
 				req.body.main_img_path = req.files[i].filename;
-				req.body.main_img_real_path = req.files[i].path.replace(/\\/g, '\\\\');
+				req.body.main_img_real_path = req.files[i].path.replace(/\\/g, '\\\\');  //这里replace是为了使图片数据加入时有斜杠分割
 				break;
 			case 'image_banner':
 				oImgPath.push(req.files[i].filename);
@@ -155,23 +172,30 @@ admin_router.post('/house', (req, res, next)=>{
 	req.body.property_img_paths = oPropertyPath.join(',');
 	req.body.property_img_real_paths = oPropertyRealPath.join(',');
 
+
+	//在不填入数字的时候 将NAN换成0，不然服务器会报错
+	// for(let key in req.body ){
+	// 	if(req.body[key] == NaN ){   //为什么NaN取不出来呢
+	// 		req.body[key] = 0;
+	// 	}
+	// }
+
+
 	console.log(req.body);
 	console.log(req.files);
 
 
-
+	//新建两个数组 分别放入新增房源信息的key和value
 	let arrField = [];
 	let arrValue = [];
 
-	console.log(arrField);
 	for(let name in req.body){
 		arrField.push(name);
 		arrValue.push(req.body[name]);   //????
 	}
-	console.log(arrField);
-	console.log(arrValue);
-	let sql = `INSERT INTO house_table (${arrField.join(',')}) VALUES ('${arrValue.join("','")}')`;
 
+	//将新增房源信息放入数据库
+	let sql = `INSERT INTO house_table (${arrField.join(',')}) VALUES ('${arrValue.join("','")}')`;
 	req.db.query(sql, err=>{
 		if(err){
 			res.sendStatus(500);
@@ -185,7 +209,7 @@ admin_router.post('/house', (req, res, next)=>{
 })
 //删： 将所删除条目在数据库所有相关的数据删除
 admin_router.get('/house/delete', (req, res, next)=>{
-	console.log(req.query['id']);
+	//这里为了可以同时删除多个信息，所以前台是id拼接传入的，这里要split(',');
 	let oID = req.query['id'];
 	let aID = oID.split(',');
 	console.log(aID)
@@ -202,125 +226,114 @@ admin_router.get('/house/delete', (req, res, next)=>{
 		let idIndex=0;
 		idNext();
 		function idNext(){
-			if(idIndex<aID.length){
-				let ID = aID[idIndex++];
-				req.db.query(`SELECT * FROM house_table WHERE ID='${ID}'`, (err, data)=>{
-					if(err){
-						console.log('服务器错误',err);
-						res.sendStatus(500);
-						res.end();
-					}else if(data.length==0){
-						//res.sendStatus(404, 'no this data');    教程这样写发送不了文字
-						res.status(500).send('no this data');
-						res.end();
-					}else{
-					//删除本地的关联图片
-						let arr = [];
-						// console.log(data);
+			let ID = aID[idIndex++];  //idIndex++首次为0，所以可以这么简写
+			req.db.query(`SELECT * FROM house_table WHERE ID='${ID}'`, (err, data)=>{
+				if(err){
+					console.log('服务器错误',err);
+					res.sendStatus(500);
+					res.end();
+				}else if(data.length==0){
+					//res.sendStatus(404, 'no this data');    教程这样写发送不了文字
+					res.status(500).send('no this data');
+					res.end();
+				}else{
+				//删除本地的关联图片
+					let arr = [];
+					// console.log(data);
 
-						//arr加入banner图片
-						if(data[0].img_real_paths){
-							data[0].img_real_paths.split(',').forEach(item=>{
-								arr.push(item);
-							})
-						}
-						//arr加入房型图
-						if(data[0].property_img_real_paths){
-							data[0].property_img_real_paths.split(',').forEach(item=>{
-								arr.push(item);
-							})
-						}
-						//arr加入主图(用智障的方法避免用户不传图时报错)
-						data[0].main_img_real_path && arr.push(data[0].main_img_real_path);
-						console.log(arr);
+					//arr加入banner图片
+					if(data[0].img_real_paths){
+						console.log(1)
+						data[0].img_real_paths.split(',').forEach(item=>{
+							arr.push(item);
+						})
+					}
+					//arr加入房型图
+					if(data[0].property_img_real_paths){
+						console.log(2)
+						data[0].property_img_real_paths.split(',').forEach(item=>{
+							arr.push(item);
+						})
+					}
+					//arr加入主图(用智障的方法避免用户不传图时报错)
+					data[0].main_img_real_path && arr.push(data[0].main_img_real_path);
+					console.log(arr);
 
-						// //循环方法（同时删除多个数据），向磁盘同时并发多个请求，容易卡死，性能低。
-						// let complete=0;
-						// 	// //用forEach()写法
-						// 	// arr.forEach(item=>{fs.unlink(item, err=>{...})})
-						// for(i=0; i<arr.length; i++){
-						// 	fs.unlink(arr[i], err=>{
-						// 		if(err){
-						// 			//这里会重复报错，服务器会崩溃
-						// 			res.sendStatus(500);
-						// 			console.log('服务器错误', err);
-						// 		}else{
-						// 			complete++;
-						// 			if(complete==arr.length){
-						// 				req.db.query(`DELETE FROM house_table WHERE ID='${ID}'`, err=>{
-						// 					if(err){
-						// 						res.sendStatus(500);
-						// 						console.log('服务器错误', err);
-						// 					}else{
-						// 						res.redirect('/admin/house');
-						// 					}
-						// 				})
-						// 			}
-						// 		}
-						// 	})
-						// }
-						
-						
+					// //循环方法（同时删除多个数据），向磁盘同时并发多个请求，容易卡死，性能低。
+					// let complete=0;
+					// 	// //用forEach()写法
+					// 	// arr.forEach(item=>{fs.unlink(item, err=>{...})})
+					// for(i=0; i<arr.length; i++){
+					// 	fs.unlink(arr[i], err=>{
+					// 		if(err){
+					// 			//这里会重复报错，服务器会崩溃
+					// 			res.sendStatus(500);
+					// 			console.log('服务器错误', err);
+					// 		}else{
+					// 			complete++;
+					// 			if(complete==arr.length){
+					// 				req.db.query(`DELETE FROM house_table WHERE ID='${ID}'`, err=>{
+					// 					if(err){
+					// 						res.sendStatus(500);
+					// 						console.log('服务器错误', err);
+					// 					}else{
+					// 						res.redirect('/admin/house');
+					// 					}
+					// 				})
+					// 			}
+					// 		}
+					// 	})
+					// }
+					
+					
 
-						//递归方法（一条删完再删后一条数据），这种方式优于循环。
-						if(arr.length>0){
-								let i=0;
-								next();
-								function next(){
-									fs.unlink(arr[i], err=>{
-										if(err){
-											// res.sendStatus(404, '没有'+arr[i]+'文件');   教程这样写发送不了文字
-											res.status(500).send('没有找到'+arr[i]+'文件，删除数据失败');
-											console.log('没有'+arr[i]+'文件');
-										}else{
-											i++
-											//为了没有传图片的数据在删除的时候不崩溃
-											if(i>=arr.length){
-							//在数据库删除该数据
-												req.db.query(`DELETE FROM house_table WHERE ID='${ID}'`, err=>{
-													if(err){
-														res.sendStatus(500);
-														console.log('服务器错误，删除数据失败', err);
-													}else{
-														//删除单个ID写法
-														// res.redirect('/admin/house');
-														//删除多个ID写法
-														if(idIndex<aID.length){
-															idNext();
-														}else{
-															res.redirect('/admin/house');
-														}
-													}
-												})
-											}else{
-												next();
-											}
-										}
-									})
-								}
+					//递归方法（一条删完再删后一条数据），这种方式优于循环。
+
+					function delete_data(){
+						req.db.query(`DELETE FROM house_table WHERE ID='${ID}'`, err=>{
+							if(err){
+								res.sendStatus(500);
+								console.log('服务器错误，删除数据失败', err);
 							}else{
-								req.db.query(`DELETE FROM house_table WHERE ID='${ID}'`, err=>{
+								//删除单个ID写法
+								// res.redirect('/admin/house');
+								//删除多个ID写法
+								if(idIndex<aID.length){
+									idNext();
+								}else{
+									res.redirect('/admin/house');
+								}
+							}
+						})
+					}
+
+					if(arr.length>0){
+							let i=0;
+							next();
+							function next(){
+								fs.unlink(arr[i], err=>{
 									if(err){
-										res.sendStatus(500);
-										console.log('服务器错误，删除数据失败', err);
+										// res.sendStatus(404, '没有'+arr[i]+'文件');   教程这样写发送不了文字
+										res.status(500).send('没有找到'+arr[i]+'文件，删除数据失败');
+										console.log('没有'+arr[i]+'文件');
 									}else{
-										res.redirect('/admin/house');
+										i++
+										//为了没有传图片的数据在删除的时候不崩溃
+										if(i>=arr.length){
+						//在数据库删除该数据
+											delete_data();
+										}else{
+											next();
+										}
 									}
 								})
 							}
-						
-					}
-				})
-				idNext();
-
-			}else{
-
-			}
+						}else{
+							delete_data();
+						}
+					// idNext();
+				}
+			})
 		}
 	}
-	
-
-
-
-	
 })

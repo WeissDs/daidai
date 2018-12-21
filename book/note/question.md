@@ -7,6 +7,8 @@
 
 ####a标签的onclick="return confirm('xxx')"  ; A instanceof B
 
+####encodeURIComponent延展
+
 ######问题
 
 1. DOM操作的原理，怎么影响性能的

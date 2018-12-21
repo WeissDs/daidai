@@ -46,11 +46,29 @@
 
 	访问服务器接口，身份识别的方法：
 	1. cookie，session     	不能跨域
-	2. token				能跨域
+	2. token				能跨域（token可以放在头文件里）
 
 	token是迫不得已，cookie的替代品
 	token就是个很长很长的id而已
 
+
+	-----------------------------------------------------------------
+
+	后台分页：
+
+	一般正常情况下是后台做分页
+
+	SELECT XXX FROM 表 WHERE 条件 LIMIT 起点，数量
+	例： SELECT * FROM house_table WHERE LIMIT 0,10    // [0,1,2,3,...9]
+
+	SELECT COUNT(*) AS 新类名 FROM 表     （ 计算表的总数据量 'AS c'表示将count(*)换成c ）
+
+
+	后台搜索：
+
+	SELECT XXX FROM 表 WHERE 条件
+
+	条件：title LIKE '%禾%' OR/AND '%千%'    选择名字里有'禾'或者'千'的
 
 
 

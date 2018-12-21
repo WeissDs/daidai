@@ -24,7 +24,8 @@
               <button id="new_data" type="button" class="btn btn-default glyphicon glyphicon-plus">新建</button>
             </div>
             <div class="form-group" style="margin-right:20px;">
-              <button id="btn_del" type="button" class="btn btn-default glyphicon glyphicon-remove">删除</button>
+              <!-- <button id="btn_del" type="button" class="btn btn-default glyphicon glyphicon-remove">删除</button> -->
+              <a id="btn_del" class="btn btn-default glyphicon glyphicon-remove">删除</a>
             </div>
             <div class="form-group">
               <input type="search" class="form-control">
@@ -39,11 +40,14 @@
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
-            <li><a href="#">1</a></li>
+            <% for(let i=1; i<=page_count; i++){ %>
+              <li><a href="?page=<%=i %>"><%=i %></a></li>
+            <% } %>
+           <!--  <li><a href="#">1</a></li>
             <li><a href="#">2</a></li>
             <li><a href="#">3</a></li>
             <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
+            <li><a href="#">5</a></li> -->
             <li>
               <a href="#" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
@@ -94,7 +98,6 @@
                 </td>
               </tr>
             <%}%>
-            <%=data[0].ID %>
           </tbody>
         </table>
       </div>
@@ -219,9 +222,6 @@
 
       //数据全选功能
       let ocheckAll = $('#check_all');
-      let ocheckAll1 = $('#check_all')[0];
-      console.log(ocheckAll)
-      console.log(ocheckAll1)
       let acheck = $('.id-check');
 
       //如果总按钮是没有选中的状态  设置点击后acheck[i].checked = true; ，else 。。。
@@ -235,10 +235,32 @@
               acheck[i].checked = false;
             }
           }
-          
         })
 
+
+
       //多条数据删除功能的 多个选择数据的id拼接
+      let oBtnDel = $('#btn_del');
+      oBtnDel.click(function(){
+        let arr = [];
+        for(let i=0; i<acheck.length; i++){
+          if(acheck[i].checked){
+            arr.push(acheck[i].value);
+          }
+        }
+        if(arr.length==0){
+          alert('请选择元素');
+        }else{
+          let aId = encodeURIComponent(arr.join(','));
+          // console.log(aId)  //看id是否拼写正确
+
+          if(confirm(`您真的要删除这${arr.length}条数据吗？`)){
+            window.location = `/admin/house/delete?id=${aId}`;
+          }
+        }
+      })
+
+
 
 
     </script>
