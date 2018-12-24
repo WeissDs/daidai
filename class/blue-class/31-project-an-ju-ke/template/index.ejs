@@ -40,7 +40,23 @@
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
-            <% for(let i=1; i<=page_count; i++){ %>
+            <!-- 这是自己写的逻辑，没有完全参照课程 -->
+            <% 
+            let start = now_page-(show_page-1)/2;
+            let end = now_page+(show_page-1)/2;
+            if(now_page<(show_page+1)/2){
+              start = 1;
+              if(page_count<show_page){
+                end = page_count;
+              }else{
+                end = show_page;
+              }
+              
+            }else if(now_page>page_count-(show_page-1)/2){
+              start = page_count - show_page+1;
+              end = page_count;
+            }
+            for(let i=start; i<=end; i++){ %>
               <li><a href="?page=<%=i %>"><%=i %></a></li>
             <% } %>
            <!--  <li><a href="#">1</a></li>

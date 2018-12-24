@@ -106,7 +106,7 @@ admin_router.get('/', (req, res, next)=>{
 })
 //渲染/house主页面 index.ejs
 admin_router.get('/house', (req, res, next)=>{
-	const size = 10;
+	const size = 10;      //一页多少条数据
 	let page = req.query.page;
 	if(!page){
 		page = 1;
@@ -114,7 +114,7 @@ admin_router.get('/house', (req, res, next)=>{
 		page = 1;
 	}
 
-	let start = (page-1)*10;
+	let start = (page-1)*size;
 
 	//第一层查询分页数据 和第二层查询总数据量 
 	req.db.query(`SELECT * FROM house_table LIMIT ${start}, ${size}`, (err, data)=>{
@@ -127,7 +127,12 @@ admin_router.get('/house', (req, res, next)=>{
 					console.log('服务器错误');
 					res.sendStatus(500);
 				}else{
-					res.render('index', {data, page_count: Math.ceil(count_data[0].page/size)});
+					res.render('index', {
+						data, 			//取到的当前页数据
+						page_count: Math.ceil(count_data[0].page/size),			//总页数
+						now_page: parseInt(page),			//当前页码
+						show_page: 5           	//显示导航按钮多少个
+					});
 					res.end();
 				}
 			});
