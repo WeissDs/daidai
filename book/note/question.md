@@ -9,6 +9,16 @@
 
 ####encodeURIComponent延展
 
+
+
+##$(form).serialize()
+##mui的点击事件 mui("#upForm").on("tap", ".setting-commit", function() {})
+##
+    var formData = new FormData();
+    //注意：此处第3个参数最好传入一个带后缀名的文件名，否则很有可能被后台认为不是有效的图片文件
+    formData.append("file", blob, file.name);
+    // 上传文件
+
 ######问题
 
 1. DOM操作的原理，怎么影响性能的

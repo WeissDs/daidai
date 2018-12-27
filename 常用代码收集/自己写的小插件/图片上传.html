@@ -8,7 +8,7 @@
 		/*原理：
 			用display:inline-block将.fileinput-button设置为行内块，不能被内容撑起整行高度，input绝对定位后不占用父元素位置，将input移出.fileinput-button后overflow: hidden;
 		*/
-		.image-upload .fileinput-button{ position: relative; top: 50px; transform: translateY(-50%); left: 15px; overflow: hidden; display: inline-block; }
+		.image-upload .fileinput-button{ width: 300px; position: relative; top: 50px; transform: translateY(-50%); left: 15px; overflow: hidden; display: inline-block; }
 		/* ie浏览器（input样式会显示出来，加上opacity：0；就好了） */
 		.image-upload .fileinput-button input{ position: absolute; right: 0px; top: 0; opacity: 0; outline: none; }
 		.image-upload .image-upload-show{  margin: 20px 0; border-radius: 50%; width: 70px; height: 70px; float: right; margin-right: 15px;}

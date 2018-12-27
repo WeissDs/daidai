@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- <link rel="stylesheet" href="css/mui.css"> -->
+	<link rel="stylesheet" href="css/mui.min.css">
+</head>
+<body>
+	<ul class="mui-table-view"> 
+        <li class="mui-table-view-cell mui-collapse">
+            <a class="mui-navigate-right" href="#">面板1</a>
+            <div class="mui-collapse-content">
+                <p>面板1子内容</p>
+            </div>
+        </li>
+    </ul>
+
+   <a href="#popover" id="openPopover" class="mui-btn mui-btn-primary mui-btn-block">打开弹出菜单</a>
+
+    <div id="popover" class="mui-popover">
+      <ul class="mui-table-view">
+        <li class="mui-table-view-cell"><a href="#">Item1</a></li>
+        <li class="mui-table-view-cell"><a href="#">Item2</a></li>
+        <li class="mui-table-view-cell"><a href="#">Item3</a></li>
+        <li class="mui-table-view-cell"><a href="#">Item4</a></li>
+        <li class="mui-table-view-cell"><a href="#">Item5</a></li>
+      </ul>
+    </div>
+
+    <div class="mui-input-row mui-input-range">
+    	<label>Range</label>
+    	<input type="range" min="0" max="100">
+    </div>
+
+
+
+	<script src="js/mui.min.js"></script>
+	<script>
+		mui.init();
+		var mask = mui.createMask();//callback为用户点击蒙版时自动执行的回调；
+		//mask.show();//显示遮罩
+		//mask.close();//关闭遮罩
+
+
+		var btnArray = ['拨打', '取消', '短信'];
+		mui.confirm('data.username' + ':' + 'data.telephone', '提示', btnArray, function(e) {
+			if(e.index == 0) {}
+			if(e.index == 1) {}
+			if(e.index == 2) {}
+		});
+		
+		// mui.plusReady(function(){
+		//   var self = plus.webview.currentWebview(); //获取当前页面
+		//   var url = self.getURL();  //当前页面的地址
+		//    window.alert(url);
+		// })
+	</script>
+</body>
+</html>
