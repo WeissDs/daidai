@@ -9,6 +9,40 @@
 
 ####encodeURIComponent延展
 
+####jquery的input点击出现弹窗，在苹果手机上效果有问题（应该是苹果自动调起了输入法导致动画效果卡顿？）
+
+####为什么不直接用innerHTML而是要先createElement 然后appendChild呢？（下面的回答并不是这个问题）
+innerHTML的用法
+
+　　tablerowObject.innerHTML
+
+createTextNode的用法
+
+　　createTextNode(data)
+
+　　返回新创建的 Text 节点，表示指定的 data 字符串。
+
+区别：1)　　innerHTML属于HTML Dom
+
+　　　　　　createTextNode属于XML Dom
+
+　　　2)　　虽然效果类似但是在某种情况下是有区别的
+
+1 var p=document.createElement("p");
+2 p.className="message";
+3 p.innerHTML="<b>I love js</b>";
+4 document.body.appendChild(p);
+1 var p=document.createElement("p");
+2 p.className="message";   
+3 var textnode=document.createTextNode("<b>I love js</b>");
+4 p.appendChild(textnode);
+5 document.body.appendChild(p);
+在第一种情况下呈现出的效果是加粗的文本内容
+
+而在第二种情况下呈现出的效果是<b>I love js</b>原文本。
+
+所以两者的区别在于，innerHTML会将文本中包含的HTML代码实现效果，而createTextNode只是纯粹创造了文本节点，所以返回的效果也就是纯文本内容。
+
 
 
 ##$(form).serialize()

@@ -3,14 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<style>
-		.bg{ background-img: url(image/4.png); }
-	</style>
 </head>
 <body>
-	<div class="bg"></div>
 	<script>
-		
+		let b = 3
+		let a = '<div>'+b+'</div>'
+		let c = '<div>'+b+'</div>'
+		a = a.replace(new RegExp(c,'g'),"2");
+
+
+		console.log(a);
 	</script>
 </body>
 </html>

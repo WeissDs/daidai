@@ -33,11 +33,38 @@
     	<input type="range" min="0" max="100">
     </div>
 
+	<!-- 测试label在mui新版本的bug -->
+	<div id="me_sign_box" class="me-text"><label for="me_sign">个性签名</label><input id="me_sign" type="text" name="User_Remarks" placeholder="人生的道路一旦选定，就要勇敢的走到尽头"></div>
+
+
+
+	<!-- 底部弹窗 mui基于popover弹出菜单写的 -->
+	<div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">
+		<input type="text">
+		<button>确定</button>
+	    <!-- 可选择菜单 -->
+	    <!-- <ul class="mui-table-view">
+	      <li class="mui-table-view-cell">
+	        <a href="#">菜单1</a>
+	      </li>
+	      <li class="mui-table-view-cell">
+	        <a href="#">菜单2</a>
+	      </li>
+	    </ul> -->
+	    <!-- 取消菜单 -->
+	    <!-- <ul class="mui-table-view">
+	      <li class="mui-table-view-cell">
+	        <a href="#sheet1"><b>取消</b></a>
+	      </li>
+	    </ul> -->
+	</div>
+
 
 
 	<script src="js/mui.min.js"></script>
 	<script>
 		mui.init();
+		mui('#sheet1').popover('toggle');
 		var mask = mui.createMask();//callback为用户点击蒙版时自动执行的回调；
 		//mask.show();//显示遮罩
 		//mask.close();//关闭遮罩
@@ -50,6 +77,7 @@
 			if(e.index == 2) {}
 		});
 		
+
 		// mui.plusReady(function(){
 		//   var self = plus.webview.currentWebview(); //获取当前页面
 		//   var url = self.getURL();  //当前页面的地址
