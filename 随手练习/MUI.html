@@ -5,6 +5,10 @@
 	<title>Document</title>
 	<!-- <link rel="stylesheet" href="css/mui.css"> -->
 	<link rel="stylesheet" href="css/mui.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<style>
+		.pop{ width: 50%; height: 50px; background-color: #fff; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none; z-index: 999; }
+	</style>
 </head>
 <body>
 	<ul class="mui-table-view"> 
@@ -17,7 +21,7 @@
     </ul>
 
    <a href="#popover" id="openPopover" class="mui-btn mui-btn-primary mui-btn-block">打开弹出菜单</a>
-
+	<div style="height: 1000px; width: 100%;"></div>
     <div id="popover" class="mui-popover">
       <ul class="mui-table-view">
         <li class="mui-table-view-cell"><a href="#">Item1</a></li>
@@ -58,14 +62,28 @@
 	      </li>
 	    </ul> -->
 	</div>
+	<button id="btn">遮罩</button>
+	<div class="pop">
+		adsoifhn;wo
+	</div>
 
 
 
 	<script src="js/mui.min.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
 	<script>
 		mui.init();
 		mui('#sheet1').popover('toggle');
-		var mask = mui.createMask();//callback为用户点击蒙版时自动执行的回调；
+		var mask = mui.createMask(function(){
+			$('.pop')[0].style.display="none";
+			$('html,body').css('overflow','');
+			return true;
+		});//callback为用户点击蒙版时自动执行的回调；
+		$('#btn').click(function(){
+			$('.pop')[0].style.display="block";
+			$('html,body').css('overflow','hidden'); //阻止页面滚动，在移动端有问题
+			mask.show();
+		})
 		//mask.show();//显示遮罩
 		//mask.close();//关闭遮罩
 

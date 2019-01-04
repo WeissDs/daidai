@@ -16,7 +16,7 @@
 		}
 		.try{
 			width: 100%;
-			height: 600px;
+			height: 1000px;
 			background-color: red;
 		}
 		
@@ -26,16 +26,17 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			/*display: none;*/
+			display: none;
 		}
 		#aa{
 			position: fixed;
 			top: 0;
 			left: 0;
 			width: 100%;
-			height: 100%;
+			/*height: 100%;*/
 			background: rgba(0,0,0,0.5);
 			z-index: 9999;
+			overflow: hidden;
 		}
 
 		/*两种居中方式*/
@@ -69,11 +70,25 @@
 <body>
 
 	<div class="try"></div>
+	<button id="btn">dddddd</button>
 
 	<div class="father">
 		<p class="txt">111111</p>
 		<div id="aa"></div>
 	</div>
+
+	<script>
+		let oBtn = document.getElementById('btn');
+		let popWindow = document.getElementsByClassName('father')[0];
+		let win = document.getElementsByTagName('html')[0];
+		oBtn.onclick = function(){
+			popWindow.style.height = document.body.clientHeight;
+			popWindow.style.display="block";
+			win.style.overflow="hidden";
+			window.style.overflow="hidden";
+
+		}
+	</script>
 	
 </body>
 </html>
