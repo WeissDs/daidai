@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<!-- 载入高德地图api -->
+	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=4f3f92a2a010c847f25cc8908bc81bc7"></script>
+	<!-- <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.12&key=4f3f92a2a010c847f25cc8908bc81bc7"></script> -->
+	<style>
+		/*地图css*/
+		#container {width:300px; height: 180px; }
+	</style>
+</head>
+<body>
+	<!-- 地图显示 -->
+	<div id="container"></div>
+	<script>
+		window.onLoad  = function(){
+			//地图初始化 （不填写属性值自动定位当前城市）
+	        // var map = new AMap.Map('container');
+	        var map = new AMap.Map('container', {
+	                resizeEnable: true,
+	                center: [116.397428, 39.90923],
+	                zoom: 13
+	            });
+	            //实时路况图层
+	            var trafficLayer = new AMap.TileLayer.Traffic({
+	                zIndex: 10
+	            });
+	            map.add(trafficLayer);//添加图层到地图
+
+
+	        //定位城市
+	        AMap.plugin('AMap.CitySearch', function () {
+	          var citySearch = new AMap.CitySearch()
+	          citySearch.getLocalCity(function (status, result) {
+	            if (status === 'complete' && result.info === 'OK') {
+	              // 查询成功，result即为当前所在城市信息
+	            }
+	          })
+	        })
+
+	        //动态加载高德地图api
+          	// var url = 'https://webapi.amap.com/maps?v=1.4.12&key=4f3f92a2a010c847f25cc8908bc81bc7';
+          	// var jsapi = document.createElement('script');
+          	// jsapi.charset = 'utf-8';
+          	// jsapi.src = url;
+          	// document.head.appendChild(jsapi);
+	}
+
+
+
+	</script>
+	
+</body>
+</html>

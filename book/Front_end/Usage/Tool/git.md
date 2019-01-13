@@ -49,22 +49,36 @@ n后面也可以跟随版本号比如：n v 3.7.3
 ####从远程库克隆到本地仓库
 
     $ git clone git@github...(远程库链接http||SSH)
-    
-####仓库提交文件
 
-可add多个文件一次性提交
+    
+####提交文件
+
+可add多个文件一次性提交(提交文件到暂存区)
 
     $ git add index.txt(文件名)
+
+查看提交信息
+
+    $git status
+
+提交到版本库
+
     $ git commit -m "some append"
-    
+
 拉取远程库文件
 
     $ git pull <远程主机名> master
     
+
 提交到远程库
 
     $ git push <远程主机名> master
-    
+
+####查询
+
+####撤销和回退
+
+
 ####关联远程库
 
 添加叫"gitee"的远程库
