@@ -196,6 +196,27 @@ C:windows > System32 > drivers > etc > hosts
 后保存，我添加在了For example:末尾
 
 
- 
- 
-    
+####git在pull需要合并时的操作
+
+    git中Please enter a commit message to explain why this merge is necessary.Please enter a commit message to explain why this merge is necessary.
+    请输入提交消息来解释为什么这种合并是必要的
+
+    git 在pull或者合并分支的时候有时会遇到这个界面。可以不管(直接下面3,4步)，如果要输入解释的话就需要:
+    1.按键盘字母 i 进入insert模式
+    2.修改最上面那行黄色合并信息,可以不修改
+    3.按键盘左上角"Esc"
+    4.输入":wq",注意是冒号+wq,按回车键即可
+
+
+####git冲突解决
+
+```javascript
+<<<<<<< Updated upstream
+    xxxx;
+========
+    xxxx;
+>>>>>>>
+
+```
+其中Updated upstream 和=====之间的内容就是pull下来的内容，====和stashed changes之间的内容就是本地修改的内容。
+留下需要的代码，后重新push

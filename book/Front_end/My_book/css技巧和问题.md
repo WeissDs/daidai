@@ -95,3 +95,41 @@ div:before{
 width\height: min-content/max-content/fit-content
 css3出的最新width值（IE和低级浏览器全部不支持）
 
+
+##字体问题
+
+####CSS中5个基本字体分类
+    serif, sans-serif, monospace, cursive, fantasy.
+
+    serif 衬线字体，如Big Caslon,宋体
+    sans-serif 非衬线字体，如Helvetica,黑体,微软雅黑
+    monospace 等宽字体，如 Menlo
+    cursive 手写体，如 Comic Sans MS
+    fantasy 幻想体，如 Bodoni Ornaments
+
+####不同系统对字体的支持
+
+    Arial (Mac&Win)
+    SimSun 宋体 （WinXP）
+    Linux
+    文泉驿微米黑 （Linux）
+    Win
+    黑体：SimHei
+    宋体：SimSun
+    新宋体：NSimSun
+    仿宋：FangSong
+    楷体：KaiTi
+    仿宋GB2312：FangSongGB2312
+    楷体GB2312：KaiTiGB2312
+    微软雅黑：Microsoft YaHei （Windows 7开始提供）
+    Mac
+    冬青黑体: Hiragino Sans GB （SNOW LEOPARD开始提供）
+    华文细黑：STHeiti Light （又名STXihei）
+    华文黑体：STHeiti
+    华文楷体：STKaiti
+    华文宋体：STSong
+    华文仿宋：STFangsong
+    Android
+    Droid Sans 安卓系统默认字体，无衬线字体
+    Droid Sans Fallback 包含汉字，日文假名，韩文的文字扩展支持
+

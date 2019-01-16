@@ -45,7 +45,13 @@
 		window.onresize=function(){
 			document.documentElement.style.fontSize = document.documentElement.clientWidth*100/720+'px';  //720为设计稿宽度
 		}
-		window.onresize();
+		//如果不写onload，在第一次加载时计算的根元素的font-size会不准确（偏大，不知道为什么）
+		// window.onload=function(){
+		// 	document.documentElement.style.fontSize = document.documentElement.clientWidth*100/750+'px';
+		// }
+		window.onload=function(){
+			window.onresize();
+		}
 	</script>
 </head>
 <body>
