@@ -45,39 +45,6 @@ n后面也可以跟随版本号比如：n v 3.7.3
 ####在要创建仓库的文件夹下初始化git
 
     $ git init
-    
-####从远程库克隆到本地仓库
-
-    $ git clone git@github...(远程库链接http||SSH)
-
-    
-####提交文件
-
-可add多个文件一次性提交(提交文件到暂存区)
-
-    $ git add index.txt(文件名)
-
-查看提交信息
-
-    $git status
-
-提交到版本库
-
-    $ git commit -m "some append"
-
-拉取远程库文件
-
-    $ git pull <远程主机名> master
-    
-
-提交到远程库
-
-    $ git push <远程主机名> master
-
-####查询
-
-####撤销和回退
-
 
 ####关联远程库
 
@@ -97,6 +64,73 @@ n后面也可以跟随版本号比如：n v 3.7.3
 
     $ git remote rename <原主机名> <新主机名>
     
+    
+####克隆
+
+从远程库克隆到本地仓库
+
+    $ git clone git@github...(远程库链接http||SSH)
+
+从本地仓库克隆到远程库（需要库文件名相同？）
+
+    $ git remote add gitee git@github...(远程库链接http||SSH) 
+    $ git push -u origin master
+
+####提交文件
+
+可add多个文件一次性提交(提交文件到暂存区)
+
+    $ git add index.txt(文件名)
+
+提交到版本库
+
+    $ git commit -m "some append"
+
+提交到远程库
+
+    $ git push <远程主机名> master
+
+####拉取远程库文件
+
+拉取远程库文件
+
+    $ git pull <远程主机名> master
+
+####查询
+
+查看提交commit的信息
+
+    $git status
+
+查看文件具体修改
+
+    $git diff <文件名(index.html)>
+
+查看提交记录(所有本地版本记录及本地版本号)
+
+    git log
+
+添加参数简化查询内容
+
+    git log --pretty=oneline
+
+####撤销和回退(工作区、 暂存区{add时添加}、 版本库{commit时添加})
+
+丢弃工作区修改，不会修改已add到暂存区的内容（原理是使用本地版本库替换工作区内容）
+
+    git checkout --<文件名(index.html)>
+
+撤销暂存区的内容, 撤销暂存区的index.html 重新放回工作区（撤销工作区内容重复上一步{git checkout --<文件名>}操作）
+
+    git reset HEAD <文件名(index.html)>
+
+将指针指向最后一次提交的版本
+
+
+
+
+
+
 ####本地库与远程库同步
 
 将远程主机的更新，全部取回本地
