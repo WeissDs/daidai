@@ -12,16 +12,18 @@
     
     浏览器在js中的对象:window
     
+
+
 ##数据类型转换和NaN
 
 1.parseInt()将字符串转化为整数数字（显式类型转换||强制类型转换）
-
 
     parseInt(12px) ============ 12
     parseInt(122.56) ========== 122
     parseInt(we) ============== NaN
     parseInt(12, 8) =========== 10(将八进制的12转化为十进制 === 10)
     
+
 2.parseFloat()将字符串转化为小数数字（显式类型转换||强制类型转换）
 
 
@@ -29,7 +31,7 @@
     parseFloat(34 )============ 34
     parseFloat(02) ============ 2
     
-    
+
 3.隐式类型转换
 
     '=='、 '==='、 '-'(减法)
@@ -39,7 +41,7 @@
     在js中  NaN==NaN ========== false
     isNaN() 可以判断是不是非数字NaN
     
-    
+
 ##程序流程控制
 
 1. if、switch、?:
@@ -50,6 +52,7 @@ if的两种用法
     
     if(){}else if(){}else if(){}else(){}
     
+
 只用判断一个变量的值的时候可以用switch
 
     switch(变量)
@@ -62,8 +65,41 @@ if的两种用法
         default:                （else）
     }
     
-    
+
+
 ##函数
+
+####函数声明/ 函数表达式/ 自执行函数
+
+    函数表达式：     var doSomething = function(){ ... }    （函数不会被提升)
+                    function(){ ... }  (匿名函数属于函数表达式)
+
+    函数声明：     function doSomething(){ ... }           (函数会被提升)
+
+    自执行函数：
+
+```javascript
+    (function(){ ... })() ... 最常见写法（是为了告诉解析器括号内为函数表达式）
+    (function(){ ... }())
+    var fn = function(){ ... }()
+```
+
+
+####函数参数
+
+1. ECMAScript 函数不介意传递进来多少个参数，也不在乎参数的数据类型
+    ######原因： ECMAScript 中的参数是用一个数组表示的，在函数体内可以通过arguments对象来访问这个参数数组
+    ######注意：arguments只是类似数组（并不是Array实例）它使用了length属性来确定传递了多少个参数
+
+2. num1和arguments[0]是相同的，改变arguments[0] num1会被重写(如下例子中num1会被改写为10)，因为arguments对象中的值会自动反映到对应的命名参数，但读取这两个值并不会访问相同的内存空间。
+    ```javascript
+    function doAdd(num1, num2){
+        arguments[0] = 10;
+        console.log(arguments[1]+num1);
+    }
+    ```
+3. ECMAScript 函数不能像java等语言一样实现重载？？？？？？？？？？？
+
 
 ####函数传参
 
@@ -141,6 +177,17 @@ Fetch API 是基于 Promise 设计的
     indexOf()
 
 
+##this
+
+####this和e.target/e.currentTarget的区别????????????
+
+```javascript
+    $('#oDiv').on('事件',function(e){
+        let event = e.target||e.dataTransfer?????????????????????????
+    })
+```
+
+
 
 
 ##面向对象
@@ -173,7 +220,22 @@ Fetch API 是基于 Promise 设计的
 
 ##事件冒泡、事件捕捉、事件委托
 
+
+
+
+
 ##this
+
+
+####e.target/e.currentTarget
+
+```javascript
+//e.target 可以用来做事件委托
+$('#box')[0].onclick=function(e){
+    console.log(e.target)   //返回引发触发事件的元素 也就是点击的#box内的那个元素
+    console.log(this)       //返回#box元素
+}
+```
 
 
 
