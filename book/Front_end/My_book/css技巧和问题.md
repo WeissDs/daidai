@@ -1,3 +1,14 @@
+##HTML
+
+####form表单
+
+######enctype的值有
+    application/x-www-urlencoded    默认
+    multipart/form-data             (method必须为post)可以传输二进制
+    text-plain                      
+
+######enctype修改的是MIME 编码？？？？？？？？
+
 ##CSS常见问题
 
 #####1. li之间的空隙怎么解决
