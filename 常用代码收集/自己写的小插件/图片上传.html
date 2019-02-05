@@ -4,15 +4,15 @@
 	<meta charset="UTF-8">
 	<title>上传图片</title>
 	<style>
+	/*注意：如需兼容ie8 目前比较成熟的技术是使用css3pie插件（本例中圆角在ie8中无效）*/
 		.image-upload{ height: 100px; }
 		/*原理：
-			用display:inline-block将.fileinput-button设置为行内块，不能被内容撑起整行高度，input绝对定位后不占用父元素位置，将input移出.fileinput-button后overflow: hidden;
+			将点击按钮范围DOM和input放入同一个父元素，input绝对定位覆盖在按钮上 后设置opacity:0;
 		*/
 		.image-upload .fileinput-button{ width: 300px; position: relative; top: 50px; transform: translateY(-50%); left: 15px; overflow: hidden; display: inline-block; }
-		/* ie浏览器（input样式会显示出来，加上opacity：0；就好了） */
-		.image-upload .fileinput-button input{ position: absolute; right: 0px; top: 0; opacity: 0; outline: none; }
+		/* ie8浏览器（input样式会显示出来，opacity要做兼容 filter:alpha(opacity=0)） */
+		.image-upload .fileinput-button input{ width: 84px; height: 30px; position: absolute; left: 0px; top: 0; opacity: 0; filter:alpha(opacity=0); outline: none; }
 		.image-upload .image-upload-show{  margin: 20px 0; border-radius: 50%; width: 70px; height: 70px; float: right; margin-right: 15px;}
-		/*因为上述原因不能给.fileinput-button设置宽高所以设置span的padding来设置宽高（mui框架的css所有按钮都是这样来写样式的，可复用）*/
 		.image-upload .image-upload-button{ display: inline-block; text-align: center; line-height: 30px; padding: 0 10px; background-color: #FFBA4E; color: #fff; border-radius: 10px; }
 	</style>
 </head>
@@ -26,7 +26,7 @@
 			-->
 			<input id="person_img" type="file">
 		</div>
-		<img class="image-upload-show" src="img/icon/userimg.svg" id="Image">
+		<img class="image-upload-show" src="" id="Image">
 	</div>
 
 	<script>
@@ -39,12 +39,15 @@
 			// console.log(file.length);
                 var tmpFile = file[intI];
 				// file_name.value = tmpFile.name;
+
+				//获取本地文件内容
                 var reader = new FileReader();
+                //将文件进行base64编码后输出
                 reader.readAsDataURL(tmpFile);
                 reader.onload = function (e) {
                     var url = e.target.result;
+                    //媒体文件img标签中的src属性可以直接写入图片的base64编码，来显示图片
                     img.src = url;
-					photo_data.value = url;
                 }
             }
         }

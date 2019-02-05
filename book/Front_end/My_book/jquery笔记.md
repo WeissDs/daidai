@@ -4,6 +4,9 @@
 
 [jquery别人的方法整理2](https://www.cnblogs.com/akou/p/4477706.html)
 
+####jquery 获取表单数据
+    serialize();
+
 
 
 
