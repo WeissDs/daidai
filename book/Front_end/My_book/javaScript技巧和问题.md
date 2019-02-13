@@ -1,26 +1,24 @@
-##JS技巧
-
-
-####url相关
+#JS技巧
 
 ---
 
-#####获取和赋值url
+
+###url相关
+
+######获取和赋值url
 
 ```javascript
-	window.location
-	window.location = 'http://www.baidu.com/'
+	window.location.href
+	window.location.href = 'http://www.baidu.com/'
 ```
 
-#####获取url问号后的字符串
-
-1.方法
+######获取url问号后的字符串
 
 ```javascript
 	var url = location.search();
 ```
 
-2.获取方法
+######获取get数据方法
 
 ```javascript
 	function GetRequest() {  
@@ -36,16 +34,35 @@
 	   return theRequest;  
 	}
 ```
-<br>
+
+###url跳转方法整理
+
+####原生js：
+
+######location.href跳转方法
+```javascript
+    window.location.href = 'http://www.baidu.com'   //在当前页打开
+```
+######open跳转方法
+```javascript
+    window.open('http://www.baidu.com')   //默认在新页面打开（可更改属性）
+```
+
+######未完待续....
+
+###点击事件
+
+######禁止按钮点击
+
+```javascript
+document.getElementById('btn').disabled='true';
+```
 
 
+###获取定位
 
 
-####获取定位
-
----
-
-#####此方法需要验证，和扩展
+######此方法需要验证，和扩展
 
 ```javascript
 	navigator.geolocation.getCurrentPosition(); 
@@ -53,44 +70,40 @@
 <br>
 
 
-####获取浏览器版本信息（能以此判断浏览器和设备类型）
+###获取浏览器版本信息（能以此判断浏览器和设备类型）
 
----
-
-#####返回客户机发送的 user-agent 头部值
+######返回客户机发送的 user-agent 头部值
 ```javascript
 	window.Navigator.userAgent();
 ```
-<br>
 
 
 
-####cloneNode方法
+###cloneNode方法
 
----
+######cloneNode() 方法可创建指定的节点的精确拷贝， 拷贝所有属性和值。
 
-#####cloneNode() 方法可创建指定的节点的精确拷贝， 拷贝所有属性和值。
-
-#####该方法将复制并返回调用它的节点的副本。如果传递给它的参数是true，它还将递归复制当前节点的所有子孙节点。否则，它只复制当前节点。
+######该方法将复制并返回调用它的节点的副本。如果传递给它的参数是true，它还将递归复制当前节点的所有子孙节点。否则，它只复制当前节点。
 
 ```javascript
 	cloneNode(true)......克隆所有后代
 	cloneNode(false).....克隆当前元素
 	oDiv.appendChild(oBannerLi[0].cloneNode(true));
 ```
-<br>
 
-####Dom变动事件监听
-
----
+###Dom变动事件监听
 
     DOMSubtreeModified      Dom结构发生变化
     DOMNodeInserted         被作为子节点插入另一个节点时触发
     DOMNodeRemoved          移除节点时触发
 
+<br/>
+<br/>
 
+#JS问题
 
-##JS问题
+---
+
 
 #####window.navigator.geolocation.getCurrentPosition，在IOS10系统中无法定位问题:
 
@@ -103,21 +116,20 @@
 
 
 
+<br/>
+<br/>
 
 
 
-
-##js案例
-
-####网页小图标写法
+#js案例
 
 ---
+
+###网页小图标写法
 
 	<link rel="favicon" href="/images/fav.png">
 
-####隐藏的元素点击后设置transition动画效果失效的解决方法
-
----
+###隐藏的元素点击后设置transition动画效果失效的解决方法
 
 	let oBtn = document.getElementsByTagName('input')[0];
 	let oDiv = document.getElementsByTagName('div')[0];
@@ -134,9 +146,7 @@
 
 原理： setTimeout被触发时，浏览器的定时触发器线程会将事件添加到待处理列队的末尾，保证在div设置block之后再添加className:show???????
 
-####js的FileReader对象
-
----
+###js的FileReader对象
 
 [FileReader](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/FileReader)
 
@@ -163,9 +173,7 @@
 	 readAsDataURL			file					将文件读取为 DataURL
 	 readAsText				file, [encoding] 		将文件读取为文本
 
-####js的事件绑定
-
----
+###js的事件绑定
 
 	内联事件（被嗤之以鼻的写法）
 	obj.onclick  (和内联事件一样，多个事件会被复写，不能绑定多个事件)
@@ -185,9 +193,7 @@
 ```
 
 
-####从微信公众号栏目（H5页面）退回到微信公众号
-
----
+###从微信公众号栏目（H5页面）退回到微信公众号
 
 也就是关闭微信的内置浏览器
 

@@ -44,8 +44,19 @@
 	<summary>dsadad</summary>
 	
 	<script>
-		var url = location.href;
-		console.log(url);
+		//iframe 插入广告的写法
+
+		// document.writeln("<iframe scrolling='no' frameborder='6' marginheight='0' marginwidth='0' width='100%' height='1000' allowTransparency src=http://www.baidu.com/></iframe>");
+		// document.write("</iframe><iframe src='http://www.taobao.com/' rel='nofollow' scrolling='no' frameborder='0' width='100%' height='2000'>");
+
+		//window.location 和 open 的区别
+		let $ = document.querySelectorAll.bind(document);
+		$('#btn')[0].onclick = function(){
+			// window.location.href = 'http://www.baidu.com'   //在当前页打开
+			window.open('http://www.baidu.com')   //在新页面打开
+
+		}
+
 		// var foo=1;
 		// (function(foo){
 		// 	console.log(foo);
@@ -61,11 +72,11 @@
 			// console.log(foo1.n);
 			// foo1.n=3;
 			var foo1 = {n:2};
-			console.log(foo1.n);
+			console.log(foo1.n);    //2
 		})()
-		console.log(foo1.n);
+		console.log(foo1.n);		//1
+ 
 
-		document.getElementById('btn').disable='true';
 		let arr=[12,5,9,3,88,46,7];
 		let obj = {a: 12, b: '12222', c: {d:111, e:222}}
 		let a = arr.join('+');
@@ -73,7 +84,7 @@
 
 		console.log(typeof 1.2=='float');
 
-		console.log(typeof(a)+':'+a);
+		console.log(typeof(a)+':'+a); //typeof可以写为typeof obj 也可以写为 typeof(obj)
 		console.log(new Date().getDay());
 
 		for( a in arr){
@@ -111,6 +122,19 @@
 		alert(str1.slice(2));
 		alert(str1)
 		alert(str1.replace(/o/g, '*'));
+
+		//用Object.keys()取出对象key生成的数组，获取length  || 或者使用 for in计算出来
+		let a = { 	fieldname: 'f1',
+	    			originalname: 'Git.jpg',
+	    			encoding: '7bit',
+	    			mimetype: 'image/jpeg',
+	    			destination: './images/',
+	    			filename: '6c6cce430c75c68430e521bc1f1342b4',
+	    			path: 'images\\6c6cce430c75c68430e521bc1f1342b4',
+	    			size: 435873 
+	    		}
+
+	    console.log(Object.keys(a).length);
 
 		//查找所有子字符串的方法
 		var str = "I think of other ages that floated upon the stream of life and love and death";

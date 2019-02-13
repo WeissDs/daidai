@@ -25,6 +25,9 @@ Mac直接从AppStore安装Xcode（apple官方IDE），Xcode集成了git
 
 n后面也可以跟随版本号比如：n v 3.7.3
 
+<br/>
+<br/>
+
 
 ##git版本控制使用
 
@@ -201,6 +204,8 @@ n后面也可以跟随版本号比如：n v 3.7.3
 
         home/Profile/sshKeys
     
+<br/>
+<br/>
 
 
 ##git问题解决
