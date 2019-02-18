@@ -3,8 +3,22 @@
 <head>
 	<meta charset="UTF-8">
 	<title>初级算法</title>
+	<style>
+		*{ margin: 0; padding: 0; }
+		body, html{ width:100%; height: 100%; }
+		.box{ width: 100%; height: 100%; text-align: center; }
+		.box::before { content: ''; display: inline-block; height: 100%; vertical-align: middle;  }
+		.box p{ display: inline-block; vertical-align: middle; }
+	</style>
 </head>
 <body>
+	<!-- 老式垂直居中方法 可以不设定固定高度 -->
+	<div class="box">
+		<p>2222</p>
+		<p>2222</p>
+		<p>2222</p>
+	</div>
+	
 	<script>
 		let nums = [1,2,3,4,5,5];
 		// alert(nums.slice(1));
