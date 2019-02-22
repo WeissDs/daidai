@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修饰符</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<!-- .prevent就是vue的修饰符 代表阻止默认事件  keydown.enter（keydown.13）只在按下回车键时有用，否则全键盘都可触发-->
+	<!-- 修饰符可在vue官网api查找 -->
+	<form id="form" action="index.html" method="post" v-on:submit.prevent="" @keydown.enter="fn">
+		<input type="text" name="user">
+		<input type="submit" value="提交">
+	</form>
+	
+	<script>
+		let vm = new Vue({
+			el: '#form',
+			methods: {
+				fn(){
+					alert('aaa');
+				}
+			}
+
+		})
+	</script>
+</body>
+</html>

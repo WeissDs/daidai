@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+	<div id="div">
+		a: <input type="text" v-model="num1">
+		b: <input type="text" v-model="num2">
+		<div>{{num1+num2}}</div>
+		<br>
+		c:<input type="text" v-model="c">
+	</div>
+
+	<script>
+		//computed 存放需要计算的属性（只能用于同步操作）computes中的get会将变量缓存，如果调用次数多可以提高性能
+		//watch 可以监听属性变化
+		let vm = new Vue({
+			el: '#div',
+			data: {
+				a: '',
+				b: '',
+				c: '',
+			},
+			computed: {
+				num1: {
+					get: function(){
+						return this.a;
+					},
+					set: function(newVal){
+						
+						if(this.a=='-'){
+							this.a = 0;
+						}
+						this.a = parseInt(newVal);
+					},
+				},
+				num2: {
+					get: function(){
+						return this.b;
+					},
+					set: function(newVal){
+						this.b = parseInt(newVal);
+					},
+				},
+			},
+			watch: {
+				c(newVal, oldVal){
+					alert(`${oldVal}become${newVal}`)
+				},
+			}
+		})
+	</script>
+</body>
+</html>

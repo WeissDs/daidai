@@ -237,6 +237,11 @@ $('#box')[0].onclick=function(e){
 }
 ```
 
+####禁止元素的默认事件
+
+    1. return false
+    2. event.preventDefault
+
 
 
 ##同步异步、阻塞非阻塞IO、流操作
