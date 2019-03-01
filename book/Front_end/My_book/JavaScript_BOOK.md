@@ -71,19 +71,43 @@ if的两种用法
 
 ####函数声明/ 函数表达式/ 自执行函数
 
-    函数表达式：     var doSomething = function(){ ... }    （函数不会被提升)
-                    function(){ ... }  (匿名函数属于函数表达式)
+######定义函数的两种方式： 函数声明 和 函数表达式
 
-    函数声明：     function doSomething(){ ... }           (函数会被提升)
+1. 函数声明：
 
-    自执行函数：
+    函数声明的特征是函数声明提升，在执行代码之前会先读取函数声明
+    ```javascript
+    function doSomething(){ ... }
+    ```
+
+2. 函数表达式：
+
+    匿名函数为函数表达式
+
+    ```javascript
+    function (){}
+    ```
+    非匿名函数如果是作为赋值表达式的一部分的话，那它就是一个函数表达式
+
+    ```javascript
+    var a = function fn(){}  //这种函数表达式不稳定，在js中有可能fn会被认作函数声明
+    var a = (function fn(){})  //替换为这种方法
+    var b = function (){}
+    ```
+    ()中的函数为函数表达式，()是分组操作符，它的内部只能包含表达式
+
+    ```javascript
+    (function fn(){})
+    ```
+
+3. 自执行函数：
 
 ```javascript
-    (function(){ ... })() ... 最常见写法（是为了告诉解析器括号内为函数表达式）
+    (function(){ ... })() ... 最常见写法
     (function(){ ... }())
     var fn = function(){ ... }()
+    var fn = (function name(){})()
 ```
-
 
 ####函数参数
 

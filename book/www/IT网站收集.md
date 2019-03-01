@@ -1,5 +1,9 @@
 #网站搜集
 
+##知识搜集
+
+[中科大计算机课程](https://github.com/mbinary/USTC-CS-Courses-Resource)
+
 ##查询
 
 [ip查询网址 ipaddress](https://www.ipaddress.com/)
