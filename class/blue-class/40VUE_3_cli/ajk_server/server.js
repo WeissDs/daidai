@@ -19,7 +19,7 @@ let r1=new router();
 server.use(r1.routes());
 
 //接口
-//列表：/api/house/page/:page
+//列表：/api/house/page/:page                                                                                                                                                                                                                                                                                                                                                                
 //  =>{err: false, data: xxx}
 r1.get('/api/house/page/:page', async ctx=>{
   let {page}=ctx.params;

@@ -114,7 +114,7 @@
 
             <div class="house-div">
 
-              <houseList/>
+              <houseList v-for="house in houseData" :key="house.ID" :house="house" />
 
               <div class="page-div">
                 共有 1296 个有关北京新房楼盘
@@ -223,9 +223,26 @@ import cmpInfo from '@/components/cmp-info'
 export default {
   components: {houseList, addBox, guessBox, cmpInfo},
   data () {
-    let dataBus = {}
-    this.$a.get('http://8083/api/house/page/1').then(res => {
+    let dataBus = {
+      houseData: []
+    }
+    this.$a.get('http://localhost:8083/api/house/page/1').then(res => {
       console.log('成功', res)
+      // for(let i=0;i<res.data.data.length;i++){
+      //   dataBus[i]=(res.data.data[i]);
+      // }
+
+      // ES6写法
+      // res.data.data.forEach((item, index)=>{
+      //   dataBus[index]=item;
+      // })
+
+      // 这里不需要循环。。。
+      if (res.data.err) {
+        alert('获取元素失败')
+      } else {
+        dataBus.houseData = res.data.data
+      }
     }, err => {
       console.log('err:', err)
     })
