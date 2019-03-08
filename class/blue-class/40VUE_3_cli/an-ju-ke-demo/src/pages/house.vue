@@ -85,9 +85,11 @@
           <div class="basicprice-div">参考价格  住宅<span style="font-size: 30px;font-size: 30px;vertical-align: -2px;color: #f60;margin: 0 5px;">{{houseDetail.ave_price}}</span> 元/㎡  </div>
           <div class="basicprice-div">楼盘户型  {{houseDetail.building_type}} </div>
           <div class="basicprice-div">楼盘地址  {{houseDetail.position_main}} {{houseDetail.position_second}}</div>
-          <div class="blankgreen-div"><a href="#"></a><span>400 026 1357</span></div>
+          <div class="blankgreen-div"><a href="#"></a><span>{{houseDetail.tel}}</span></div>
           <div class="basicprice-div">最新开盘   预计12月开盘 </div>
-          <div class="basicprice-div">交房时间   2019年06月30日</div>
+
+          <!-- 这里要重写 试试 -->
+          <div class="basicprice-div">交房时间   {{time.getFullYear()}}年06月30日</div>
           <div class="basicprice-div">建筑类型  小高层、高层 </div>
       </div>
     </div>
@@ -443,18 +445,22 @@
 <script>
 export default {
   data () {
-    let dataBus = { houseDetail: {} }
+    let dataBus = { houseDetail: {}, time: new Date(), }
     console.log(this.$route.params)
 
     this.$a.get(`http://localhost:8083/api/house/${this.$route.params.id}`).then(res => {
       // console.log(res.data.data)
       dataBus.houseDetail = res.data.data
+      dataBus.time = new Date(dataBus.houseDetail.submit_time)
       console.log(dataBus.houseDetail)
+      console.log(dataBus.time)
     }, err => {
       console.log('请求失败', err)
     })
-    
     return dataBus
+  },
+  methods: {
+    
   }
 }
 </script>
