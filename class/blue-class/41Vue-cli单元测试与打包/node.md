@@ -68,4 +68,57 @@
 * 2.browserify(不常用了), browser-sync(能做多页面同步？)
 * 3.webpack
 
+####问题？
+
+* 测试用例跑不起来 报错
+
+        Test suite failed to run
+
+        SecurityError: localStorage is not available for opaque origins
+        at Window.get localStorage [as localStorage] (node_modules/jsdom/lib/jsdom/browser/Window.js:257:15)
+        at Array.forEach (<anonymous>)
+
+
+* jest.config.js 增加配置后报错改变 （）
+
+        verbose: true,
+        testURL: "http://localhost/",
+
+
+##项目部署 build
+
+####项目打包(生成dist文件夹，可以直接丢到服务器)
+
+    npm run build
+
+    npm run build -- --analyze 会显示打包的具体内容？好像没有用
+
+####按需加载
+
+* 我们可以用以下方式导入组件 a, b(此时build之后的文件会全部打成一个包)
+
+        import A from 'a'
+        import B from 'b'
+        components: { A, B }
+
+* 如果想要按需加载组件 我们需要这样写(a,b会各自生成一个js文件)
+
+    components: { 
+        A: import('a'),
+        B: import('b')
+    }
+
+* 建议大的不常用的组件按需加载，小的常用组件不要按需加载
+
+####优化webpack：
+
+* 优化 app.xxx.js 的方法：
+
+        1. 按需加载
+        2. 
+
+
+* 优化 vendor.xxx.js 
+
+
 
