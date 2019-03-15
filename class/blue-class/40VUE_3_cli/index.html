@@ -14,6 +14,17 @@
 			4. 测试
 
 		--------------------------------------------------------------------------------
+		vue 的坑
+		1. 在打包npm run build 时 需要修改config文件夹中index.js里的 assetsPublicPath 为 './'
+		
+		2. 在没有后台支持的情况在 在router 中 设置了mode: 'history' 会导致项目打包后页面为空
+
+		3. 注册组件时课程里的写法报错：
+		components: {
+			houseGuess1: import('../components/house-guess'),
+		}
+
+		--------------------------------------------------------------------------------
 
 		vue-cli的用法：
 			1. 全局下载vue-cli : npm i vue-cli -g

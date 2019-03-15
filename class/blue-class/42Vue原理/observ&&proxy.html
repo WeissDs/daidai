@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script>
+		//监控json这个对象
+		let json = { b:2 };
+
+		//-----------------------------------------------------------------
+
+		//ES7 observe 已被废弃 浏览器报错Object.observe is not a function
+		// Object.observe(json, ()=>{
+		// 	alert('json改变了')
+		// })
+
+		// json.a = 1;
+
+		//-----------------------------------------------------------------
+
+		//ES7 proxy
+		//在需要检测的对象外部增加了一层proxy
+		let p = new Proxy(json, {
+			get(target, key, proxy){
+				alert('有人要获取东西')
+				
+				console.log(target, key, proxy)
+				if(key in target){
+					return target[key]
+				}else{
+					return ''
+				}
+			},
+			set(target, key, val, proxy){
+				target.a = 1
+				console.log(target, key, val, proxy)
+
+				alert('有人要设置东西')
+			}
+		})
+		//不要直接操作json 而是对p进行操作
+		console.log(p.b);
+		// p.a = 1
+
+
+	</script>
+	
+</body>
+</html>

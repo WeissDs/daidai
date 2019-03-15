@@ -8,9 +8,10 @@ server.listen(8083);
 
 //跨域
 server.use(async (ctx, next)=>{
-  if(ctx.request.headers['origin'] && url.parse(ctx.request.headers['origin']).hostname=='localhost'){
-    ctx.set('Access-Control-Allow-Origin', '*');
-  }
+  // if(ctx.request.headers['origin'] && url.parse(ctx.request.headers['origin']).hostname=='localhost'){
+  //   ctx.set('Access-Control-Allow-Origin', '*');
+  // }
+  ctx.set('Access-Control-Allow-Origin', '*');
 
   await next();
 });

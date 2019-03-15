@@ -302,31 +302,11 @@
       </div>
       <div class="guesscontent-div">
         <ul>
-          <li>
-            <img src="/static/img/housepic.jpg" alt="#" />
-            <a href="#">永清-森林新都孔雀城</a>
-            <p>15500元/㎡</p>
-          </li>
-          <li>
-            <img src="/static/img/housepic.jpg" alt="#" />
-            <a href="#">永清-森林新都孔雀城</a>
-            <p>15500元/㎡</p>
-          </li>
-          <li>
-            <img src="/static/img/housepic.jpg" alt="#" />
-            <a href="#">永清-森林新都孔雀城</a>
-            <p>15500元/㎡</p>
-          </li>
-          <li>
-            <img src="/static/img/housepic.jpg" alt="#" />
-            <a href="#">永清-森林新都孔雀城</a>
-            <p>15500元/㎡</p>
-          </li>
-          <li>
-            <img src="/static/img/housepic.jpg" alt="#" />
-            <a href="#">永清-森林新都孔雀城</a>
-            <p>15500元/㎡</p>
-          </li>
+          <houseGuess/>
+          <houseGuess/>
+          <houseGuess/>
+          <houseGuess/>
+          <houseGuess/>
         </ul>
       </div>
     </div>
@@ -443,11 +423,14 @@
 </template>
 
 <script>
+import houseGuess from '@/components/house-guess'
 export default {
+  components: {
+    houseGuess
+  },
   data () {
     let dataBus = { houseDetail: {}, time: new Date() }
     console.log(this.$route.params)
-
     this.$a.get(`http://localhost:8083/api/house/${this.$route.params.id}`).then(res => {
       // console.log(res.data.data)
       dataBus.houseDetail = res.data.data

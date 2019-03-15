@@ -6,7 +6,8 @@ import house from '@/pages/house'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  // 在没有后台配合时使用 打包后页面为空
+  // mode: 'history',
   routes: [
     {
       path: '/',
