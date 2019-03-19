@@ -37,6 +37,16 @@
                 ]
             }
         }
+
+##webpack-dev-server
+
+    * 安装
+    
+            npm i webpack-dev-server -D
+
+    * 运行(用不了了，报错'webpack-dev-server' 不是内部或外部命令？？？)
+    
+            webpack-dev-server --open
         
     
 

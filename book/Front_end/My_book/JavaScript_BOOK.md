@@ -414,3 +414,17 @@ arr_deep_copy();
 slice_shallow_copy();
 json_deep_copy();
 ```
+
+##alert
+
+####alert——是模态对话框，阻塞所有程序（alert是无法多设备同步的）
+
+####改写alert的方法
+
+```javascript
+let _alert = window.alert;
+window.alert = function(str){
+    _alert(str)
+}
+//这是在干嘛？
+```

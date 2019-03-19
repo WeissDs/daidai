@@ -97,6 +97,11 @@ document.getElementById('btn').disabled='true';
     DOMNodeInserted         被作为子节点插入另一个节点时触发
     DOMNodeRemoved          移除节点时触发
 
+###多设备同步更新使用的技术
+
+######用现成的: browser-sync
+######自己写: web-socket
+
 <br/>
 <br/>
 
