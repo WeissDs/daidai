@@ -393,6 +393,17 @@ function slice_shallow_copy(){
     console.log(arr);
 }
 
+//以下代码可以证明 arr的 slice方法是浅拷贝（自己写的）
+
+    function a(){
+        let arr1 = [1,'dfsf', [3,4,'5'],'e',6,[3,3]];
+        let cc = arr1.slice(1,3)
+        cc[1][1]=2
+        console.log(cc);
+        console.log(arr1);
+    }
+         
+
 
 //除了递归，我们还可以借用JSON对象的parse和stringify(jquery里有extend方法)
 //JSON.stringify与JSON.parse除了实现深拷贝，还能结合localStorage实现对象数组存储？？？？

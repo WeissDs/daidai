@@ -7,31 +7,115 @@
 <body>
 
 	<script>
-		let arr = [23, 13, 5, 8, 8, 9, 10, 5, 5];
+		//1. 使用对象key不会重复来去重
 
-		let obj={};
-		let arr1 = [];
-		let result=[];
-		for(let i=0; i<arr.length; i++){
-			obj[arr[i]]=0;
-		}
-		
-		let arr2 = Object.keys(obj);
-		console.log(arr2);
-
-		for(let i=0; i<arr2.length; i++){
-			
-			for(let f=0; f<arr.length; f++){
-				if(arr[f]==arr2[i]){
-
-					arr1.push(arr[f]);
-
-				}
+			//这种使用Object.keys的方式并不好，取出来的key全部为string类型，并且1和'1'无法区分
+			let arr1=[2,3,6,7,8,8,4,5,5,6,6,4,2,'2','8'];
+			function removeRedupliction(arr){
+				let json = {};
+				arr.forEach((item, index)=>{
+					json[item] = 0
+				})
+				return Object.keys(json)
 			}
-			result.push(arr1);
-			arr1=[];
+			let newArr=removeRedupliction(arr1);
+			console.log('使用对象数组去重1', newArr);
+
+			//纯数字的去重
+			//用 JavaScript 中的 Object 对象来当做哈希表
+			function removeRedupliction1(arr){
+				let result = [];
+				let json = {}
+				arr.forEach((item)=>{
+					if(json[item] !== 1){
+						result.push(item);
+						json[item] = 1;
+					}
+				})
+				return result;
+			}
+			let newArr1 = removeRedupliction1(arr1);
+			console.log('使用对象数组去重2', newArr1);
+
+			//完善的数组去重
+			//将数据类型传入一起判断
+			function removeRedupliction2(arr){
+				let result = [];
+				let json = {};
+				arr.forEach((item)=>{
+					let itemAddType = typeof(item)+item;
+					if(json[itemAddType] !== 1){
+						result.push(item);
+						json[itemAddType] = 1;
+					}
+				})
+				return result;
+			}
+			let newArr2 = removeRedupliction2(arr1);
+			console.log('使用对象数组去重3', newArr2);
+
+	//2. ES5语法 数组的indexOf方法去重，不兼容IE8
+
+		function removeRedupliction3(arr){
+			let result = [];
+			arr.forEach((item)=>{
+				if(result.indexOf(item) === -1){
+					result.push(item)
+				}
+			})
+			return result
 		}
-		console.log(result);
+		let newArr3 = removeRedupliction3(arr1);
+		console.log('indexOf方法去重', newArr3)
+	//3. 先排序后再去重
+	//4. ES6语法 set()+Array.from()方法，不兼容IE
+		function removeRedupliction5(arr){
+			let obj = new Set(arr);
+			let result = Array.from(obj)
+			
+			return result
+		}
+		let newArr5 = removeRedupliction5(arr1);
+		console.log('set()方法去重', newArr5)
+	
+
+
+
+
+
+
+
+
+		//数组去重后将相同的放在一起（需要修改）
+		function a(){
+			let arr = [23, 13, 5, 8, 8, 9, 10, 5, 5];
+
+			let obj={};
+			let arr1 = [];
+			let result=[];
+			for(let i=0; i<arr.length; i++){
+				obj[arr[i]]=0;
+			}
+
+			let arr2 = Object.keys(obj);
+			// console.log(arr2);
+			for(let i=0; i<arr2.length; i++){
+				
+				for(let f=0; f<arr.length; f++){
+					if(arr[f]==arr2[i]){
+
+						arr1.push(arr[f]);
+
+					}
+				}
+				result.push(arr1);
+				arr1=[];
+			}
+			return result;
+		}
+		let aa = a();
+		console.log('数组去重后将相同的放在一起', aa)
+		
 		
 	</script>
 	
