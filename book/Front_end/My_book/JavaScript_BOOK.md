@@ -432,10 +432,33 @@ json_deep_copy();
 
 ####改写alert的方法
 
+##笔记
 ```javascript
 let _alert = window.alert;
 window.alert = function(str){
     _alert(str)
 }
 //这是在干嘛？
+```
+
+```javascript
+var factorial = function f(num){
+  if(num<=1){
+    return 1;
+  }else{
+    return num*f(num-1);
+  }
+}
+
+var b = factorial;
+factorial = null;
+
+console.log(b(4));
+
+var cc = '123';
+function a(){
+  console.log(cc);
+  var cc = 1;  //这句话会导致a()函数内获取不到全局变量cc
+}
+a();
 ```
