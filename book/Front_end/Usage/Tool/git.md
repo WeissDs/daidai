@@ -91,6 +91,7 @@ n后面也可以跟随版本号比如：n v 3.7.3
 
         $ git push <远程主机名> master
 
+
 ####拉取远程库文件
 
 1. 拉取远程库文件
@@ -145,6 +146,40 @@ n后面也可以跟随版本号比如：n v 3.7.3
 5. 将指针指向固定的某个版本
 
         git reset --hard <版本号(版本号取前七位)>
+
+
+####分支
+
+1. 创建分支
+
+        $ git branch <dev>  -----------创建分支dev
+        $ git branch -b <dev>  -----------创建分支dev并将指针切换到分支dev
+
+2. 切换HEAD指向
+
+        $ git checkout <dev>  -----------指针指向dev分支
+        $ git checkout master   -----------指针指回master
+
+2. 查看分支
+
+        $ git branch  -----------查看本地分支
+        $ git branch -r  -----------查看远程分支
+        $ git branch -a  -----------查看全部分支
+
+3.  将分支提交到远程库(确认指针已经切换到分支上)
+
+        $ git add .
+        $ git commit -m ''
+        $ git push origin <dev>
+
+4. 合并本地分支到主分支master
+
+        $ git merge <dev>
+
+5. 删除分支
+
+        $ git branch -d <dev>  -----------删除本地分支
+        $ git push origin --delete <dev>  -----------删除远程分支
 
 ####远程库更新（包括分支）在本地合并
 
