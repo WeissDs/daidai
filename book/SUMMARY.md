@@ -15,6 +15,7 @@
             * [1.vue教程](Front_end/Usage/Frameworks/vue.md)
             * [2.vue中的Swiper代码案例](Front_end/Usage/Frameworks/useSwiperInVUE.md)
             * [3.React教程](Front_end/Usage/Frameworks/React.md)
+            * [4.ElementUI教程](Front_end/Usage/Frameworks/ElementUI.md)
     * [My_book]()
         * [1.JavaScript读书笔记](Front_end/My_book/JavaScript_BOOK.md)
         * [2.javaScript技巧和问题](Front_end/My_book/javaScript技巧和问题.md)
@@ -31,16 +32,15 @@
     * [1.news](note/news.md)
     * [2.English]()
         * [1.程序英文随笔](note/English/Sentence.md)
+        * [2.音乐英文随笔](note/English/music.md)
     * [3.一些问题记录](note/question.md)
 * [3.www]()
     * [1.IT网站收集](www/IT网站收集.md)
 * [4.Math]()
     * [1.概率](Math/概率学.md)
 * [5.temporary_files]()
-    * [1.JavaScript相关插件](temporary_files/JavaScript插件相关.md)
-    * [2.技巧搜集](temporary_files/一些技巧搜集.md)
-    * [3.乱七八糟的记录](temporary_files/乱七八糟的记录.md)
-    * [4.自学笔记](temporary_files/自学笔记.md)
+    * [1.乱七八糟的记录](temporary_files/乱七八糟的记录.md)
+    * [2.自学笔记](temporary_files/自学笔记.md)
 
     
 
