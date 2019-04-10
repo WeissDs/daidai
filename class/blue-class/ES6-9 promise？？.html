@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<script>
+	// 顺序为什么是这样？？？？
+	// 异步请求写法
+	$.ajax({
+		url: 'data/1.json',	
+		success(data){
+			console.log(data);
+			$.ajax({
+				url: 'data/2.json',
+				success(data){
+					console.log(data)
+				}
+			})
+		},
+		error(err){
+			console.log(err)
+		}
+	})
+
+	console.log(1)
+
+	// // promise写法
+	// // 实例化一个pormise，resolve为成功走向，reject为失败走向
+	// let p1 = new Promise(function(resolve, reject){
+	// 	$.ajax({
+	// 		url: 'data/1.json',
+	// 		success(data){
+	// 			resolve(data)
+	// 		},
+	// 		error(err){
+	// 			reject(err)
+	// 		}
+	// 	})
+	// })
+	// let p2 = new Promise(function(resolve, reject){
+	// 	$.ajax({
+	// 		url: 'data/2.json',
+	// 		success(data){
+	// 			resolve(data)
+	// 		},
+	// 		error(err){
+	// 			reject(err)
+	// 		}
+	// 	})
+	// })
+	// //.then中第一个函数为成功，第二个函数为失败
+	// Promise.all([p1, p2]).then(
+	// 	function(arr){
+	// 		let [res1, res2] = arr
+	// 		console.log('Promise',res1, res2);
+	// 	},
+	// 	function(err){
+	// 		console.log(err)
+	// 	}
+	// )
+
+	// 封装一下
+	function createPromise(url){
+		return new Promise(function(resolve, reject){
+			$.ajax({
+				url,
+				success(data){
+					resolve(data);
+				},
+				error(err){
+					reject(err);
+				}
+			})
+		})
+	}
+	Promise.all([
+		createPromise('data/1.json'),
+		createPromise('data/2.json'),
+	]).then(function(arr){
+		let [res1, res2] = arr;
+		console.log('封装后的promise', res1, res2)
+	},function(err){
+		console.log(err)
+	})
+
+	console.log(2)
+
+	// jquery已经封装了promise可以直接使用 注：需要高版本jquery
+	Promise.all([
+		$.ajax({url: 'data/1.json', dataType: 'json'}),
+		$.ajax({url: 'data/2.json', dataType: 'json'}),
+	]).then(function(arr){
+		let [res1, res2] = arr;
+		console.log(res1, res2);
+	},function(err){
+		console.log(err);
+	})
+
+</script>
+	
+
+</body>
+</html>

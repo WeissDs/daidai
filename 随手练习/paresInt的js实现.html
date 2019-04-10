@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<script>
+		let str1 = '255fwioe3924'
+		let str2 = 'ewer'
+		
+		function screenOutNum(str){
+			let result = ''
+			let n = 0
+			for(let i=0;i<str.length;i++){
+				n = str.charCodeAt(i)
+				if(n<48 || n>57){
+					break;
+				}else{
+					console.log(str.charAt(i))
+					
+					result+=str.charAt(i)
+					console.log(typeof result, result)
+				}
+			}
+			if(!result){
+				result = NaN;
+			}
+			return result
+		}
+		let a = screenOutNum(str1)
+		let b = screenOutNum(str2)
+		console.log(a)
+		console.log(b)
+		
+	</script>
+</body>
+</html>
