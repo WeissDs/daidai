@@ -11,6 +11,7 @@
             * [5.sublime教程](Front_end/Usage/Tool/sublime.md)
             * [6.wamp教程](Front_end/Usage/Tool/wamp.md)
             * [7.mySQL教程](Front_end/Usage/Tool/mySQL.md)
+            * [8.Atom教程](Front_end/Usage/Tool/Atom.md)
         * [Frameworks]()
             * [1.vue教程](Front_end/Usage/Frameworks/vue.md)
             * [2.vue中的Swiper代码案例](Front_end/Usage/Frameworks/useSwiperInVUE.md)

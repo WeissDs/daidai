@@ -1,18 +1,58 @@
 ##DOM
 
-1.DOM:
-
     D:document（文本）   O:object（对象）   M:model（模型）
     
     HTML在js中的对象:document
-    
-2.BOM:
 
+##BOM
+
+####BOM概念
     B:browser（浏览器）   O:object（对象）   M:model（模型）
     
     浏览器在js中的对象:window
     
 
+####window.location对象
+<table>
+    <tr style="background-color: #666; color: #fff" >
+        <th>属性</th>
+        <th>描述</th>
+    </tr>
+    <tbody>
+        <tr>
+            <td>href</td>
+            <td>当前完整的URL</td>
+        </tr>
+        <tr>
+            <td>host</td>
+            <td>当前URL的主机名和端口号</td>
+        </tr>
+        <tr>
+            <td>hostname</td>
+            <td>当前URL的主机名</td>
+        </tr>
+        <tr>
+            <td>port</td>
+            <td>当前URL的端口号</td>
+        </tr>
+        <tr>
+            <td>pathname</td>
+            <td>当前URL的路径部分</td>
+        </tr>
+        <tr>
+            <td>hash</td>
+            <td>从井号（#）开始的URL（锚）</td>
+        </tr>
+        <tr>
+            <td>search</td>
+            <td>从问号（?）开始的URL(查询部分)</td>
+        </tr>
+        <tr>
+            <td>protocol</td>
+            <td>当前URL的协议</td>
+        </tr>
+    </tbody>
+</table>
 
 ##数据类型转换和NaN
 
