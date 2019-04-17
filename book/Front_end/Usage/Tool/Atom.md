@@ -1,3 +1,4 @@
+## 插件安装
 1. atom-beautify
     ######链接：<https://atom.io/packages/atom-beautify>
     ######描述：代码格式一键美化，windows快捷键是ctrl+alt+b，Mac快捷键是control+command+b
@@ -30,3 +31,14 @@
 8. minimap-highlight-selected
     ######链接：<https://atom.io/packages/minimap-highlight-selected>
     ######描述：可以小的缩列图里的代码也高亮
+
+
+##强迫症问题
+
+####关闭欢迎页面
+
+    禁用 File > Settings > packages 中的 welcome 插件
+
+####ES6语法不停有警告弹窗的问题
+
+    禁用 File > Settings > packages linter-php
