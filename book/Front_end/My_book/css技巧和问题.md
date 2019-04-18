@@ -9,6 +9,13 @@
 
 ######enctype修改的是MIME 编码？？？？？？？？
 
+####html标签中存放不显示数据的属性
+
+###### aria-label属性用来给当前元素加上的标签描述，接受字符串作为参数。是用不可视的方式给元素加label（如果被描述元素存在真实的描述元素，可使用 aria-labelledby 属性作为来绑定描述元素和被描述元素来代替）
+
+  <div aria-label="user.age"></div>
+
+
 ##CSS常见问题
 
 #####1. li之间的空隙怎么解决
@@ -83,7 +90,7 @@
 
 ```javascript
 div{ width: 100%; }
-div:before{ 
+div:before{
     padding-bottom: 10%;   //宽度的10%
     }
 ```
@@ -143,4 +150,3 @@ css3出的最新width值（IE和低级浏览器全部不支持）
     Android
     Droid Sans 安卓系统默认字体，无衬线字体
     Droid Sans Fallback 包含汉字，日文假名，韩文的文字扩展支持
-

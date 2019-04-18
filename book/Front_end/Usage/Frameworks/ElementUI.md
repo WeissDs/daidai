@@ -5,21 +5,21 @@
     npm install element-ui -S
 
 ####使用（看官方文档 以下为2.0-3.0版本方法）
-#####1. 完整引入
+######1. 完整引入
 
     import ElementUI from 'element-ui';
     import 'element-ui/lib/theme-chalk/index.css';
 
     Vue.use(ElementUI);
 
-#####2. 按需引入（需要下载babel-plugin-component）
+######2. 按需引入（需要下载babel-plugin-component）
 
     npm install babel-plugin-component -D
 
 ######然后，将 .babelrc 修改为：
 
-    
-        
+
+
         //element官网presets 会报错
        "presets": [
          ["es2015", { "modules": false }]  ----vue3.0才需要配置
@@ -33,7 +33,7 @@
       npm install --save-dev babel-preset-env@next
 
 ######然后，将 .babelrc 修改为：
-      
+
     {
       "presets": [ "env" ],
       "plugins": [["component", [
@@ -50,7 +50,20 @@
 
     Vue.component(Button.name, Button)
     Vue.component(Select.name, Select)
-    /* 或写为
-     * Vue.use(Button)
-     * Vue.use(Select)
-     */
+    或写为
+    Vue.use(Button)
+    Vue.use(Select)
+
+
+
+## 坑
+
+####在 按需加载组件Massage 和 MassageBox 后 自动运行message弹框
+
+######解决办法：通过加载组件的方式引入即可
+
+  Vue.use(Message)
+  Vue.use(MessageBox)
+  改为:
+  Vue.component(Message.name, Message)
+  Vue.component(MessageBox.name, MessageBox)
