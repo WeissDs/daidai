@@ -65,7 +65,7 @@ document.getElementById('btn').disabled='true';
 ######此方法需要验证，和扩展
 
 ```javascript
-	navigator.geolocation.getCurrentPosition(); 
+	navigator.geolocation.getCurrentPosition();
 ```
 <br>
 
@@ -101,6 +101,7 @@ document.getElementById('btn').disabled='true';
 
 ######用现成的: browser-sync
 ######自己写: web-socket
+
 
 <br/>
 <br/>
@@ -141,13 +142,13 @@ document.getElementById('btn').disabled='true';
 
 	oBtn.onclick=function(){
 		oDiv.style.display = "block";
-		
+
 		setTimeout(function(){
 			oDiv.className="none show";
 		},0);
 	}
 
-今天在工作中无意发现，当元素本身为display：none 时，若此时我们想通过js先将其变为display:block 并且随后再触发其他想要的transition过渡效果，需要在 js改变其为display:block 后setTimeout再去设置其他过渡动画，否则该过渡动画不会触发。 
+今天在工作中无意发现，当元素本身为display：none 时，若此时我们想通过js先将其变为display:block 并且随后再触发其他想要的transition过渡效果，需要在 js改变其为display:block 后setTimeout再去设置其他过渡动画，否则该过渡动画不会触发。
 
 原理： setTimeout被触发时，浏览器的定时触发器线程会将事件添加到待处理列队的末尾，保证在div设置block之后再添加className:show???????
 
@@ -186,7 +187,7 @@ document.getElementById('btn').disabled='true';
 	obj.attachEvent('on'+ev, fn, bool)	(ie8_)
 
 
-```script	
+```script
 	function addEvent(element, ev, fn){
 	  // if else 结构可用三元运算符 ? : 来精简
 	  // 这里之所以要这样写，是便于读者理解
@@ -217,4 +218,3 @@ document.getElementById('btn').disabled='true';
     function weixin_ClosePage() {
     WeixinJSBridge.call('closeWindow');
     }
-

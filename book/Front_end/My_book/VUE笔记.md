@@ -1,5 +1,7 @@
 ## 问题记录
 
+---
+
 ####vue不能直接在注册的子组件的标签中加入事件
 
 ######解决方法：添加native修饰符 (.stop为取消冒泡的方法)
@@ -17,13 +19,35 @@ document.addEventListener('click',function(e){
 })
 ```
 
+####使用高德地图时 eslint一直报错 Amap is undefined
+
+######还未解决 直接忽略eslint吧。。 按照网上的配置webpack.base.conf.js后import Amap form 'Amap'没有用
+
+  externals: {
+    'Amap': 'Amap'
+  },
+
+####我们需要用 ‘路由后+参数’ 的方式去实现 一个页面的多个分页
+
+######因为点击显示该分页后刷新不能回到初始页面，刷新需要停留在这个分页
+
+####在做分页跳转时 按钮用了button 导致按钮无效 报错'Form submission canceled because the form is not connected'  醉了....
+
+
+
+
+
 ##性能
+
+---
 
 ####在vue中， 尽量不要 直接对vue实例上的属性（也就是data中的数据）进行操作，因为每操作一次， vue就会渲染一次。
 
 ####按需加载 ui框架局部加载 首屏加载优化 等等。。。。
 
 ####压缩打包 webpack。。。。。
+
+####v-show 和 v-if 比较 v-if性能更高
 
 ##方法记录
 
@@ -78,3 +102,5 @@ document.addEventListener('click',function(e){
 
 
 ##VUEX
+
+---
