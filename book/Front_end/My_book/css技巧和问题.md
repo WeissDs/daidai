@@ -85,20 +85,38 @@
 
 ```
 
-#####5. 宽高等比缩放的方法
+#####5. 限制文本行数
+
+######显示两行 多余部分隐藏
+
+```javascript
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+```
+######显示一行 多余部分用...表示
+
+```javascript
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;  /* 超出用...表示 */
+```
+
+#####7. 宽高等比缩放的方法
 
 ######方法1
 
 ```javascript
-div{ width: 100%; }
-div:before{
-    padding-bottom: 10%;   //宽度的10%
-    }
+    div{ width: 100%; }
+    div:before{
+        padding-bottom: 10%;   //宽度的10%
+        }
 ```
 
-#####6.不规则图片点击写法
+#####8.不规则图片点击写法
 
-######1分开切图： 将多个切好的图片放入<a>标签的<div>中（注意a标签不可以给宽高否则空隙部分也会触发点击事件，可以给主图定宽高后，覆土用绝对定位 ps: 师父说这里可以用map标签）， 用绝对定位排好。
+######1分开切图： 将多个切好的图片放入<a>标签的<div>中（注意a标签不可以给宽高否则空隙部分也会触发点击事件，可以给主图定宽高后，副图用绝对定位 ps: 师父说这里可以用map标签）， 用绝对定位排好。
 
         <a>
             <div 设置宽高 position: relative;>

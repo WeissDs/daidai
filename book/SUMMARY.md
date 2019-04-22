@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
 * [1.Front_end]()
-    * [Usage]() 
+    * [Usage]()
         * [Tool]()   
             * [1.npm教程](Front_end/Usage/Tool/npm.md)
             * [2.git教程](Front_end/Usage/Tool/git.md)
@@ -28,7 +28,10 @@
         * [8.计算机基础](Front_end/My_book/计算机基础.md)
         * [9.算法]
         * [10.性能](Front_end/My_book/性能.md)
-       
+        * [11.VUE笔记](Front_end/My_book/VUE笔记.md)
+        * [12.Node.js笔记](Front_end/My_book/node笔记.md)
+        * [13.数组方法大全](Front_end/My_book/数组方法大全.md)
+
 * [2.note]()
     * [1.news](note/news.md)
     * [2.English]()
@@ -42,7 +45,3 @@
 * [5.temporary_files]()
     * [1.乱七八糟的记录](temporary_files/乱七八糟的记录.md)
     * [2.自学笔记](temporary_files/自学笔记.md)
-
-    
-
-
