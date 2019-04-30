@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<script>
+		//同步的请求数据的写法
+	$.ajax({
+		url: 'data/1.json',	
+		success(data){
+			console.log(data);
+		}
+	})
+	$.ajax({
+		url: 'data/2.json',	
+		success(data){
+			console.log(data);
+		}
+	})
+	$.ajax({
+		url: 'data/3.json',	
+		success(data){
+			console.log(data);
+		}
+	})
+
+	//异步的请求数据的写法
+	$.ajax({
+		url: 'data/1.json',
+		success(data){
+			$.ajax({
+				url: 'data/2.json',
+				success(data){
+					console.log(data);
+				}
+			})
+		console.log(data);
+	    }
+		
+	})
+</script>
+	
+
+</body>
+</html>

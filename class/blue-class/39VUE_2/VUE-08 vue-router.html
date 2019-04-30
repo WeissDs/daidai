@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>router</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="../js/vue-router.js"></script>
+    <style>
+        img{
+            width: 100px;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: #fff149;
+            margin-top: 100px;
+        }
+        .a-link{
+            text-decoration: none;
+            color: #323232;
+        }
+        .router-link-active{
+            background-color: #ffaf59;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="div1">
+        <div @click="fn_back">
+            <img src="../image/back.svg" alt="">
+        </div>
+        <input type="button" value="前进" @click="fn_forward">
+        <input type="button" value="js进入首页" @click="fn_push">
+        <div>
+            <!--router-link 路由跳转-->
+            <router-link class="a-link" to="/home">首页</router-link>
+            <router-link class="a-link" to="/coupon">券</router-link>
+            <router-link class="a-link" to="/user">我的</router-link>
+
+
+        </div>
+        <div class="box">
+            <!--router渲染容器-->
+            <router-view></router-view>
+        </div>
+    </div>
+
+    <script>
+        let vm=new Vue({
+           el: '#div1',
+           router: new VueRouter({
+                   routes: [
+                       {path: '/home', component: {template: '<div>首页</div>'}},
+                       {path: '/coupon', component: {template: '<div>券</div>'}},
+                       {path: '/user', component: {template: '<div>我的</div>'}},
+                   ]
+               }),
+            methods: {
+               //js操作路由
+               fn_forward(){
+                   this.$router.go(1);
+               },
+               fn_back(){
+                   this.$router.go(-1);
+               },
+               fn_push(){
+                   this.$router.push('/home');
+               },
+            },
+        });
+     
+    </script>
+
+</body>
+</html>

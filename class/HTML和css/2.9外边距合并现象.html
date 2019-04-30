@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>外边距合并现象</title>
+    <style type="text/css">
+        span{
+            display:inline-block;
+            width:100px;
+            height:100px;
+            border:1px solid #000;
+        }
+        div{
+            height: 100px;
+            border:1px solid #000;
+        }
+
+        /*左右的外边距会叠加*/
+        .heizi1{
+            margin-right: 50px;
+        }
+        .heizi2{
+            margin-left:100px;
+        }
+        /*上下的外边距会合并 谁的外边距大就听谁的*/
+        .box1{
+            margin-bottom:50px;
+        }
+        .box2{
+            margin-top:100px;
+        }
+    </style>
+</head>
+<body>
+
+<span class="heizi1">我是SPAN</span><span class="heizi2">我是SPAN</span>
+<div class="box1">我是DIV</div>
+<div class="box2">我是DIV</div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>父子组件通信</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+
+	<div id="box1"></div>
+
+	<script type="text/babel">
+		//父传子 属性传值
+		
+		class Father extends React.Component{
+			constructor(...args){
+				super(...args);
+
+				this.state={color:''}
+			}
+			fn(){
+				this.setState({color: 'red'});
+			}
+
+			render(){
+				return <div>
+					<input type="button" value="变红" onClick={this.fn.bind(this)}></input>
+					<ul>
+						{this.props.users.map((json,index)=><Son color={this.state.color} json={json}/>)}
+					</ul>
+				</div>
+			}
+		}
+
+		class Son extends React.Component{
+			constructor(...args){
+				super(...args);
+			}
+
+			render(){
+				return <li style={{color: this.props.color}}>{this.props.json.name}</li>
+			}
+		}
+
+
+
+
+		ReactDOM.render(<Father users={[
+			{name: 'dai', age: 26, code: 10},
+			{name: 'fai', age: 27, code: 20},
+			{name: 'oai', age: 28, code: 30}
+			]}/>,document.getElementById('box1'));
+	</script>
+	
+</body>
+</html>

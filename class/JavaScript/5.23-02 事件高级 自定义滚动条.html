@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义滚动条</title>
+    <style>
+        #parent{
+            width:600px;
+            height:20px;
+            background-color:#ccc;
+            position: relative;
+            margin:0 auto;
+        }
+        #div1{
+            width: 20px;
+            height: 20px;
+            background-color: #723c75;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        #div2{
+            width: 0;
+            height: 0;
+            background-color: #ffe870;
+            position: absolute;
+            top:20px;
+            /*margin:0 auto;*/
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var oPrt=document.getElementById('parent');
+            var oDiv=document.getElementById('div1');
+            var oDiv2=document.getElementById('div2');
+
+            oDiv.onmousedown=function(ev)
+            {
+                var oEvent=ev||event;
+                var disX=oEvent.clientX-oDiv.offsetLeft;
+                alert(disX);
+//                var disY=oEvent.clientY-oDiv.offsetTop;
+
+                document.onmousemove=function(ev)
+                {
+                    oEvent=ev||event;
+
+                    var l=oEvent.clientX-disX;
+                    if(l<0)
+                    {
+                        l=0;
+                    }
+                    else if(l>oPrt.offsetWidth-oDiv.offsetWidth)
+                    {
+                        l=oPrt.offsetWidth-oDiv.offsetWidth;
+                    }
+                    oDiv.style.left=l+'px';
+
+
+                    var scale=l/(oPrt.offsetWidth-oDiv.offsetWidth);
+                    //用滚动条改变DIV2的宽高
+                    oDiv2.style.width=l/(oPrt.offsetWidth-oDiv.offsetWidth)*600+'px';
+                    oDiv2.style.height=l/(oPrt.offsetWidth-oDiv.offsetWidth)*600+'px';
+                    //用滚动条改变DIV2的透明度
+                    oDiv2.style.filter='alpha(opacity:'+scale*100+';)';
+                    oDiv2.style.opacity=scale;
+
+                    //运动时将变量赋给title可以观察实时变化
+                    document.title=l/(oPrt.offsetWidth-oDiv.offsetWidth);
+                };
+                document.onmouseup=function()
+                {
+                    document.onmousemove=null;
+                    document.onmouseup=null;
+                };
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div id="parent">
+    <div id="div1"></div>
+    <div id="div2"></div>
+</div>
+
+
+</body>
+</html>

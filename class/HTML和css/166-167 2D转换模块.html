@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2D转换模块</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box1 ul{
+            width: 800px;
+            height: 500px;
+            border: 1px solid #000;
+            margin:0 auto;
+        }
+        .box1 ul li{
+            list-style: none;
+            width: 100px;
+            height: 50px;
+            background-color: #7229ff;
+            margin:50px auto;
+            text-align: center;
+            line-height:50px;
+        }
+        /*其中单位dge是旋转的度数*/
+        .box1 ul li:nth-child(2){
+            transform:rotate(45deg);
+        }
+        /*平移 括号中为 X轴和Y轴*/
+        .box1 ul li:nth-child(3){
+            transform:translate(200px,60px);
+        }
+        /*缩放 括号中为 X轴和Y轴  ！如果XY轴缩放的值一样可以简写一个*/
+        .box1 ul li:nth-child(4){
+            transform:scale(0.6,0.5);
+        }
+        .box1 ul li:nth-child(5){
+            transform:rotate(45deg) translate(100px,4px) scale(0.6,0.5);
+
+        }
+
+
+        .box2 ul{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            margin:300px auto;
+            position: relative;
+        }
+        .box2 ul li{
+            list-style:none;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top:0;
+            left:0;
+            /*
+            transform-origin:;可以用来改变旋转中心点
+            其中取值有四种方式
+            具体像素
+            百分比
+            特殊关键字
+            */
+            transform-origin:200px 0;
+            /*transform-origin:50% 50%;*/
+            /*transform-origin:top center;*/
+        }
+        .box2 ul li:nth-child(1){
+            /*
+            默认情况下所有的元素都是以自己的中心点作为参考来旋转的，
+            我们可以通过形变中心点属性来修改参考点
+            */
+            background-color: #847eff;
+            transform:rotate(30deg);
+
+        }
+        .box2 ul li:nth-child(2){
+            background-color: #b5ffa8;
+            transform:rotate(50deg);
+        }
+        .box2 ul li:nth-child(3){
+            background-color: #ff73cd;
+            transform:rotate(70deg);
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+<div class="box1">
+    <ul>
+        <li>正常的</li>
+        <li>旋转</li>
+        <li>平移</li>
+        <li>缩放</li>
+        <li>综合</li>
+    </ul>
+</div>
+
+
+<div class="box2">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+
+
+
+</body>
+</html>

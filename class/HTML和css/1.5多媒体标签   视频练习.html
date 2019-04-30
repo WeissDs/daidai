@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频练习</title>
+</head>
+<body>
+<!--
+video标签的属性
+src：用于告诉video标签需要播放的视频地址
+autoplay：用于告诉video标签是否需要自动播放视频
+contrals：用于告诉video标签是否需要显示控制条
+poster：用于告诉video标签视频没有播放之前显示的占位图片
+loop：一般用于广告视频，用于告诉video标签播放完毕之后是否需要循环播放
+preload：预加载视频，但是与autoplay相冲
+muted：静音
+width/height：用于告诉video标签视频的宽高
+-->
+
+<video src="../../video/VID_20160928_201258.mp4" autoplay="autoplay" muted="muted" loop="loop"></video>
+<video src="../../video/VID_20160924_193752.mp4" controls="controls" poster="../../images/IMG_0197.JPG" preload="preload"></video>
+
+
+
+<!--video标签的第二种格式-->
+<video>
+    <source src="../../video/瞎写的.ogg" type="video/ogg">
+    <source src="../../video/瞎写的.mp4" type="video/mp4">
+    <source src="../../video/瞎写的.webm" type="video/webm">
+</video>
+
+<!--
+虽然通过第二种格式可以指定所有浏览器都支持的视频格式，但是不是所有浏览器都支持html5的video标签。
+我们需要通过一个JS的框架 html5media 来实现所有浏览器的兼容
+-->
+
+</body>
+</html>

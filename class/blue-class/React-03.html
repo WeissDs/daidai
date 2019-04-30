@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>state和props</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+
+</head>
+<body>
+	
+	<div id="div1"></div>
+	
+	<script type="text/babel">
+		class Test extends React.Component{
+			constructor(...args){
+				super(...args);
+
+				//初始化状态 要放在constructor里
+				this.state={a: 12,b: 5};
+			}
+
+			fn(){
+				//有且只有setState会使render重新渲染
+				this.setState({
+					//a: 15
+					a: this.state.a+1
+				})
+			}
+
+			render(){
+				console.log('渲染');
+				return <div>
+					{/*{this.props.a}    属性props的a无法改变*/}    
+					{this.state.a} ,{this.state.b}      {/*状态state的a可以改变*/}
+					<input type="button" value="a加一" onClick={this.fn.bind(this)}/>
+				</div>;
+			}
+		}
+
+
+		window.onload=function(){
+			let oDiv = document.getElementById('div1');
+
+			ReactDOM.render(
+				<Test a={12}></Test>,
+				oDiv
+			)
+
+		}
+	</script>
+</body>
+</html>

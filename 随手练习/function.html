@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box">
+		<div class="oDiv">1</div>
+		<div class="oDiv">2</div>
+		<div class="oDiv">3</div>
+		<div class="oDiv">4</div>
+	</div>
+	
+	<input id="update" type="file">
+	
+	<script>
+		(function a(){alert(111)}());
+		var a = function (){alert(2222)}()
+		
+		const $ = document.querySelectorAll.bind(document);
+
+		let aDiv = $('.oDiv')
+		// for(var i=0; i<aDiv.length; i++){
+		// 	aDiv[i].addEventListener('click', function(e){
+		// 		console.log(this, e.target);
+		// 	})
+		// }
+		//e.target 可以用来做事件委托
+		$('#box')[0].onclick=function(e){
+			console.log(e.target)
+			console.log(this)
+		}
+
+		$('#update')[0].onchange=function(e){
+			console.log(e, this, this.files)
+		}
+		// $('.oDiv')[0].addEventListener('click', function(e){
+		// 	console.log(this, e.target);
+		// })
+	</script>
+
+</body>
+</html>

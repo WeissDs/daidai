@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>
+
+		//字符串中新增的startsWith和endsWith方法  返回布尔值
+		let str='www.fijesn.com';
+		if(str.startsWith('www')){
+			alert('普通网址');
+		}else{
+			alert('不是网址');
+		}
+
+		if(str.endsWith('.com')){
+			alert('确定是网址');
+		}
+
+		//字符串模板 反单引号
+
+		//${}在返单引号的字符串里 可以直接插入变量
+		let a=34;
+		let str1=`1${a}47`;
+
+		console.log(str1);
+
+		//字符串拼接
+
+		let title='标题';
+		let content='内容';
+		//原来的写法
+		// let str2='<div><h1>'+title+'</h1><p>'+content+'</p></div>';
+
+		let str2=`<div>
+		<h1>${title}</h1>
+		<p>${content}</p>
+		</div>`
+		console.log(str2);
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

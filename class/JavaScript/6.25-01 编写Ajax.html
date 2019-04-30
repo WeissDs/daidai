@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编写Ajax</title>
+    <script>
+        window.onload=function()
+        {
+            var oBtn=document.getElementById('btn');
+
+            oBtn.onclick=function()
+            {
+                //创建Ajax对象XMLHttpRequest();  IE6不兼容
+
+                if(window.XMLHttpRequest)  //加上window是为了在IE6中不会因为变量没有定义而报错
+                {
+                    var oAjax=new XMLHttpRequest();
+                }
+                else
+                {
+                    var oAjax=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                //连接服务器   W3school上用的是t='+Math.random()来取消缓存
+                oAjax.open('GET','dai.html?t='+new Date().getTime(),true);
+
+                //发送请求
+                oAjax.send();
+
+                //接收返回
+                oAjax.onreadystatechange=function()
+                {
+                    if (oAjax.readyState == 4)
+                    {
+                        if (oAjax.status == 200)
+                        {
+                            fnSucc(oAjax.responseText);
+                        }
+                        else
+                        {
+                            fnFaild(oAjax.status);
+                        }
+                    }
+                };
+            };
+        };
+    </script>
+</head>
+<body>
+<!--
+1.创建Ajax对象
+2.连接到服务器
+3.发送请求
+4.接收返回值
+-->
+
+<input id="btn" type="button" value="读取">
+
+</body>
+</html>

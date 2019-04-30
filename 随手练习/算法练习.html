@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>算法练习</title>
+	<style>
+		table.ta{ font-family: verdana,arial,sans-serif;
+		    font-size:11px;
+		    color:#333333;
+		    /*border-width: 1px;*/
+		    /*border-color: #666666;*/
+		    border-collapse: collapse;
+		}
+	    table.ta td{ 
+	    	border: 1px solid #666;
+	    }
+	</style>
+</head>
+<body>
+	<button id='btn' >111</button>
+	<table class="ta">
+		<tr id="id1">
+			<tr>
+				<td>dfs</td>
+				<td>dd</td>
+				<td>ddd</td>
+			</tr>
+		</tr>
+		<tr id="id2">
+			<tr>
+				<td>sdada</td>
+				<td>sss</td>
+				<td>ssss</td>
+			</tr>
+		</tr>
+		<tr id="id3">
+			<tr>
+				<td>ddd</td>
+				<td>fff</td>
+				<td>ggg</td>
+			</tr>
+		</tr>
+	</table>
+	<summary>dsadad</summary>
+	
+	<script>
+		//iframe 插入广告的写法
+
+		// document.writeln("<iframe scrolling='no' frameborder='6' marginheight='0' marginwidth='0' width='100%' height='1000' allowTransparency src=http://www.baidu.com/></iframe>");
+		// document.write("</iframe><iframe src='http://www.taobao.com/' rel='nofollow' scrolling='no' frameborder='0' width='100%' height='2000'>");
+
+		//window.location 和 open 的区别
+		let $ = document.querySelectorAll.bind(document);
+		$('#btn')[0].onclick = function(){
+			// window.location.href = 'http://www.baidu.com'   //在当前页打开
+			window.open('http://www.baidu.com')   //在新页面打开
+
+		}
+
+		// var foo=1;
+		// (function(foo){
+		// 	console.log(foo);
+		// 	foo=3;
+		// 	var foo=2;
+		// 	console.log(foo);
+
+		// })(foo)
+		// console.log(foo);
+
+		var foo1 = {n:1};
+		(function(foo1){
+			// console.log(foo1.n);
+			// foo1.n=3;
+			var foo1 = {n:2};
+			console.log(foo1.n);    //2
+		})()
+		console.log(foo1.n);		//1
+ 
+
+		let arr=[12,5,9,3,88,46,7];
+		let obj = {a: 12, b: '12222', c: {d:111, e:222}}
+		let a = arr.join('+');
+
+
+		console.log(typeof 1.2=='float');
+
+		console.log(typeof(a)+':'+a); //typeof可以写为typeof obj 也可以写为 typeof(obj)
+		console.log(new Date().getDay());
+
+		for( a in arr){
+			console.log(arr[a]);
+		}
+		for( a in obj ){
+			console.log(obj[a]);
+		}
+
+		console.log(Object.keys(obj));
+
+		let str_a = 'doshoshshs';
+		let str_b = 'daidai';
+
+		console.log(typeof str_a.concat(str_b));
+		console.log(typeof (str_a+str_b))
+
+		// let o = 9
+		// while(o>=1)
+		// {
+		// 	console.log('hihihi');
+		// 	o--;
+		// }
+
+		// do{
+		// 	console.log('do-while');
+		// }while(o<1)
+
+		//2018/12/7
+
+		let str1 = 'doiwonwon  owieoijr';
+
+		console.log(str1.charAt(10));
+		console.log(str1.indexOf('o'));
+		alert(str1.slice(2));
+		alert(str1)
+		alert(str1.replace(/o/g, '*'));
+
+		//用Object.keys()取出对象key生成的数组，获取length  || 或者使用 for in计算出来
+		let a = { 	fieldname: 'f1',
+	    			originalname: 'Git.jpg',
+	    			encoding: '7bit',
+	    			mimetype: 'image/jpeg',
+	    			destination: './images/',
+	    			filename: '6c6cce430c75c68430e521bc1f1342b4',
+	    			path: 'images\\6c6cce430c75c68430e521bc1f1342b4',
+	    			size: 435873 
+	    		}
+
+	    console.log(Object.keys(a).length);
+
+		//查找所有子字符串的方法
+		var str = "I think of other ages that floated upon the stream of life and love and death";
+		var positions = new Array();
+		function searchSubStr(str,subStr){
+		    var pos = str.indexOf(subStr);
+		    while(pos>-1){
+		        positions.push(pos);
+		        pos = str.indexOf(subStr,pos+1);
+		    }
+		}
+		searchSubStr(str,"o");
+		console.log(positions);//8,11,29,37,51,64
+
+		//判断str是否以某个字符串开头
+
+		//方法1:substr() 方法
+		if("123".substr(0, 2) == "12"){
+		    console.log(true);
+		}
+
+		//方法2:substring() 方法
+		if("123".substring(0, 2) == "12"){
+		    console.log(true);
+		}
+
+		//方法3:slice()方法
+		if("123".slice(0,2) == "12"){
+		    console.log(true);
+		}
+
+		//方法4:indexOf() 方法
+		if("123".indexOf("12") == 0) {
+		    console.log(true);
+		}
+
+		//方法5:startsWith(),endsWith(),不过兼容不好
+		console.log("123".startsWith("12")); //true
+
+		console.log("123".endsWith("23"));　//true
+
+			// 兼容
+		if (typeof String.prototype.startsWith != 'function') {
+		 String.prototype.startsWith = function (prefix){
+		  return this.slice(0, prefix.length) === prefix;
+		 };
+		}
+
+		//方法6:正则
+		if("123".search("12") != -1) {
+		    console.log(true);
+		}
+
+		if(new RegExp("^12.*$").test(12)) {
+		    console.log(true);
+		}
+
+		if("12".match(new RegExp("^12.*$"))) {
+		    console.log(true);
+		}
+
+
+		
+
+		
+	</script>
+</body>
+</html>

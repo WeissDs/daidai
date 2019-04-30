@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task 6</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .web{
+            width:892px;
+            height: 1386px;
+            padding:0 44px;
+            margin:50px auto;
+            background-color: #ffffff;
+            border:2px solid #cccccc;
+        }
+
+        /*页眉开始*/
+        .header{
+            overflow: hidden;
+        }
+        .header .box1{
+            float: left;
+            position: relative;
+            width: 110px;
+            height: 61px;
+            background-color: #d45d5c;
+        }
+        .header .box1 p{
+            position: absolute;
+            bottom:6px;
+            left:6px;
+            color: #ffffff;
+            font:12px '黑体';
+        }
+        .header .date{
+            float: right;
+            margin-top:43px;
+            color: #d45d5c;
+            font:12px '黑体';
+        }
+        .header .line{
+            width: 892px;
+            height: 2px;
+            background-color: #938e8c;
+            margin-top:61px;
+        }
+        /*页眉结束*/
+
+
+
+        /*内容开始*/
+        .content{
+            width: 892px;
+            height: 301px;
+            background-color: #fff097;
+        }
+        .content .main{
+            position: relative;
+            width: 892px;
+            height: 301px;
+            margin-top:35px;
+        }
+        .content .main .photo-left{
+            /*position: absolute;*/
+            /*top:0;*/
+            /*left:0;*/
+            float: left;
+            width: 191px;
+            height: 301px;
+            background-color: #428c59;
+            opacity:0.5;
+        }
+        .content .main .photo-right{
+            /*position: absolute;*/
+            /*top:0;*/
+            /*right:0;*/
+            float: right;
+            width: 191px;
+            height: 301px;
+            background-color: #cc7680;
+            opacity:0.5;
+        }
+        .content .main img{
+            position: absolute;
+            top:0;
+            left:0;
+
+        }
+
+        .content .main-right{
+            width: 203px;
+            height: 301px;
+            background-color: #b1feff;
+            float: right;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="web">
+    <div class="header">
+        <div class="box1">
+            <p>ife.baidu.com</p>
+
+        </div>
+        <p class="date">2016.03</p>
+        <div class="line"></div>
+    </div>
+
+
+    <div class="content">
+        <div class="main">
+            <img src="images/左上大图.png" alt="">
+            <div class="photo-left"></div>
+            <div class="photo-right"></div>
+        </div>
+
+        <div class="main-right">
+            <div class="line1"></div>
+            
+        </div>
+    </div>
+    <div class="footer"></div>
+</div>
+
+
+</body>
+</html>

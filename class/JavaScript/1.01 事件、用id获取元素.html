@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS基本用法</title>
+    <style>
+        #div1{
+            width: 400px;
+            height:80px;
+            border: 1px solid #5d5d5d;
+            background: #cccccc;
+            text-align:center;
+            line-height: 80px;
+            position: absolute;
+
+            display:none;
+        }
+        #div2{
+            width: 200px;
+            height: 200px;
+            /*用函数获取class来改变元素样式时不能和id有重复属性 否则浏览器会优先运行id中的属性
+            background-color: #69ebff;*/
+            margin-top:20px;
+        }
+        .box1{
+            background-color: #697eff;
+        }
+    </style>
+    <script>
+        function biger()
+        {
+            var oDiv=document.getElementById('div2');
+            oDiv.className='box1';
+        }
+    </script>
+</head>
+
+<body>
+
+    <!--
+        事件：用户的操作 写在发生操作的元素标签中（onmouseover、onmouseout、onclick）
+        修改元素属性操作：obj.style.color......
+
+        HTML DOM3提供了getElementsByClassName()方法用以根据类名获取元素，但是IE9以下浏览器并不支持
+
+    -->
+
+    <!--
+        document:文件; function:函数; click:点击; alert:;
+
+        get Element By Id
+        获取 元素  用  ID
+    -->
+
+    <input type="checkbox"
+           onmouseover="document.getElementById('div1').style.display='block';"
+           onmouseout="document.getElementById('div1').style.display='none';"
+    >
+
+
+    <div id="div1">
+        我是一个小弹窗小弹窗小弹窗
+    </div>
+
+
+    <div><input type="button" value="一个按钮" onclick="alert('嘿嘿');"></div>
+
+
+    <a href="javascript:alert('aaa');">aa</a>
+
+    <!--
+        我们在获取class的时候需要写成 className
+    -->
+
+    <br>
+    <br>
+    <br>
+    <div><input type="button" onclick="biger()" value="点我"></div>
+    <div id="div2"></div>
+
+
+
+</body>
+</html>

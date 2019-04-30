@@ -1,0 +1,175 @@
+body,html{
+	width: 100%; height: 100%; min-width: 1200px;
+}
+*{
+	box-sizing: border-box;
+}
+a{ cursor: pointer; }
+.login-bg{
+	width: 100%;
+	position: relative;
+}
+.login-bg img{
+	width: 100%;
+}
+.login{
+	width:100%;
+	min-width: 1200px;
+	position: relative;
+	text-align: center;
+	top: -300px;
+}
+.login>p{
+	font-size: 26px;
+	color: #fff;
+}
+.login-window{
+	margin: 30px auto;
+	width: 430px;
+	padding: 40px;
+	background-color: #fff;
+	text-align:center;
+	box-shadow: 2px 5px 10px #aaa;
+	overflow: hidden;
+}
+.login-window .login-window-top{
+     text-align: center;
+}
+.login-window .login-window-top .user{
+	display: inline-block;
+	font-size: 28px;
+	color: #308fe9;
+	line-height: 40px;
+}
+.login-window .login-window-top .e{
+	display: inline-block;
+	font-size: 18px;
+	color: #808080;
+	line-height: 40px;
+	margin-left: 4px;
+}
+
+
+.login-window .login-window-top1 {
+	margin: 20px auto;
+	text-align: center;
+	position: relative;
+}
+.login-window .login-window-top1 span{
+	display: inline-block;
+	width: 100%;
+	height: 2px;
+	background-color: #d5d5d5;
+}
+.login-window .login-window-top1 p{
+	width: 180px;
+	height: 20px;
+	background-color: #fff;
+	font-size: 16px;
+	position: absolute;
+	top:0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.login-window div{
+	position: relative;
+}
+.login-window div i{
+	position: absolute;
+	left: 0;
+	font-size: 26px;
+	color: #3e3e3e;
+	line-height: 40px;
+	margin-left: 14px;
+}
+.login-window .a{
+	width: 100%;
+	height: 40px;
+	padding: 0 50px;
+	margin-bottom: 14px;
+	border: 2px solid #d5d5d5;
+}
+input::-webkit-input-placeholder {
+         /* placeholder颜色  */
+         color: #d5d5d5;
+         /* placeholder字体大小  */
+         font-size: 16px;
+         /* placeholder位置  */
+         /*text-align: right;*/
+     }
+
+.login-window .remember{
+	height: 30px;
+	padding:0 5px;
+	color: #8c8c8c;
+	margin-top: 15px;
+}
+.login-window .remember div{
+	margin-left: -7px;
+	float: left;
+}
+.login-window .remember span{
+	float: left;
+	margin-left: 14px;
+}
+.login-window .remember a{
+	float: right;
+	color: #8c8c8c;
+}
+.remember:after{
+	display: inline-block;
+	content: "";
+	clear: both;
+}
+.layui-form-checked[lay-skin=primary] i {
+	background-color: #0b9aff;
+}
+.layui-form-checkbox[lay-skin=primary]:hover i{
+	border-color: #0b9aff;
+}
+
+/*验证码*/
+.login-window .verify{
+	width: 100%;
+	height: 40px;
+}
+.login-window .verify.phone{
+	margin-top:15px;
+}
+.login-window .verify::after{
+	display: inline-block;
+	content: "";
+	clear: both;
+}
+.login-window .verify input{
+	float: left;
+	width: 190px;
+	height: 40px;
+	border: 2px solid #d5d5d5;
+	text-align: center;
+}
+.login-window .verify .verify-img{
+	width: 150px;
+	height: 40px;
+	background-color: #f2f2f2;
+	float: right;
+	text-align: center;
+	line-height: 40px;
+	color: #8c8c8c;
+}
+
+
+
+
+
+
+.login-window input[type="submit"]{
+	width: 100%;
+	height: 40px;
+	background-color: #0165b3;
+	border: none;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 16px;
+	margin-top: 20px;
+}

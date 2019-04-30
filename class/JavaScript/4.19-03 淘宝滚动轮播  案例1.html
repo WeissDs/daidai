@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>幻灯片</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .play{
+            width: 500px;
+            height: 200px;
+            position: relative;
+            margin:40px auto;
+            overflow: hidden;
+        }
+        img{
+            width: 500px;
+            height: 200px;
+            /*opacity:0.4;*/
+        }
+        ul{
+            list-style: none;
+            position: absolute;
+            font-size:0;   /*去掉li的空隙*/
+            /*background-color: #ff628f;*/
+        }
+        ol{
+            position: absolute;
+            /*background-color: #66a2ff;*/
+            bottom:6px;
+            right:10px;
+            z-index: 2;
+
+        }
+        ol li{
+            cursor: default;
+            background-color: #fff0b4;
+            width: 18px;
+            height: 18px;
+            text-align: center;
+            line-height:18px;
+            float: left;
+            color: #723c75;
+            border:1px solid #723c75;
+            list-style: none;
+            margin:2px;
+        }
+        .look{
+            background-color: #ffbf71;
+            width: 22px;
+            height: 22px;
+            text-align: center;
+            line-height:20px;
+            float: left;
+            color: #010101;
+            border:1px solid #010101;
+            list-style: none;
+            margin:0 2px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="play" class="play">
+    <ol>
+        <li class="look">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+    <ul>
+        <li style="z-index:1;">
+            <a href="http://www.baidu.com" alt="广告1">
+                <img src="image/89e87bfb828ba61e2e49595c4934970a314e5978.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="http://www.baidu.com" alt="广告2">
+                <img src="image/93b94b4e78f0f736895835f60c55b319e9c41384.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="http://www.baidu.com" alt="广告3">
+                <img src="image/377adab44aed2e73a84f5adb8301a18b86d6faa7.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="http://www.baidu.com" alt="广告4">
+                <img src="image/615ffab6d0a20cf477f46fac7e094b36adaf99bf.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="http://www.baidu.com" alt="广告5">
+                <img src="image/aa989e89d43f87940158d95dda1b0ef41ad53a78.jpg" alt="">
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+<script>
+    function getStyle(obj,name)
+    {
+        if(obj.currentStyle)
+        {
+            return obj.currentStyle[name];
+        }
+        else
+        {
+            return getComputedStyle(obj,false)[name];
+        }
+    }
+
+    //startMove(oDiv,{width:400,height:400})
+
+    function startMove(obj,json,fnEnd) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var bStop = true;
+
+            for (var attr in json) {
+                var cur;
+                if (attr == 'opacity') {
+                    cur = Math.round(parseFloat(getStyle(obj, attr)) * 100);
+                }
+                else {
+                    cur = parseInt(getStyle(obj, attr));
+                }
+
+                var speed = (json[attr] - cur) / 6;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+
+                if (speed != 0) {
+                    bStop = false;
+                }
+
+                if (attr == 'opacity') {
+                    obj.style.filter = 'alpha(opacity:' + (cur + speed) + ')';
+                    obj.style.opacity = (cur + speed) / 100;
+                }
+                else {
+                    obj.style[attr] = cur + speed + 'px';
+                }
+            }
+
+            if (bStop) {
+                clearInterval(obj.timer);
+                if (fnEnd)fnEnd();
+
+            }
+        }, 30);
+    }
+
+    (function() {
+        var oPlay = document.getElementById('play');
+        var aPhotoBtn = oPlay.getElementsByTagName('ol')[0].getElementsByTagName('li');
+        var oUl = oPlay.getElementsByTagName('ul')[0];
+//        var aPhoto = oUl.getElementsByTagName('li');
+
+        var now=0;
+
+        for (var i = 0; i < aPhotoBtn.length; i++)
+        {
+            aPhotoBtn[i].index=i;
+            aPhotoBtn[i].onclick=function()
+            {
+                now=this.index;
+                tab();
+            };
+        }
+
+        function tab()
+        {
+            for(var i=0;i<aPhotoBtn.length;i++)
+            {
+                aPhotoBtn[i].className='';
+            }
+            aPhotoBtn[now].className='look';
+            startMove(oUl,{top:-200*now});
+        }
+
+        function next()
+        {
+            now++;
+            if(now==aPhotoBtn.length)
+            {
+                now=0;
+            }
+            tab();
+        }
+        var timer=setInterval(next,6000);
+        oUl.onmouseover=function()
+        {
+            clearInterval(timer);
+        };
+        oUl.onmouseout=function()
+        {
+            timer=setInterval(next,6000);
+        }
+
+    })();
+</script>
+</body>
+</html>

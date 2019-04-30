@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分秒换算</title>
+    <style>
+        #txt{
+            width: 200px;
+            height: 20px;
+            outline:none;
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var oTxt=document.getElementById('txt');
+            var oBtn=document.getElementById('btn');
+
+            oBtn.onclick=function()
+            {
+                var n1=oTxt.value;
+                alert(parseInt(n1/60)+'分'+n1%60+'秒');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<input id="txt" type="text">
+<input id="btn" type="button" value="换算">
+
+</body>
+</html>

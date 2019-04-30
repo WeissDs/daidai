@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM基础 子节点</title>
+    <style>
+        li{
+            /*width: 300px;*/
+            /*height: 20px;*/
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var oUl=document.getElementById('ul1');
+
+//            alert(oUl.childNodes.length);   //11个节点  6个文本节点，5个元素节点   除了IE6-8是5个节点
+//            nodeType 节点类型
+
+            for(var i=0;i<oUl.childNodes.length;i++)
+            {
+//                alert(oUl.childNodes[i].nodeType);
+//                当nodeType==3  文本节点
+//                当nodeType==1  元素节点
+
+                if(oUl.childNodes[i].nodeType==1)
+                {
+                    oUl.childNodes[i].style.background='red';
+                }
+            }
+
+            for(var i=0;i<oUl.children.length;i++)     //一个神奇的children属性 可以不用定义元素节点直接使用
+            {
+                oUl.children[i].style.background='green';
+            }
+//            alert(oUl.children.length);
+        }
+    </script>
+</head>
+<body>
+
+<ul id="ul1">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+</body>
+</html>

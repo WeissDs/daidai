@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON</title>
+</head>
+<body>
+
+<script>
+	//JSON对象的方法
+	let a = {a:12, b:20}
+    //将json转换为字符串
+	console.log('http://www.baidu.com?data='+JSON.stringify(a));
+	//将文本字符串编码为一个有效的统一资源标识符 (URI)
+	console.log(`http://www.baidu.com?data=${encodeURIComponent(JSON.stringify(a))}`);
+	//json的标准写法：
+	//1.只能用双引号
+	//2.所有名字都必须用引号包起来
+
+    //将字符串转换为json
+	let c = '{"name":"dai", "num":123}'
+	let json = JSON.parse(c);
+	console.log(json);
+
+	//json的简写 (key和value相同的时候可以简写)
+	let d=15, e=25;
+	console.log({d,e});
+	//json中的方法：funciton 可省略
+	let f = {
+		a: 12,
+		// b: function(){
+		// 	alert(this.a);
+		// }
+		b(){
+			alert(this.a)
+		}
+	}
+	f.b();
+
+</script>
+	
+
+</body>
+</html>

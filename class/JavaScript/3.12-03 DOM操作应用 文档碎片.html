@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文档碎片</title>
+    <script>
+        window.onload=function()
+        {
+            var oUl=document.getElementById('ul1');
+            var oFrag=document.createDocumentFragment();  //创建一个文档碎片，这样的写法是创建所有li打包到文档碎片后一起渲染，基本上已经不用了，会降低性能。在很低级游览器中可能会有用（以下是写法）
+
+
+//            for(var i=0;i<10000;i++)
+//            {
+//                var oLi=document.createElement('li');
+//
+//                oUl.appendChild(oLi);
+//            }
+            for(var i=0;i<10000;i++)
+            {
+                var oLi=document.createElement('li');
+
+                oFrag.appendChild(oLi);
+            }
+            oUl.appendChild(oFrag);
+        }
+    </script>
+</head>
+<body>
+
+<ul id="ul1">
+
+</ul>
+
+</body>
+</html>

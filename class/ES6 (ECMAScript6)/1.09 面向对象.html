@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>
+		//以前的写法
+		// function User(name, age){
+		// 	this.name = name;
+		// 	this.age = age;
+		// }
+
+		// User.prototype.showName = function(){
+		// 	alert(this.name);
+		// }
+		// User.prototype.showAge = function(){
+		// 	alert(this.age);
+		// }
+
+
+		//es6的面向对象写法  新增class  专门的构造器和类  可以不用构造函数了
+		class User{
+			constructor(name, age){
+				this.name = name;
+				this.age = age;
+			}
+
+			showName(){
+				alert(this.name);
+			}
+			showAge(){
+				alert(this.age);
+			}
+		}
+
+		let n1 = new User('daidai', 25);
+
+		n1.showName();
+		n1.showAge();
+	</script>
+</head>
+<body>
+
+</body>
+</html>

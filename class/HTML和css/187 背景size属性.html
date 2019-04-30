@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>背景size属性</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        ul{
+            width: 800px;
+            height: 500px;
+            margin:0 auto;
+        }
+        ul li{
+            list-style: none;
+            float: left;
+            width: 200px;
+            height: 200px;
+            margin:30px 30px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height:200px;
+        }
+        ul li:nth-child(1){
+            background:url(../../images/42b906e8a215d9f1fa1957a6c453c7e5_650x304.jpg);
+        }
+        ul li:nth-child(2){
+            background:url(../../images/42b906e8a215d9f1fa1957a6c453c7e5_650x304.jpg) no-repeat;
+            /*
+            第一个参数：宽度
+            第二个参数：高度
+            */
+            background-size:200px 100px;
+        }
+        ul li:nth-child(3){
+            background:url(../../images/42b906e8a215d9f1fa1957a6c453c7e5_650x304.jpg) no-repeat;
+            /*
+            参数 百分比：
+            100%为添加背景的元素宽高
+            */
+            background-size:100% 50%;
+        }
+        ul li:nth-child(4){
+            background:url(../../images/42b906e8a215d9f1fa1957a6c453c7e5_650x304.jpg) no-repeat;
+            /*
+            宽度等比拉伸
+            */
+            background-size:auto 150px;
+        }
+        ul li:nth-child(5){
+            background:url(../../images/42b906e8a215d9f1fa1957a6c453c7e5_650x304.jpg) no-repeat;
+            /*
+            高度等比拉伸
+            */
+            background-size:150px auto;
+        }
+        ul li:nth-child(6){
+            background:url(../../images/42b906e8a215d9f1fa1957a6c453c7e5_650x304.jpg) no-repeat;
+            /*
+            1.告诉系统图片宽高等比拉伸
+            2.告诉系统图片需要拉伸到宽度和高度都填满元素
+            */
+            background-size:cover;
+        }
+        ul li:nth-child(7){
+            background:url(../../images/42b906e8a215d9f1fa1957a6c453c7e5_650x304.jpg) no-repeat;
+            /*
+            1.告诉系统图片宽高等比拉伸
+            2.告诉系统图片需要拉伸到宽度或者高度都填满元素 就不继续拉伸了
+            */
+            background-size:contain;
+        }
+
+    </style>
+</head>
+<body>
+
+<!--
+1.什么是背景尺寸属性
+背景尺寸属性是css3中新增的一个属性,专门用于设置背景图片大小
+
+-->
+
+<ul>
+    <li>默认</li>
+    <li>具体像素</li>
+    <li>百分比</li>
+    <li>宽度等比拉伸</li>
+    <li>高度等比拉伸</li>
+    <li>cover</li>
+    <li>contain</li>
+</ul>
+
+</body>
+</html>

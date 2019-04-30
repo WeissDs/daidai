@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标事件</title>
+    <style>
+        #div1{
+            width: 200px;
+            height:200px;
+            background: #656565;
+            position: absolute;
+        }
+    </style>
+    <script>
+
+        //封装函数(鼠标事件client加scroll宽高)
+        function getPos(ev)
+        {
+            var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+            var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+
+            return {x:ev.clientX+scrollLeft,y:ev.clientY+scrollTop}
+        }
+
+
+        //新事件 onmousemove
+        document.onmousemove=function(ev)
+        {
+            var oEvent=ev||event;
+            var oDiv=document.getElementById('div1');
+//            var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+            var pos=getPos(oEvent);
+
+            oDiv.style.left=pos.x+'px';
+            oDiv.style.top=pos.y+'px';
+
+            //client是根据可视区定位的，而div是根据body定位的
+        }
+    </script>
+</head>
+<body>
+
+<div id="div1"></div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</body>
+</html>

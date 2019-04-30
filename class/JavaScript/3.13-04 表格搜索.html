@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格搜索</title>
+    <style>
+        table{
+            width: 500px;
+            background-color: #6f6f6f;
+        }
+        table thead,tbody{
+            background-color: #fff;
+            text-align: center;
+        }
+
+        /*css的隔行变色*/
+        table tbody tr:nth-child(2n+1){
+        background-color: #6d7a7e;
+        }
+
+        /*css的悬停变色*/
+        table tbody tr:hover{
+        background-color: #feffa2;
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var oTab=document.getElementById('tab1');
+            var oTxt=document.getElementById('name');
+            var oBtn=document.getElementById('btn');
+
+            oBtn.onclick=function()
+            {
+                for(var i=0;i<oTab.tBodies[0].rows.length;i++)
+                {
+                    var sTab=oTab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+                    var sTxt=oTxt.value.toLowerCase();
+                    var arr=sTxt.split(' ');
+
+                    oTab.tBodies[0].rows[i].style.backgroundColor='';
+//                    筛选方式
+                    oTab.tBodies[0].rows[i].style.display='none';
+
+
+                    for(var j=0;j<arr.length;j++)
+                    {
+                        if(sTab.search(arr[j])!=-1)
+                        {
+                            oTab.tBodies[0].rows[i].style.backgroundColor='red';
+                            oTab.tBodies[0].rows[i].style.display='block';
+                        }
+
+
+//                        筛选方式 为什么不能这样写？？？？(解决方案)
+
+                        //因为在循环j的时候（也就是空格隔开的字符），第一次选了第一个字符search将等于-1的去掉了，第二次从if开始重置了一次，以此类推 所以得到的结果是最后一个字符的search结果。
+//                        else
+//                        {
+//                            oTab.tBodies[0].rows[i].style.display='none';
+//                        }
+                    }
+
+//                    toLowerCase让浏览器忽略大小写
+//                    search是模糊搜索
+//                    split分裂
+//                    if(sTab.search(sTxt)!=-1)
+//                    {
+//                        oTab.tBodies[0].rows[i].style.backgroundColor='red';
+//                    }
+//                    else
+//                    {
+//                        oTab.tBodies[0].rows[i].style.backgroundColor='';
+//                    }
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+
+姓名：<input id="name" type="text">
+<input id="btn" type="button" value="搜索">
+<br>
+<br>
+<table id="tab1">
+    <thead>
+    <td>ID</td>
+    <td>姓名</td>
+    <td>年龄</td>
+    <td>操作</td>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td>张四</td>
+        <td>23</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>张张</td>
+        <td>24</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>四四</td>
+        <td>25</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>四张</td>
+        <td>26</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>eee</td>
+        <td>27</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>fff</td>
+        <td>28</td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

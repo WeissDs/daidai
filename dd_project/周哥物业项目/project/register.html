@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="css/login.css">
+	<link rel="stylesheet" href="libraries/layui/css/layui.css">
+	<style>
+		.phone-we-qq{
+			margin-top:20px;
+		}
+	</style>
+	
+</head>
+<body>
+    <div class="login-bg">
+    	<img src="images/background.png" alt="">
+    </div>
+	<div class="login">
+		<p>物业管理平台注册</p>
+		<div class="login-window">
+				<div class="login-window-top">
+					<p class="user">用户注册</p>
+					<p class="e">Register User</p>
+				</div>
+
+				<div  class="login-window-top1">
+					<span></span>
+					<p>欢迎登录物业管理平台</p>
+				</div>
+
+				<div id="username">
+					<label for="login_username">
+						<i class="layui-icon layui-icon-username"></i>
+					</label>
+					<input class="a" id="login_username" name="login-username" type="text" placeholder="手机号" aria-label="">
+				</div>
+				<div id="password">
+					<label for="login_passWord">
+						<i class="layui-icon layui-icon-password"></i>
+					</label>
+					<input class="a" id="login_passWord" name="login-username" type="text" placeholder="密码">
+				</div>
+				<div class="verify">
+					<input type="text" placeholder="请输入验证码">
+					<div class="verify-img">获取短信验证码</div>
+				</div>
+				<div class="verify phone">
+					<input type="text" placeholder="请输入验证码">
+					<div class="verify-img"></div>
+				</div>
+				<input type="submit" value="注册">
+				<!-- <div class="phone-we-qq">使用其他方式注册
+					<a class="layui-icon layui-icon-cellphone"></a>
+					<a class="layui-icon layui-icon-login-wechat"></a>
+					<a class="layui-icon layui-icon-login-qq"></a>
+				</div> -->
+		</div>
+	</div>
+	
+	
+
+
+	<script type="text/javascript" src="libraries/layui/layui.js"></script>
+	<script type="text/javascript">
+		layui.use(['element','form', 'layedit', 'laydate','jquery'], function(){
+		    var element = layui.element;
+		    var form = layui.form;
+		    var $ = jQuery = layui.$;
+		    $(document).ready(function() {
+
+		    });
+		});
+	</script>
+	
+</body>
+</html>

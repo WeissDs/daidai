@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>命名空间</title>
+    <script>
+        //用于公司里分块业务打包 同一类方法包在一起
+        var zns={};
+
+        zns.common={};
+        zns.fx={};
+        zns.site={};
+
+        zns.common.getUser=function()
+        {
+            alert('a');
+        };
+        zns.fx.getUser=function()
+        {
+            alert('b');
+        };
+        zns.site.getUser=function()
+        {
+            alert('c');
+        };
+
+        zns.common.getUser();
+        zns.fx.getUser();
+        zns.site.getUser();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

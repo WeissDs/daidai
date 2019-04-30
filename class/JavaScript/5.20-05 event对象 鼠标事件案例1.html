@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>一串跟着鼠标的div</title>
+    <style>
+        div{
+            width: 20px;
+            height: 20px;
+            background-color: #858585;
+            position: absolute;
+        }
+    </style>
+    <script>
+        function getPos(ev)
+        {
+            var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+            var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+
+            return {x:ev.clientX+scrollLeft,y:ev.clientY+scrollTop}
+        }
+        document.onmousemove=function(ev)
+        {
+            var oEvent=ev||event;
+            var aDiv=document.getElementsByTagName('div');
+            var pos=getPos(oEvent);
+            //因为chrome的length问题 不适用(是百度翻译插件引起的问题！)
+            for(var i=0;i<aDiv.length-1;i++)
+            {
+                aDiv[i].style.left=aDiv[i+1].offsetLeft+'px';
+                aDiv[i].style.top=aDiv[i+1].offsetTop+'px';
+            }
+            aDiv[aDiv.length-1].style.left=pos.x+'px';
+            aDiv[aDiv.length-1].style.top=pos.y+'px';
+
+//            for(var i=aDiv.length-1;i>0;i--)
+//            {
+//                aDiv[i].style.left=aDiv[i-1].offsetLeft+'px';
+//                aDiv[i].style.top=aDiv[i-1].offsetTop+'px';
+//            }
+//            aDiv[0].style.left=pos.x+'px';
+//            aDiv[0].style.top=pos.y+'px';
+        }
+    </script>
+</head>
+<body>
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+    <script>
+        //解除绑定detachEvent和removeEventListener没有讲写法！！
+
+        //多个部门同事工作如果不进行事件绑定，可能会出现问题，如下就只会弹出b，a会被代替掉
+//        window.onload=function()
+//        {
+//            alert('a');
+//        };
+//        window.onload=function()
+//        {
+//            alert('b');
+//        };
+
+        window.onload=function()
+        {
+            var oBtn=document.getElementById('btn1');
+
+//            oBtn.onclick=function()
+//            {
+//                alert('a');
+//            };
+//            oBtn.onclick=function()
+//            {
+//                alert('b');
+//            };
+
+            //attachEvent(事件名，函数) 只有IE中可以用
+//            oBtn.attachEvent('onclick',function()
+//            {
+//                alert('b');
+//            });
+//            oBtn.attachEvent('onclick',function()
+//            {
+//                alert('a');
+//            });
+            //addEventListener(事件名，函数，false) 事件名不带on IE7不兼容
+//            oBtn.addEventListener('click',function()
+//            {
+//                alert('a');
+//            },false);
+//            oBtn.addEventListener('click',function()
+//            {
+//                alert('b');
+//            },false);
+
+
+            //事件绑定的兼容写法
+            if(oBtn.attachEvent)
+            {
+                oBtn.attachEvent('onclick',function()
+                {
+                    alert('a');
+                });
+                oBtn.attachEvent('onclick',function()
+                {
+                    alert('b');
+                });
+            }
+            else
+            {
+                oBtn.addEventListener('click',function()
+                {
+                    alert('a');
+                },false);
+                oBtn.addEventListener('click',function()
+                {
+                    alert('b');
+                },false);
+            }
+
+        };
+    </script>
+</head>
+<body>
+
+<input id="btn1" type="button" value="按钮">
+
+</body>
+</html>

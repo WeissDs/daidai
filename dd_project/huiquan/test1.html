@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>no</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing:border-box;
+        }
+        li{
+            list-style: none;
+        }
+        header .header{
+            width: 100%;
+            height: 50px;
+            background-color: red;
+        }
+        .green{
+            width: 100%;
+            height: 50px;
+            background-color: #70ffc0;
+        }
+
+    </style>
+    <script>
+
+    </script>
+</head>
+<body>
+
+<!--顶部区域-->
+<header>
+    <div id="head" class="header"></div>
+
+</header>
+
+
+<script>
+    let oH=document.getElementsByClassName('header')[0];
+    oH.onclick=function(){
+        oH.className = 'green';
+    }
+</script>
+</body>
+</html>

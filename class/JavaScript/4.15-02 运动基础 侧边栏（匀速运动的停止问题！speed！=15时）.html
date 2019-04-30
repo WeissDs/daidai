@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>侧边栏</title>
+    <style>
+        #div1{
+            width: 150px;
+            height: 200px;
+            background-color: #4049ac;
+            position: absolute;
+            left:-150px;
+        }
+        #div1 span{
+            width: 20px;
+            height: 60px;
+            line-height:20px;
+            background-color: #919ab6;
+            position: absolute;
+            right:-20px;
+            top:60px;
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var oDiv=document.getElementById('div1');
+
+            oDiv.onmouseover=function()
+            {
+                startMove(15,0);
+            };
+            oDiv.onmouseout=function()
+            {
+                startMove(-15,-150)
+            };
+        };
+
+        var timer=null;
+
+        function startMove(speed,iTarget)
+        {
+            var oDiv=document.getElementById('div1');
+
+            clearInterval(timer);
+            timer=setInterval(function(){
+//                var speed;
+//                if(oDiv.offsetLeft<iTarget)  //不能用style.left因为取值有单位px
+//                {
+//                    speed=15;
+//                }
+//                else
+//                {
+//                    speed=-15;
+//                }
+                if(oDiv.offsetLeft==iTarget)
+                {
+                    clearInterval(timer);
+                }
+                else
+                {
+                    oDiv.style.left=oDiv.offsetLeft+speed+'px';
+                }
+            },30);
+
+        }
+    </script>
+</head>
+<body>
+
+<div id="div1"">
+    <span>分享到</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用混合方式构造函数/原型方式</title>
+    <script>
+        function CreatePerson(name,qq)    //构造函数 里加属性
+        {
+//            var obj=new Object;
+            this.name=name;
+            this.qq=qq;
+
+//            this.showName=function()
+//            {
+//                alert(''+this.name);
+//            };
+//            this.showQQ=function()
+//            {
+//                alert(''+this.qq)
+//            };
+
+//            return obj;
+        }
+
+        CreatePerson.prototype.showName=function()   //原型里加方法
+        {
+            alert(''+this.name);
+        };
+        CreatePerson.prototype.showQQ=function()
+        {
+            alert(''+this.qq);
+        };
+
+        var obj=new CreatePerson('da',1);
+        obj.showName();
+        obj.showQQ();
+        var obj2=new CreatePerson('dai',2);
+        obj2.showName();
+        obj2.showQQ();
+
+//        alert(obj.showName==obj2.showName);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rest parameter</title>
+</head>
+<body>
+
+<script>
+    //结构赋值
+    let [a, b, c]=[{d:1, e:6},15,4];
+    alert(b+c);
+    alert(a.e);
+
+    //参数扩展
+    function num(a, b, ...args){
+        alert(a+b+args);
+    }
+    num(1,2,3,4,5);
+
+    //默认参数
+    function n(a, b=23, c=3){
+        alert(a+b+c);
+    }
+    n(1);
+</script>
+</body>
+</html>

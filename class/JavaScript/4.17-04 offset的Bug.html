@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>offset的Bug</title>
+    <style>
+        #div1{
+            width:100px;
+            height:100px;
+            background-color:indianred;
+            border:1px solid black;
+        }
+    </style>
+    <script>
+        function getStyle(obj,name)   //取非行间样式的函数
+        {
+            if(obj.currentStyle)
+            {
+                return obj.currentStyle[name];
+            }
+            else
+            {
+                return getComputedStyle(obj,false)[name];
+            }
+        }
+
+        setInterval(function(){
+            var oDiv=document.getElementById('div1');
+
+//            oDiv.style.width=oDiv.offsetWidth-1+'px';  //offset会算上border和padding的值
+            oDiv.style.width=parseInt(getStyle(oDiv,'width'))-1+'px';
+//            oDiv.style.width=200+'px';
+        },30)
+    </script>
+</head>
+<body>
+
+<div id="div1"></div>
+
+</body>
+</html>

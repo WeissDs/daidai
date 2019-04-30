@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>排列组合计算公式</title>
+</head>
+<body>
+
+
+	<script>
+
+		function A(n,m){
+		    let result = 1;
+		    while(m){
+		        result*=n;
+		        n--;
+		        m--;
+		    }
+		    return result;
+		}
+		console.log(A(5,2));   //20
+
+		function C(n,m){
+			let result = 1;
+			let f=1;
+			while(m){
+				result*=n;
+				f*=m;
+				n--;
+				m--;
+			}
+			result/=f;
+			return result;
+		}
+		console.log(C(50,3));   //19600
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>setState改变状态重新渲染</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+	<style>
+		.box1{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="div1"></div>
+	
+	<script type="text/babel">
+		class ColorChange extends React.Component{
+			constructor(...args){
+				super(...args);
+
+				this.state={flag: 1, color: ''}
+			}
+			fn(){
+				if(this.state.flag==1)
+				{
+					this.setState({flag: 0});
+					// alert(this.state.flag);
+				}else{
+					this.setState({flag: 1});
+				}
+				
+			}
+			changRed(){
+				this.setState({color: 'red'})
+			}
+			render(){
+				//通过setState重新设置的状态值好像是在render后才会生效？？
+
+				console.log(this.state.flag)
+				return <div>
+					<div className="box1" style={{background:this.state.flag==1?'':'#ccc'}}></div>
+					<input type="button" value="点击" onClick={this.fn.bind(this)}/><br/><br/>
+
+					<input type="button" value="变红" onClick={this.changRed.bind(this)}/>
+					<p style={{color: this.state.color}}>11111111111</p>
+				</div>
+			}
+		}
+		window.onload = function(){
+			let oDiv = document.getElementById('div1');
+
+			ReactDOM.render(<ColorChange></ColorChange>,oDiv);
+		}
+	</script>
+</body>
+</html>

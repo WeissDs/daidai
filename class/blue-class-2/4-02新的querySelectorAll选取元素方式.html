@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>querySelectorAll</title>
+</head>
+<body>
+
+	<button id="div1">点我</button>
+	<p class="ppp">22222222222</p>
+	
+
+	<script>
+		// 初始化1
+		// const $ = function(...args){
+		// 	return document.querySelectorAll(...args);
+		// }
+
+		//初始化2 (bind是为了把this绑定在document上不让this指向window)
+		const $ = document.querySelectorAll.bind(document);
+
+		window.onload=function(){
+			let oBtn = $('#div1')[0];
+			let oP = $('.ppp')[0];
+
+			oBtn.onclick=function(){
+				oP.innerHTML='12333333';
+			}
+
+		}
+	</script>
+</body>
+</html>

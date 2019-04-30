@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="js/vue-router.js"></script>
+</head>
+<body>
+	<header id="head">
+		<ul>
+			<li v-for="item in json">{{item}}</li>
+		</ul>
+		<ul v-for="json in arr1">
+		    <li>{{json.name}}</li>
+		    <li>{{json.age}}</li>
+		    <li>{{json.gender}}</li>
+		</ul>
+		a<input type="text" v-model='a' v-on:input="sum">  b<input type="text" v-model="b" v-on:input="sum">
+		<div>{{a+b}}</div>
+	</header>
+
+	<div id="div">
+		<p v-if="show">adsuifhaiwjbfliuxhfiuaheih</p>
+		<p>adsuifhaiwjbfliuxhfiuaheih</p>
+		<button @click='fn'>按钮</button>
+		<router-link to="/one">555</router-link>>	
+	</div>
+
+	<script>
+		let vm = new Vue({
+			el: '#div',
+			router: new VueRouter({
+				routers: [
+					{ path: '/one', component: { template: '' } },
+				]
+			}),
+			data: {
+				show: true,
+			},
+			methods: {
+				fn(){
+					// if(this.show){
+					// 	this.show = false;
+					// }else{
+					// 	this.show = true;
+					// }
+					this.show=!this.show;
+				},
+				
+			},
+			computed: {
+
+			}
+		})
+
+		let vm1 = new Vue({
+			el: '#head',
+			data:{
+				json: {a:11, b:22, c:33},
+				a: 0,b: 0,
+				arr: [1,2,3],
+				arr1: [
+				    {name: 'd', age: '1', gender: '男'},
+				    {name: 'x', age: '1', gender: '男'},
+				    {name: 'j', age: '1', gender: '男'},
+				    {name: 'f', age: '1', gender: '男'},
+				]
+			},
+			methods: {
+				sum(){
+					this.a = parseInt(this.a)
+					this.b = parseInt(this.b)
+				},
+			}
+		})
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=7">  //解决IE6不兼容的问题？未测试-->
+    <meta charset="UTF-8">
+    <title>练习</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        header img{
+            width: 100%;
+            position:absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+
+</head>
+<body>
+
+<header>
+    <img id="img1" src="../image/Slideshow_01_new_2015-11_MartinAufmuth.d407e388cf17160919aeea7b81e300cd3.jpg" alt="">
+</header>
+<script>
+    var oImg=document.getElementById('img1');
+    var moveHeight=null;
+    var a;
+    //        var speed;
+
+    window.onscroll=scrollad;
+    function scrollad()
+    {
+        scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+        var speed=(scrollTop-oImg.offsetTop)/10;
+        moveHeight = speed>0?Math.ceil(speed):Math.floor(speed);
+
+        if(moveHeight!=0){
+            oImg.style.top = oImg.offsetTop+moveHeight+"px";
+            setTimeout(scrollad,a);
+        }
+    }
+</script>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>e住</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" href="css/index.css">
+
+	<script>
+		window.onresize=function(){
+			document.documentElement.style.fontSize = document.documentElement.clientWidth*40/720+'px';
+		}
+		window.onresize();
+	</script>
+</head>
+<body>
+	<div class="banner">
+		<div class="top">
+			<ul class="page-img" id="pageImg">
+				<li><img src="images/1-t.png" alt=""></li>
+				<li><img src="images/2-t.png" alt=""></li>
+				<li><img src="images/3-t.png" alt=""></li>
+				<li><img src="images/1-t.png" alt=""></li>
+				<li><img src="images/2-t.png" alt=""></li>
+			</ul>
+			<ol class="page-txt" id="pageTxt">
+				<li style="z-index: 4"><img src="images/1.png" alt=""></li>
+				<li><img src="images/2.png" alt=""></li>
+				<li><img src="images/3.png" alt=""></li>
+				<li><img src="images/4.png" alt=""></li>
+				<li><img src="images/5.png" alt=""></li>
+			</ol>
+		</div>
+		<footer>
+			
+		</footer>
+	</div>
+	<div class="background"></div>
+
+	<script>
+
+			var oImg = document.getElementById('pageImg')
+			var oImgLi = oImg.getElementsByTagName('li');
+
+			var oTxt = document.getElementById('pageTxt')
+			var oTxtLi = oTxt.getElementsByTagName('li');
+
+			let now = oImgLi.length-1;
+			let nowIndex = 1;
+
+			function moveDown(aImg, moveClass){
+				for(let i=0; i<aImg.length; i++){
+					aImg[i].className='';
+					aImg[i].style.zIndex = 0;
+				}
+				aImg[now].style.zIndex = 2;
+				if(now==0)
+				{
+					aImg[aImg.length-1].style.zIndex = 1;
+				}else{
+					aImg[now-1].style.zIndex = 1;
+				}
+				aImg[now].className = moveClass;
+				if(now<1){
+					now = aImg.length-1;
+				}else{
+					now--;
+				}
+			}
+
+			let timer = setInterval("moveDown(oImgLi, 'img-move')", 3000);
+	</script>
+</body>
+</html>

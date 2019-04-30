@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax入门</title>
+    <script>
+        function ajax(url,fnSucc,fnFaild)
+        {
+
+            if(window.XMLHttpRequest)
+            {
+                var oAjax=new XMLHttpRequest();
+            }
+            else
+            {
+                var oAjax=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            oAjax.open('GET',url+'?t='+new Date().getTime(),true);
+
+            //发送请求
+            oAjax.send();
+
+            //接收返回
+            oAjax.onreadystatechange=function()
+            {
+                if (oAjax.readyState == 4)
+                {
+                    if (oAjax.status == 200)
+                    {
+                        fnSucc(oAjax.responseText);
+                    }
+                    else
+                    {
+                        fnFaild(oAjax.status);
+                    }
+                }
+            };
+        }
+
+
+
+        window.onload=function()
+        {
+            var oBtn=document.getElementById('btn');
+            var oDiv=document.getElementById('div1');
+
+            oBtn.onclick=function()
+            {
+                //'dai.html?t='+new Date().getTime() 这样写是为了不读取缓存的数据（阻止缓存）
+                ajax('dai.html',function(str){
+                    oDiv.innerHTML=str;
+                },function(f){
+                    alert(f);
+                })
+            };
+        };
+    </script>
+</head>
+<body>
+
+<div id="div1">qqqqqqqqqqqqqqq</div>
+<br>
+<input id="btn" type="button" value="读取">
+
+</body>
+</html>

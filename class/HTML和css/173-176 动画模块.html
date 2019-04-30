@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画模块</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        /*
+        1.过渡和动画之间的异同
+            1.1不同点：
+            过渡必须认为触发才会执行效果
+            动画不需要认为触发就可以执行效果
+
+            1.2相同点：
+            过渡和动画都是用来给元素添加动画的
+            过渡和动画都是系统新增的一些属性
+            过渡和动画都需要满足三要素才会有动画效果
+        */
+
+        .box1{
+            width: 100px;
+            height: 50px;
+            background-color: #6d7f9e;
+            /*transition-property:margin-left;*/
+            /*transition-duration:3s;*/
+
+
+            /*告诉系统需要执行哪个动画*/
+            animation-name:weiss;
+            /*告诉系统动画持续的时长*/
+            animation-duration:3s;
+        }
+        /*.box1:hover{
+            gin-left:500px;
+        }*/
+        @keyframes weiss{
+            from{
+                margin-left:0;
+            }
+            to{
+                margin-left:500px;
+            }
+        }
+
+
+        .box2{
+            width:100px;
+            height:50px;
+            background-color: #6d7f9e;
+            animation-name:weiss1;
+            animation-duration:5s;
+            /*告诉系统多长时间后开始执行动画*/
+            /*animation-delay:2s;*/
+            /*告诉系统动画的速度 和transition一样的取值 linear ease ease-in ease-out ease-in-out*/
+            animation-timing-function:linear;
+            /*告诉系统动画需要执行几次*/
+            animation-iteration-count: 3;
+            /*告诉系统是否需要执行往返动画
+            normal:;默认取值，执行完一次之后回到起点继续执行下一次
+            alternate:;执行往返动画*/
+            /*animation-direction:normal;*/
+            animation-direction:alternate;
+
+
+        }
+        @keyframes weiss1{
+            from{
+                margin-left:0;
+            }
+            to{
+                margin-left:500px;
+            }
+        }
+        .box2:hover{
+
+            /*告诉系统当前动画是继续运动或暂停*/
+
+            /*animation-play-state:running;*/
+            animation-play-state:paused;
+        }
+        .box3{
+            width:100px;
+            height:50px;
+            background-color: #6d7f9e;
+            position: relative;
+            left:0;
+            top:0;
+            animation-name:weiss3;
+            animation-duration:4s;
+        }
+        @keyframes weiss3{
+            0%{
+                left:0;
+                top:0;
+            }
+            25%{
+                left:400px;
+                top:0;
+            }
+            50%{
+                left:400px;
+                top:300px;
+            }
+            75%{
+                left:0;
+                top: 300px;
+            }
+            100%{
+                left:0;
+                top:0;
+            }
+        }
+
+        .box4{
+            width: 300px;
+            height: 300px;
+            background-color: #ffcc43;
+            margin:120px auto;
+            animation-name:Rotate;
+            animation-duration:4s;
+            animation-delay:2s;
+
+            /*
+        动画是有一定状态的
+        1.等待状态
+        2.执行状态
+        3.结束状态
+        */
+
+            /*
+            animation-fill-mode 的作用：
+                指定动画等待状态和结束状态的样式
+                取值：none:不做任何改变
+                      forwards:让元素结束状态保持动画最后一帧的样式
+                      backwards:让元素等待状态的时候显示动画的第一帧样式
+                      both:让元素等待状态的时候显示动画的第一帧样式，让元素结束状态保持动画最后一帧的样式
+
+            在企业开发中使用不多
+            */
+
+            /*animation-fill-mode:both;*/
+        }
+
+
+        @keyframes Rotate{
+            0%{
+                transform:rotate(10deg);
+            }
+            50%{
+                transform:rotate(50deg);
+            }
+            100%{
+                transform:rotate(70deg);
+            }
+
+        }
+
+
+        .box5{
+            width:100px;
+            height:50px;
+            background-color: #6d7f9e;
+            /*
+            1.动画模块的连写格式
+                animation:name(动画名称) duration(动画时长) timing-function(动画运动速度) delay(动画延迟时间) iteration-count(执行次数) direction(往返动画);
+            */
+
+            animation:straight 3s ease 3 alternate;
+        }
+        @keyframes straight{
+            0%{
+                margin:0;
+            }
+            100%{
+                margin-left:100px;
+            }
+        }
+
+
+
+ </style>
+</head>
+<body>
+
+<div class="box1"></div>
+<div class="box2"></div>
+
+<div class="box3"></div>
+<div class="box4"></div>
+
+<div class="box5"></div>
+
+
+</body>
+</html>

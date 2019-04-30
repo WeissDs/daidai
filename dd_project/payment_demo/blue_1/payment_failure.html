@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>酒店助手</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css" />
+		<style type="text/css">
+			*{ font-family: Microsoft YaHei, SimHei, Arial,Verdana; }
+			.dai_wrap{
+				width: 100%;
+				height: 100vh;
+				background: white;
+			}
+			.dai_head{
+				width: 100%;
+				height: 50px;
+				background: #eee;
+				line-height:50px;
+				/*color: white;*/
+				text-align: center; 
+			}
+			
+			.dai_center{
+				width: 130px;
+				margin: 62px auto 50px;
+			}
+			
+			.dai_info{
+				width: 100%;
+				text-align: center;
+			}
+			
+			.dai_center img{
+				width: 100%;
+			}
+			
+			.dai_info p{
+				font-size: 20px;
+				margin-bottom: 40px;
+				text-align: center;
+			}
+			
+			.dai_info label{
+				width: 90%;
+			}
+			
+		</style>
+	</head>
+	
+	<body>
+		
+		<div class="dai_wrap">
+			<div class="dai_head">
+				<span>支付结果</span>
+			</div>
+			
+			<div class="dai_center">
+				<img src="icon/fauilure.svg" />
+			</div>
+			
+			<div class="dai_info">
+				<p>支付失败</p>
+				<label class="mui-btn mui-btn-success dai_back">返回</label>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery.js" ></script>
+		<script type="text/javascript" src="js/mui.min.js" ></script>
+		<script type="text/javascript">
+			$(".dai_back").on("tap",function(){
+				window.location.href="index.html";
+			});
+		</script>
+	</body>
+</html>

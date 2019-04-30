@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        <!--function fn(3, 2, 32) {-->
+            <!--var arr = [];-->
+            <!--var isNum = !isNaN(Number(n));//判断n是不是一个数字，包含字符串类型的数字-->
+            <!--var isRandOk = (n >= 2 && n <= 32 && n <= (32 - 2)) ? true : false;//判断n的取值是否符合要求-->
+            <!--if (n && isRandOk && isNum) {-->
+                <!--for (var i = 0; i < n; i++) {-->
+                    <!--var rand = getRand(2, 32);-->
+                    <!--if (checkArrIn(rand, arr)) {-->
+                        <!--i&#45;&#45;-->
+                    <!--} else {-->
+                        <!--arr.push(rand)-->
+                    <!--}-->
+                <!--}-->
+            <!--}-->
+            <!--return arr;-->
+        <!--}-->
+        <!--alert(fn());-->
+
+        function region(n)
+        {
+            var arr=[];
+            for(var i=0;i<n;i++)
+            {
+                var a=Math.ceil(Math.random()*30+2);
+                arr.push(a);
+            }
+            return arr;
+        }
+        alert(region(3));
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

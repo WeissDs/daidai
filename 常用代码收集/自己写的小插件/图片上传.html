@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上传图片</title>
+	<style>
+	/*注意：如需兼容ie8 目前比较成熟的技术是使用css3pie插件（本例中圆角在ie8中无效）*/
+		.image-upload{ height: 100px; }
+		/*原理：
+			将点击按钮范围DOM和input放入同一个父元素，input绝对定位覆盖在按钮上 后设置opacity:0;
+		*/
+		.image-upload .fileinput-button{ width: 300px; position: relative; top: 50px; transform: translateY(-50%); left: 15px; overflow: hidden; display: inline-block; }
+		/* ie8浏览器（input样式会显示出来，opacity要做兼容 filter:alpha(opacity=0)） */
+		.image-upload .fileinput-button input{ width: 84px; height: 30px; position: absolute; left: 0px; top: 0; opacity: 0; filter:alpha(opacity=0); outline: none; }
+		.image-upload .image-upload-show{  margin: 20px 0; border-radius: 50%; width: 70px; height: 70px; float: right; margin-right: 15px;}
+		.image-upload .image-upload-button{ display: inline-block; text-align: center; line-height: 30px; padding: 0 10px; background-color: #FFBA4E; color: #fff; border-radius: 10px; }
+	</style>
+</head>
+<body>
+	<div class="image-upload">
+		<div class="fileinput-button">
+			<span class="image-upload-button">头像上传</span>
+			<!--  
+				1、安卓：加上capture 可以同时调用相册和相机， 没有加上capture则只能调用相册 
+				2、IOS中： 加上capture，只能调相机， 没有capture 可以同时调用相册和相机 
+			-->
+			<input id="person_img" type="file">
+		</div>
+		<img class="image-upload-show" src="" id="Image">
+	</div>
+
+	<script>
+		//上传图片显示
+        function getUrl(file) {
+		var photo_data =  document.getElementById("person_img");
+		// var file_name =  document.getElementById("file_name");
+            var img = document.getElementById("Image");
+            for (var intI = 0; intI < file.length; intI++) {//图片回显
+			// console.log(file.length);
+                var tmpFile = file[intI];
+				// file_name.value = tmpFile.name;
+
+				//获取本地文件内容
+                var reader = new FileReader();
+                //将文件进行base64编码后输出
+                reader.readAsDataURL(tmpFile);
+                reader.onload = function (e) {
+                    var url = e.target.result;
+                    //媒体文件img标签中的src属性可以直接写入图片的base64编码，来显示图片
+                    img.src = url;
+                }
+            }
+        }
+
+        window.onload = function(){
+        	let oPersonImg = document.getElementById('person_img');
+        	oPersonImg.onchange = function(){
+        		console.log(this.files)
+        		getUrl(this.files);
+        	}
+        }
+	</script>
+</body>
+</html>

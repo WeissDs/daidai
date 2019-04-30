@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绝对定位1</title>
+    <style>
+
+
+        /*
+       实际用法：父元素相对定位 relative（为了使子元素可以使用绝对定位而自己又不会脱标，并且以自己为参考点而不是body） 子元素绝对定位 absolute（不使用relative是为了不占用标准流中的位置，导致曾经子元素的位置被空出并占用）
+       */
+
+
+
+
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style:none;
+            width: 800px;
+            height: 50px;
+            /*margin-top:50px;*/
+            margin:50px auto 0 auto;
+            background-color: #757575;
+        }
+        li{
+            float: left;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            line-height:50px;
+        }
+        li:nth-of-type(4){
+            position: relative;
+            background-color: #989898;
+        }
+        /*让绝对定位的元素 水平居中*/
+        div{
+            position:absolute;
+            top: -25px;
+            left:50%;
+            margin-left:-15px;
+            width: 30px;
+            height: 41px;
+            background: url("../../images/tubiao.png") -54px -40px;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+<ul>
+    <li>服装城</li>
+    <li>美妆馆</li>
+    <li>京东超市</li>
+    <li>
+        全球购
+        <div></div>
+    </li>
+    <li>闪购</li>
+    <li>团购</li>
+    <li>拍卖</li>
+    <li>金融</li>
+</ul>
+
+</body>
+</html>

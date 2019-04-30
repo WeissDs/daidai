@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型</title>
+    <script>
+        //prototype 原型
+
+        var arr1=new Array(12,34,56,78);
+        var arr2=new Array(1,2,3);
+
+//        arr1.sum=function()   //类似行间样式
+        Array.prototype.sum=function()   //原型类似class
+        {
+            var result=0;
+
+            for(var i=0;i<this.length;i++)
+            {
+                result+=this[i];
+            }
+
+            return result;
+        };
+
+
+        /*arr1.show=function()
+        {
+            alert(this);
+        };  //我就非要看看this到底是什么
+
+        arr1.show();*/
+
+        alert(arr1.sum());
+        alert(arr2.sum());
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

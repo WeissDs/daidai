@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>banner组件</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	ul,ol{
+		list-style: none;
+	}
+	.slider{
+		width: 500px;
+		height: 300px;
+		background-color: red;
+		margin: 0 auto;
+
+		position: relative;
+		overflow: hidden;
+	}
+	.slider ul{
+		width: 99999px;
+		transform: translateX(0);
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		transition: all 0.7s ease;
+	}
+	.slider ul li{
+		width: 500px;
+		height: 300px;
+		overflow: hidden;
+		float: left;
+	}
+	.slider ul li img{
+		width: 500px;
+	}
+	.slider ol{
+		position: absolute;
+		bottom: 20px;
+		left: 50%;
+		transform:translateX(-50%);
+	}
+	.slider ol li{
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background-color: rgba(255,255,255,0.5);
+
+		float: left;
+		margin: 3px;
+	}
+	.slider ol li.active{
+		background-color: #ccc;
+	}
+
+	</style>
+</head>
+<body>
+
+	<div id="div1"></div>
+
+	<script type="text/babel">
+		class Banner extends React.Component{
+			constructor(...args){
+				super(...args)
+
+				this.state={now: 0}
+			}
+			fn(index){
+				this.setState({
+					now: index
+				})
+			}
+			render(){
+				{/*map()循环数组，创建li*/}
+				let aLi = this.props.srcs.map((srctxt, index)=><li><img src={srctxt} key={index} alt=""/></li>)
+				let aOlLi = this.props.srcs.map((a, index)=><li onClick={this.fn.bind(this, index)} className={index==this.state.now?"active":""}></li>)
+				{/*let aOlLi = this.props.srcs.map((srctxt, index)=><li onClick={this.setState({now: index})}></li>)*/}
+				return <div className={"slider"}>
+					<ul style={{left: this.state.now*-500}}>
+						{/*
+						1.将属性放进src中
+
+						<li><img src={this.props.srcs[0]}></img></li>
+						<li><img src={this.props.srcs[1]}></img></li>
+						<li><img src={this.props.srcs[2]}></img></li>
+						*/}
+
+						{aLi}
+					</ul>
+					<ol>
+						{aOlLi}
+					</ol>
+				</div>
+			}
+		}
+		
+		window.onload = function(){
+			let oDiv = document.getElementById('div1');
+
+			ReactDOM.render(<Banner
+			srcs={["https://cdn.pixabay.com/photo/2018/05/21/15/17/butterfly-3418535_1280.jpg", 
+			"https://cdn.pixabay.com/photo/2018/03/24/14/35/roses-3256796_1280.jpg", 
+			"https://cdn.pixabay.com/photo/2018/04/25/09/26/eiffel-tower-3349075_1280.jpg"]}
+			></Banner>,oDiv);
+		}
+		
+
+
+
+
+	</script>
+	
+</body>
+</html>

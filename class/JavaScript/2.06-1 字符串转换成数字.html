@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串转换成数字</title>
+    <script>
+//        parseInt可以将字符串转换成数字
+        var a='12';
+//        parseInt在读取到数字以外的字符时会自动停止后面的读取
+        a='33px';
+//        NAN(not a number)
+        a='we1';
+//        parseInt在转换小数的时候会忽略小数点后数字，只取整数
+        a='12.6';
+//        parseFloat可以转换小数
+//        alert(parseFloat(a));
+        alert(parseInt(a)+1);
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>

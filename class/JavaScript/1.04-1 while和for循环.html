@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js基本用法4-1</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            float: left;
+            margin:10px;
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var oDiv=document.getElementsByTagName('div');
+//            alert(oDiv.length);
+
+//           第一种循环while
+//            var i=0;                                    //1.初始化
+//            while(i<5)                                  //2.条件
+//            {
+//                oDiv[i].style.background='red';         //3.语句
+//                // i=i+1;(可以写成i++)                  //4.自增
+//                i++;
+//            }
+
+//            第二种循环for i<oDiv.length这样的写法可以随时增加减少div的个数
+            for(i=0;i<oDiv.length;i++)
+            {
+                oDiv[i].style.background='red';
+            }
+
+            //循环基本用法  --其他课程笔记
+            var count=1;
+            var LIMIT=5;
+            while(count<=LIMIT)
+            {
+                alert(count);
+                count++;
+                break
+            }
+
+
+            for(var i=10;i>0;i--)
+            {
+                alert(i);
+            }
+            alert("发射！");
+        };
+
+
+        //无限循环的写法
+        while(ture){}
+
+        do{}while(ture){}
+
+        for(;;){}
+
+    </script>
+</head>
+<body>
+
+<!--循环while和for-->
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+</body>
+</html>

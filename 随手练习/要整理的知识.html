@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="">
+		<input type="file" id="photo" name="image">
+	</form>
+	<img id="show" src="" alt="">
+	<script>
+		//1. replace有变量或变量拼接时的写法
+		let b = 3
+		let a = '<div>'+b+'</div>'
+		let c = '<div>'+b+'</div>'
+		a = a.replace(new RegExp(c,'g'),"2");
+
+		console.log(a);
+
+		//2. 创建FormData()和手动拼接json的区别？
+		let data = new FormData();
+		data.append('name', 'diau');
+
+		console.log(data);
+
+		//3. javascript 中的文件操作
+		let oPhoto = document.getElementById('photo');
+		oPhoto.addEventListener('change', function(){
+			let aaa = oPhoto.files[0];
+			console.log(oPhoto.files[0]);
+
+			let reader = new FileReader();
+			reader.readAsDataURL(aaa);  //读取文件内容，结果用data:url的字符串形式表示 (以base64编码输出)
+			// reader.readAsText(aaa);  //按字符读取文件内容，结果用字符串形式表示
+			// reader.readAsArrayBuffer(aaa);  //按字节读取文件内容，结果用ArrayBuffer对象表示
+			// reader.readAsBinaryString(aaa);  //按字节读取文件内容，结果为文件的二进制串
+			reader.onload = function(e){
+				var rd = e.target.result;
+				//src的值可以是url 也可以是 base64
+				document.getElementById('show').src=rd
+				console.log(rd);
+			}
+			
+		})
+		
+	</script>
+</body>
+</html>

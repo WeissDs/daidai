@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>toggle</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<div>我是谁我在哪我要干什么</div>
+<input type="button" value="点我">
+<input type="button" value="出现隐藏">
+
+<script>
+    $(document).ready(function(){
+        $("[value='点我']").click(function(){
+            $('div').hide('slow',function(){
+                $(this).show('fast')
+            });
+        });
+
+        $("[value='出现隐藏']").click(function(){
+            $('div').toggle(2000)
+        });
+    })
+</script>
+
+</body>
+</html>

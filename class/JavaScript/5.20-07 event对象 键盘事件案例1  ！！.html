@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘事件案例1</title>
+    <style>
+        #div1{
+            width:100px;
+            height:100px;
+            background-color:#ccc;
+            position: absolute;
+            /*margin-left:13px;*/
+        }
+    </style>
+    <script>
+        //存在很多问题：1.给div加了margin会出现错误 2.div会移动到可视框外 3.按键按下的第一次停顿时间比较长(是程序专门为误操作的设定)
+        document.onkeydown=function(ev)
+        {
+            var oEvent=ev||event;
+            var oDiv=document.getElementById('div1');
+
+            if(oEvent.keyCode==37)
+            {
+                    oDiv.style.left=oDiv.offsetLeft-20+'px';
+            }
+            else if(oEvent.keyCode==38)
+            {
+                oDiv.style.top=oDiv.offsetTop-20+'px';
+            }
+            else if(oEvent.keyCode==39)
+            {
+                oDiv.style.left=oDiv.offsetLeft+20+'px';
+            }
+            else if(oEvent.keyCode==40)
+            {
+                oDiv.style.top=oDiv.offsetTop+20+'px';
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div id="div1"></div>
+
+</body>
+</html>

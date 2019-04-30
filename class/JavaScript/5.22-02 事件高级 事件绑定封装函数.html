@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定封装函数</title>
+    <script>
+        //事件绑定封装函数
+        function myAddEvent(obj,ev,fn)
+        {
+            if(obj.addEventListener)
+            {
+                obj.addEventListener(ev,fn)
+            }
+            else
+            {
+                obj.attachEvent('on'+ev,fn,false)
+            }
+        }
+
+        window.onload=function()
+        {
+            var oBtn=document.getElementById('btn1');
+
+            myAddEvent(oBtn,'click',function()
+            {
+                alert('a');
+            });
+            myAddEvent(oBtn,'click',function()
+            {
+                alert('b');
+            });
+        }
+    </script>
+</head>
+<body>
+
+<input id="btn1" type="button" value="按钮">
+
+</body>
+</html>

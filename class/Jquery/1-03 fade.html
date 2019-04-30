@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fade</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: #ff9578;
+            margin: 20px;
+            display: none;
+        }
+    </style>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+    <div id="box"></div>
+    <div id="box1"></div>
+    <div id="box2"></div>
+
+    <input id="btn" type="button" value="点我出现">
+    <input id="btn1" type="button" value="点我消失">
+    <input id="btn2" type="button" value="点我出现/消失">
+    <input id="btn3" type="button" value="透明度">
+
+    <script>
+        $(document).ready(function(){
+
+            $('#btn').click(function(){
+                $('#box').fadeIn();
+                $('#box1').fadeIn(1000,function(){
+                    $('#box').css('background-color','blue');
+                });
+                $('#box2').fadeIn('slow');
+            });
+            $('#btn1').click(function(){
+                $('#box').fadeOut(function(){
+                    $(this).css('background-color','#ff9578');
+                });
+                $('#box1').fadeOut(1000);
+                $('#box2').fadeOut('slow');
+            });
+            $('#btn2').click(function(){
+               $('#box').fadeToggle();
+               $('#box1').fadeToggle(1000);
+               $('#box2').fadeToggle('slow');
+            });
+            $('#btn3').click(function(){
+                $('#box').fadeTo(2000,0.5,function(){
+                    $(this).fadeTo(2000,1)
+                });
+            });
+
+
+        })
+    </script>
+
+</body>
+</html>

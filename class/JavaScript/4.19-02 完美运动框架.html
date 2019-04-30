@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>完美运动框架</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            background-color: #aa775f;
+            filter:alpha(opacity:30);
+            opacity:0.3;
+        }
+    </style>
+    <script>
+        function getStyle(obj,name)
+        {
+            if(obj.currentStyle)
+            {
+                return obj.currentStyle[name];
+            }
+            else
+            {
+                return getComputedStyle(obj,false)[name];
+            }
+        }
+
+        //startMove(oDiv,{width:400,height:400})
+
+        function startMove(obj,json,fnEnd)  //用json来传入多个需要运动的元素和值
+        {
+            clearInterval(obj.timer);
+            obj.timer=setInterval(function(){
+                var bStop=true;
+
+                for(var attr in json) {
+                    var cur;
+                    if (attr == 'opacity') {
+                        cur = Math.round(parseFloat(getStyle(obj, attr)) * 100);
+                    }
+                    else {
+                        cur = parseInt(getStyle(obj, attr));
+                    }
+
+                    var speed = (json[attr] - cur) / 6;
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+
+                    if(speed!=0)
+                    {
+                        bStop=false;
+                    }
+
+                    if (attr == 'opacity') {
+                            obj.style.filter = 'alpha(opacity:' + (cur + speed) + ')';
+                            obj.style.opacity = (cur + speed) / 100;
+                    }
+                    else {
+                            obj.style[attr] = cur + speed + 'px';
+                    }
+                }
+
+                if (bStop) {
+                    clearInterval(obj.timer);
+                    if(fnEnd)fnEnd();
+
+                }
+            },30);
+        }
+
+        window.onload=function()
+        {
+            var oDiv=document.getElementById('div1');
+            var oBtn=document.getElementById('btn1');
+
+            oBtn.onclick=function()
+            {
+                startMove(oDiv,{width:100,height:700,opacity:40});
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div id="div1"></div>
+<input id="btn1" type="button" value="按钮">
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一个对象的封装函数</title>
+    <script>
+        function createPerson(name,qq)    //构造函数
+        {
+            var obj=new Object;
+            obj.name=name;
+            obj.qq=qq;
+
+            obj.showName=function()
+            {
+                alert(''+this.name);
+            };
+            obj.showQQ=function()
+            {
+                alert(''+this.qq)
+            };
+
+            return obj;
+        }
+
+        var obj=createPerson('da',1);
+        obj.showName();
+        obj.showQQ();
+        var obj2=createPerson('dai',2);
+        obj2.showName();
+        obj2.showQQ();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

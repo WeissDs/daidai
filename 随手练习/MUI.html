@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- <link rel="stylesheet" href="css/mui.css"> -->
+	<link rel="stylesheet" href="css/mui.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<style>
+		.pop{ width: 50%; height: 50px; background-color: #fff; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none; z-index: 999; }
+	</style>
+</head>
+<body>
+	<ul class="mui-table-view"> 
+        <li class="mui-table-view-cell mui-collapse">
+            <a class="mui-navigate-right" href="#">面板1</a>
+            <div class="mui-collapse-content">
+                <p>面板1子内容</p>
+            </div>
+        </li>
+    </ul>
+
+   <a href="#popover" id="openPopover" class="mui-btn mui-btn-primary mui-btn-block">打开弹出菜单</a>
+	<div style="height: 1000px; width: 100%;"></div>
+    <div id="popover" class="mui-popover">
+      <ul class="mui-table-view">
+        <li class="mui-table-view-cell"><a href="#">Item1</a></li>
+        <li class="mui-table-view-cell"><a href="#">Item2</a></li>
+        <li class="mui-table-view-cell"><a href="#">Item3</a></li>
+        <li class="mui-table-view-cell"><a href="#">Item4</a></li>
+        <li class="mui-table-view-cell"><a href="#">Item5</a></li>
+      </ul>
+    </div>
+
+    <div class="mui-input-row mui-input-range">
+    	<label>Range</label>
+    	<input type="range" min="0" max="100">
+    </div>
+
+	<!-- 测试label在mui新版本的bug -->
+	<div id="me_sign_box" class="me-text"><label for="me_sign">个性签名</label><input id="me_sign" type="text" name="User_Remarks" placeholder="人生的道路一旦选定，就要勇敢的走到尽头"></div>
+
+
+
+	<!-- 底部弹窗 mui基于popover弹出菜单写的 -->
+	<div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">
+		<input type="text">
+		<button>确定</button>
+	    <!-- 可选择菜单 -->
+	    <!-- <ul class="mui-table-view">
+	      <li class="mui-table-view-cell">
+	        <a href="#">菜单1</a>
+	      </li>
+	      <li class="mui-table-view-cell">
+	        <a href="#">菜单2</a>
+	      </li>
+	    </ul> -->
+	    <!-- 取消菜单 -->
+	    <!-- <ul class="mui-table-view">
+	      <li class="mui-table-view-cell">
+	        <a href="#sheet1"><b>取消</b></a>
+	      </li>
+	    </ul> -->
+	</div>
+	<button id="btn">遮罩</button>
+	<div class="pop">
+		adsoifhn;wo
+	</div>
+
+
+
+	<script src="js/mui.min.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script>
+		mui.init();
+		mui('#sheet1').popover('toggle');
+		var mask = mui.createMask(function(){
+			$('.pop')[0].style.display="none";
+			$('html,body').css('overflow','');
+			return true;
+		});//callback为用户点击蒙版时自动执行的回调；
+		$('#btn').click(function(){
+			$('.pop')[0].style.display="block";
+			$('html,body').css('overflow','hidden'); //阻止页面滚动，在移动端有问题
+			mask.show();
+		})
+		//mask.show();//显示遮罩
+		//mask.close();//关闭遮罩
+
+
+		var btnArray = ['拨打', '取消', '短信'];
+		mui.confirm('data.username' + ':' + 'data.telephone', '提示', btnArray, function(e) {
+			if(e.index == 0) {}
+			if(e.index == 1) {}
+			if(e.index == 2) {}
+		});
+		
+
+		// mui.plusReady(function(){
+		//   var self = plus.webview.currentWebview(); //获取当前页面
+		//   var url = self.getURL();  //当前页面的地址
+		//    window.alert(url);
+		// })
+	</script>
+</body>
+</html>

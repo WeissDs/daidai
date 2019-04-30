@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用span制作下划线</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: "Microsoft Yahei";
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        /*清除浮动*/
+        /*.clearfix {*/
+            /**zoom: 1;*/
+        /*}*/
+        /*.clearfix:before,.clearfix:after {*/
+            /*display: table;*/
+            /*line-height: 0;*/
+            /*content:  "";*/
+        /*}*/
+        /*.clearfix:after {*/
+            /*clear: both;*/
+        /*}*/
+        .nav {
+            width: 600px;
+        }
+
+        .nav li {
+            float:left;
+        }
+        .nav a {
+            box-sizing: border-box;
+
+            display: inline-block;
+            text-align: center;
+            width: 100px;
+            height: 50px;
+            color: #fff;
+            padding: 12px 5px;
+            background: #424a58;
+
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .nav a.active>span ,  .nav a:hover>span {
+            /*关键代码*/
+            padding-bottom: 5px;
+            border-bottom:  2px solid #fff;
+        }
+    </style>
+
+</head>
+<body>
+<div>
+    <ul class="nav clearfix">
+        <li><a class="active"><span>套装模板</span></a></li>
+        <li><a><span>标题</span></a></li>
+        <li><a><span>图片</span></a></li>
+        <li><a><span>背景图</span></a></li>
+        <li><a><span>卡片</span></a></li>
+        <li><a><span>分割线</span></a></li>
+        <li><a><span>关注和原文</span></a></li>
+        <li><a><span>名片</span></a></li>
+        <li><a><span>其他</span></a></li>
+        <li><a><span>贴纸</span></a></li>
+        <li><a><span>布局</span></a></li>
+        <li><a><span>零件</span></a></li>
+
+    </ul>
+</div>
+</body>
+</html>

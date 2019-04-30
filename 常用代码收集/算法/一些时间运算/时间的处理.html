@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+//timestamp  翻译 时间戳
+
+//new Date() 方法是获取的现在的中国标准时间  是一个对象object
+var now = new Date();
+console.log(now);
+
+
+//new Date() 方法可以在括号内加入参数 获取string字符串的时间 对字符串自动处理提取日期数字
+var timeOne = "2018/12/8 12:50:33";  //正确字符串格式 或2018/12/8/12：50：33  (时间可省略)
+var strToTime1 = new Date(timeOne);
+console.log(strToTime1);
+
+//获取时间精确到秒
+Date.parse(new Date());
+//获取时间精确到毫秒
+new Date().getTime();
+
+//处理字符串为new Date()可以操作的格式
+var time = "2018-05-03";
+var timeTwo = time.replace(/-/g,"/");  // /a/g全局更换a字符
+var strToTime2 = new Date(timeTwo);
+console.log(strToTime2);
+
+
+
+
+//开始处理得到的时间对象 有以下方法
+
+//时间戳（精确到毫秒13位）
+//一天=86400000毫秒
+var timeStamp2 = strToTime2.getTime();
+var timeStampNow = now.getTime();
+//时间戳也可以放在new Date()里重新设置为 时间对象
+console.log(new Date(timeStamp2));
+//时间戳的获得 判断大小
+console.log(`时间戳2：${timeStamp2}现在时间戳：${timeStampNow}时间戳2-现在时间戳${timeStamp2-timeStampNow}`);
+
+
+//时间戳 还原字符串
+function timestampToTime(timestamp) {
+    var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+    Y = date.getFullYear() + '-';
+    M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+    D = date.getDate() <10? '0' + date.getDate() : date.getDate();
+    h = ' ' + date.getHours() + ':';
+    m = date.getMinutes() + ':';
+    s = date.getSeconds();
+    return Y+M+D+h+m+s;
+    // return Y+M+D;
+}
+console.log(timestampToTime(strToTime1));
+
+//各种事件对象操作
+console.log(now.getFullYear());
+console.log(now.getMonth()+1);  //js获得月份的方法要加1 这是什么设定。。。
+console.log(now.toLocaleDateString());
+
+//算X天后的日期
+
+function futureDate(x){
+	var nowStamp = new Date().getTime();     //指定起始日期可在Date中直接加入 例：'2018/5/6'
+	var futureStamp = nowStamp+(x*24*60*60*1000);
+	var newDate = new Date(futureStamp);
+	console.log(newDate.getFullYear()+'/'+(newDate.getMonth()+1)+'/'+newDate.getDate());
+}
+futureDate(26);
+
+
+</script>
+
+</body>
+</html>

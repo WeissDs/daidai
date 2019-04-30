@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>酒店助手</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css" />
+		<link rel="stylesheet" href="css/mui_extends_loading.css" />
+		<style type="text/css">
+			*{ font-family: Microsoft YaHei, SimHei, Arial,Verdana; }
+			.dai_wrap {
+				width: 100%;
+				height: 100vh;
+				background: white;
+			}
+			
+			.dai_head {
+				width: 100%;
+				height: 50px;
+				background: #eee;
+				line-height: 50px;
+				color: #000;
+				/*font-weight: bold;*/
+				text-align: center;
+			}
+			
+			.dai_center {
+				width: 110px;
+				margin: 62px auto 50px;
+			}
+			
+			.dai_info {
+				width: 100%;
+				text-align: center;
+			}
+			
+			.dai_center img {
+				width: 100%;
+			}
+			
+			.dai_info p {
+				font-size: 20px;
+				margin-bottom: 40px;
+				color: #666;
+				text-align: center;
+			}
+			
+			.dai_info label {
+				width: 90%;
+			}
+			
+			.dai_order_detail {
+				width: 90%;
+				height: 50px;
+				margin: auto;
+				margin-bottom: 50px;
+			}
+			
+			.dai_order_detail p {
+				font-size: 14px;
+				margin-bottom: 10px;
+				text-align: left;
+				margin-left: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="dai_wrap">
+			<div class="dai_head">
+				<span>支付结果</span>
+			</div>
+
+			<div class="dai_center">
+				<img src="icon/success.svg" />
+			</div>
+
+			<div class="dai_info">
+				<p>支付成功</p>
+				<div class="dai_order_detail">
+					<p class="dai_money_num"> 金额：100￥<span></span></p>
+					<p class="dai_order_no">订单号：dsaiu9238491263<span></span></p>
+				</div>
+				<label class="mui-btn mui-btn-success dai_back">返回</label>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script type="text/javascript" src="js/hybrid_app.js" ></script>
+		<script type="text/javascript" src="js/mui_extends_loading.js" ></script>
+		<script type="text/javascript">
+			
+			//ajax请求加载数据
+			// mui.showLoading("数据加载中..", "div");
+			var out_trade_no = getUrlParam("out_trade_no");
+			$.get("/Home/UserOrder/GetOrderInfo?out_trade_no="+out_trade_no,function(res){
+				if(res.code=="200"){
+					$info = "请求成功";
+					$(".dai_money_num span").text(res.data.Order_TotalPrice);
+					$(".dai_order_no span").text(res.data.Out_Trade_No);
+				}else if(res.code == "403"){
+					hybrid_app.back();
+					$info = "登陆失败";
+				} else {
+					$info = "请求出错";
+				}
+				mui.hideLoading(callback($info, false));
+			},"json");
+			
+			//跳转首页
+			$(".dai_back").on("tap", function() {
+				window.location.href = "index.html";
+			});
+		</script>
+	</body>
+
+</html>

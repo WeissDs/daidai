@@ -1,0 +1,120 @@
+body,html{
+	width: 100%; height: 100%; min-width: 1200px; overflow:hidden;
+}
+*{
+	box-sizing: border-box;
+}
+a{ cursor: pointer; }
+.login-bg{
+	width: 100%;
+	height: 260px;
+	overflow: hidden;
+	position: relative;
+}
+.login-bg img{
+	width: 100%;
+}
+.login-bg p{
+	width: 30%;
+	border: 1px solid #fff;
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size:26px;
+	color: #fff;
+	padding: 20px;
+	text-align: center;
+
+}
+
+.login{
+	width:100%;
+	min-width: 1200px;
+	text-align: center;
+}
+.login>p{
+	font-size: 26px;
+	color: #fff;
+}
+.login-window{
+	margin: 0 auto;
+	width: 32%;
+	padding: 35px 0;
+}
+
+.login-window div{
+	position: relative;
+}
+.login-window i{
+	position: absolute;
+	left: 0;
+	font-size: 26px;
+	color: #fff;
+	line-height: 50px;
+	padding: 0 10px;
+	background-color: #20bec0;
+}
+.login-window .a{
+	width: 100%;
+	height: 50px;
+	padding: 0 70px;
+	margin-bottom: 14px;
+	border: 1px solid #d5d5d5;
+}
+.login-window #password{ margin-top: 15px; }
+input::-webkit-input-placeholder {
+         /* placeholder颜色  */
+         color: #a8a8a8;
+         /* placeholder字体大小  */
+         font-size: 16px;
+         /* placeholder位置  */
+         /*text-align: right;*/
+     }
+
+
+/*验证码*/
+.login-window .verify{
+	width: 100%;
+	height: 50px;
+}
+.login-window .verify.phone{
+	margin-top:15px;
+}
+.login-window .verify::after{
+	display: inline-block;
+	content: "";
+	clear: both;
+}
+.login-window .verify input{
+	float: left;
+	width: 65%;
+	height: 50px;
+	border: 1px solid #d5d5d5;
+	padding: 0 70px;
+}
+.login-window .verify .verify-img{
+	width: 30%;
+	height: 50px;
+	background-color: #f2f2f2;
+	float: right;
+	text-align: center;
+	line-height: 50px;
+	color: #8c8c8c;
+}
+
+
+
+
+
+
+.login-window input[type="submit"]{
+	width: 100%;
+	height: 40px;
+	background-color: #20bec0;
+	border: none;
+	border-radius: 2px;
+	color: #fff;
+	font-size: 16px;
+	margin-top: 15px;
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task 4 HTML练习</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        /*垂直居中一定要先给html，body添加长宽100% 默认值为0*/
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .box1{
+            height:100%;
+            width: 100%;
+        }
+        .content{
+            position: relative;
+            width:400px;
+            height:200px;
+            margin:0 auto;
+            /*CSS3 新出2D转换属性 transform:translateY(-50%);就是在水平Y轴上上移自身高度的一半*/
+            transform:translateY(-50%);
+            top:50%;
+            overflow: hidden;
+            background-color: #cccccc;
+        }
+        .circle{
+            position: absolute;
+            border-radius:50%;
+            height: 100px;
+            width: 100px;
+            background-color: #fc0;
+        }
+        /*.content .circle:first-child{
+            top:-50px;
+            left:-50px;
+        }*/
+        /*.content .circle:last-child{
+            bottom:-50px;
+            right:-50px;
+        }*/
+    </style>
+    <script>
+        function getByClass(oParent,sclass)
+        {
+            let result = [];
+            let aEle = oParent.getElementsByTagName('*');
+
+            for(let i=0;i<aEle.length;i++)
+            {
+                if(aEle[i].className==sclass)
+                {
+                    result.push(aEle[i]);
+                }
+                
+            }
+            return result;
+        }
+        window.onload=function()
+        {
+            let oDiv=document.getElementById('out');
+            let aCir=getByClass(oDiv,'circle');
+            aCir[0].style.top = -(aCir[0].offsetHeight)/2+'px';
+            aCir[0].style.left = -(aCir[0].offsetWidth)/2+'px';
+            aCir[1].style.bottom = -(aCir[1].offsetHeight)/2+'px';
+            aCir[1].style.right = -(aCir[1].offsetWidth)/2+'px';
+        }
+    </script>
+</head>
+<body>
+
+<div class="box1">
+    <div>
+        <!--<p>任务注意事项-->
+            <!--思考不同情况下（如灰色高度是根据内容动态变化的）水平垂直居中的解决方案。-->
+            <!--动手试一试各种情况的组合，父元素和子元素分别取不同的 position 值。思考 position 属性各种取值的真正含义，尤其是 absolute 究竟是相对谁而言的。-->
+            <!--注意测试不同情况，尤其是极端情况下的效果。-->
+            <!--调节浏览器宽度，灰色元素始终水平居中。-->
+            <!--调节浏览器高度，灰色元素始终垂直居中。-->
+            <!--调节浏览器高度和宽度，黄色扇形的定位始终准确。-->
+            <!--其他效果图中给出的标识均被正确地实现，错一项扣一分。-->
+            <!--参考资料-->
+            <!--HTML和CSS高级指南之二——定位详解：大漠老师手把手教你，这次彻底搞懂定位问题-->
+            <!--Centering in CSS: A Complete Guide：完整讨论了不同情况下的居中方案，建议自己思考之后再看答案-->
+            <!--Get HTML & CSS Tips In Your Inbox：有人写了一个作弊工具生成居中代码，但是看着代码你明白为什么吗</p>-->
+    </div>
+    <div class="content" id="out">
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

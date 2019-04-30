@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<form id="form1" action="http://localhost/data/1.php" method="POST">
+		<input type="text" name="user">
+		<input type="password" name="pass">
+		<input type="submit" value="提交">
+	</form>
+
+
+<script type="text/javascript">
+	const $ = document.querySelectorAll.bind(document);
+
+	window.onload=function(){
+		let oForm = $('#form1')[0];
+		let oUser = document.getElementsByName('user')[0];
+
+		oForm.onsubmit=function(){
+			//一般来说用正则来写判断校验
+			if(oUser.value == '')
+			{
+				alert('用户名不能为空');
+				return false;
+			}
+		}
+	}
+
+	
+</script>
+
+</body>
+</html>

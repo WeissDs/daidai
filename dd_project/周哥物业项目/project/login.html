@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="css/login.css">
+	<link rel="stylesheet" href="libraries/layui/css/layui.css">
+
+	<script src="jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+    <div class="login-bg">
+    	<img src="images/background.png" alt="">
+    </div>
+	<div class="login">
+		<p>物业管理平台登录</p>
+		<div class="login-window">
+				<div class="login-window-top">
+					<p class="user">用户登录</p>
+					<p class="e">Login User</p>
+				</div>
+
+				<div  class="login-window-top1">
+					<span></span>
+					<p>欢迎登录物业管理平台</p>
+				</div>
+
+				<div id="username">
+					<label for="login_username">
+						<i class="layui-icon layui-icon-username"></i>
+					</label>
+					<input class="a" id="login_username" name="login-username" type="text" placeholder="用户名" aria-label="">
+				</div>
+
+				<div id="password">
+					<label for="login_passWord">
+						<i class="layui-icon layui-icon-password"></i>
+					</label>
+					<input class="a" id="login_passWord" name="login-username" type="text" placeholder="密码">
+				</div>
+				<div class="verify">
+					<input type="text" placeholder="请输入验证码">
+					<div class="verify-img"></div>
+				</div>
+
+				<div  class="remember">
+					<div class="layui-form" style="display: inline-block; margin-top: 2px;">
+						<input type="checkbox" lay-skin="primary">
+					</div>
+					<span>记住我</span>
+					<a><i></i>忘记密码</a>
+				</div>
+				<input id="submit" type="submit" value="登录">
+		</div>
+	</div>
+	
+	
+
+
+	<script type="text/javascript" src="libraries/layui/layui.js"></script>
+	<script type="text/javascript">
+		layui.use(['element','form', 'layedit', 'laydate','jquery'], function(){
+		    var element = layui.element;
+		    var form = layui.form;
+		    var $ = jQuery = layui.$;
+		    $(document).ready(function() {
+
+		    });
+		});
+	</script>
+	<script>
+		$(function(){
+			$('#submit').click(function(){
+				let data = {name:$('#login_username').val(),pas:$('#login_passWord').val()};
+				$.ajax({
+					url: 'http://127.0.0.1:8020/login',
+					type: 'GET',
+					data: data,
+					success(data){
+						console.log('成功');
+					},
+					error(){
+						console.log('no!');
+					}
+				})
+			})
+			
+		})
+	</script>
+	
+</body>
+</html>

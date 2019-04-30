@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>父子组件通信</title>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+
+	<div id="box1"></div>
+
+	<script type="text/babel">
+		//子传父 事件传值
+		
+		class Father extends React.Component{
+			constructor(...args){
+				super(...args);
+
+				this.state={user: this.props.users}
+			}
+
+			delete(n){
+				let users=this.props.users;
+				users.splice(n,1);
+				this.setState({user: users})
+			}
+
+			render(){
+				return <div>
+					<ul>
+						{this.props.users.map((json,index)=><Son index={index} key={index} delete={this.delete.bind(this)} json={json}/>)}
+					</ul>
+				</div>
+			}
+		}
+
+		class Son extends React.Component{
+			constructor(...args){
+				super(...args);
+			}
+
+			fn(){
+				this.props.delete(this.props.index)
+			}
+
+			render(){
+				return <li>
+					<input type="button" value="删除" onClick={this.fn.bind(this)}/>
+					<h4>{this.props.json.name}</h4>
+					<p>{this.props.json.age}</p>
+					<p>{this.props.json.code}</p>
+				</li>
+			}
+		}
+
+
+
+
+		ReactDOM.render(<Father users={[
+			{name: 'dai', age: 26, code: 101010},
+			{name: 'fai', age: 27, code: 202020},
+			{name: 'oai', age: 28, code: 303030}
+			]}/>,document.getElementById('box1'));
+	</script>
+	
+</body>
+</html>

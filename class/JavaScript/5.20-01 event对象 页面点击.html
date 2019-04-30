@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>event对象 页面点击</title>
+    <script>
+        window.onload=function()
+        {
+            //给document加点击事件 全页面点击都有效果
+//            document.onclick=function()
+//            {
+//                alert('a');
+//            };
+
+            //document里面到底是什么东西
+//            alert(document.childNodes[1].tagName);
+
+            //点击的横纵坐标(火狐不兼容)
+//            document.onclick=function()
+//            {
+//                alert(event.clientX+','+event.clientY);
+//            };
+            //点击的横纵坐标:火狐
+//            document.onclick=function(ev)
+//            {
+//                alert(ev.clientX+','+ev.clientY);
+//            }
+            //点击的横纵坐标兼容写法
+            document.onclick=function(ev)
+            {
+                var oEvent=ev||event;
+
+                alert(oEvent.clientX+','+oEvent.clientY);
+            }
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数传参</title>
+    <script>
+        function sum()
+        {
+//            alert(arguments.length);
+//            alert(arguments[0]);
+
+//            函数传参求和
+            var result=0;
+
+            for(var i=0;i<arguments.length;i++)
+            {
+                result+=arguments[i];
+            }
+            return result;
+        }
+        alert(sum(12,6,8));
+
+
+
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>

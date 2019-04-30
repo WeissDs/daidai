@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多视图</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="../js/vue-router.js"></script>
+</head>
+<body>
+
+	<div id="box">
+		<router-link to='/a'>a</router-link>
+
+		<!-- 默认视图可有可没有，且只有一个 -->
+		<router-view></router-view>
+		<router-view name="n1"></router-view>
+		<router-view name="n2"></router-view>
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el: '#box',
+			router: new VueRouter({
+				routes: [
+					{ path: '/a',
+					  //这里改为components
+					  components: { 
+							default: { template: '<div>没有名字的那个视图</div>' },
+							n1: {template: '<div>name=n1的视图</div>' },
+							n2: {template: '<div>name=n2的视图</div>' },
+						} 
+					},
+				]
+			})
+		})
+	</script>
+	
+</body>
+</html>

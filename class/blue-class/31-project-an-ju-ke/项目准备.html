@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<!-- 
+	
+	项目准备
+
+		数据字典：
+			1. 管理员表
+			例：
+				ID			varchar(32) 		用户的ID，由uuid负责生成、全局唯一			主键，非空
+				username	varchar(32) 		用户名，不能重复							非空、唯一
+				password	varchar(32) 		密码										非空
+
+			2. 管理员token表
+
+				ID
+				token		varchar(32)32位就足够了
+				expires		int(时间戳)					有效期
+			3. 房屋表
+			4. 广告表
+			5. 友情链接表
+			6. 置业顾问表
+
+
+		接口字典：
+
+	-----------------------------------------------------------------
+
+	要做的东西
+
+		1. 后台服务器
+		2. 管理后台：
+			. 用户状态管理
+			. 增删改查
+		3. 前端
+
+	-----------------------------------------------------------------
+
+	Token概念：
+
+	访问服务器接口，身份识别的方法：
+	1. cookie，session     	不能跨域
+	2. token				能跨域（token可以放在头文件里）
+
+	token是迫不得已，cookie的替代品
+	token就是个很长很长的id而已
+
+
+	-----------------------------------------------------------------
+
+	后台分页：
+
+	一般正常情况下是后台做分页
+
+	SELECT XXX FROM 表 WHERE 条件 LIMIT 起点，数量
+	例： SELECT * FROM house_table WHERE LIMIT 0,10    // [0,1,2,3,...9]
+
+	SELECT COUNT(*) AS 新类名 FROM 表     （ 计算表的总数据量 'AS c'表示将count(*)换成c ）
+
+
+	后台搜索：
+
+	SELECT XXX FROM 表 WHERE 条件
+
+	条件：title LIKE '%禾%' OR/AND '%千%'    选择名字里有'禾'或者'千'的
+
+
+
+
+
+
+	 -->
+	
+</body>
+</html>

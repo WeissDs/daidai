@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VUE</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<!--
+1.  前台渲染： 用户体验（不用重新刷新）、数据量小 [ VUE\Angular\React ]
+    后台渲染： 利于SEO、简单、安全性高、稳定性
+
+2.  MVC模式:  M——————Model           数据
+              V——————View            表现
+              C——————Controller      逻辑   逻辑C庞大
+    MVP模式： 逻辑p庞大
+    MVVM模式： M V VM
+
+3. 如果网页渲染速度较慢，vue中{{}}的内容可能在没有替换前就显示出来了，[v-cloak] { display: none } 一起用时，这个指令可以隐藏未编译的 Mustache 标签直到实例准备完毕。
+-->
+
+<div id="box" v-bind:title="a">   <!-- 'v-bind:' 可简写为 ':' -->
+    {{a+b}}
+    <input type="button" v-on:click="a++">  <!--'v-on' 可简写为'@'-->
+    <input type="button" v-on:click="fn">
+    <!-- v-html 是原样输出 {{}}是转义输出(标签会显示出来) -->
+    <div v-html='c'></div> 
+    <div>{{c}}</div> 
+</div>
+
+
+<script>
+    let vm=new Vue({
+        el:'#box',
+        data:{
+            a: 12, b: 5,
+            c: 'dofiwoie<span style="color:red">hahaha</span>hfo;ias'
+        },
+        methods:{
+            fn(){
+                alert(this.a);
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

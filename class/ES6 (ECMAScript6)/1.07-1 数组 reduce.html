@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script>
+		let arr=[1, 60, 700, 3000];
+
+		// arr.reduce(function(tmp, item, index){     //看看reduce里的参数分别代表什么  上一次结果 要运算的元素 下标
+		// 	console.log(tmp, item, index);
+		// })
+
+		let result=arr.reduce((tmp, item, index)=>tmp+item);
+		console.log(result);
+
+		let result1=arr.reduce((tmp, item, index)=>index!=arr.length-1?tmp+item:(tmp+item)/arr.length);    //为什么不能用this  算平均数
+		console.log(result1);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

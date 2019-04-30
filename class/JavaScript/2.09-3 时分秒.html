@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时分秒</title>
+    <script>
+//        var oDate=new Date();
+
+//        alert(oDate.getHours());
+
+    function toDou(n)
+    {
+        if(n<10)
+        {
+            return '0'+n;
+        }
+        else
+        {
+            return ''+n;
+        }
+    }
+
+        window.onload=function()
+        {
+            var aImg=document.getElementsByTagName('li');
+//            var str='14:45:20';
+
+            function tick()
+            {
+                var oDate=new Date();
+                var str=toDou(oDate.getHours())+':'+toDou(oDate.getMinutes())+':'+toDou(oDate.getSeconds());
+
+//            alert(str);
+
+                for(var i=0;i<aImg.length;i++)
+                {
+                    aImg[i].innerHTML=str.charAt(i);    //charAt()是为了兼容IE7等低版本浏览器
+                }
+            }
+            setInterval(tick,1000);
+            tick();
+
+        }
+    </script>
+    <style>
+        li{
+            list-style: none;
+            font:bold 200px '黑体';
+            float: left;
+            color: #2b3e56;
+        }
+        ul{
+            width: 1000px;
+            margin:300px auto;
+        }
+    </style>
+    <script>
+
+    </script>
+</head>
+<body>
+<ul>
+    <li>0</li>
+    <li>0</li>
+    <li>:</li>
+    <li>0</li>
+    <li>0</li>
+    <li>:</li>
+    <li>0</li>
+    <li>0</li>
+</ul>
+
+
+</body>
+</html>

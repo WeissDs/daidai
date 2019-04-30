@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		//jsonp的写法开始
+
+		//js动态加入script标签 src为sss.js
+		function createScript(src){
+			let script1 = document.createElement('script');
+			script1.src= src;
+			document.head.appendChild(script1);
+		}
+		//回调函数a
+		function a(){
+			alert(11111);
+		}
+
+		window.onload=function(){
+			//异步载入sss.js文件 执行回调函数
+			setTimeout(function(){createScript('5-02jsonp.js');},2000);
+		}
+
+		//jsonp的写法结束
+		
+	</script>
+	
+</head>
+<body>
+
+
+<!-- 收藏写法 -->
+<!-- 	<script>
+	    var script = document.createElement('script');
+	    script.type = 'text/javascript';
+
+	    // 传参并指定回调执行函数为onBack
+	    script.src = 'http://www.....:8080/login?user=admin&callback=onBack';
+	    document.head.appendChild(script);
+
+	    // 回调执行函数
+	    function onBack(res) {
+	        alert(JSON.stringify(res));
+	    }
+	</script> -->
+
+
+	<!-- 课程案例 -->
+	输入需要查询的内容：<input id="text1" type="text">
+	<ul id="content"></ul>
+
+	<script>
+		//https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=sd&json=1&p=3&sid=26525_1425_21091_20719&req=2&csor=2&pwd=s&cb=callBack
+
+		//jsonp的百度案例
+		function callBack(json){
+			let oUl = document.getElementById('content');
+			oUl.innerHTML='';
+			console.log(json.s);
+			let arr = json.s;
+			//可简写为
+			// arr.forEach(str=>{
+			// 	let oLi = document.createElement('li');
+			// 	oLi.innerHTML=arr[i];
+			// 	oUl.appendChild(oLi);
+			// })
+			for(let i=0; i<arr.length; i++){
+				let oLi = document.createElement('li');
+				oLi.innerHTML=arr[i];
+				oUl.appendChild(oLi);
+			}
+		}
+
+		window.onload=function(){
+			let oTxt = document.getElementById('text1');
+
+			//oninput（课程中的写法） 只支持高级浏览器 onporpertychange 支持IE 但是IE8不支持addEventListener
+			oTxt.oninput=function(){
+				let oS = document.createElement('script');
+				//这里要用encodeULIComponent()方法， 避免中文在IE和低级浏览器中乱码 防止&符号影响解析value的值
+				oS.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+encodeURIComponent(oTxt.value)+'&cb=callBack';
+
+				document.head.appendChild(oS);
+				document.head.removeChild(oS); //自己加的删除添加的script节点代码
+			}
+
+			//另一种input监听写法  在回车后才执行
+			oTxt.onchange=function(){
+				let oS = document.createElement('script');
+				oS.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+oTxt.value+'&cb=callBack';
+
+				document.head.appendChild(oS);
+				document.head.removeChild(oS);
+			}
+		}
+		
+		
+	</script>
+	<!-- <script src="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="++"&cb=callBack"></script> -->
+	
+</body>
+</html>

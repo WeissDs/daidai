@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>创建一个组件</title>
+	<!--网络 非下载版-->
+	<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+
+	<style type="text/css">
+		.box{
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+
+<div id='div1'></div>
+
+<script type="text/babel">
+	//创建一个Test组件
+
+	class Test extends React.Component{
+		constructor(...args){
+			super(...args);
+
+			this.a=12;
+			alert(this.props.b+this.props.c);
+			alert(this.a);
+			console.log(this.props.type)
+		}
+
+	//这里的this未指定在React中设为null，要在render()里bind(this),将this绑定为render的this
+
+		fn(){
+			//console.log(this);
+			alert(this.a);
+		}
+
+	//html中直接写for来做绑定,这里改成htmlFor
+	//React里传参（传属性）的方式有两种
+	//1."" 传字符串
+	//2.{} 字符串以外内容 例：{this.fn}
+
+		render(){
+			console.log(this);
+			return <div>
+				<span>aaa</span>
+				<input type="button" value="按钮" onClick={this.fn.bind(this)}/><br/>
+				<label htmlFor="aaa">111</label>   
+				<input id="aaa" type="text"/>
+			</div>;
+		}
+	}
+
+
+	window.onload = function(){
+		let oDiv = document.getElementById('div1');
+
+		ReactDOM.render(
+			<Test c={12} b={3}></Test>,
+			oDiv
+		)
+	}
+</script>
+
+</body>
+</html>

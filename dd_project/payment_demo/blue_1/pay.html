@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">	
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<title>Document</title>
+	<script>
+		document.removeEventListener('scroll', this.scrollFun, false)
+		window.onresize = function () {
+		  document.documentElement.style.fontSize = document.documentElement.clientWidth * 100 / 720 + 'px'
+		}
+		window.onload = function () {
+		  window.onresize()
+		}
+		window.onresize()
+	</script>
+	<style>
+		*{ font-family: Microsoft YaHei, SimHei, Arial,Verdana; }
+		.line { width: 100%; height: .05rem; background-color: #ccc; }
+		.copy-alert { /*width: 1rem; height: .5rem;*/ background-color: #fff; border-radius: 5px; text-align: center; line-height: .5rem; font-size: .3rem; color: #888; padding: .2rem; }
+		/* 完成按钮 */
+		.form-commit button{ width: 95%; text-align: center; border: none; height: .75rem; border-radius: 3px; font-size: .35rem; background-color: #ccc; }
+		/*.form-commit button:focus{  background-color: #ccc; color: #fff; outline: none;  }*/
+		.form-commit button.active { background-color: #67C23A; color: #fff;}
+		
+		/* 头部和bg */
+		.bg{ width: 100%; height: 100%; background-color: #f6f6f6; overflow: hidden;  font-size: .3rem; }
+		.bg .order-number{ text-align: center; width: 100%; font-weight: bold; margin-top: .3rem; }
+		.bg .order-price{ text-align: center; width: 100%; font-size: .5rem; font-weight: bold; margin-top: .1rem; }
+		.bg .order-price span{ font-size: .3rem; }
+
+		/* 收款人信息 */
+		.bg .payee-information{ margin-top: .2rem; font-size: .24rem; }
+		.bg .payee-information .payee-group{ width: 100%; height: .8rem; padding-left: .24rem; background-color: #fff; margin-top: .2rem; position: relative;}
+		.bg .payee-information .payee-group .right-txt{ color: #000; border: none; position: absolute; width: 4rem; left: 1.5rem; top: 50%; transform: translateY(-50%);}
+		.bg .payee-information .payee-group .right-copy{ display: inline-block; background-color: #888; border: none; border-radius: 5px; padding: 0 .2rem; color: #fff; position: absolute; right: .2rem; top: 50%; transform: translateY(-50%);}
+		.bg .payee-information .left{ color: #888; line-height: .8rem; }
+		.bg .payee-information .payee-group:after{
+			content: '';
+			display: inline-block;
+			clear: both;
+		}
+
+		/* 银行卡号 */
+		.bg .pay-bank-card{ margin-top: .8rem!important; }
+		/*.bg .pay-bank-card label{ width: 100%; text-align: center; }*/
+		/*.bg .pay-bank-card input{ border: none; width: 100%; height: .8rem; padding: 0 .2rem; font-size: .24rem; }*/
+
+		.bg .form-commit{ width: 100%; text-align: center; margin-top: .7rem; }
+		/*.bg .form-commit .btn-primary{ width: 95%; text-align: center; border: none; height: .75rem; border-radius: 3px; font-size: .35rem; }*/
+	</style>
+</head>
+<body>
+	<div class="bg">
+		<div class="order-number">商户订单号 3826666929773522</div>
+		<div class="order-price"><span>￥</span>1.00</div>
+		<div class="payee-information">
+			<div class="payee-group">
+				<div class="left">收款户名</div>
+				<input class="right-txt" value="张三" readonly>
+				<button class="right-copy">复制</button>
+			</div>
+			<div class="payee-group">
+				<div class="left">收款账号</div>
+				<input class="right-txt" value="8888 8888 8888 8888 888" readonly>
+				<button class="right-copy">复制</button>
+			</div>
+			<div class="payee-group">
+				<div class="left">收款银行</div>
+				<input class="right-txt" value="兴业银行" readonly>
+				<button class="right-copy">复制</button>
+			</div>
+			<div class="line"></div>
+			<div class="payee-group pay-bank-card">
+				<div class="left">付款账号</div>
+				<input class="right-txt" type="number" onkeypress='return( /[\d]/.test(String.fromCharCode(event.keyCode) ) )'  id="bankCard" placeholder="请输入付款银行卡号后四位" >
+				<!-- <button class="right-copy">复制</button> -->
+			</div>
+		</div>
+		
+		<!-- <div class="pay-bank-card">
+			<label for="bankCard" id="bankCard_label">请输入银行卡后四位:</label><br>
+			<input type="number" onkeypress='return( /[\d]/.test(String.fromCharCode(event.keyCode) ) )'  id="bankCard" placeholder="银行卡号">
+		</div> -->
+		<div class="form-commit">
+		    <button class="btn-primary" disabled="disabled" id="btn_save_update">完成</button>
+		</div>
+
+		<footer>
+			<div>温馨提示</div>
+			<ul>
+				<li>1,请使用网银或手机银行向以上账户转账付款。</li>
+				<li>2,请予半小时内完成转账付款，付款完成后请务必输入付款银行卡号后四位并点击完成按钮，如遇特殊情况需输入付款账户完整银行卡号。系统会进行到账处理。</li>
+				<li>3,请勿进行重复转账付款，重复付款可能会造成订单无法到账完成。。</li>
+				<li>4,如遇订单到账问题，请与商户联系。</li>
+			</ul>
+		</footer>
+
+		<!--模态框组件 后四位重复提示-->
+		<div class="modal fade" id="myModal" style="display: none">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		                <div class="modal-header">
+		                    <h3>提示</h3>
+		                </div>
+		                <div class="modal-body">
+		                    <p>后四位重复，请输入完整的银行卡号</p>
+		                </div>
+		                <div class="modal-footer">
+		                    <button class="btn btn-info" data-dismiss="modal">关闭</button>
+		                </div>
+		        </div>
+		    </div>
+		</div>
+		<!-- 提示 是否复制成功 -->
+		<div class="copy-alert" id="copy_alert" style="display: none">
+		    已复制
+		</div>
+	</div>
+		
+	<script>
+		$(function(){
+			// 弹出框
+			// $("#myModal").modal();
+			$("#bankCard").bind('input propertychange',function(){
+				var cardNum = $("#bankCard").val();
+				if(cardNum.length>=4){
+					$("#btn_save_update").removeAttr("disabled")
+					$("#btn_save_update").attr("class", "active")
+
+				}else{
+					$("#btn_save_update").attr("disabled", "disabled")
+					$("#btn_save_update").attr("class", "")
+				}
+			})
+			// 点击复制 复制到剪切板
+			function copy(){
+				var btn_copy = $('button.right-copy')
+				for(var i=0;i<btn_copy.length;i++){
+					btn_copy[i].index = i
+					$(btn_copy[i]).click(function(){
+
+						var copy_txt = $(btn_copy[this.index]).prev();
+						// 兼容问题
+						copy_txt.select();
+						document.execCommand("Copy")
+					})
+				}
+				
+			}
+			copy()
+			$("#btn_save_update").click(function(){
+				// $("#copy_alert").fadeIn();
+				// $.ajax({
+			 //        type: 'POST',
+			 //        dataType: "json",
+			 //        contentType: 'application/json;charset=utf-8',
+			 //        url: basePath +"/pay/confirm",// 请求的action路径
+			 //        data: JSON.stringify(data),
+			 //        error: function () {// 请求失败处理函数
+			 //            window.location,href="失败页面链接"
+			 //        },
+			 //        success: function (rtn) { // 请求成功后处理函数。
+			 //            var code = rtn.code;
+			 //            if (code == '200') {
+			 //                $("#content").html("操作成功！")
+			 //                window.location.href="成功页面链接"
+			 //            } else {
+			 //            	// 如果银行卡号后四位相同
+			 //                var msg = rtn.message;
+
+			 //                $("#myModal").modal();
+			 //                $("#bankCard_label").html('银行卡号')
+
+			 //                window.location.href="失败页面链接"
+			 //            }
+			 //        },
+			 //        complete: function () {
+			 //        }
+				// });
+			})
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>什么是真什么是假</title>
+    <script>
+        var a=true;  //真
+        a=false;    //假
+        a=12;   //真
+        a=0;   //假
+        a='sdf';  //真
+        a=' ';  //真
+        a='';   //假
+        a=document;  //真
+        a=null;  //假
+
+//      真:true、非零数字、非空字符串、非空对象
+//      假:false、数字零、空字符串、空对象（null）、undefined
+        if(a)
+        {
+            alert('真的');
+        }
+        else
+        {
+            alert('假的');
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

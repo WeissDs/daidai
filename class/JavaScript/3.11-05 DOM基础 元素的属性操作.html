@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素的属性操作</title>
+    <script>
+        window.onload=function()
+        {
+            var oTxt=document.getElementById('txt1');
+            var oBtn=document.getElementById('btn');
+
+            oBtn.onclick=function()
+            {
+//                oTxt.value='ssssssss';   //第一种操作元素属性的方式
+//                oTxt['value']='sssssss';   //第二种操作元素属性的方式
+                oTxt.setAttribute('value','ssssssss');    //平时基本不用
+            }
+        }
+    </script>
+</head>
+<body>
+
+<input id="txt1" type="text">
+<input id="btn" type="button" value="按钮">
+
+</body>
+</html>

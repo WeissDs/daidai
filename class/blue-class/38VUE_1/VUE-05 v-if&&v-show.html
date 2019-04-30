@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if&&v-show</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: #979797;
+        }
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: #2d9733;
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="div">
+    <input type="button" value="插入DOM节点/删除DOM节点" @click="fn">
+    <input type="button" value="出现/隐藏" @click="fn1">
+
+    <div class="box" v-if="show1"></div>
+    <div class="box1" v-show="show2"></div>
+</div>
+
+<script>
+    let vm=new Vue({
+        el: '#div',
+        data: {
+            show1: true,
+            show2: true
+        },
+        methods: {
+            fn(){
+                this.show1=!this.show1;
+            },
+            fn1(){
+                this.show2=!this.show2;
+            },
+        }
+    })
+</script>
+
+</body>
+</html>

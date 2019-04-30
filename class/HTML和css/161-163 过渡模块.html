@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过渡模块</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box1{
+            width: 100px;
+            height: 50px;
+            background-color: #80ff98;
+            /*告诉系统哪个属性需要执行过渡效果*/
+            transition-property:width,background-color;
+            /*告诉系统过渡效果持续的时长*/
+            transition-duration:0.5s,0.5s;
+        }
+        /*:hover这个伪类选择器除了可以用在a标签上，还可以用在其他任何标签上*/
+        .box1:hover{
+            width: 300px;
+            background-color: #ff9f6c;
+        }
+
+        .box2{
+            width: 100px;
+            height: 50px;
+            background-color: #ff9f6c;
+            transition-property:width,background-color;
+            transition-duration:5s,5s;
+            /*告诉系统延迟多少秒之后才开始过渡动画*/
+            transition-delay:1s;
+
+        }
+        .box2:hover{
+            width:500px;
+            background-color: transparent;
+        }
+
+        ul{
+            width:800px;
+            height:500px;
+            margin:0 auto;
+            list-style: none;
+            overflow: hidden;
+            background-color: #370470;
+
+        }
+        li{
+            width: 100px;
+            height:50px;
+            margin-top:50px;
+            background-color: #eeff70;
+            transition-duration:5s;
+        }
+        /*鼠标悬停在ul上li模块进行过渡动画*/
+        ul:hover li{
+            margin-left:700px;
+            background-color: #fbfffe;
+        }
+        /*匀速*/
+        ul li:nth-child(1){
+            transition-timing-function:linear;
+        }
+        /*逐渐变慢*/
+        ul li:nth-child(2){
+            transition-timing-function:ease;
+        }
+        /*加速*/
+        ul li:nth-child(3){
+            transition-timing-function:ease-in;
+        }
+        /*减速*/
+        ul li:nth-child(4){
+            transition-timing-function:ease-out;
+        }
+        /*先加速后减速*/
+        ul li:nth-child(5){
+            transition-timing-function:ease-in-out;
+        }
+
+        /*
+        过渡模块的连写方式:
+        transition:过渡属性 过渡时间 运动速度 延迟时间;
+
+        注意点：
+            1.多个属性需要添加过渡效果时 四个一组 用逗号隔开
+            2.连写时可以省略后面两个参数，因为只要编写了前两个参数就满足了过渡的三要素
+            3.全部属性都需要添加过渡效果时  可以将property的值写成all
+
+        */
+        .box3{
+            width: 100px;
+            height: 50px;
+            background-color: #80ff98;
+            transition:width 5s ease 2s,background-color 5s ease 2s;
+        }
+        .box3:hover{
+            width: 300px;
+            height:300px;
+            background-color: #ff9f6c;
+        }
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+<!--
+过渡三要素：
+    1.必须要有属性发生变化
+    2.必须告诉系统哪个属性需要执行过度效果
+    3.必须告诉系统过渡效果持续的时长
+
+
+注意点：
+    当多个属性需要同时执行过度效果时用逗号隔开即可
+-->
+
+<div class="box1"></div>
+<div class="box2"></div>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<div class="box3"></div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+#网站搜集
+
+##文档
+
+[腾讯开发平台](https://open.tencent.com/)
+[腾讯鬼知道是什么的api文档](http://open.mobile.qq.com/)
+
+##知识搜集
+
+[中科大计算机课程](https://github.com/mbinary/USTC-CS-Courses-Resource)
+
+##查询
+
+[ip查询网址 ipaddress](https://www.ipaddress.com/)
+
+##工具
+
+[还原压缩代码](http://jsbeautifier.org/)
+
+
+##插件
+
+#####动画类
+
+[Swiper(Swiper master)是**移动端**网页触摸内容滑动js插件。](http://www.swiper.com.cn/)
+
+[TouchSlide是superslide旗下的一款移动端触摸滑动插件，superslide是PC端的js特性插件](http://www.superslide2.com)
+
+[iSlider是一个无任何插件依赖的手机平台javascript滑动组件，轻量、高性能。是百度团队开发完成的](http://be-fe.github.io/iSlider/demo/index_chinese.html)
+
+[FlexSlider.js——轮播](https://blog.csdn.net/cddcj/article/details/52173388)
+
+
+[gulp常用插件](https://blog.csdn.net/putao2062/article/details/80037877)
+

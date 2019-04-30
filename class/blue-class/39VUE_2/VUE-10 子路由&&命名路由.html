@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>子路由</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="../js/vue-router.js"></script>
+</head>
+<body>
+
+	<div id="box">
+		<div>
+			<router-link to='/a'>a</router-link>
+			<!-- 命名路由写法 路由层级深了会比较方便 -->
+			<!-- 
+				to=  只能放路径
+				：to=  可以放name，path，params，query
+
+			 -->
+			<router-link :to="{name: 'name-a-1'}">a-1</router-link>
+			<router-link to='/a/a-2'>a-2</router-link>
+			<router-link to='/b'>b</router-link>
+			<router-link to='/b/b-1'>b-1</router-link>
+			<router-link to='/b/b-2'>b-2</router-link>
+		</div>
+		<router-view></router-view>
+	</div>
+
+	<script>
+		let vm = new Vue({
+			el: '#box',
+			router: new VueRouter({
+				routes: [
+					{
+						path: '/a',
+						component: { template: '<div>a<router-view></router-view></div>' },
+						children: [
+							{
+								//子路由不可以写为/a-1 ‘/’表示根目录
+								path: 'a-1',
+								//可以直接绑定name 称为命名路由
+								name: 'name-a-1',
+								component: { template: '<div>a-1</div>' }
+
+							},
+							{
+								path: 'a-2',
+								component: { template: '<div>a-2</div>' }
+							},
+						]
+					},
+					{
+						path: '/b',
+						component: { template: '<div>b<router-view></router-view></div>' },
+						children: [
+							{
+								path: 'b-1',
+								component: { template: '<div>b-1</div>' }
+							},
+							{
+								path: 'b-2',
+								component: { template: '<div>b-2</div>' }
+							},
+						]
+					}
+				]
+			})
+		})
+	</script>
+	
+</body>
+</html>

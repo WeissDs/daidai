@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js基本用法4-2</title>
+    <script>
+        window.onload=function()
+        {
+            var aBtn1=document.getElementById('btn1');
+            var aBtn2=document.getElementById('btn2');
+            var aBtn3=document.getElementById('btn3');
+            var aDiv=document.getElementById('div1');
+            var aChe=aDiv.getElementsByTagName('input');
+            aBtn1.onclick=function()
+            {
+                for(var i=0;i<aChe.length;i++)
+                {
+//                    true/false 布尔值
+                    aChe[i].checked=true;
+                }
+            };
+            aBtn2.onclick=function()
+            {
+              for(var i=0;i<aChe.length;i++)
+              {
+                  aChe[i].checked=false;
+              }
+            };
+            aBtn3.onclick=function()
+            {
+                for(var i=0;i<aChe.length;i++)
+                {
+                    if(aChe[i].checked==true)
+                    {
+                        aChe[i].checked=false;
+                    }
+                    else
+                    {
+                        aChe[i].checked=true;
+                    }
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+
+<!--
+全选 清空 反选
+-->
+    <input id="btn1" type="button" value="全选">
+    <input id="btn2" type="button" value="清空">
+    <input id="btn3" type="button" value="反选">
+    <div id="div1">
+        <input type="checkbox"><br>
+        <input type="checkbox"><br>
+        <input type="checkbox"><br>
+        <input type="checkbox"><br>
+        <input type="checkbox"><br>
+        <input type="checkbox"><br>
+    </div>
+
+
+
+</body>
+</html>

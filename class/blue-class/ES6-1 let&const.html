@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let&const</title>
+    <style>
+        .none{
+            display: none;
+        }
+        .change{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<!--
+    let和const(const里放常量)
+        1.都是块级作用域｛｝
+        2.都不能重复定义
+-->
+
+<div>111</div>
+<div>222</div>
+<div>333</div>
+
+<ul>
+    <li class="none">111</li>
+    <li class="none">222</li>
+    <li class="none">333</li>
+</ul>
+
+<script>
+    let aDiv=document.getElementsByTagName('div');
+    let aLi=document.getElementsByTagName('li');
+    for(let i=0;i<aDiv.length;i++)
+    {
+        aDiv[i].onclick=function(){
+            for(let i=0;i<aLi.length;i++)
+            {
+                aLi[i].className='none';
+            }
+            aLi[i].className='change';
+        }
+    }
+
+    for(let i=0;i<aDiv.length;i++)
+    {
+        aDiv[i].onclick=function(){
+            alert(i);
+        }
+    }
+</script>
+</body>
+</html>

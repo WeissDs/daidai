@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0">
+    <title>web</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            /*font-size: 25px;*/
+            /*height: 3000px;*/
+        }
+        .move{
+            width: 16.56rem;
+            height: 2rem;
+            line-height: 2rem;
+            text-align: center;
+            background-color: #ff9686;
+            margin: 0 auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <script>
+        document.documentElement.style.fontSize=25*document.documentElement.clientWidth/414+'px';
+    </script>
+</head>
+<body>
+
+<div class="move">1234</div>
+<!--<div>222</div>-->
+
+<script>
+    let oMv=document.getElementsByClassName('move')[0];
+    oMv.style.color='#fff';
+    function ftouch(obj){
+        obj.addEventListener('touchstart', function(event){
+            let oEvent=event||window.event;
+            let disX=oEvent.targetTouches[0].pageX-obj.offsetLeft;
+            let disY=oEvent.targetTouches[0].pageY-obj.offsetTop;
+
+            oEvent.cancelBubble=true;
+            oEvent.preventDefault();    //让touch不影响滚动条
+
+            function fnMove(event){
+                let oEvent=event||window.event;
+                obj.style.left=oEvent.targetTouches[0].pageX-disX+'px';
+                obj.style.top=oEvent.targetTouches[0].pageY-disY+'px';
+                oEvent.preventDefault();
+
+            }
+            function fnEnd(){
+                obj.removeEventListener('touchmove',fnMove,false);
+                obj.removeEventListener('touchend',fnEnd,false);
+            }
+
+            obj.addEventListener('touchmove',fnMove,false);
+            obj.addEventListener('touchend',fnEnd,false);
+        },false)
+    };
+
+    ftouch(oMv);
+
+    
+</script>
+
+</body>
+</html>

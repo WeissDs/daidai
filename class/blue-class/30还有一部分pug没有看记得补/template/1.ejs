@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		li{ list-style: none; }
+
+	</style>
+</head>
+<body>
+
+	<!--  ejs的注释 "#" 转义输出"=" 直接输出"-"  -->
+	<%# =arr %>
+
+	<!-- 引用组件 include() -->
+
+	<%- include('./components/header.ejs') %>
+
+
+	
+	<table border="1" width="100%">
+		<thead>
+			<tr>
+				<td>姓名</td>
+				<td>性别</td>
+				<td>语文</td>
+				<td>数学</td>
+				<td>英语</td>
+			</tr>
+		</thead>
+		<tbody>
+			<% arr1.forEach(json=>{%>
+				<tr>
+					<td><%=json.name %></td>
+					<td><%=json.gender %></td>
+					<td><%=json.chinese %></td>
+					<td><%=json.math %></td>
+					<td><%=json.english %></td>
+				</tr>
+			<%}) %>
+			
+		</tbody>
+	</table>
+
+	<%-foot %>
+</body>
+</html>

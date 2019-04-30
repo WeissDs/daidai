@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2048</title>
+    <style type="text/css">
+        p{
+            width:480px;
+            margin:0 auto;
+            font-weight:bold;
+            font-size:40px;
+            padding-top:15px;
+        }
+
+        #cell-container{
+            width:480px;
+            height:480px;
+            margin:0 auto;
+            background-color:#BBADA0;
+            border-radius:10px;
+            position:relative;
+        }
+
+        .cell{
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            background-color: #CCCCCC;
+            text-align: center;
+            color: white;
+            line-height: 100px;
+            font-size: 60px;
+            position: absolute;
+        }
+        /* 每行每列对齐 */
+        #n00,#n01,#n02,#n03{top:16px;}
+        #n00,#n10,#n20,#n30{left:16px;}
+        #n10,#n11,#n12,#n13{top:132px;}
+        #n01,#n11,#n21,#n31{left:132px;}
+        #n20,#n21,#n22,#n23{top:248px;}
+        #n02,#n12,#n22,#n32{left:248px;}
+        #n30,#n31,#n32,#n33{top:364px;}
+        #n03,#n13,#n23,#n33{left:364px;}
+
+        .n2{background-color:#E8E8E8;}
+        .n4{background-color:#EED8AE;}
+        .n8{}
+        .n16{}
+        .n32{}
+        .n64{}
+        .n128{}
+        .n256{}
+        .n512{}
+        .n1024{}
+        .n2048{}
+
+        .n2, .n4{color: #4D4D4D}
+
+        .n128,.n256,.n512{font-size: 50px;}
+        .n1024,.n2048{font-size:40px;}
+    </style>
+    <script type="text/javascript" src="game.js"></script>
+</head>
+<body>
+<p>分数:<span id="score"></span></p>
+<div id="cell-container">
+    <!-- 数字单元格 -->
+    <div id="n00" class="cell n2"></div>
+    <div id="n01" class="cell n4"></div>
+    <div id="n02" class="cell n8"></div>
+    <div id="n03" class="cell n16"></div>
+    <div id="n10" class="cell n32"></div>
+    <div id="n11" class="cell n64"></div>
+    <div id="n12" class="cell n128"></div>
+    <div id="n13" class="cell n256"></div>
+    <div id="n20" class="cell n512"></div>
+    <div id="n21" class="cell n1024"></div>
+    <div id="n22" class="cell n2048"></div>
+    <div id="n23" class="cell"></div>
+    <div id="n30" class="cell"></div>
+    <div id="n31" class="cell"></div>
+    <div id="n32" class="cell"></div>
+    <div id="n33" class="cell"></div>
+</div>
+</body>
+</html>

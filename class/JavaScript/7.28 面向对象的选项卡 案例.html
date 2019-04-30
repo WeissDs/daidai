@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象的选项卡</title>
+    <style>
+        #div1 input,#div2 div{
+            background: #d1ffec;
+            border: none;
+        }
+        #div1 .active{
+            background: #badacd;
+        }
+        #div1 div,#div2 div{
+            width: 200px;
+            height: 200px;
+            background-color: #f1f1f1;
+            display: none;
+        }
+    </style>
+    <script>
+        //原函数
+//        window.onload=function()
+//        {
+//            var oDiv=document.getElementById('div1');
+//            var aBtn=oDiv.getElementsByTagName('input');
+//            var aDiv=oDiv.getElementsByTagName('div');
+//
+//            for(var i=0;i<aBtn.length;i++)
+//            {
+//                aBtn[i].index=i;
+//                aBtn[i].onclick=function()
+//                {
+//                    for(var i=0;i<aDiv.length;i++)
+//                    {
+//                        aBtn[i].className='';
+//                        aDiv[i].style.display='none';
+//                    }
+//                    this.className='active';
+//                    aDiv[this.index].style.display='block';
+//
+//                };
+//            }
+//        };
+
+
+        //面向对象函数
+
+//         function TabSwitch(id)
+//         {
+//             var _this=this;
+//             var oDiv=document.getElementById(id);
+//             this.aBtn=oDiv.getElementsByTagName('input');
+//             this.aDiv=oDiv.getElementsByTagName('div');
+
+//             for(var i=0;i<this.aBtn.length;i++)
+//             {
+//                 this.aBtn[i].index=i;
+// //                this.aBtn[i].onclick=this.fnClick;  //这里的this改变成了aBtn
+//                 this.aBtn[i].onclick=function()
+//                 {
+//                     _this.fnClick(this);
+//                 };
+//             }
+//         }
+
+//         TabSwitch.prototype.fnClick=function(oBtn)
+//         {
+//             for(var i=0;i<this.aDiv.length;i++)
+//             {
+//                 this.aBtn[i].className='';
+//                 this.aDiv[i].style.display='none';
+//             }
+//             oBtn.className='active';
+//             this.aDiv[oBtn.index].style.display='block';
+//         };
+
+//         window.onload=function()
+//         {
+//             new TabSwitch('div1');
+//             new TabSwitch('div2');
+//         };
+
+// //封装函数
+// function card(btn,something){
+//      for(let i=0;i<btn.length;i++)
+//     {
+//         btn[i].index=i;
+//         btn[i].onclick=function()
+//         {
+//             for(let i=0;i<something.length;i++)
+//             {
+//                 btn[i].className='';
+//                 something[i].style.display='none';
+
+//             }
+//             this.className='active';
+//             something[this.index].style.display='block';
+//         }
+//     }
+// }
+
+// window.onload=function(){
+//     const oDiv=document.getElementById('div1');
+//     const aBtn=oDiv.getElementsByTagName('input');
+//     const aDiv=oDiv.getElementsByTagName('div');
+
+//     //调用函数
+//     card(aBtn,aDiv);
+
+//     //原函数
+
+//     // for(let i=0;i<aBtn.length;i++)
+//     // {
+//     //     aBtn[i].index=i;
+//     //     aBtn[i].onclick=function()
+//     //     {
+//     //         for(let i=0;i<aDiv.length;i++)
+//     //         {
+//     //             aBtn[i].className='';
+//     //             aDiv[i].style.display='none';
+
+//     //         }
+//     //         this.className='active';
+//     //         aDiv[this.index].style.display='block';
+//     //     }
+//     // }
+// }
+
+
+ //面向对象 (代代自己写哒)
+function TabSwitch(id)
+{ 
+    let oDiv=document.getElementById(id);
+    this.aBtn=oDiv.getElementsByTagName('input');
+    this.aDiv=oDiv.getElementsByTagName('div');
+}
+TabSwitch.prototype.fnClick=function(){
+    let _this=this;
+    for(let i=0;i<this.aBtn.length;i++)
+    {
+        this.aBtn[i].index=i;
+        this.aBtn[i].onclick=function()
+        {
+            for(let i=0;i<_this.aDiv.length;i++)
+            {
+                _this.aBtn[i].className='';
+                _this.aDiv[i].style.display='none';
+
+            }
+            this.className='active';
+            _this.aDiv[this.index].style.display='block';
+         }
+        
+    }
+}
+
+window.onload=function()
+{
+    let a = new TabSwitch('div1');
+    a.fnClick();
+
+}
+
+
+    </script>
+</head>
+<body>
+
+
+<div id="div1">
+    <input type="button" value="aaa">
+    <input type="button" value="bbb">
+    <input type="button" value="ccc">
+    <div>aaa</div>
+    <div>bbb</div>
+    <div>ccc</div>
+</div>
+<!-- <div id="div2">
+    <input type="button" value="aaa">
+    <input type="button" value="bbb">
+    <input type="button" value="ccc">
+    <input type="button" value="ccc">
+    <div>aaa</div>
+    <div>bbb</div>
+    <div>ccc</div>
+    <div>ccc</div>
+</div> -->
+
+
+</body>
+</html>

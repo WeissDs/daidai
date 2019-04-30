@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数码时钟</title>
+    <style>
+
+        li{
+            list-style: none;
+            font:bold 200px '黑体';
+            /*float: left;*/
+            color: #2b3e56;
+            display: inline;
+        }
+        ul{
+            width: 1800px;
+            /*background-color: #ffce53;*/
+            margin:100px auto;
+            text-align: center;
+            /*display: inline-block;*/
+        }
+    </style>
+    <script>
+        function toDou(n)
+        {
+            if(n<10)
+            {
+                return '0'+n;
+            }
+            else
+            {
+                return ''+n;
+            }
+        }
+
+        window.onload=function()
+        {
+            var oYear=document.getElementById('year');
+            var oTime=document.getElementById('time');
+            var oYearLi=oYear.getElementsByTagName('li');
+            var oTimeLi=oTime.getElementsByTagName('li');
+
+            function show()
+            {
+                var oDate=new Date();
+                var str=toDou(oDate.getHours())+':'+toDou(oDate.getMinutes())+':'+toDou(oDate.getSeconds());
+                var stry=oDate.getFullYear()+'年'+toDou(oDate.getMonth()+1)+'月'+toDou(oDate.getDate()+'日');
+
+                for(i=0;i<oTimeLi.length;i++)
+                {
+                    oTimeLi[i].innerHTML=str.charAt(i);
+                }
+                for(i=0;i<oYearLi.length;i++)
+                {
+                    oYearLi[i].innerHTML=stry.charAt(i);
+                }
+            }
+           setInterval(show,1000);
+            show();
+        }
+    </script>
+</head>
+<body>
+
+<ul id="year">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li>年</li>
+    <li></li>
+    <li></li>
+    <li>月</li>
+    <li></li>
+    <li></li>
+    <li>日</li>
+</ul>
+
+<ul id="time">
+    <li>0</li>
+    <li>0</li>
+    <li>:</li>
+    <li>0</li>
+    <li>0</li>
+    <li>:</li>
+    <li>0</li>
+    <li>0</li>
+</ul>
+
+</body>
+</html>

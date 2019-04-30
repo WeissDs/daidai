@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script>
+		let arr = [23, 13, 5, 8, 8, 9, 10, 5, 5];
+
+		let obj={};
+		let arr1 = [];
+		let result=[];
+		for(let i=0; i<arr.length; i++){
+			obj[arr[i]]=0;
+		}
+		
+		let arr2 = Object.keys(obj);
+		console.log(arr2);
+
+		for(let i=0; i<arr2.length; i++){
+			
+			for(let f=0; f<arr.length; f++){
+				if(arr[f]==arr2[i]){
+
+					arr1.push(arr[f]);
+
+				}
+			}
+			result.push(arr1);
+			arr1=[];
+		}
+		console.log(result);
+		
+	</script>
+	
+</body>
+</html>

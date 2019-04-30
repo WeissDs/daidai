@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>链式运动框架</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 200px;
+            background-color: #a8ffd4;
+        }
+    </style>
+    <script>
+        function getStyle(obj,name)
+        {
+            if(obj.currentStyle)
+            {
+                return obj.currentStyle[name];
+            }
+            else
+            {
+                return getComputedStyle(obj,false)[name];
+            }
+        }
+        function startMove(obj,arr,iTarget,fnEnd)   //加了一个 回调函数
+        {
+            clearInterval(obj.timer);
+            obj.timer=setInterval(function(){
+                var cur;
+                if(arr=='opacity')
+                {
+                    cur=Math.round(parseFloat(getStyle(obj,arr))*100);
+                }
+                else
+                {
+                    cur=parseInt(getStyle(obj,arr));
+                }
+
+                var speed=(iTarget-cur)/6;
+                speed=speed>0?Math.ceil(speed):Math.floor(speed);
+
+                if(speed==0)
+                {
+                    clearInterval(obj.timer);
+                    if(fnEnd)fnEnd();
+                }
+                else
+                {
+                    if(arr=='opacity')
+                    {
+                        obj.style.filter='alpha(opacity:'+(cur+speed)+')';
+                        obj.style.opacity=(cur+speed)/100;
+                    }
+                    else
+                    {
+                        obj.style[arr]=cur+speed+'px';
+                    }
+                }
+            },30);
+        }
+
+
+        window.onload=function()
+        {
+            var oDiv=document.getElementById('div1');
+
+            oDiv.onmouseover=function()
+            {
+                startMove(oDiv,'width',300,function(){
+                    startMove(oDiv,'height',300);
+                })
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div id="div1"></div>
+
+</body>
+</html>

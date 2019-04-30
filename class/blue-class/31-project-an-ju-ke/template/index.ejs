@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>管理端</title>
+    <script src="/js/jquery.js" charset="utf-8"></script>
+    <script src="/js/bootstrap.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+    <div class="page-wrap">
+      <div class="page-menu">
+        <ul class="nav nav-pills nav-stacked">
+          <li role="presentation" class="active"><a href="#">房源</a></li>
+          <li role="presentation"><a href="#">友情链接</a></li>
+          <li role="presentation"><a href="#">广告管理</a></li>
+        </ul>
+      </div>
+      <div class="page-content">
+        <div class="navbar navbar-default">
+          <form class="navbar-form navbar-left" action="index.html" method="post">
+            <div class="form-group" style="margin-right:20px;">
+              <button id="new_data" type="button" class="btn btn-default glyphicon glyphicon-plus">新建</button>
+            </div>
+            <div class="form-group" style="margin-right:20px;">
+              <!-- <button id="btn_del" type="button" class="btn btn-default glyphicon glyphicon-remove">删除</button> -->
+              <a id="btn_del" class="btn btn-default glyphicon glyphicon-remove">删除</a>
+            </div>
+            <div class="form-group">
+              <input type="search" class="form-control">
+              <button type="button" class="btn btn-default">搜索</button>
+            </div>
+          </form>
+        </div>
+        <nav aria-label="Page navigation">
+          <ul class="pagination margin-0">
+            <li>
+              <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <!-- 这是自己写的逻辑，没有完全参照课程 -->
+            <% 
+            let start = now_page-(show_page-1)/2;
+            let end = now_page+(show_page-1)/2;
+            if(now_page<(show_page+1)/2){
+              start = 1;
+              if(page_count<show_page){
+                end = page_count;
+              }else{
+                end = show_page;
+              }
+              
+            }else if(now_page>page_count-(show_page-1)/2){
+              start = page_count - show_page+1;
+              end = page_count;
+            }
+            for(let i=start; i<=end; i++){ %>
+              <li><a href="?page=<%=i %>"><%=i %></a></li>
+            <% } %>
+           <!--  <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li> -->
+            <li>
+              <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>
+                <label>
+                  <input id="check_all" type="checkbox">
+                  ID
+                </label>
+              </th>
+              <th>名称</th>
+              <th>价格</th>
+              <th>地址</th>
+              <th>电话</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%for(let i=0; i<data.length; i++){%>
+              <tr>
+                <td>
+                  <label>
+                    <input class="id-check" type="checkbox" name="ID_check" value="<%=data[i].ID %>">
+                    <%=data[i].ID %>
+                  </label>
+                </td>
+                <td>
+                  <%=data[i].title %>
+                </td>
+                <td>
+                  <%=data[i].ave_price %>
+                </td>
+                <td>
+                  <%=data[i].position_main %>
+                </td>
+                <td>
+                  <%=data[i].tel %>
+                </td>
+                <td>
+                  <a href="javascript:;">编辑</a>
+                  <a href="house/delete?id=<%=data[i].ID %>" onclick="return confirm('确定删除数据吗')">删除</a>
+                </td>
+              </tr>
+            <%}%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="shadow" class="shadow"></div>
+    <div id="dialog" class="panel panel-default add_modify_dialog">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          添加/修改
+          <a id="btn_close" href="#" class="pull-right glyphicon glyphicon-remove"></a>
+        </h3>
+      </div>
+      <div class="panel-body" style="overflow:auto; height:460px;">
+        <!-- enctype="multipart/form-data" 用来转换form文件类型 使表单可以提交文件，图片数据 -->
+        <!-- action="?" 黑科技 提交到本页面url -->
+        <form id="form_contrainer" action="?" class="form-horizontal" method="post" enctype="multipart/form-data">
+          <!-- <div class="form-group">
+            <label for="id1" class="col-sm-2 control-label">数据1</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="id1" placeholder="请输入数据...">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="id2" class="col-sm-2 control-label">数据2</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="id2" placeholder="请输入数据...">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="id3" class="col-sm-2 control-label">数据3</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" rows="10" id="id3" placeholder="请输入数据..."></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="id4" class="col-sm-2 control-label">选择</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="id4">
+                <option value="1">数据1</option>
+                <option value="2">数据2</option>
+                <option value="3">数据3</option>
+                <option value="4">数据4</option>
+              </select>
+            </div>
+          </div>
+
+           <div class="form-group">
+            <label for="id4" class="col-sm-2 control-label">文件</label>
+            <div class="col-sm-10">
+              <input type="file" class="form-control">
+            </div>
+          </div> -->
+
+          <div id="form-sub" class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+              <button type="submit" class="btn btn-primary">提交</button>
+              <button id="btn_cancel" type="button" class="btn btn-danger">取消</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      let btnNewData = $('#new_data')[0];
+      let shadow = $('#shadow')[0];
+      let dialog = $('#dialog')[0];
+
+      let btnClose = $('#btn_close')[0];
+      let btnCancel = $('#btn_cancel')[0];
+
+      btnNewData.onclick = function (){
+        shadow.style.display = 'block';
+        dialog.style.display = 'block';
+      }
+
+      btnClose.onclick = btnCancel.onclick = function (){
+        shadow.style.display = 'none';
+        dialog.style.display = 'none';
+      }
+
+      let oFormContrainer = $('#form_contrainer')[0];
+      let oFormDiv = $('#form-sub')[0];
+
+      let form_inputs = [
+        {type: 'text', name: 'title', title: '标题'},
+        {type: 'text', name: 'sub_title', title: '副标题'},
+        {type: 'text', name: 'position_main', title: '主位置'},
+        {type: 'text', name: 'position_second', title: '副位置'},
+        {type: 'number', name: 'ave_price', title: '均价'},
+        {type: 'number', name: 'area_min', title: '最小面积'},
+        {type: 'number', name: 'area_max', title: '最大面积'},
+        {type: 'tel', name: 'tel', title: '电话'},
+        {type: 'date', name: 'sale_time', title: '开盘日期'},
+        {type: 'date', name: 'submit_time', title: '交房日期'},
+        {type: 'text', name: 'building_type', title: '建筑类型'},
+        {type: 'file', name: 'image_main', title:'主图'},
+        {type: 'file', name: 'image_banner', title:'小图(多选)', multiple: true},
+        {type: 'text', name: 'property_types', title:'户型'},
+        {type: 'file', name: 'property_img', title:'户型图', multiple: true},
+      ];
+
+      //multiple 是form表单input的属性 可以用来控制多文件上传
+      for(let i=0; i<form_inputs.length; i++){
+        let oDiv = document.createElement('div');
+        oDiv.innerHTML='';
+        oDiv.className='form-group';
+        oDiv.innerHTML=`
+          <label for="id${i}" class="col-sm-2 control-label">${form_inputs[i].title}</label>
+          <div class="col-sm-10">
+            <input type="${form_inputs[i].type}" id="id${i}" class="form-control" name="${form_inputs[i].name}" placeholder="请输入${form_inputs[i].title}" ${form_inputs[i].multiple?'multiple':'' }>
+          </div> 
+        `
+          oFormContrainer.insertBefore(oDiv,oFormDiv);
+          // $(oDiv).insertBefore(oFormDiv);    //jquery写法
+        
+      }
+
+      //数据全选功能
+      let ocheckAll = $('#check_all');
+      let acheck = $('.id-check');
+
+      //如果总按钮是没有选中的状态  设置点击后acheck[i].checked = true; ，else 。。。
+        ocheckAll.click(function(){
+          if(ocheckAll[0].checked){
+            for(let i=0; i<acheck.length; i++){
+              acheck[i].checked = true;
+            }
+          }else{
+            for(let i=0; i<acheck.length; i++){
+              acheck[i].checked = false;
+            }
+          }
+        })
+
+
+
+      //多条数据删除功能的 多个选择数据的id拼接
+      let oBtnDel = $('#btn_del');
+      oBtnDel.click(function(){
+        let arr = [];
+        for(let i=0; i<acheck.length; i++){
+          if(acheck[i].checked){
+            arr.push(acheck[i].value);
+          }
+        }
+        if(arr.length==0){
+          alert('请选择元素');
+        }else{
+          let aId = encodeURIComponent(arr.join(','));
+          // console.log(aId)  //看id是否拼写正确
+
+          if(confirm(`您真的要删除这${arr.length}条数据吗？`)){
+            window.location = `/admin/house/delete?id=${aId}`;
+          }
+        }
+      })
+
+
+
+
+    </script>
+
+  </body>
+</html>

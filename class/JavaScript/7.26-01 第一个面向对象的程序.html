@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一个面向对象的程序</title>
+    <script>
+        var obj=new Object();  //定义一个对象
+        obj.name='blue';  //加属性
+        obj.qq='82143372';
+
+        obj.showName=function()  //加方法
+        {
+            alert(this.name);
+        };
+        obj.showQQ=function()
+        {
+            alert(this.qq)
+        };
+
+        obj.showName();  //调用
+        obj.showQQ();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

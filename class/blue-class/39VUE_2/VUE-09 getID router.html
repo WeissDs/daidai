@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>getID</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="../js/vue-router.js"></script>
+</head>
+<body>
+
+    <div id="div1">
+        <router-link to="/user/33322">登陆</router-link>
+        <router-link to="/user/33522222">登陆</router-link>
+        <router-link to="/user/63322">登陆</router-link>
+        <router-view></router-view>
+    </div>
+
+    <script>
+        //在path里可以绑定ID 区分点击的元素
+        //beforeRouteUpdate 可以阻止route跳转 只有在next();后才会继续跳转
+        let r1=new VueRouter({
+            routes: [
+                {path: '/user/:id', component: {
+                    template: '<div>{{$route.params.id}}</div>',
+                    beforeRouteUpdate(to, from, next){
+                        console.log('to:', to);
+                        console.log('from:', from);
+                        next();
+                    }
+                }},
+            ]
+        });
+
+        let vm=new Vue({
+           el: '#div1',
+           router: r1,
+        });
+    </script>
+
+</body>
+</html>

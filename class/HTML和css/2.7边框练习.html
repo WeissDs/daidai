@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>边框练习</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+        }
+        .box1{
+            border:5px solid black;
+        }
+        .box2{
+            border-width:5px;
+            border-style:solid;
+            border-color:red green blue purple;
+        }
+        .box3{
+            /*
+            border-width:5px;
+            border-style:solid dashed solid solid;
+            border-color:red;
+            */
+            border:5px solid red;
+            border-right-style:dashed;
+            /*同一个选择器中后面的边框属性会覆盖前面的边框属性*/
+        }
+        .box4{
+            border:5px solid red;
+            border-style:solid dashed;
+        }
+        .box5{
+            border:5px solid black;
+            border-bottom:none;
+        }
+        .box6{
+            width:0;
+            height:0;
+            border:20px solid #333333;
+            border-bottom:none;
+            border-color:#333333 white;
+        }
+        /*网易写法*/
+        .box7{
+            width:0;
+            height:0;
+            border-width:20px 20px 0;
+            border-style:solid;
+            border-color:#333333 transparent;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box1"></div>
+<hr>
+<div class="box2"></div>
+<hr>
+<div class="box3"></div>
+<hr>
+<div class="box4"></div>
+<hr>
+<div class="box5"></div>
+<hr>
+<div class="box6"></div>
+<hr>
+<div class="box7"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>try</title>
+</head>
+<body>
+
+<div>
+    <div id="view"></div>
+    <input id="txt" type="text">
+</div>
+
+<script>
+    let oDiv=document.getElementById('view');
+    let oTxt=document.getElementById('txt');
+
+    setInterval(function(){
+        oDiv.innerHTML=parseInt(oTxt.value)+1;
+    },100)
+
+</script>
+
+</body>
+</html>

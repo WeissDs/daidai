@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据处理</title>
+    <style>
+        ul{
+            list-style: none;
+            float: left;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+    <div id="list">
+        <ul v-for="json in arr">
+            <li>{{json.name}}</li>
+            <li>{{json.age}}</li>
+            <li>{{json.gender}}</li>
+        </ul>
+        <ul v-for="json in arr1">
+            <li>{{json.name}}</li>
+            <li>{{json.age}}</li>
+            <li>{{json.gender}}</li>
+        </ul>
+    </div>
+
+
+    <script>
+        let vm=new Vue({
+            el: '#list',
+            data: {
+                arr: [
+                    {name: 'dd', age: '18', gender: '男'},
+                    {name: 'xx', age: '20', gender: '女'},
+                    {name: 'jj', age: '50', gender: '男'},
+                ],
+                arr1: [
+                    {name: 'd', age: '1', gender: '男'},
+                    {name: 'x', age: '1', gender: '男'},
+                    {name: 'j', age: '1', gender: '男'},
+                ]
+            },
+            methods: {
+                fn(){
+
+                }
+            },
+        });
+    </script>
+
+</body>
+</html>
