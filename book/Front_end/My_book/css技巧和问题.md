@@ -9,6 +9,14 @@
 
 ######enctype修改的是MIME 编码？？？？？？？？
 
+
+####html标签中存放不显示数据的属性
+
+###### aria-label属性用来给当前元素加上的标签描述，接受字符串作为参数。是用不可视的方式给元素加label（如果被描述元素存在真实的描述元素，可使用 aria-labelledby 属性作为来绑定描述元素和被描述元素来代替）
+
+  <div aria-label="user.age"></div>
+
+
 ##CSS常见问题
 
 #####1. li之间的空隙怎么解决
@@ -23,6 +31,8 @@
 #####3. margin-top将父元素和相邻元素顶下来的问题
 
     css定义所有相邻(包括 同级 and 嵌套时相邻的父元素和第一个子元素)的两个元素，margin合并为一个
+
+    专业解释： BFC规范， 在同一个BFC中两个毗邻的块级盒，在垂直方向的margin会发生折叠
 
 ```javascript
 解决方法：
@@ -77,20 +87,38 @@
 
 ```
 
-#####5. 宽高等比缩放的方法
+#####5. 限制文本行数
+
+######显示两行 多余部分隐藏
+
+```javascript
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+```
+######显示一行 多余部分用...表示
+
+```javascript
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;  /* 超出用...表示 */
+```
+
+#####7. 宽高等比缩放的方法
 
 ######方法1
 
 ```javascript
-div{ width: 100%; }
-div:before{ 
-    padding-bottom: 10%;   //宽度的10%
-    }
+    div{ width: 100%; }
+    div:before{
+        padding-bottom: 10%;   //宽度的10%
+        }
 ```
 
-#####6.不规则图片点击写法
+#####8.不规则图片点击写法
 
-######1分开切图： 将多个切好的图片放入<a>标签的<div>中（注意a标签不可以给宽高否则空隙部分也会触发点击事件，可以给主图定宽高后，覆土用绝对定位 ps: 师父说这里可以用map标签）， 用绝对定位排好。
+######1分开切图： 将多个切好的图片放入<a>标签的<div>中（注意a标签不可以给宽高否则空隙部分也会触发点击事件，可以给主图定宽高后，副图用绝对定位 ps: 师父说这里可以用map标签）， 用绝对定位排好。
 
         <a>
             <div 设置宽高 position: relative;>

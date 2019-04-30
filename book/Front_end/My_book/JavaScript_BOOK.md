@@ -1,18 +1,59 @@
 ##DOM
 
-1.DOM:
-
     D:document（文本）   O:object（对象）   M:model（模型）
     
     HTML在js中的对象:document
-    
-2.BOM:
+
+##BOM
+
+####BOM概念
 
     B:browser（浏览器）   O:object（对象）   M:model（模型）
     
     浏览器在js中的对象:window
     
 
+####window.location对象
+<table>
+    <tr style="background-color: #666; color: #fff" >
+        <th>属性</th>
+        <th>描述</th>
+    </tr>
+    <tbody>
+        <tr>
+            <td>href</td>
+            <td>当前完整的URL</td>
+        </tr>
+        <tr>
+            <td>host</td>
+            <td>当前URL的主机名和端口号</td>
+        </tr>
+        <tr>
+            <td>hostname</td>
+            <td>当前URL的主机名</td>
+        </tr>
+        <tr>
+            <td>port</td>
+            <td>当前URL的端口号</td>
+        </tr>
+        <tr>
+            <td>pathname</td>
+            <td>当前URL的路径部分</td>
+        </tr>
+        <tr>
+            <td>hash</td>
+            <td>从井号（#）开始的URL（锚）</td>
+        </tr>
+        <tr>
+            <td>search</td>
+            <td>从问号（?）开始的URL(查询部分)</td>
+        </tr>
+        <tr>
+            <td>protocol</td>
+            <td>当前URL的协议</td>
+        </tr>
+    </tbody>
+</table>
 
 ##数据类型转换和NaN
 
@@ -394,6 +435,17 @@ function slice_shallow_copy(){
 }
 
 
+//以下代码可以证明 arr的 slice方法是浅拷贝（自己写的）
+
+    function a(){
+        let arr1 = [1,'dfsf', [3,4,'5'],'e',6,[3,3]];
+        let cc = arr1.slice(1,3)
+        cc[1][1]=2
+        console.log(cc);
+        console.log(arr1);
+    }
+         
+
 //除了递归，我们还可以借用JSON对象的parse和stringify(jquery里有extend方法)
 //JSON.stringify与JSON.parse除了实现深拷贝，还能结合localStorage实现对象数组存储？？？？
 function json_deep_copy(){
@@ -413,4 +465,41 @@ arr_copy();
 arr_deep_copy();
 slice_shallow_copy();
 json_deep_copy();
+```
+
+##alert
+
+####alert——是模态对话框，阻塞所有程序（alert是无法多设备同步的）
+
+####改写alert的方法
+
+##笔记
+```javascript
+let _alert = window.alert;
+window.alert = function(str){
+    _alert(str)
+}
+//这是在干嘛？
+```
+
+```javascript
+var factorial = function f(num){
+  if(num<=1){
+    return 1;
+  }else{
+    return num*f(num-1);
+  }
+}
+
+var b = factorial;
+factorial = null;
+
+console.log(b(4));
+
+var cc = '123';
+function a(){
+  console.log(cc);
+  var cc = 1;  //这句话会导致a()函数内获取不到全局变量cc
+}
+a();
 ```
