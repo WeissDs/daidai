@@ -153,25 +153,51 @@
 				}
 			})
 			// clipboard解决 复制到剪切板兼容问题new ClipboardJS('.btn');
-			var clipboard = new ClipboardJS('.right-copy', {
-				target: function(trigger) {
-					// 这不是个全局变量？？？？？
-				 	dai_copy = $(trigger).prev().val();
-				 	$(trigger).prev().val($(trigger).prev().val().replace(/\s*/g, ""));
-				 	var result = $($(trigger).prev())[0];
-                   	return result;
-              	}
-			});
-			clipboard.on('success', function(e){
-				$(e.trigger).prev().val(dai_copy);
-				$("#copy_alert").fadeIn(500);
-				$("#copy_alert").fadeOut(1000);
-			});
-			clipboard.on('error', function(e) {
-			    console.error('Action:', e.action);
-			    console.error('Trigger:', e.trigger);
-			});
-
+			function clip(){
+				var dai_copy = ''
+				var clipboard = new ClipboardJS('.right-copy', {
+					target: function(trigger) {
+						// 该变量在被点击后才加入全局变量
+					 	dai_copy = $(trigger).prev().val();
+					 	$(trigger).prev().val($(trigger).prev().val().replace(/\s*/g, ""));
+					 	var result = $($(trigger).prev())[0];
+	                   	return result;
+	              	}
+				});
+				clipboard.on('success', function(e){
+					$(e.trigger).prev().val(dai_copy);
+					$("#copy_alert").fadeIn(500);
+					$("#copy_alert").fadeOut(1000);
+				});
+				clipboard.on('error', function(e) {
+				    console.error('Action:', e.action);
+				    console.error('Trigger:', e.trigger);
+				});
+			}
+			clip()
+			// var clipboard = new ClipboardJS('.right-copy', {
+			// 	target: function(trigger) {
+			// 		// 该变量在被点击后才加入全局变量
+			// 	 	dai_copy = $(trigger).prev().val();
+			// 	 	$(trigger).prev().val($(trigger).prev().val().replace(/\s*/g, ""));
+			// 	 	var result = $($(trigger).prev())[0];
+   //                 	return result;
+   //            	}
+			// });
+			
+			$('.right-copy').click(function(){
+				console.log(window.dai_copy)
+			})
+			
+			// clipboard.on('success', function(e){
+			// 	$(e.trigger).prev().val(dai_copy);
+			// 	$("#copy_alert").fadeIn(500);
+			// 	$("#copy_alert").fadeOut(1000);
+			// });
+			// clipboard.on('error', function(e) {
+			//     console.error('Action:', e.action);
+			//     console.error('Trigger:', e.trigger);
+			// });
 			$("#btn_save_update").click(function(){
 				$("#btn_save_update").attr("disabled", "disabled");
 				$("#btn_save_update").html("提交中");
