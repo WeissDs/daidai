@@ -35,6 +35,19 @@ document.addEventListener('click',function(e){
 
 
 
+##vue打包
+
+    vue run build  ---------  vue-cli已经配置好package.json 直接打包即可
+
+####打包空白页问题
+
+    在config 的 index.js 文件中，全局查找assetsPublicPath 将默认的'/'全部替换为'./'
+
+####打包后图片全部加载失败的问题
+
+    
+
+
 
 
 ##性能
@@ -48,6 +61,8 @@ document.addEventListener('click',function(e){
 ####压缩打包 webpack。。。。。
 
 ####v-show 和 v-if 比较 v-if性能更高
+
+
 
 ##方法记录
 
