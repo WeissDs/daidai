@@ -2,6 +2,12 @@
 
 ---
 
+####（vue-cli）vue run build 后空白页
+######修改config文件中的 index.js 将 build 中的assetsPublicPath: '/' 修改为assetsPublicPath: './'
+
+####（vue-cli）vue run build 后部分动态载入的本地图片不显示
+#######动态加载的 img 中使用绝对路径，不使用相对路径 （原因查看webpack编译原理，之后补上）
+
 ####vue不能直接在注册的子组件的标签中加入事件
 
 ######解决方法：添加native修饰符 (.stop为取消冒泡的方法)

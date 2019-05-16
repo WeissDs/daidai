@@ -124,7 +124,7 @@
 		alert(str1.replace(/o/g, '*'));
 
 		//用Object.keys()取出对象key生成的数组，获取length  || 或者使用 for in计算出来
-		let a = { 	fieldname: 'f1',
+		let someObj = { 	fieldname: 'f1',
 	    			originalname: 'Git.jpg',
 	    			encoding: '7bit',
 	    			mimetype: 'image/jpeg',
@@ -134,7 +134,7 @@
 	    			size: 435873 
 	    		}
 
-	    console.log(Object.keys(a).length);
+	    console.log(Object.keys(someObj).length);
 
 		//查找所有子字符串的方法
 		var str = "I think of other ages that floated upon the stream of life and love and death";
