@@ -2,16 +2,25 @@
 
 ---
 
+####（vue-cli）vue run build 后空白页
+######修改config文件中的 index.js 将 build 中的assetsPublicPath: '/' 修改为assetsPublicPath: './'
+
+
+
+####（vue-cli）vue run build 后部分动态载入的本地图片不显示
+#######动态加载的 img 中使用绝对路径，不使用相对路径 （原因查看webpack编译原理，之后补上）
+
+
+
 ####vue不能直接在注册的子组件的标签中加入事件
-
 ######解决方法：添加native修饰符 (.stop为取消冒泡的方法)
-
 ```javascript
 @click.stop.native="showNav"
 ```
 
-####点击任意地方关闭
 
+
+####点击任意地方关闭
 ```javascript
 // 弹出层隐藏
 document.addEventListener('click',function(e){
@@ -19,17 +28,20 @@ document.addEventListener('click',function(e){
 })
 ```
 
+
+
 ####使用高德地图时 eslint一直报错 Amap is undefined
-
 ######还未解决 直接忽略eslint吧。。 按照网上的配置webpack.base.conf.js后import Amap form 'Amap'没有用
-
   externals: {
     'Amap': 'Amap'
   },
 
-####我们需要用 ‘路由后+参数’ 的方式去实现 一个页面的多个分页
 
+
+####我们需要用 ‘路由后+参数’ 的方式去实现 一个页面的多个分页
 ######因为点击显示该分页后刷新不能回到初始页面，刷新需要停留在这个分页
+
+
 
 ####在做分页跳转时 按钮用了button 导致按钮无效 报错'Form submission canceled because the form is not connected'  醉了....
 
@@ -46,6 +58,19 @@ document.addEventListener('click',function(e){
 ####打包后图片全部加载失败的问题
 
     
+
+
+
+####vue各个组件的css好像是共享的，重名会带来样式被重写的问题
+######条件： 我在两个页面（router配置好的不同页面）中，1.vue写好了样式2.vue中没有写样式css重名。
+######表现： 如果我打开过1.vue这个页面，2.vue中有样式，如果没有打开1.vue直接刷新2.vue则没有样式
+######结论： vue在每个页面组件打开时加载这个组件css，后所有页面共享css
+
+
+####在使用vuex的store时为什么要使用computed？（）
+######store里的数据 在组件的date中注册，在数据变更后视图不会更新
+######我在用this.$store.state.someDate 时 在date中绑定之后，控制的是date中的变量去操作视图了，而不是直接改变state的值去控制视图变化（如果这样做就需要用computed监听）
+
 
 
 
