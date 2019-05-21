@@ -30,7 +30,7 @@
 
 1. 生产依赖
 
--save是指将包信息添加到dependencies，表示你发布时依赖的包裹。
+-save是指将包信息添加到dependencies，表示你发布时依赖的包裹。  简写 -S
 
     npm install <下载的依赖包名称> --save
 
