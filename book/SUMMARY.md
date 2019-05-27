@@ -31,6 +31,8 @@
         * [11.VUE笔记](Front_end/My_book/VUE笔记.md)
         * [12.Node.js笔记](Front_end/My_book/node笔记.md)
         * [13.数组方法大全](Front_end/My_book/数组方法大全.md)
+        * [14.框架](Front_end/My_book/框架.md)
+        * [15.趋势](Front_end/My_book/趋势.md)
 * [2.note]()
     * [1.news](note/news.md)
     * [2.English]()
