@@ -1,3 +1,33 @@
+##vue基础
+
+####不使用vue-cli 直接使用的基础写法
+
+```javascript
+let vm = new Vue({
+  el: '#div1',
+  data: {
+    a: 12, b: 5
+  },
+  methods: {
+    fn(){},
+  }
+})
+
+<div id="div1" :title="b">{{a}}</div>
+```
+
+####vue语法
+
+###### '' 叫做 vue表达式
+###### 'v-bind:属性=""' 简写 ':属性=""' 在html标签中使用
+###### 'v-on:事件' 简写 '@='
+###### 'v-for' 可以循环数组、对象
+      循环数组时候两个参数，第一个为数组内元素，第二个为元素索引（item,index）
+
+      循环对象时候可以有三个参数，第一个为键值，第二个为键名，第三个为索引（value,key,index）
+
+
+
 ## 问题记录
 
 ---
@@ -8,7 +38,8 @@
 
 
 ####（vue-cli）vue run build 后部分动态载入的本地图片不显示
-#######动态加载的 img 中使用绝对路径，不使用相对路径 （原因查看webpack编译原理，之后补上）
+######动态加载的 img 中使用绝对路径，不使用相对路径 （原因查看webpack编译原理，之后补上）
+<https://blog.csdn.net/mr_yanyan/article/details/78783091>(11)
 
 
 

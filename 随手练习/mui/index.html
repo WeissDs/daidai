@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width = device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable = no">
+	<link rel="stylesheet" href="css/mui.min.css">
+	<script src="js/mui.min.js"></script>
+</head>
+<body>
+	<button id="btn"></button>
+	<div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">
+	    <!-- 可选择菜单 -->
+	    <ul class="mui-table-view">
+	      <li class="mui-table-view-cell">
+	        <a href="#" id="btn1">菜单1</a>
+	      </li>
+	      <li class="mui-table-view-cell">
+	        <a href="#">菜单2</a>
+	      </li>
+	    </ul>
+	    <!-- 取消菜单 -->
+	    <ul class="mui-table-view">
+	      <li class="mui-table-view-cell">
+	        <a href="#sheet1"><b>取消</b></a>
+	      </li>
+	    </ul>
+	</div>
+
+	<div id="sheet2" class="mui-popover mui-popover-bottom mui-popover-action ">
+	    <!-- 可选择菜单 -->
+	    <ul id="person" class="mui-table-view">
+	      <!-- <li class="mui-table-view-cell">
+	        <a href="#" id="btn1">人员1</a>
+	      </li>
+	      <li class="mui-table-view-cell">
+	        <a href="#">人员2</a>
+	      </li>
+	      <li class="mui-table-view-cell">
+	        <a href="#">人员3</a>
+	      </li>
+	      <li class="mui-table-view-cell">
+	        <a href="#">人员4</a>
+	      </li> -->
+	    </ul>
+	    <!-- 取消菜单 -->
+	    <ul class="mui-table-view">
+	      <li class="mui-table-view-cell">
+	        <a href="#sheet2"><b>取消</b></a>
+	      </li>
+	      <li class="mui-table-view-cell">
+	        <p id="sheet2_comfirm" href="#sheet2"><b>确定</b></p>
+	      </li>
+	    </ul>
+	</div>
+
+	<script>
+		const $ = document.querySelectorAll.bind(document);
+		$("#btn")[0].onclick=function(){
+			mui('#sheet1').popover('show');
+			$("#btn1")[0].onclick=function(){
+				mui('#sheet1').popover('hide');
+				mui('#sheet2').popover('toggle');
+			}
+		}
+		let person = ['代代','丽丽', '鹏鹏']
+		for(let i=0;i<person.length;i++){
+			$("#person")[0].innerHTML += `<li class="mui-table-view-cell"><a href="#" id="btn1"><input type="checkbox"><span>${person[i]}</span</a></li>`
+
+		}
+
+
+		$("#sheet2_comfirm")[0].onclick=function(){
+			$("#person input").forEach(item=>{
+				if(item.checked){
+					console.log(item.nextElementSibling.innerHTML)
+				}
+			})
+		}
+
+
+
+		
+		
+	</script>
+	
+</body>
+</html>

@@ -31,5 +31,12 @@
 [FlexSlider.js——轮播](https://blog.csdn.net/cddcj/article/details/52173388)
 
 
+#####vue插件
+
+【vue表单设计器————vue-form-making】(https://github.com/GavinZhuLei/vue-form-making)
+
+
+#####打包类
+
 [gulp常用插件](https://blog.csdn.net/putao2062/article/details/80037877)
 

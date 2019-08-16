@@ -1,0 +1,7 @@
+http://39.98.191.120:1818/ebf-bk/pay/createTransOrder  测试页面
+
+http://www.w3help.org/tests/BX9054/execCommand_sCommands_Parameters.html
+这个可以测试各浏览器的兼容情况
+
+http://www.w3help.org/zh-cn/causes/BX9054
+这个是详细说明

@@ -13,11 +13,11 @@
 	$.ajax({
 		url: 'data/1.json',	
 		success(data){
-			console.log(data);
+			console.log('第一个ajax', data);
 			$.ajax({
 				url: 'data/2.json',
 				success(data){
-					console.log(data)
+					console.log('第一个ajax里的ajax', data)
 				}
 			})
 		},
@@ -85,6 +85,19 @@
 		console.log('封装后的promise', res1, res2)
 	},function(err){
 		console.log(err)
+	})
+
+	$.ajax({
+		url: 'data/1.json',
+		success(data){
+			console.log('第二个ajax', data);
+			$.ajax({
+				url: 'data/2.json',
+				success(data){
+					console.log('第二个ajax里的ajax',data)
+				}
+			})
+		}
 	})
 
 	console.log(2)

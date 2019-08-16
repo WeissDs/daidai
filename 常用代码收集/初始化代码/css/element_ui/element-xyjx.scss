@@ -1,0 +1,94 @@
+// ELEMENT 表格样式重绘
+.dxy-table {
+  // 表格内容居中，默认left
+
+  .el-table .cell {
+    text-overflow: unset !important;
+  }
+  &.center {
+    .el-table .cell {
+      text-align: center;
+      text-overflow: unset !important;
+    }
+  }
+  // 表格竖向分隔样式
+  &.dxy-col-table {
+    .el-table th.is-leaf,
+    .el-table td {
+      border: 1px solid #d8e1f6;
+    }
+
+    .el-table th > .cell {
+      color: #6e6e6e;
+      border: none;
+      height: 30px;
+      line-height: 30px;
+    }
+    .el-table--small {
+      font-size: 12px;
+      border: 1px solid #d8e1f6;
+    }
+  }
+  // 表格横向分隔样式
+  .el-table--striped .el-table__body tr.el-table__row--striped td {
+    background: #f7f9ff;
+  }
+  .el-table::before {
+    width: 0;
+  }
+  .el-table--small th,
+  .el-table--small td {
+    padding: 12px 0;
+  }
+  .el-table th.is-leaf,
+  .el-table td {
+    border-bottom: none;
+  }
+  .el-table th {
+    color: #6e6e6e;
+    border-top: 2px solid #d8e1f6;
+    border-bottom: 2px solid #d8e1f6 !important;
+    height: 25px;
+    line-height: 25px;
+  }
+  .el-table--enable-row-hover .el-table__body tr:hover > td {
+    background-color: rgba(69, 116, 208, 0.3) !important;
+  }
+  .el-table__body-wrapper {
+    position: relative;
+    height: calc(100% - 70px);
+    overflow-y: auto;
+  }
+}
+
+//滑块 （需要调整）
+.el-slider__marks-text {
+  width: 40px;
+  text-align: center;
+}
+
+//卡片
+.dxy-card {
+  margin: 0 0 20px;
+  &:nth-child(1) {
+    margin-top: 0;
+  }
+  p {
+    color: #4574d0;
+    height: 32px;
+    line-height: 34px;
+    font-weight: bold;
+    background-color: #e9f3ff;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    border: 1px solid #4574d0;
+    border-bottom: none;
+    margin: 0;
+  }
+  .line {
+    display:block;
+    height: 2px;
+    background-color: #b3cdff;
+    box-shadow: 0px 3px 40px #d3e5f9;
+  }
+}

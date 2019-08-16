@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上传图片</title>
+	<style>
+		/*原理：
+			将点击按钮范围DOM和input放入同一个父元素，input绝对定位覆盖在按钮上 后设置opacity:0;
+		*/
+		.fileinput-button{ width: 300px; position: relative; top: 50px; transform: translateY(-50%); left: 15px; overflow: hidden; display: inline-block; border: 1px solid #ccc; border-radius: 4px; }
+		/* ie8浏览器（input样式会显示出来，opacity要做兼容 filter:alpha(opacity=0)） */
+		.fileinput-button input{ width: 70px; height: 30px; position: absolute; right: 0px; top: 0; opacity: 0; filter:alpha(opacity=0); outline: none; }
+		.fileinput-button .image-upload-button{ display: inline-block; width: 70px; height: 30px; line-height: 30px; text-align: center; margin-left: 230px; background-color: #3669ef; font-family: "Microsoft Yahei"; color: #fff; border-radius: 4px; }
+	</style>
+</head>
+<body>
+	<div class="fileinput-button">
+		<span class="image-upload-button">浏览...</span>
+		<input id="person_img" type="file">
+	</div>
+
+	<script>
+		//上传图片显示
+        function getUrl(file) {
+		var photo_data =  document.getElementById("person_img");
+		// var file_name =  document.getElementById("file_name");
+            var img = document.getElementById("Image");
+            for (var intI = 0; intI < file.length; intI++) {//图片回显
+			// console.log(file.length);
+                var tmpFile = file[intI];
+				// file_name.value = tmpFile.name;
+
+				//获取本地文件内容
+                var reader = new FileReader();
+                //将文件进行base64编码后输出
+                reader.readAsDataURL(tmpFile);
+                reader.onload = function (e) {
+                    var url = e.target.result;
+                    //媒体文件img标签中的src属性可以直接写入图片的base64编码，来显示图片
+                    img.src = url;
+                }
+            }
+        }
+
+        window.onload = function(){
+        	let oPersonImg = document.getElementById('person_img');
+        	oPersonImg.onchange = function(){
+        		console.log(this.files)
+        		getUrl(this.files);
+        	}
+        }
+	</script>
+</body>
+</html>

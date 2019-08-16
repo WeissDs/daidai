@@ -66,6 +66,43 @@
             vertical-align: middle;
 
 
+######一个黑科技css2垂直居中
+
+    <div class="container">
+      <div class="dialog">
+      </div>
+    </div>
+    核心 CSS 代码如下：
+
+    .container {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0,0,0,.5);
+        text-align: center;
+        font-size: 0;
+        white-space: nowrap;
+        overflow: auto;
+    }
+
+    .container:after {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+    .dialog {
+        display: inline-block;
+        vertical-align: middle;
+        text-align: left;
+        font-size: 14px;
+        white-space: normal;
+    } 
+
+
 #####3. 用js控制transform写动画
 
 ```javascript
@@ -78,12 +115,11 @@
 #####4. 强制换行和强制不换行
 
 ```javascript
-    white-space: nowrap;     强制不换行
-
-    强制换行
-    1、word-break: break-all;        只对英文起作用，以字母作为换行依据。
-    2、word-wrap: break-word;        只对英文起作用，以单词作为换行依据。
-    3、white-space: pre-wrap;        只对中文起作用，强制换行
+    
+    1、word-break: break-all;        强制换行，只对英文起作用，以字母作为换行依据。
+    2、word-wrap: break-word;        强制换行，只对英文起作用，以单词作为换行依据。
+    3、white-space: nowrap;          强制不换行。
+    4、white-space: pre-wrap;        强制换行，只对中文起作用。
 
 ```
 

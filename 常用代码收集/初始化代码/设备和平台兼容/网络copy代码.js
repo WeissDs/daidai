@@ -54,12 +54,14 @@ if(v_weixin < '6.0.2'){
 
 
 //区分各个浏览器  封装好可直接用
-
 function whichBroser(){
 	var ua = navigator.userAgent.toLowerCase();
-	if(/msie/i.test(ua) && !/opera/.test(ua)){  
+	// uaAutoScroll.indexOf("rv:11")>-1 判断是否是IE11
+	if(/msie/i.test(ua) && !/opera/.test(ua)||uaAutoScroll.indexOf("rv:11")>-1){  
 	    alert("IE");  
 	    return ;  
+	}else if(userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1){
+		alert("IE11")
 	}else if(/firefox/i.test(ua)){  
 	    alert("Firefox");  
 	    return ;  
@@ -78,6 +80,15 @@ function whichBroser(){
 	    return ;  
 	}else{  
 	    alert("unKnow");  
+	}
+}
+
+// 包含IE11 的判断（不判断IE11的写法是if(window.ActiveXObject)）
+function isIE(){
+	if(!!window.ActiveXObject || "ActiveXObject" in window){
+		return true
+	}else{
+		return false
 	}
 }
 

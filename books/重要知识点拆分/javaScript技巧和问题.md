@@ -58,6 +58,27 @@
 document.getElementById('btn').disabled='true';
 ```
 
+######chackbox点击外层触发两次的问题
+
+	<ul id="confirm_list2" class="confirm-list2">
+		<li><input type="checkbox" readonly="readonly"> 赵峰【市政办公室】</li>
+		<li><input type="checkbox" readonly="readonly"> 赵峰【市政办公室】</li>
+	</ul>
+
+```javascript
+	let oLi = $("#confirm_list2>li")
+	// 选择人员的点击效果
+	for(let j=0;j<oLi.length;j++){
+		oLi[j].onclick=function(e){
+			// 阻止input点击
+			if($(e.target).is('input')){
+			       return;
+			}
+			this.children[0].checked = this.children[0].checked?false:true;
+		}
+
+	}
+```
 
 ###获取定位
 

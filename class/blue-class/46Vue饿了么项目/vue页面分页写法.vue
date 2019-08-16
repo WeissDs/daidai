@@ -12,7 +12,6 @@
     <div class="2" v-if="type=='c'">
      333
     </div>
-
   </div>
 </template>
 

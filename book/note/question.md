@@ -156,3 +156,17 @@ jquery的 $('#products').on('click', 'img', function(){})
     destroyed（销毁后） 在实例销毁之后调用。调用后，所有的事件监听器会被移除，所有的子实例也会被销毁。该钩子在服务器端渲染期间不被调用。
 
     “并挂载到实例上”是什么意思啊？
+
+
+
+    ##2019-6-5
+
+    #### vue路由传参 params 和 query 的应用场景（资源共享页面）
+
+    #### window.innerHeight 和 document.body.clientHeight 的区别
+
+    #### ztree
+
+    #### element ui 文档
+
+    #### echarts 文档

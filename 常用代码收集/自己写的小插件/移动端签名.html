@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+      .sign {
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+      }
+      .sign .sign-content {
+        height: calc(50vh - 20px);
+      }
+      .sign .sign-content .font-list {
+        margin: 10px;
+        height: 100%;
+        border: 1px solid #409eff;
+      }
+      .sign .sign-content .font-list .font {
+        height: 20%;
+        border-bottom: 1px dotted #409eff;
+        margin-bottom: -1px;
+      }
+      .sign .sign-opt {
+        height: calc(50vh - 20px);
+      }
+
+      .sign .sign-opt .opt {
+        margin: 10px;
+        height: 100%;
+      }
+
+      .sign .sign-opt .opt .left-opt {
+        float: right;
+        box-sizing: border-box;
+        border: 1px solid;
+        width: calc(70vw - 10px);
+        height: 100%;
+        margin: -1px;
+      }
+
+      .sign .sign-opt .opt .left-opt .sign-area {
+        height: 100%;
+        width: 100%;
+        z-index: 999;
+      }
+
+      .sign .sign-opt .opt .right-opt {
+        float: left;
+        box-sizing: border-box;
+        height: 100%;
+        width: calc(30vw - 10px);
+      }
+
+      .sign .sign-opt .opt .right-opt .btn {
+        border: 1px solid;
+        height: calc(16.66% - 10px);
+        border-radius: 5px;
+        line-height: 6vh;
+        text-align: center;
+      }
+
+      .sign .sign-opt .opt .right-opt .btn {
+        margin: 10px 0 -1px 10px;
+      }
+      .sign .sign-opt .opt .right-opt .btn:first-child {
+        margin: 0 0 10px 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="sign">
+      <div class="sign-content">
+        <div class="font-list">
+          <div class="font">
+            <img id="data" />
+          </div>
+          <div class="font"></div>
+          <div class="font"></div>
+          <div class="font"></div>
+          <div class="font"></div>
+        </div>
+      </div>
+      <div class="sign-opt">
+        <div class="opt">
+          <div class="left-opt" id="signMain">
+            <canvas id="signArea" class="sign-area"></canvas>
+          </div>
+          <div class="right-opt">
+            <div class="btn">32</div>
+            <div class="btn">32</div>
+            <div class="btn">32</div>
+            <div class="btn">32</div>
+            <div class="btn">32</div>
+            <div class="btn">32</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    //防止页面滑动
+    document.addEventListener(
+      "touchmove",
+      function(event) {
+        window.event.returnValue = false;
+      },
+      false
+    );
+    var canvas = document.getElementById("signArea");
+    var cxt = canvas.getContext("2d");
+    var wheight = document.body.clientHeight;
+    cxt.fillStyle = "#ffffff";
+    cxt.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+    cxt.strokeStyle = "#000000";
+    cxt.lineWidth = 2;
+    cxt.lineCap = "round";
+
+    //开始绘制
+    canvas.addEventListener(
+      "touchstart",
+      function(e) {
+        cxt.beginPath();
+        console.log( e.touches[0].pageX, e.touches[0].pageY)
+        // console.log(e.changedTouches[0].pageX - 10,e.changedTouches[0].pageY - 440)
+        // console.log(e.changedTouches[0].pageY, $("#signArea").offset().top);
+        // cxt.moveTo(
+        //   e.changedTouches[0].pageX - 10,
+        //   e.changedTouches[0].pageY - 440
+        // );
+        cxt.moveTo(
+          (e.touches[0].pageX-canvas.getBoundingClientRect().left)*(canvas.width / canvas.getBoundingClientRect().width),
+          (e.touches[0].pageY-canvas.getBoundingClientRect().top)*(canvas.height / canvas.getBoundingClientRect().height)
+        );
+      },
+      false
+    );
+    //绘制中
+    canvas.addEventListener(
+      "touchmove",
+      function(e) {
+        // cxt.lineTo(
+        //   e.changedTouches[0].pageX - 10,
+        //   e.changedTouches[0].pageY - 440
+        // );
+        cxt.lineTo(
+          (e.touches[0].pageX-canvas.getBoundingClientRect().left)*(canvas.width / canvas.getBoundingClientRect().width),
+          (e.touches[0].pageY-canvas.getBoundingClientRect().top)*(canvas.height / canvas.getBoundingClientRect().height)
+        );
+        cxt.stroke();
+      },
+      false
+    );
+    //结束绘制
+    canvas.addEventListener(
+      "touchend",
+      function() {
+        cxt.closePath();
+        var imgBase64 = canvas.toDataURL();
+        document.getElementById("data").src = imgBase64;
+        console.log(imgBase64);
+      },
+      false
+    );
+  </script>
+</html>

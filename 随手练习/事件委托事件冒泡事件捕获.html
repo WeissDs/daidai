@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,body{
+			width:100%;
+			height:100%;
+		}
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#outBox{
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.3);
+			position: relative;
+
+		}
+		#box1,#box2{
+			width:100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+			left:50px;
+		}
+		#box2{
+			left: 500px;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="outBox">
+		<div id="box1">
+			<div id="box2"></div>
+		</div>
+	</div>
+	<ul id="ul">
+		<li id="li">aaaa</li>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+	<script>
+
+		var $ = document.querySelectorAll.bind(document)
+		
+		// window.addEventListener('click', function(){
+		// 	$("#outBox")[0].style.display="block";
+		// },true)
+		$("#outBox")[0].addEventListener('click', function(){
+			// $("#outBox")[0].style.display="none";
+			alert('outbox')
+		},true)
+		$("#box1")[0].addEventListener('click', function(e){
+			// e.cancelBubble=true
+			alert(1)
+		})
+
+
+		var oUl = document.getElementById('ul')
+		// oUl.addEventListener('click',function(e){
+		// 	console.log(e.target)
+		// })
+		oUl.onclick=function(e){
+			console.log(event.srcElement.innerHTML)
+		}
+
+
+		$("#box2")[0].addEventListener('click', function(ev){
+			var oEvent=ev||event;
+			// oEvent.cancelBubble=true;
+			// ev.stopPropagation()
+			// ev.cancelBubble = true;
+			alert(2)
+		})
+
+		// var oBox = document.getElementById("outBox")
+		// oBox.onclick=function(){
+
+		// }
+
+	</script>
+</body>
+</html>

@@ -52,6 +52,23 @@
 		window.onload=function(){
 			window.onresize();
 		}
+
+		1、禁止浏览器滚动
+
+		document.addEventListener('touchmove', function (event) {
+		    event.preventDefault();
+		}, false);
+
+		document.addEventListener('touchmove', function (event) {
+		    window.event.returnValue = false;
+		}, false);
+
+		2、还原（允许）浏览器滚动事件
+
+		document.addEventListener('touchmove', function (event) {
+		    window.event.returnValue = true;
+		}, false);
+
 	</script>
 </head>
 <body>

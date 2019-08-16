@@ -12,6 +12,9 @@ a{
 	   -moz-box-sizing: border-box;
 	        box-sizing: border-box;
 }
+blockquote, body, button, dd, dl, dt, fieldset, form, hr, input, legend, li, ol, p, pre, textarea, th, ul, div, span, a {
+    font: 14px Microsoft YaHei,Helvetica;
+}
 /* 去掉获得焦点的外框 */
 input,button,select,textarea{ outline:none; }
 
