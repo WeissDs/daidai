@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+		.box{
+			width: 40px;
+			height: 80px;
+			background:red;
+			margin:50px auto;
+			position:relative;
+		}
+		.box::before{
+			content: "";
+			border-top: 40px solid transparent;
+			border-right: 20px solid red;
+			border-bottom: 40px solid red;
+			border-left: 20px solid transparent;
+			position: absolute;
+			top:0;
+			left: -100%;
+		}
+		.box::after{
+			content: "";
+			border-top: 40px solid transparent;
+			border-right: 20px solid transparent;
+			border-bottom: 40px solid red;
+			border-left: 20px solid red;
+			position: absolute;
+			top:0;
+			right: -100%;
+		}
+
+
+		.trapezoid{
+			/*margin-top: 10px;*/
+			position:relative;
+			height: 80px;
+			width: 200px;
+			border-left:5px solid blue;
+			overflow:hidden;
+		}
+		.trapezoid:before{
+		  content:'';
+		  display:block;
+		  position:absolute;
+		  top:0;
+		  bottom:0;
+		  right:0;
+		  width: 200px;
+		  border:5px solid blue;
+		  transform-origin:0 100%;
+		  transform:skewX(45deg);
+		  background:red;
+		}
+
+
+
+
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="trapezoid"></div>
+	<div><img src="image/tab.png" alt="" style="border:1px solid red;"></div>
+	<script>
+
+		let date = new Date();
+		console.log(date);
+		(function(arg){
+			console.log(arg)
+		})(date)
+		
+
+		function oo(){
+			this.a=12;
+			this.b=33;
+		}
+		oo.prototype.showa=function(){
+			alert(this.a)
+		}
+
+		let oo1 = new oo();
+		// oo1.showa()
+
+		date.call(oo);
+		date.showa();
+
+
+		// label语句 在代码中添加标签
+		let num = 0;
+		a:
+		for(let i=0;i<10;i++){
+			for(let j=0;j<10;j++){
+				if(i==5&&j==5){
+					break;
+				}
+				num++;
+			}
+		}
+		console.log(num);
+	</script>
+</body>
+</html>

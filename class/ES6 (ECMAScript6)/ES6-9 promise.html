@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<script>
+	$.ajax({
+		url: 'data/1.json',	
+		success(data){
+			console.log(data);
+		}
+	})
+	let a = new Promise(function(resolve, reject){
+		// setTimeout(function(){
+			resolve('timeout3000')
+		// },3000)
+	})
+	a.then(resolve=>{
+		console.log(resolve)
+	})
+	
+	console.log(11)
+	Promise.reject("Testing static reject").then(function(reason) {
+	  // 未被调用
+	}, function(reason) {
+	  console.log(reason); // "Testing static reject"
+	});
+
+	// console.log(a)
+</script>
+	
+
+</body>
+</html>

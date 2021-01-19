@@ -1,0 +1,23 @@
+/* 请用.scss保存, 以下代码均使用sass编写 */
+
+/* 蓝底card 适用底色 #f2f6ff */
+.dxy-card{
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 3px 40px #d3e5f9;
+  overflow:hidden;
+  &>p{
+    width: 100%;
+    height: 4.9vh;
+    min-height: 25px;
+    padding: 8px 0 0 18px;
+    font-weight: 600;
+    color: #565656;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+  }
+  & > div {
+    height: calc(100% - 4.7vh);
+  }
+}
+

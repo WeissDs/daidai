@@ -1,6 +1,4 @@
-##vue基础
-
-####不使用vue-cli 直接使用的基础写法
+##不使用vue-cli 直接使用的基础写法
 
 ```javascript
 let vm = new Vue({
@@ -16,7 +14,11 @@ let vm = new Vue({
 <div id="div1" :title="b">{{a}}</div>
 ```
 
-####vue语法
+
+
+
+
+##vue语法
 
 ###### '' 叫做 vue表达式
 ###### 'v-bind:属性=""' 简写 ':属性=""' 在html标签中使用
@@ -25,6 +27,134 @@ let vm = new Vue({
       循环数组时候两个参数，第一个为数组内元素，第二个为元素索引（item,index）
 
       循环对象时候可以有三个参数，第一个为键值，第二个为键名，第三个为索引（value,key,index）
+
+
+
+
+
+
+##vue-router
+
+####引入路由
+
+1. 下载vue-router
+
+  npm i vue-router
+
+2. 初始化
+
+  在main.js中引入（router新建文件）文件配置：
+  
+  main.js: 
+
+  ```javascript
+  new Vue({
+    router
+  })
+  ```
+
+  ```javascript
+    import Vue from 'vue'
+    import VueRouter from 'vue-router'
+
+    Vue.use(VueRouter)
+    const router = new VueRouter({
+      // ！！！！！！！这里是routes 不是routers 注意！！！！！！
+      routes: [...]
+    })
+  ```
+
+3. 加入渲染
+
+  在App.vue中加入<router-view></router-view>
+
+####路由的三种写法
+
+######import
+
+```javascript
+  import Home from '@/views/home'
+
+  {
+    path: '/',
+    name: 'home',
+    component: Home
+  }
+```
+
+######import (按需加载 推荐写法)
+
+```javascript
+  {
+    path: '/',
+    name: 'home',
+    component: ()=>import("../views/home")  // 可省略.vue
+  }
+```
+
+
+######require+resolve (按需加载)
+
+```javascript
+  {
+    path: "",
+    name: "home",
+    component: resolve => require(['views/home'], resolve)
+  }
+```
+
+##vue组件全局注册
+
+####install && use （原理大概是    Vue.use(a)的时候vue会自动运行a的install方法）
+
+    在main.js中：
+    import customUI from "@/components/install";
+    Vue.use(customUI)
+
+    install.js 内容：
+
+    import ElOpen from "./ElOpen";
+    import ElTreeSelect from "./ElTreeSelect";
+    import ElResize from "./ElResize";
+    import ElPage from "./ElPage";
+
+    export default {
+        install(Vue) {
+            Vue.use(ElOpen);
+            Vue.use(ElTreeSelect);
+            Vue.use(ElResize);
+            Vue.use(ElPage);
+        }
+    };
+
+    每个组件用一个js文件导入, js文件内容：
+
+    import TreeSelect from "./src/main";
+
+    TreeSelect.install = function(Vue) {
+      Vue.component(TreeSelect.name, TreeSelect);   // 这里好像TreeSelect.name可以写成"TreeSelect"？？
+    };
+
+    export default TreeSelect;
+
+
+####webpack 配置
+
+##### axios配置
+
+    moudule.exports = {
+      configureWebpack: {
+        plugins: [
+          new webpack.ProvidePlugin({
+            Ajax: [path.resolve(__dirname, "src/plugins/axios"), "default"]
+          })
+        ]
+      },
+    }
+
+
+
+
 
 
 

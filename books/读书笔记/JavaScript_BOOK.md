@@ -493,9 +493,11 @@ json_deep_copy();
 ```javascript
 let _alert = window.alert;
 window.alert = function(str){
-    _alert(str)
+    _alert('hello'+str)
 }
-//这是在干嘛？
+
+alert('呆呆')  ------------- // hello呆呆
+// 改写alert
 ```
 
 ```javascript

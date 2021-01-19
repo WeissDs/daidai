@@ -52,6 +52,19 @@
 	alert(uname);
 ```
 
+
+######自己尝试发现前端设置cookie过期时间无效
+```javascript
+	let parser=new DOMParser();
+	let xmlDoc=parser.parseFromString(txt,"text/xml");
+	let oDate = new Date();
+	let a = new Date(oDate.getTime()+1000*60*60);
+	// let b = a.getTime().setTime();
+	console.log(oDate,a)
+	// oDate.setDate(oDate.get)
+	document.cookie = `aa = bbb; expires = ${a} `
+```
+
 ##session
 
 ##token

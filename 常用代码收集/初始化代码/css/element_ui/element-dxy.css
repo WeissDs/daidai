@@ -1,0 +1,103 @@
+.dxy-table .el-table .cell {
+  text-overflow: unset !important;
+}
+.dxy-table.center .el-table .cell {
+  text-align: center;
+  text-overflow: unset !important;
+}
+.dxy-table.dxy-col-table .el-table th.is-leaf,
+.dxy-table.dxy-col-table .el-table td {
+  border: 1px solid #d8e1f6;
+}
+.dxy-table.dxy-col-table .el-table th > .cell {
+  color: #6e6e6e;
+  border: none;
+  height: 30px;
+  line-height: 30px;
+}
+.dxy-table.dxy-col-table .el-table--small {
+  font-size: 12px;
+  border: 1px solid #d8e1f6;
+}
+.dxy-table .el-table--striped .el-table__body tr.el-table__row--striped td {
+  background: #f7f9ff;
+}
+.dxy-table .el-table::before {
+  width: 0;
+}
+.dxy-table .el-table--small th,
+.dxy-table .el-table--small td {
+  padding: 12px 0;
+}
+.dxy-table .el-table th.is-leaf,
+.dxy-table .el-table td {
+  border-bottom: none;
+}
+.dxy-table .el-table th {
+  color: #6e6e6e;
+  border-top: 2px solid #d8e1f6;
+  border-bottom: 2px solid #d8e1f6 !important;
+  height: 25px;
+  line-height: 25px;
+}
+.dxy-table .el-table--enable-row-hover .el-table__body tr:hover > td {
+  background-color: rgba(69, 116, 208, 0.3) !important;
+}
+.dxy-table .el-table__body-wrapper {
+  position: relative;
+  height: calc(100% - 70px);
+  overflow-y: auto;
+}
+
+.el-slider__marks-text {
+  width: 40px;
+  text-align: center;
+}
+
+.dxy-card {
+  margin: 0 0 20px;
+}
+.dxy-card:nth-child(1) {
+  margin-top: 0;
+}
+.dxy-card p {
+  color: #4574d0;
+  height: 32px;
+  line-height: 34px;
+  font-weight: bold;
+  background-color: #e9f3ff;
+  text-align: center;
+  border-radius: 5px 5px 0 0;
+  border: 1px solid #4574d0;
+  border-bottom: none;
+  margin: 0;
+}
+.dxy-card .line {
+  display: block;
+  height: 2px;
+  background-color: #b3cdff;
+  box-shadow: 0px 3px 40px #d3e5f9;
+}
+
+.dxy-tabs .el-tabs__header {
+  margin: 0 !important;
+}
+.dxy-tabs .el-tabs--card > .el-tabs__header .el-tabs__item {
+  border-radius: 4px 4px 0 0;
+  background: #e8eef5;
+  background: #cce4ff;
+  color: #409eff;
+  margin-left: 2px;
+}
+.dxy-tabs .el-tabs--card > .el-tabs__header .el-tabs__item:nth-child(1) {
+  margin-left: 0;
+}
+.dxy-tabs .el-tabs--card > .el-tabs__header .el-tabs__nav {
+  border: none;
+}
+.dxy-tabs .el-tabs--card > .el-tabs__header .el-tabs__item.is-active {
+  color: #fff;
+  background: #409eff;
+}
+
+/*# sourceMappingURL=element-dxy.css.map */

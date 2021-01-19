@@ -40,3 +40,21 @@
 -save-dev是指将包信息添加到devDependencies，表示你开发时依赖的包裹。  简写 -D
 
     npm install <下载的依赖包名称> --save-dev
+
+##npm常用命令
+
+####查看项目依赖包
+
+	npm ls
+
+####查看某个包的所有版本
+
+	npm view [package name] versions
+
+##npx 调用项目内部安装的模块
+
+	npx ...
+
+	npx 的原理很简单，就是运行的时候，会到node_modules/.bin路径和环境变量$PATH里面，检查命令是否存在。
+
+	由于 npx 会检查环境变量$PATH，所以系统命令也可以调用。

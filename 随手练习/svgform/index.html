@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+	<style>
+		*{box-sizing: border-box;margin:0;padding:0;}
+		.pane-node{
+			position: absolute;
+		}
+		.box{
+			width: 200px;
+			height: 50px;
+			background-color: #b2c9e8;
+			border: 2px solid #0f61cf;
+			border-radius: 10px;
+			color: #0f61cf;
+			text-align: center;
+			line-height: 50px;
+			font-weight: bold;
+			font-size: 20px;
+			user-select: none;
+		}
+		.btn{
+			width: 200px;
+			height: 50px;
+
+		}
+		.focus span{
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			border: 1px solid #0f61cf;
+			background-color: #b2c9e8;
+			position: absolute;
+			bottom: -5px;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		.focus span:nth-child(1){
+			top: -5px;
+		}
+		.focus span:nth-child(2){
+			top: 50%;
+			transform: translateY(-50%);
+			left: auto;
+			right: -5px;
+		}
+		.focus span:nth-child(4){
+			top: 50%;
+			transform: translateY(-50%);
+			left: -5px;
+		}
+		
+	</style>
+</head>
+<body>
+	<!-- <polyline points="0,0 0,20 20,20 20,40 40,40 40,60" style="fill:white;stroke:red;stroke-width:2"/> -->
+	<!-- <line stroke="#0f61cf" stroke-width="10" stroke-miterlimit="10" x1="50" x2="50" y1="0" y2="100"></line> -->
+	<div style="height:800; position: relative;">
+		<div id="newGBtn" class="box" style="background: #ffeae8;color: red;border-color:red;position:absolute;">拖动</div>
+			<svg id="outBox"  xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="800">
+			  <g  class="pane-link">
+			  	
+			  </g>
+
+		      <!-- <g class="pane-node"  style="transform: translate(10px, 60px)">
+		      	<foreignObject width="200" height="50">
+		      		<div class="box">
+		      			拖动
+		      			<div class="btn">
+		      				<span class="top"></span>
+		      				<span class="right"></span>
+		      				<span class="bottom"></span>
+		      				<span class="left"></span>
+		      			</div>
+		      		</div>
+		      	</foreignObject>
+		      </g> -->
+
+		      <g class="pane-node" style="transform: translate(500px, 60px)" width="200" height="50">
+		      	<!-- <foreignObject  width="200" height="50">
+		      		<div  class="box">
+
+		      			拖动
+		      			<div class="btn">
+		      				<span class="top"></span>
+		      				<span class="right"></span>
+		      				<span class="bottom"></span>
+		      				<span class="left"></span>
+		      			</div>
+		      		</div>
+		      	</foreignObject> -->
+		      </g>
+
+			</svg>
+	</div>
+	
+	
+
+	<!-- <svg width="100" height="100" version="1.1"
+	xmlns="http://www.w3.org/2000/svg">
+
+	<circle cx="50" cy="50" r="40" stroke="black"
+	stroke-width="2" fill="#b2c9e8"/>
+	<line stroke="#0f61cf" stroke-width="10" stroke-miterlimit="10" x1="50" x2="50" y1="0" y2="100">
+	
+	</svg> -->
+
+	<script src="src/index.js"></script>
+	<script>
+		// function a(){
+		//     this.dai = 12
+		//     this.xi = 0
+		//     this.yu = 34
+		// }
+		
+		// function b(){
+		// 	// 这里执行了一次a, a的thisb
+		    
+		//     this.age=1
+		// }
+
+		// function a(){
+		// 	alert(this.ee)
+		// }
+		// let b ={ee:3}
+		// console.log(a.call(b))
+		// let bb = new b();
+		// let aa = new a();
+		
+		// let result = aa.age
+		// console.log(result)
+	</script>
+</body>
+</html>

@@ -47,3 +47,17 @@ jq选择id的问题+jq用id选择select选框作为全选按钮时的问题
     //如果将ocheckAll换成 ocheckAll1 = $('#check_all')[0]这样选择  下面的if(ocheckAll.checked) 会直接执行，点击判断无效
 
 ```
+
+##获取DOM
+
+```javascript
+  // 相邻后一个
+  $("#2").next();//这个获取的等同于$("#3")
+  // 相邻前一个
+  $("#2").prev();//这个获取的等同于$("#1")
+  // 相邻前后
+  $("#2").siblings();//这个获取的等同于$("#1,#3")
+  // 子元素
+  $("div").children(".selected").css("color", "blue");
+```
+

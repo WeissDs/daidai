@@ -46,42 +46,19 @@
 	</ul>
 	<script>
 
-		var $ = document.querySelectorAll.bind(document)
-		
-		// window.addEventListener('click', function(){
-		// 	$("#outBox")[0].style.display="block";
-		// },true)
-		$("#outBox")[0].addEventListener('click', function(){
-			// $("#outBox")[0].style.display="none";
-			alert('outbox')
-		},true)
-		$("#box1")[0].addEventListener('click', function(e){
-			// e.cancelBubble=true
-			alert(1)
-		})
+		const $ = document.querySelectorAll.bind(document);
 
-
-		var oUl = document.getElementById('ul')
-		// oUl.addEventListener('click',function(e){
-		// 	console.log(e.target)
-		// })
-		oUl.onclick=function(e){
-			console.log(event.srcElement.innerHTML)
+		var fn = function(e){
+			Array.from($('li')).forEach(item=>{
+				item.style.color = '#000'
+			})
+			if(e.target.tagName == 'LI'){
+				e.target.style.color = 'red';
+			}
 		}
+		document.addEventListener('click',fn)
 
-
-		$("#box2")[0].addEventListener('click', function(ev){
-			var oEvent=ev||event;
-			// oEvent.cancelBubble=true;
-			// ev.stopPropagation()
-			// ev.cancelBubble = true;
-			alert(2)
-		})
-
-		// var oBox = document.getElementById("outBox")
-		// oBox.onclick=function(){
-
-		// }
+		// $('#outBox')[0].onclick=function(){document.removeEventListener('click',fn);}
 
 	</script>
 </body>

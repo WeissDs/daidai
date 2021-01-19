@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>webGL && three.js</title>
+	<style>
+		#threePage{
+			display: flex;
+		}
+		/*#threePage canvas{
+			flex:1;
+			width:0;
+			overflow:hidden;
+		}*/
+		#threePage canvas:nth-child(1){
+			margin-right: 10px;
+		}
+	</style>
+</head>
+<body>
+	<!-- webgl,three.js -->
+	<!-- <script src="https://threejs.org/build/three.min.js"></script> -->
+    <!-- <script src="https://threejs.org/examples/js/loaders/OBJLoader.js"></script> -->
+    <!-- <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script> -->
+    <script src="./plugins/three.min.js"></script>
+	<div id="threePage">
+		<canvas id="box" style="width:700px;height:400px"></canvas>
+	</div>
+	
+	<script>
+		window.onload=function(){
+			// 创建 舞台
+			let scene = new THREE.Scene();
+			console.log(scene)
+			// 创建 摄像机
+			let camera = new THREE.PerspectiveCamera(50, 1000/600, 0.1, 800);
+			console.log(camera);
+			// 摄像机方位调整
+			camera.position.x = 0;
+			camera.position.y = 0;
+			camera.position.z = 70;
+			camera.lookAt(scene.position);
+
+
+
+			// 创建 渲染器（方式一）
+			let oBox = document.getElementById('box');
+			let renderer = new THREE.WebGLRenderer({
+				canvas:oBox,
+				antialias:true,
+    			// alpha:true
+    		});
+    		// 调整分辨率 这里不知道为什么取到的chrome浏览器的像素比为1，直接给了7
+    		var devicePixelRatio = window.devicePixelRatio;
+    		// console.log(devicePixelRatio) //-------  1
+    		renderer.setPixelRatio(6);
+
+
+
+			// 创建 渲染器（方式二）
+			// let renderer = new THREE.WebGLRenderer({antialias:true});
+			// renderer.setSize(700,400);
+			// document.getElementById('threePage').appendChild(renderer1.domElement);
+
+
+			// 创建 立方体
+			var geometry = new THREE.BoxGeometry( 20, 20, 20 );
+			
+			// var materialArr = [
+			// 	new THREE.MeshBasicMaterial( {color: 'red'} ),
+			// 	new THREE.MeshBasicMaterial( {color: 'blue'} ),
+			// 	new THREE.MeshBasicMaterial( {color: 'yellow'} ),
+			// 	new THREE.MeshBasicMaterial( {color: '#ccc'} ),
+			// 	new THREE.MeshBasicMaterial( {color: '#233422'} ),
+			// 	new THREE.MeshBasicMaterial( {color: 'green'} ),
+			// ];
+
+			// 添加纹理（加不上去。。。。）
+			var texture = new THREE.TextureLoader().load('images/1.png'); // 纹理加载
+			// var material = new THREE.PointsMaterial({
+			// 	size:20,
+			// 	map:texture
+			// })
+			var material = new THREE.MeshPhongMaterial( {map: texture} );
+			var materialArr = [material, material, material, material, material, material];
+
+			var cube = new THREE.Mesh( geometry, materialArr );
+			// var cube = new THREE.Points( geometry, material );
+			scene.add( cube );
+			renderer.render(scene, camera);
+			
+
+			// 开始摄像
+			// cubeAnimate();
+
+			// function cubeAnimate(){
+			// 	renderer.render(scene, camera);
+			// 	cube.rotation.x += 0.01;
+			// 	cube.rotation.y += 0.01;
+			// 	cube.rotation.z += 0.01;
+			// 	requestAnimationFrame(cubeAnimate);
+			// }
+
+
+		}
+	</script>
+</body>
+</html>

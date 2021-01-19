@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<div id="box"></div>
+</head>
+<body>
+	<script>
+		let data = [
+			{id:-1, name:'代代'},
+			{id:1, name:'代代1', pid: -1},
+			{id:2, name:'代代2', pid: -1},
+			{id:11, name:'代代1-1', pid: 1},
+			{id:12, name:'代代1-2', pid: 1},
+			{id:21, name:'代代2-1', pid: 2},
+			{id:111, name:'代代2-1-1', pid: 11},
+			{id:1111, name:'代代2-1-1-1', pid: 111},
+		];
+
+		let data2 = [
+			{one: 'haha', two: 'hihi', three: 'oo', shuju: 2},
+			{one: 'haha', two: 'hihi', three: 'oo1', shuju: 2},
+			{one: 'haha', two: 'hihi', three: 'oo2', shuju: 2},
+		];
+
+
+
+		let result=[];
+		for(let i=0; i<data.length; i++){
+			if(data[i].id==-1){
+				result.push(data[i])
+			}
+		}
+
+	
+		const data3 = [
+			{
+				value:'a',
+				id: 1,
+				pid: 0,
+				children:[
+					{
+						value:'aa',
+						id: 11,
+						pid: 1,
+						children:[
+								{
+									value:'aaa',
+									id: 111,
+									pid: 11,
+
+								}
+							]
+					},
+					{
+						value:'ab',
+						id: 12,
+						pid: 1,
+						children: [
+							{
+								value:'abb',
+								id: 121,
+								pid: 12,
+							},
+							{
+								value:'abc',
+								id: 122,
+								pid: 12,
+								children: [
+									{
+										value:'abcd',
+										id: 1221,
+										pid: 122,
+									},
+								]
+							},
+							{
+								value:'abd',
+								id: 123,
+								pid: 12,
+							},
+						]
+					}
+				]
+			},
+			{
+				value:'b',
+				id: 2,
+				pid: 0,
+				children:[
+					{
+						value:'bb',
+						id: 21,
+						pid: 2
+					},
+				]
+			},
+		]
+
+
+		const targetData = {};
+		function loops(data=[],parent){
+			return data.map(({children,value})=>{
+					const node = {
+					value,
+					parent
+					}
+					targetData[value]  = node;
+					node.children = loops(children,node);
+					return 
+				})
+		}
+		loops(data3);
+		console.log(targetData);
+
+		function getNode(value){
+			let node= [];
+			let currentNode = targetData[value];
+			node.push(currentNode.value);
+			if(currentNode.parent){
+				node= [...getNode(currentNode.parent.value),...node];
+			}
+			return node
+		}
+
+
+		loops(datasource )
+		//获取父节点
+		const target = getNode('aaa')
+		console.log(target)
+		//打印 ['a','aa','aaa']
+		
+
+		window.onload=function(){
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+</head>
+<body>
+	<script>
+
+		// async 处理异步请求 方法1
+		// 在需要处理成同步的请求写到promise里return出去（promise里一定记得写resolve的返回值）
+		// 在async 函数中 await需要同步执行的异步请求
+	    function ajax1() {
+	      console.log(1);
+	      // promise
+	      return new Promise((resolve, reject) => {
+	        Ajax.post("/gzzx/ssgz/list", {
+	          dwbm: "420600",
+	          gh: "0036",
+	        }).then(res => {
+	        	//resolve的返回值
+		        resolve("true");
+		        console.log("ajax1");
+		        console.log(2);
+		        console.log(res.data);
+	        });
+	      });
+	    }
+
+	    function ajax2() {
+	      console.log(3);
+	      return new Promise((resolve, reject) => {
+	        Ajax.post("/gzzx/zlglxt/getcksyxx").then(res => {
+	          resolve("true");
+	          console.log("ajax2");
+	          console.log(4);
+	        });
+	      });
+	    }
+
+	    function timer1() {
+	      console.log(5);
+	      return new Promise((resolve, reject) => {
+	        setTimeout(() => {
+	          console.log(6);
+	          resolve("true");
+	          console.log("timer1");
+	        }, 1000);
+	      });
+	    }
+
+	    async function  init() {
+	      await this.timer1();
+	      await this.ajax1();
+	      await this.ajax2();
+
+	      // const c = await this.timer1();
+	      // console.log(a);
+	      // console.log(b);
+	      // console.log(c);
+	    }
+
+	    // async 处理异步请求 方法2
+        async function ajax3() {
+          	console.log(1)
+            await Ajax.post("/gzzx/ssgz/list", {
+              dwbm: "420600",
+              gh: "0036",
+            }).then(res => {
+            	//resolve的返回值
+    	        resolve("true");
+    	        console.log("ajax1");
+    	        console.log(2);
+    	        console.log(res.data);
+            });
+        }
+
+
+		init();
+	</script>
+</body>
+</html>
