@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../07-02自己写个promise/jquery.js"></script>
+</head>
+<body>
+	<!-- form发送不了head请求 -->
+	<form action="http://www.baidu.com" method="head">
+		<input type="submit" value="提交">
+	</form>
+
+
+	<!-- jquery可以发送head请求 一般来说hand请求就是为了拿到status是多少，看服务器是否活着 -->
+	<script>
+		$.ajax({
+			url: "http://www.baidu.com",
+			method: 'head',
+		})
+	</script>
+
+
+</body>
+</html>

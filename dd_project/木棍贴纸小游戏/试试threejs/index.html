@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    padding: 300px;
+  }
+
+  .box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .box .box-side:nth-child(1) {
+    height: 50px;
+    width: 300px;
+    background: brown;
+    position: absolute;
+    top: 0;
+    transform: translate(0, -50%) rotateX(90deg);
+  }
+
+  .box .box-side:nth-child(2) {
+    height: 10px;
+    width: 50px;
+    background: brown;
+    position: absolute;
+    right: 0;
+    transform: translate(50%, -50%) rotateY(90deg);
+  }
+
+  .box .box-side:nth-child(3) {
+    height: 50px;
+    width: 300px;
+    background: brown;
+    position: absolute;
+    bottom: 0;
+    transform: translate(0%, 50%) rotateX(90deg);
+  }
+
+  .box .box-side:nth-child(4) {
+    height: 10px;
+    width: 50px;
+    background: brown;
+    position: absolute;
+    left: 0;
+    transform: translate(-50%, -50%) rotateY(90deg);
+  }
+
+  .box .box-side:nth-child(5) {
+    height: 10px;
+    width: 300px;
+    background: brown;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate3d(0, 0, 25px);
+  }
+
+  .box .box-side:nth-child(5) {
+    height: 10px;
+    width: 300px;
+    background: brown;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate3d(0, 0, -25px);
+  }
+</style>
+
+<body>
+
+  <div>
+    <div id="box" class="box">
+      <div class="box-side"></div>
+      <div class="box-side"></div>
+      <div class="box-side"></div>
+      <div class="box-side"></div>
+      <div class="box-side"></div>
+      <div class="box-side"></div>
+    </div>
+  </div>
+
+
+  <script src='js/three.min.js'></script>
+  <script>
+    let box = document.getElementById('box');
+    box.style.transform = "rotateX(50deg)"
+  </script>
+</body>
+
+</html>

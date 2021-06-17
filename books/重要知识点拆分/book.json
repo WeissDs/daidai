@@ -1,0 +1,10 @@
+{
+	"plugins":[
+		"expandable-chapters"
+	],
+	"pluginsConfig": {
+	    "theme-default": {
+	        "showLevel": true
+	    }
+  	}
+}

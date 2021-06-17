@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- <script src="runner.js" charset="utf-8"></script> -->
+    <script src="jquery.js" charset="utf-8"></script>
+    <script>
+
+    // 使用blue的 runner.js
+
+    runner(function *(){
+      alert('欢迎哈');
+
+      let arr=yield $.ajax({url: 'data/1.txt', dataType: 'json'});
+
+      alert('接收到了数组'+arr);
+
+      let json=yield $.ajax({url: 'data/2.txt', dataType: 'json'});
+
+      alert('json也读完了');
+
+      console.log(json);
+    });
+
+
+
+
+    // 使用ES7的async await
+
+    function aa(){
+      return $.ajax({url: 'data/1.txt', dataType: 'json'});
+    }
+    async function show(){
+      console.log('async await');
+
+      // let arr = await $.ajax({url: 'data/1.txt', dataType: 'json'});
+      let arr = await aa();
+
+      console.log('接收到了数组'+arr);
+
+      let json = await $.ajax({url: 'data/2.txt', dataType: 'json'});
+
+      console.log('接收到了json'+json);
+    }
+    show();
+
+
+    // 没有语法糖的写法
+    
+    // $.ajax({
+    //   url: 'data/1.txt',
+    //   dataType: 'json',
+    //   success(arr){
+    //     alert('接收到了数组'+arr);
+    //     $.ajax({
+    //       url: 'data/2.txt',
+    //       dataType: 'json',
+    //       success(json){
+    //         alert('json也读完了');
+
+    //         console.log(json);
+    //       },
+    //       error(){
+
+    //       }
+    //   },
+    //   error(){
+
+    //   }
+    // })
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

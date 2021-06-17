@@ -45,9 +45,11 @@
 	<div>111</div>
 
 	<script type="text/javascript">
-		console.log(window.screen.width);   //两个值相同 都取的手机宽度
-		console.log(window.innerWidth);     //device-width 就是屏幕分辨率宽  是逻辑像素
-
+		window.onresize=function(){
+			console.log(window.screen.width);   //两个值相同 都取的手机宽度
+			console.log(window.innerWidth);     //device-width 就是屏幕分辨率宽  是逻辑像素
+		}
+		
 	</script>
 
 </body>

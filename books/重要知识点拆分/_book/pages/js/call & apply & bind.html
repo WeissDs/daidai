@@ -1,0 +1,821 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>call & apply & bind · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="cookie & session & token.html" />
+    
+    
+    <link rel="prev" href="async & await.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                        <b>1.2.</b>
+                    
+                    js
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="async & await.html">
+            
+                <a href="async & await.html">
+            
+                    
+                        <b>1.2.1.</b>
+                    
+                    async & await
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.2" data-path="call & apply & bind.html">
+            
+                <a href="call & apply & bind.html">
+            
+                    
+                        <b>1.2.2.</b>
+                    
+                    call & apply & bind
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="cookie & session & token.html">
+            
+                <a href="cookie & session & token.html">
+            
+                    
+                        <b>1.2.3.</b>
+                    
+                    cookie & session & token
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="cookie & session & token.html">
+            
+                <a href="cookie & session & token.html">
+            
+                    
+                        <b>1.2.4.</b>
+                    
+                    cookie & session & token
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="javaScript技巧和问题.html">
+            
+                <a href="javaScript技巧和问题.html">
+            
+                    
+                        <b>1.2.5.</b>
+                    
+                    javaScript技巧和问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="js隐式转换.html">
+            
+                <a href="js隐式转换.html">
+            
+                    
+                        <b>1.2.6.</b>
+                    
+                    js隐式转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="NodeList对象和HTMLCollection对象.html">
+            
+                <a href="NodeList对象和HTMLCollection对象.html">
+            
+                    
+                        <b>1.2.7.</b>
+                    
+                    NodeList对象和HTMLCollection对象(DOM)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="promise && generator.html">
+            
+                <a href="promise && generator.html">
+            
+                    
+                        <b>1.2.8.</b>
+                    
+                    promise && generator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="事件冒泡_捕获_委托.html">
+            
+                <a href="事件冒泡_捕获_委托.html">
+            
+                    
+                        <b>1.2.9.</b>
+                    
+                    事件冒泡捕获委托
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="同步异步.html">
+            
+                <a href="同步异步.html">
+            
+                    
+                        <b>1.2.10.</b>
+                    
+                    同步异步
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="数据流.html">
+            
+                <a href="数据流.html">
+            
+                    
+                        <b>1.2.11.</b>
+                    
+                    数据流
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="数组方法大全.html">
+            
+                <a href="数组方法大全.html">
+            
+                    
+                        <b>1.2.12.</b>
+                    
+                    数组方法大全
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="闭包.html">
+            
+                <a href="闭包.html">
+            
+                    
+                        <b>1.2.13.</b>
+                    
+                    闭包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="防抖和节流.html">
+            
+                <a href="防抖和节流.html">
+            
+                    
+                        <b>1.2.14.</b>
+                    
+                    防抖和节流
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                        <b>1.3.</b>
+                    
+                    css
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../css/css技巧和问题.html">
+            
+                <a href="../css/css技巧和问题.html">
+            
+                    
+                        <b>1.3.1.</b>
+                    
+                    css技巧和问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../css/css自适应.html">
+            
+                <a href="../css/css自适应.html">
+            
+                    
+                        <b>1.3.2.</b>
+                    
+                    css自适应
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../css/像素问题.html">
+            
+                <a href="../css/像素问题.html">
+            
+                    
+                        <b>1.3.3.</b>
+                    
+                    像素问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../css/垂直居中方法.html">
+            
+                <a href="../css/垂直居中方法.html">
+            
+                    
+                        <b>1.3.4.</b>
+                    
+                    垂直居中方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../css/移动端1px问题的解决办法.html">
+            
+                <a href="../css/移动端1px问题的解决办法.html">
+            
+                    
+                        <b>1.3.5.</b>
+                    
+                    移动端1px问题的解决办法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                        <b>1.4.</b>
+                    
+                    vue
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../vue/defineProperty&&Proxy.html">
+            
+                <a href="../vue/defineProperty&&Proxy.html">
+            
+                    
+                        <b>1.4.1.</b>
+                    
+                    defineProperty&&Proxy（vue双向绑定原理）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../vue/eventBus事件订阅和发布.html">
+            
+                <a href="../vue/eventBus事件订阅和发布.html">
+            
+                    
+                        <b>1.4.2.</b>
+                    
+                    eventBus事件订阅和发布
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../vue/vue-router 传值.html">
+            
+                <a href="../vue/vue-router 传值.html">
+            
+                    
+                        <b>1.4.3.</b>
+                    
+                    vue-router 传值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../vue/vue-router 登陆权限配置.html">
+            
+                <a href="../vue/vue-router 登陆权限配置.html">
+            
+                    
+                        <b>1.4.4.</b>
+                    
+                    vue-router 登陆权限配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../vue/vue-slot.html">
+            
+                <a href="../vue/vue-slot.html">
+            
+                    
+                        <b>1.4.5.</b>
+                    
+                    vue-slot
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../vue/vue-组件相关.html">
+            
+                <a href="../vue/vue-组件相关.html">
+            
+                    
+                        <b>1.4.6.</b>
+                    
+                    vue-组件相关
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../vue/vue-生命周期.md">
+            
+                <span>
+            
+                    
+                        <b>1.4.7.</b>
+                    
+                    vue-生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../工作中遇到的疑难杂症.html">
+            
+                <a href="../工作中遇到的疑难杂症.html">
+            
+                    
+                        <b>1.5.</b>
+                    
+                    工作中遇到的疑难杂症
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../正则.html">
+            
+                <a href="../正则.html">
+            
+                    
+                        <b>1.6.</b>
+                    
+                    正则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >call & apply & bind</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="acallb-&#x53C2;&#x6570;">a.call(b, &#x53C2;&#x6570;)</h2>
+<h5 id="&#x4F8B;1-b&#x4F7F;&#x7528;a&#x7684;&#x65B9;&#x6CD5;&#xFF08;&#x76F8;&#x5F53;&#x4E8E;a&#x7684;this&#x6307;&#x5411;&#x4E86;b&#xFF09;">&#x4F8B;1. b&#x4F7F;&#x7528;a&#x7684;&#x65B9;&#x6CD5;&#xFF08;&#x76F8;&#x5F53;&#x4E8E;a&#x7684;this&#x6307;&#x5411;&#x4E86;b&#xFF09;</h5>
+<pre><code>function a(){
+    this.dai = 12
+    this.xi = 0
+    this.yu = 34
+}
+function b(){
+    this.age=1
+    // b&#x7684;this&#x6307;&#x5411;&#x4E86;a&#xFF1F;&#xFF1F;&#x5C06;&#x51FD;&#x6570;a&#x7684;&#x65B9;&#x6CD5;&#x7ED1;&#x5230;b&#x7684;this&#x4E0A;
+    a.call(this)
+}
+let bb = new b();
+
+let result = bb.dai
+console.log(result) ------12
+</code></pre><h5 id="&#x4F8B;2-call-apply-bind">&#x4F8B;2. call apply bind</h5>
+<pre><code>var age = &apos;19&apos;
+var myObj = {
+    name:&apos;&#x5C0F;&#x8D56;&apos;,
+    myAge:this.age,
+    sayName:function(){
+        console.log(this.name + &apos;&#x4ECA;&#x5E74;&apos; + this.age)
+    }
+}
+myObj.sayName(); // &#x5C0F;&#x8D56;&#x4ECA;&#x5E74; undefined
+
+var hero = {
+    name:&apos;&#x827E;&#x5E0C;&apos;,
+    age:&apos;100&apos;
+}
+myObj.sayName.call(hero); //&#x827E;&#x5E0C;&#x4ECA;&#x5E74;100
+myObj.sayName.apply(hero); //&#x827E;&#x5E0C;&#x4ECA;&#x5E74;100
+myObj.sayName.bind(hero)(); //&#x827E;&#x5E0C;&#x4ECA;&#x5E74;100
+</code></pre><h2 id="const---documentqueryselectorallbinddocument">const $ = document.querySelectorAll.bind(document)</h2>
+<h5 id="document&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#xFF08;&#x5C06;this&#x7ED1;&#x5B9A;&#x5728;document&#xFF09;">document&#x4F7F;&#x7528;$&#x65B9;&#x6CD5;&#xFF08;&#x5C06;this&#x7ED1;&#x5B9A;&#x5728;document&#xFF09;</h5>
+<h5 id="&#x7C7B;&#x6570;&#x7EC4;&#x8F6C;&#x6570;&#x7EC4;">&#x7C7B;&#x6570;&#x7EC4;&#x8F6C;&#x6570;&#x7EC4;</h5>
+<pre><code>arr = Array.prototype.slice.call($(&apos;.pane-node&apos;),0);
+
+&#x4E3A;&#x4EC0;&#x4E48;&#x53EF;&#x4EE5;&#x7528;call&#x65B9;&#x6CD5;&#x8F6C;&#x6362;&#xFF1F;
+</code></pre><h2 id="&#x4E2A;&#x4EBA;&#x7406;&#x89E3;">&#x4E2A;&#x4EBA;&#x7406;&#x89E3;</h2>
+<h5 id="&#x4F8B;1&#x4E2D;&#x5728;&#x5199;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;acallthis-&#x6211;&#x7406;&#x89E3;&#x4E3A;&#xFF1A;&#x5C06;a&#x7684;this&#x66FF;&#x6362;&#x4E3A;b&#x5BF9;&#x8C61;&#x7684;this-&#x5728;b&#x4E2D;&#x6267;&#x884C;&#x4E00;&#x6B21;--&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x662F;&#xFF1A;b&#x88AB;&#x5B9E;&#x4F8B;&#x5316;&#x540E;-a&#x7684;&#x5C5E;&#x6027;&#x88AB;&#x7ED9;&#x5230;&#x4E86;b">&#x4F8B;1&#x4E2D;&#x5728;&#x5199;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;a.call(this) &#x6211;&#x7406;&#x89E3;&#x4E3A;&#xFF1A;&#x5C06;a&#x7684;this&#x66FF;&#x6362;&#x4E3A;b&#x5BF9;&#x8C61;&#x7684;this &#x5728;b&#x4E2D;&#x6267;&#x884C;&#x4E00;&#x6B21;  &#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x662F;&#xFF1A;b&#x88AB;&#x5B9E;&#x4F8B;&#x5316;&#x540E; a&#x7684;&#x5C5E;&#x6027;&#x88AB;&#x7ED9;&#x5230;&#x4E86;b</h5>
+<h5 id="&#x4F8B;&#x5B50;">&#x4F8B;&#x5B50;</h5>
+<pre><code>    &lt;body&gt;
+        &lt;div id=&quot;box&quot;&gt;
+            &lt;a href=&quot;#&quot; id=&quot;s1&quot;&gt;12&lt;/a&gt;
+            &lt;a href=&quot;#&quot; id=&quot;s2&quot;&gt;14&lt;/a&gt;
+            &lt;a href=&quot;#&quot; id=&quot;s3&quot;&gt;28&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            // var $ = document.querySelectorAll.bind(document)
+            // console.log($(&apos;#s1&apos;))
+            var $ = document.querySelectorAll;
+            console.log($.bind(document)(&apos;#s1&apos;))
+            console.log($.call(document, &apos;#s1&apos;))
+
+            // call apply &#x5728;&#x5BF9;&#x8C61;&#x7EE7;&#x627F;&#x7684;&#x7528;&#x6CD5;
+            function oo(){
+                function a(){
+                    this.dai = 12
+                    this.xi = 0
+                    this.yu = 34
+                }
+                function b(){
+                    this.age=1
+                    // b&#x7684;this&#x6307;&#x5411;&#x4E86;a&#xFF1F;&#xFF1F;
+                    a.call(this)
+                }
+                let aa = new a();
+                let bb = new b();
+
+                // let result = bb.dai
+                let result = bb.age
+                console.log(result)
+            }
+            oo();
+
+            // &#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x5171;&#x4EAB;&#x5C5E;&#x6027;
+            let a = {
+                dai: 12,
+                xi: 0,
+                yu: 34,
+            }
+
+            let b = {
+                age: 1
+            }
+
+            a.age=b;
+            a.age.age=4
+            console.log(a)
+            console.log(b)
+
+        &lt;/script&gt;
+    &lt;/body&gt;
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="async & await.html" class="navigation navigation-prev " aria-label="Previous page: async & await">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="cookie & session & token.html" class="navigation navigation-next " aria-label="Next page: cookie & session & token">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"call & apply & bind","level":"1.2.2","depth":2,"next":{"title":"cookie & session & token","level":"1.2.3","depth":2,"path":"pages/js/cookie & session & token.md","ref":"pages/js/cookie & session & token.md","articles":[]},"previous":{"title":"async & await","level":"1.2.1","depth":2,"path":"pages/js/async & await.md","ref":"pages/js/async & await.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","livereload"],"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"expandable-chapters":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/js/call & apply & bind.md","mtime":"2020-02-07T12:46:05.902Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-21T07:34:57.153Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

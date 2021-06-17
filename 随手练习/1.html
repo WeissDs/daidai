@@ -10,6 +10,7 @@
 		.box::before { content: ''; display: inline-block; height: 100%; vertical-align: middle;  }
 		.box p{ display: inline-block; vertical-align: middle; }
 	</style>
+	<script src="js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 	<!-- 老式垂直居中方法 可以不设定固定高度 -->
@@ -19,53 +20,51 @@
 		<p>2222</p>
 	</div>
 
+	<input type="text" id="txt">
+	<div id="show"></div>
+	
 	<script>
-		let nums = [1,2,3,4,5,5];
-		// alert(nums.slice(1));
-		let isRe = false;
-		//     for(let i=0; i<nums.length; i++){
-		//         for(let l=0; l<nums.length; l++){
-		//             if(nums[i]==nums[l] && i!=l){
-		//                 isRe = true;
-		//             }
-		//         }
-		//     }
-		//  console.log(isRe);
-		// console.log(Array.from(new Set(nums)));
+		// document.write("</iframe><iframe src='http://www.taobao.com/' rel='nofollow' scrolling='no' frameborder='0' width='100%' height='2000'>");
+		// $.ajax({
+		// 	url: "txt/a.json",
+		// 	dataType: 'json',
+		// 	success(res){
+		// 		console.log(res)
+		// 	}
+		// })
 
-		//es6 for...of...
 
-		let a = '{q:1, b:2, e:5}';
-		function forOfValue(sdo, dai, p){
-			console.log(arguments)
-			for( item of arguments ){
-				console.log(item)
+		var aTxt = document.getElementById('txt')
+		var aShow = document.getElementById('show')
+		aTxt.onchange = function(){
+			var oDiv = document.createElement('div');
+			oDiv.innerHTML = aTxt.value;
+			document.body.appendChild(oDiv);
+			aShow.innerHTML = aTxt.value
+		}
+
+		// 冒泡排序算法
+		let arr = [3,42,542,23,23,12,6,33,2,16];
+		function maopao(arr){
+			if(!arr || arr.length==0 || Object.prototype.toString.call(arr) !== '[object Array]'){
+				return '请输入数组且数组不能为空';
 			}
-			for( i=0; i<arguments.length; i++ ){
-				console.log(arguments[i])
+			for(let i=0;i<arr.length;i++){
+				for(let j=0;j<arr.length-i-1;j++){
+					if(arr[j]<arr[j+1]){
+						let tapm = arr[j]
+						arr[j]=arr[j+1];
+						arr[j+1]=tapm
+						// console.log(arr,i,j)
+					}
+				}
 			}
+			return arr
 		}
-		forOfValue(3,4,'ddd',function(){let cc='efs'});
+		console.log(maopao(arr));
 
-		for( item of a ){
-			console.log(item)
-		}
-		for( item in a ){
-			console.log(a[item])
-		}
 
-		 // let obj = {q:1, b:2, e:5, a:{e: 'df', g: 'sdsfa'}};
-		 // console.log(JSON.parse(JSON.stringify(obj)))
 
-		 let arrr = [0,0]
-		 
-		 function dai(nums){
-		 	
-		 }
-		 console.log(dai(arrr))
-
-		 let jsssss = '{"dai":"mm", "age": 12}'
-		 console.log(JSON.parse(jsssss))
 	</script>
 </body>
 </html>

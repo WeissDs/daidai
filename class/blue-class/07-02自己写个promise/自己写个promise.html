@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="try_promise.js"></script>
+    <script>
+
+    let p=new Promise2(function (resolve, reject){
+      setTimeout(function (){
+        resolve(12,5);
+      }, 500);
+    });
+
+    p.then(function (num){
+      alert(num);
+    }, function (){
+      alert('错误');
+    });
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

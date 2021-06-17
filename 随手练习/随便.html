@@ -66,41 +66,23 @@
 	<div class="trapezoid"></div>
 	<div><img src="image/tab.png" alt="" style="border:1px solid red;"></div>
 	<script>
-
-		let date = new Date();
-		console.log(date);
-		(function(arg){
-			console.log(arg)
-		})(date)
-		
-
-		function oo(){
-			this.a=12;
-			this.b=33;
+		function a(){
+			this.a1=12;
+			this.a2=13;
+			this.a3=[1,2,3]
 		}
-		oo.prototype.showa=function(){
-			alert(this.a)
+		function b(){
+			this.b1 = 5;
+			a.call(this);
 		}
-
-		let oo1 = new oo();
-		// oo1.showa()
-
-		date.call(oo);
-		date.showa();
-
-
-		// label语句 在代码中添加标签
-		let num = 0;
-		a:
-		for(let i=0;i<10;i++){
-			for(let j=0;j<10;j++){
-				if(i==5&&j==5){
-					break;
-				}
-				num++;
-			}
+		let c={
+			c:1
 		}
-		console.log(num);
+		let aa = a.bind(c);
+
+		let ob = new b;
+		let oa = new a;
+		console.log(ob, oa,aa.c);
 	</script>
 </body>
 </html>

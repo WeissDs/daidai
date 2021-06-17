@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/index.js"></script>
+
+	<!-- 模块 == 元件 == 组件 -->
+
+	<!-- 
+		1. 民间的模块化 ———— sea.js、 require.js （模块加载器）
+		AMD规范：AMD（异步模块定义）是require.js在推广过程中对模块定义的规范化产出
+		CMD规范：CMD（通用模块定义）sea.js
+		2. node.js 模块（語言自身給出的）
+		3. ES6 模块（官方）
+	 -->
+
+	 <!-- 
+		node的模块化：
+		1. 没有define
+		2. exports、require、module.exports
+		3. 引用自定义模块
+
+			（1）放到node_modules里 直接使用文件名引用 'mod1'
+			（2）路劲 './1.js'
+
+
+
+	  -->
+
+
+	<!-- <script>
+		import a from "3.js";   //报错,只能在js中引用
+	</script> -->
+
+	<!-- import,export 用babel编译后依然不能使用(依然报错，require不存在)，需要使用webpack或者browserify -->
+
+	<!-- https://blog.csdn.net/leadseczgw01/article/details/80943986  使用babel-preset-env编译async/await会报错，解决方法点击链接 -->
+</head>
+<body>
+	
+</body>
+</html>

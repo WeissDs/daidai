@@ -14,6 +14,7 @@ a{
 }
 blockquote, body, button, dd, dl, dt, fieldset, form, hr, input, legend, li, ol, p, pre, textarea, th, ul, div, span, a {
     font: 14px Microsoft YaHei,Helvetica;
+    font-family: "Adobe 黑体 Std R";
 }
 /*设置媒体查询的字体大小*/
 

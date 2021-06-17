@@ -1,0 +1,933 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>async & await · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="call & apply & bind.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                        <b>1.2.</b>
+                    
+                    js
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="async & await.html">
+            
+                <a href="async & await.html">
+            
+                    
+                        <b>1.2.1.</b>
+                    
+                    async & await
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="call & apply & bind.html">
+            
+                <a href="call & apply & bind.html">
+            
+                    
+                        <b>1.2.2.</b>
+                    
+                    call & apply & bind
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="cookie & session & token.html">
+            
+                <a href="cookie & session & token.html">
+            
+                    
+                        <b>1.2.3.</b>
+                    
+                    cookie & session & token
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="cookie & session & token.html">
+            
+                <a href="cookie & session & token.html">
+            
+                    
+                        <b>1.2.4.</b>
+                    
+                    cookie & session & token
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="javaScript技巧和问题.html">
+            
+                <a href="javaScript技巧和问题.html">
+            
+                    
+                        <b>1.2.5.</b>
+                    
+                    javaScript技巧和问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="js隐式转换.html">
+            
+                <a href="js隐式转换.html">
+            
+                    
+                        <b>1.2.6.</b>
+                    
+                    js隐式转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="NodeList对象和HTMLCollection对象.html">
+            
+                <a href="NodeList对象和HTMLCollection对象.html">
+            
+                    
+                        <b>1.2.7.</b>
+                    
+                    NodeList对象和HTMLCollection对象(DOM)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="promise && generator.html">
+            
+                <a href="promise && generator.html">
+            
+                    
+                        <b>1.2.8.</b>
+                    
+                    promise && generator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="事件冒泡_捕获_委托.html">
+            
+                <a href="事件冒泡_捕获_委托.html">
+            
+                    
+                        <b>1.2.9.</b>
+                    
+                    事件冒泡捕获委托
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="同步异步.html">
+            
+                <a href="同步异步.html">
+            
+                    
+                        <b>1.2.10.</b>
+                    
+                    同步异步
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="数据流.html">
+            
+                <a href="数据流.html">
+            
+                    
+                        <b>1.2.11.</b>
+                    
+                    数据流
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="数组方法大全.html">
+            
+                <a href="数组方法大全.html">
+            
+                    
+                        <b>1.2.12.</b>
+                    
+                    数组方法大全
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="闭包.html">
+            
+                <a href="闭包.html">
+            
+                    
+                        <b>1.2.13.</b>
+                    
+                    闭包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="防抖和节流.html">
+            
+                <a href="防抖和节流.html">
+            
+                    
+                        <b>1.2.14.</b>
+                    
+                    防抖和节流
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                        <b>1.3.</b>
+                    
+                    css
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../css/css技巧和问题.html">
+            
+                <a href="../css/css技巧和问题.html">
+            
+                    
+                        <b>1.3.1.</b>
+                    
+                    css技巧和问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../css/css自适应.html">
+            
+                <a href="../css/css自适应.html">
+            
+                    
+                        <b>1.3.2.</b>
+                    
+                    css自适应
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../css/像素问题.html">
+            
+                <a href="../css/像素问题.html">
+            
+                    
+                        <b>1.3.3.</b>
+                    
+                    像素问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../css/垂直居中方法.html">
+            
+                <a href="../css/垂直居中方法.html">
+            
+                    
+                        <b>1.3.4.</b>
+                    
+                    垂直居中方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../css/移动端1px问题的解决办法.html">
+            
+                <a href="../css/移动端1px问题的解决办法.html">
+            
+                    
+                        <b>1.3.5.</b>
+                    
+                    移动端1px问题的解决办法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                        <b>1.4.</b>
+                    
+                    vue
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../vue/defineProperty&&Proxy.html">
+            
+                <a href="../vue/defineProperty&&Proxy.html">
+            
+                    
+                        <b>1.4.1.</b>
+                    
+                    defineProperty&&Proxy（vue双向绑定原理）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../vue/eventBus事件订阅和发布.html">
+            
+                <a href="../vue/eventBus事件订阅和发布.html">
+            
+                    
+                        <b>1.4.2.</b>
+                    
+                    eventBus事件订阅和发布
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../vue/vue-router 传值.html">
+            
+                <a href="../vue/vue-router 传值.html">
+            
+                    
+                        <b>1.4.3.</b>
+                    
+                    vue-router 传值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../vue/vue-router 登陆权限配置.html">
+            
+                <a href="../vue/vue-router 登陆权限配置.html">
+            
+                    
+                        <b>1.4.4.</b>
+                    
+                    vue-router 登陆权限配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../vue/vue-slot.html">
+            
+                <a href="../vue/vue-slot.html">
+            
+                    
+                        <b>1.4.5.</b>
+                    
+                    vue-slot
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../vue/vue-组件相关.html">
+            
+                <a href="../vue/vue-组件相关.html">
+            
+                    
+                        <b>1.4.6.</b>
+                    
+                    vue-组件相关
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../vue/vue-生命周期.md">
+            
+                <span>
+            
+                    
+                        <b>1.4.7.</b>
+                    
+                    vue-生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../工作中遇到的疑难杂症.html">
+            
+                <a href="../工作中遇到的疑难杂症.html">
+            
+                    
+                        <b>1.5.</b>
+                    
+                    工作中遇到的疑难杂症
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../正则.html">
+            
+                <a href="../正则.html">
+            
+                    
+                        <b>1.6.</b>
+                    
+                    正则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >async & await</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x4F7F;&#x7528;">&#x4F7F;&#x7528;</h2>
+<h4 id="&#x57FA;&#x7840;&#x5199;&#x6CD5;">&#x57FA;&#x7840;&#x5199;&#x6CD5;</h4>
+<pre><code class="lang-javascript">  <span class="hljs-comment">// &#x5C06;&#x9700;&#x8981;&#x56DE;&#x8C03;&#x7684;&#x51FD;&#x6570;&#x5206;&#x5F00;&#x5199;&#xFF0C;&#x8FD4;&#x56DE;promise&#x51FD;&#x6570;</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> promise(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve,reject</span>)</span>{
+      setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        resolve(<span class="hljs-string">&apos;aaa&apos;</span>);
+      },<span class="hljs-number">2000</span>)
+    })
+  }
+
+  <span class="hljs-comment">// &#x597D;&#x50CF;&#x4E0D;&#x9700;&#x8981;&#x5199;promise&#x51FD;&#x6570;&#xFF1F;&#xFF1F;&#xFF1F;</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">b</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> promise(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve,reject</span>)</span>{
+      setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        resolve(<span class="hljs-string">&apos;bbb&apos;</span>);
+      },<span class="hljs-number">2000</span>)
+    })
+  }
+
+  <span class="hljs-comment">// &#x5199;&#x4E00;&#x4E2A;async&#x51FD;&#x6570;</span>
+  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNum</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-keyword">const</span> dataA = <span class="hljs-keyword">await</span> a();
+    <span class="hljs-built_in">console</span>.log(dataA)   <span class="hljs-comment">//.........2s&#x540E;&#x89E6;&#x53D1;</span>
+    <span class="hljs-keyword">const</span> dataB = <span class="hljs-keyword">await</span> b();
+    <span class="hljs-built_in">console</span>.log(dataB)   <span class="hljs-comment">//.........4s&#x540E;&#x89E6;&#x53D1;</span>
+  }
+</code></pre>
+<h4 id="vue&#x4E2D;&#x53EF;&#x7528;&#x7684;&#x5199;&#x6CD5;">vue&#x4E2D;&#x53EF;&#x7528;&#x7684;&#x5199;&#x6CD5;</h4>
+<pre><code class="lang-javascript">  methods:{
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params">num</span>)</span>{
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> promise(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve,reject</span>)</span>{
+        setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+          resolve(num);
+        },<span class="hljs-number">2000</span>)
+      })
+    }
+  },
+
+  <span class="hljs-comment">// &#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5C06;vue&#x7684;&#x94A9;&#x5B50;&#x51FD;&#x6570;&#x5199;&#x6210;async&#x51FD;&#x6570;</span>
+  <span class="hljs-keyword">async</span> mounted() {
+    <span class="hljs-keyword">const</span> adata = <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.a(<span class="hljs-string">&quot;1&quot;</span>);
+    <span class="hljs-built_in">console</span>.log(adata);
+    <span class="hljs-keyword">const</span> adata2 = <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.a(<span class="hljs-string">&quot;2&quot;</span>);
+    <span class="hljs-built_in">console</span>.log(adata2);
+  }
+</code></pre>
+<h2 id="&#x7406;&#x89E3;asyncawait&#xFF08;&#x4EE5;&#x4E0B;&#x662F;&#x590D;&#x5236;&#x7C98;&#x8D34;&#xFF09;">&#x7406;&#x89E3;async/await&#xFF08;&#x4EE5;&#x4E0B;&#x662F;&#x590D;&#x5236;&#x7C98;&#x8D34;&#xFF09;</h2>
+<h4 id="&#x9996;&#x5148;&#x660E;&#x786E;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;-nodejs-&#x9700;&#x8981;&#x5F02;&#x6B65;&#x7F16;&#x7A0B;&#xFF1F;">&#x9996;&#x5148;&#x660E;&#x786E;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48; Node.js &#x9700;&#x8981;&#x5F02;&#x6B65;&#x7F16;&#x7A0B;&#xFF1F;</h4>
+<h6 id="javascript-&#x662F;&#x5355;&#x7EBF;&#x7A0B;&#x7684;&#xFF0C;&#x5728;&#x53D1;&#x51FA;&#x4E00;&#x4E2A;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x5728;&#x6CA1;&#x6709;&#x5F97;&#x5230;&#x7ED3;&#x679C;&#x4E4B;&#x524D;&#xFF0C;&#x8BE5;&#x8C03;&#x7528;&#x5C31;&#x4E0D;&#x8FD4;&#x56DE;&#xFF0C;&#x610F;&#x601D;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x8005;&#x4E3B;&#x52A8;&#x7B49;&#x5F85;&#x8C03;&#x7528;&#x7ED3;&#x679C;&#xFF0C;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x5C31;&#x662F;&#x5FC5;&#x987B;&#x7B49;&#x5F85;&#x4E0A;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x624D;&#x80FD;&#x6267;&#x884C;&#x4E0B;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#xFF0C;&#x8FD9;&#x79CD;&#x6267;&#x884C;&#x6A21;&#x5F0F;&#x53EB;&#xFF1A;&#x540C;&#x6B65;&#x3002;">JavaScript &#x662F;&#x5355;&#x7EBF;&#x7A0B;&#x7684;&#xFF0C;&#x5728;&#x53D1;&#x51FA;&#x4E00;&#x4E2A;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x5728;&#x6CA1;&#x6709;&#x5F97;&#x5230;&#x7ED3;&#x679C;&#x4E4B;&#x524D;&#xFF0C;&#x8BE5;&#x8C03;&#x7528;&#x5C31;&#x4E0D;&#x8FD4;&#x56DE;&#xFF0C;&#x610F;&#x601D;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x8005;&#x4E3B;&#x52A8;&#x7B49;&#x5F85;&#x8C03;&#x7528;&#x7ED3;&#x679C;&#xFF0C;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x5C31;&#x662F;&#x5FC5;&#x987B;&#x7B49;&#x5F85;&#x4E0A;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x624D;&#x80FD;&#x6267;&#x884C;&#x4E0B;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#xFF0C;&#x8FD9;&#x79CD;&#x6267;&#x884C;&#x6A21;&#x5F0F;&#x53EB;&#xFF1A;&#x540C;&#x6B65;&#x3002;</h6>
+<p>Node.js &#x7684;&#x4E3B;&#x8981;&#x5E94;&#x7528;&#x573A;&#x666F;&#x662F;&#x5904;&#x7406;&#x9AD8;&#x5E76;&#x53D1;&#xFF08;&#x5355;&#x4F4D;&#x65F6;&#x95F4;&#x5185;&#x6781;&#x5927;&#x7684;&#x8BBF;&#x95EE;&#x91CF;&#xFF09;&#x548C; I/O &#x5BC6;&#x96C6;&#x573A;&#x666F;&#xFF08;ps: I/O &#x64CD;&#x4F5C;&#x5F80;&#x5F80;&#x975E;&#x5E38;&#x8017;&#x65F6;&#xFF0C;&#x6240;&#x4EE5;&#x5F02;&#x6B65;&#x7684;&#x5173;&#x952E;&#x5728;&#x4E8E;&#x89E3;&#x51B3; I/O &#x8017;&#x65F6;&#x95EE;&#x9898;&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x91C7;&#x7528;&#x540C;&#x6B65;&#x7F16;&#x7A0B;&#xFF0C;&#x95EE;&#x9898;&#x5C31;&#x6765;&#x4E86;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x5904;&#x7406;&#x4E00;&#x4E2A; I/O &#x8BF7;&#x6C42;&#x9700;&#x8981;&#x5927;&#x91CF;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x540E;&#x9762;&#x7684;&#x8BF7;&#x6C42;&#x90FD;&#x5C06;&#x6392;&#x961F;&#xFF0C;&#x9020;&#x6210;&#x6D4F;&#x89C8;&#x5668;&#x7AEF;&#x7684;&#x5361;&#x987F;&#x3002;&#x5F02;&#x6B65;&#x7F16;&#x7A0B;&#x80FD;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;
+&#x6240;&#x8C13;&#x5F02;&#x6B65;&#xFF0C;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x5728;&#x53D1;&#x51FA;&#x540E;&#xFF0C;&#x8FD9;&#x4E2A;&#x8C03;&#x7528;&#x5C31;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x4E86;&#xFF0C;&#x8C03;&#x7528;&#x8005;&#x4E0D;&#x4F1A;&#x7ACB;&#x5373;&#x5F97;&#x5230;&#x7ED3;&#x679C;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#xFF0C;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x540E;&#x7EED;&#x64CD;&#x4F5C;&#xFF0C;&#x800C;&#x88AB;&#x8C03;&#x7528;&#x8005;&#x6267;&#x884C;&#x5F97;&#x5230;&#x7ED3;&#x679C;&#x540E;&#x901A;&#x8FC7;&#x72B6;&#x6001;&#x3001;&#x4E8B;&#x4EF6;&#x6765;&#x901A;&#x77E5;&#x8C03;&#x7528;&#x8005;&#x4F7F;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF08; callback &#xFF09;&#x6765;&#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x7ED3;&#x679C;&#x3002;Node&#x5728;&#x5904;&#x7406;&#x8017;&#x65F6;&#x7684; I/O &#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x5C06;&#x5176;&#x4EA4;&#x7ED9;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x5904;&#x7406;&#xFF0C;&#x81EA;&#x5DF1;&#x7EE7;&#x7EED;&#x5904;&#x7406;&#x5176;&#x4ED6;&#x8BBF;&#x95EE;&#x8BF7;&#x6C42;&#xFF0C;&#x5F53; I/O &#x64CD;&#x4F5C;&#x5904;&#x7406;&#x597D;&#x540E;&#x5C31;&#x4F1A;&#x901A;&#x8FC7;&#x4E8B;&#x4EF6;&#x901A;&#x77E5; Node &#x7528;&#x56DE;&#x8C03;&#x505A;&#x540E;&#x7EED;&#x5904;&#x7406;&#x3002;
+&#x6709;&#x4E2A;&#x4F8B;&#x5B50;&#x975E;&#x5E38;&#x597D;&#xFF1A;</p>
+<p>&#x4F60;&#x6253;&#x7535;&#x8BDD;&#x95EE;&#x4E66;&#x5E97;&#x8001;&#x677F;&#x6709;&#x6CA1;&#x6709;&#x300A;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x300B;&#x8FD9;&#x672C;&#x4E66;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x540C;&#x6B65;&#x901A;&#x4FE1;&#x673A;&#x5236;&#xFF0C;&#x4E66;&#x5E97;&#x8001;&#x677F;&#x4F1A;&#x8BF4;&#xFF0C;&#x4F60;&#x7A0D;&#x7B49;&#xFF0C;&#x201D;&#x6211;&#x67E5;&#x4E00;&#x4E0B;&quot;&#xFF0C;&#x7136;&#x540E;&#x5F00;&#x59CB;&#x67E5;&#x554A;&#x67E5;&#xFF0C;&#x7B49;&#x67E5;&#x597D;&#x4E86;&#xFF08;&#x53EF;&#x80FD;&#x662F;5&#x79D2;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x662F;&#x4E00;&#x5929;&#xFF09;&#x544A;&#x8BC9;&#x4F60;&#x7ED3;&#x679C;&#xFF08;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF09;&#x3002;&#x800C;&#x5F02;&#x6B65;&#x901A;&#x4FE1;&#x673A;&#x5236;&#xFF0C;&#x4E66;&#x5E97;&#x8001;&#x677F;&#x76F4;&#x63A5;&#x544A;&#x8BC9;&#x4F60;&#x6211;&#x67E5;&#x4E00;&#x4E0B;&#x554A;&#xFF0C;&#x67E5;&#x597D;&#x4E86;&#x6253;&#x7535;&#x8BDD;&#x7ED9;&#x4F60;&#xFF0C;&#x7136;&#x540E;&#x76F4;&#x63A5;&#x6302;&#x7535;&#x8BDD;&#x4E86;&#xFF08;&#x4E0D;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF09;&#x3002;&#x7136;&#x540E;&#x67E5;&#x597D;&#x4E86;&#xFF0C;&#x4ED6;&#x4F1A;&#x4E3B;&#x52A8;&#x6253;&#x7535;&#x8BDD;&#x7ED9;&#x4F60;&#x3002;&#x5728;&#x8FD9;&#x91CC;&#x8001;&#x677F;&#x901A;&#x8FC7;&#x201C;&#x56DE;&#x7535;&#x201D;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x56DE;&#x8C03;&#x3002;
+&#x4E0B;&#x9762;&#x51E0;&#x79CD;&#x65B9;&#x5F0F;&#x662F;&#x5F02;&#x6B65;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x7684;&#x8FDB;&#x5316;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<h4 id="callbacks">CallBacks</h4>
+<p>&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x5C31;&#x662F;&#x51FD;&#x6570;A&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x51FD;&#x6570;B&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x672A;&#x6765;&#x67D0;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x88AB;&#x8C03;&#x7528;&#x3002;callback&#x7684;&#x5F02;&#x6B65;&#x6A21;&#x5F0F;&#x6700;&#x5927;&#x7684;&#x95EE;&#x9898;&#x5C31;&#x662F;&#xFF0C;&#x7406;&#x89E3;&#x56F0;&#x96BE;&#x52A0;&#x56DE;&#x8C03;&#x5730;&#x72F1;&#xFF08;callback hell&#xFF09;&#xFF0C;&#x770B;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;&#xFF1A;</p>
+<pre><code>A();
+ajax(&apos;url1&apos;, function(){
+  B();
+  ajax(&apos;url2&apos;, function(){
+      C();
+  }
+  D();
+});
+E();
+</code></pre><h6 id="&#x5176;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x4E3A;&#xFF1A;a--e--b--d--c&#xFF0C;&#x8FD9;&#x79CD;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x7684;&#x786E;&#x4F1A;&#x8BA9;&#x4EBA;&#x5934;&#x8111;&#x53D1;&#x660F;&#xFF0C;&#x53E6;&#x5916;&#x7531;&#x4E8E;&#x7531;&#x4E8E;&#x591A;&#x4E2A;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x4E4B;&#x95F4;&#x5F80;&#x5F80;&#x4F1A;&#x8026;&#x5408;&#xFF0C;&#x53EA;&#x8981;&#x4E2D;&#x95F4;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x9700;&#x8981;&#x4FEE;&#x6539;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x7684;&#x4E0A;&#x5C42;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x548C;&#x4E0B;&#x5C42;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x90FD;&#x53EF;&#x80FD;&#x8981;&#x4FEE;&#x6539;&#xFF0C;&#x8FD9;&#x5C31;&#x9677;&#x5165;&#x4E86;&#x56DE;&#x8C03;&#x5730;&#x72F1;&#x3002;&#x800C;-promise-&#x5BF9;&#x8C61;&#x5C31;&#x5F88;&#x597D;&#x7684;&#x89E3;&#x51B3;&#x4E86;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x4E4B;&#x95F4;&#x7684;&#x8026;&#x5408;&#x95EE;&#x9898;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x540C;&#x6B65;&#x7F16;&#x7A0B;&#x7684;&#x65B9;&#x5F0F;&#x53BB;&#x5199;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x3002;">&#x5176;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x4E3A;&#xFF1A;A =&gt; E =&gt; B =&gt; D =&gt; C&#xFF0C;&#x8FD9;&#x79CD;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x7684;&#x786E;&#x4F1A;&#x8BA9;&#x4EBA;&#x5934;&#x8111;&#x53D1;&#x660F;&#xFF0C;&#x53E6;&#x5916;&#x7531;&#x4E8E;&#x7531;&#x4E8E;&#x591A;&#x4E2A;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x4E4B;&#x95F4;&#x5F80;&#x5F80;&#x4F1A;&#x8026;&#x5408;&#xFF0C;&#x53EA;&#x8981;&#x4E2D;&#x95F4;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x9700;&#x8981;&#x4FEE;&#x6539;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x7684;&#x4E0A;&#x5C42;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x548C;&#x4E0B;&#x5C42;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x90FD;&#x53EF;&#x80FD;&#x8981;&#x4FEE;&#x6539;&#xFF0C;&#x8FD9;&#x5C31;&#x9677;&#x5165;&#x4E86;&#x56DE;&#x8C03;&#x5730;&#x72F1;&#x3002;&#x800C; Promise &#x5BF9;&#x8C61;&#x5C31;&#x5F88;&#x597D;&#x7684;&#x89E3;&#x51B3;&#x4E86;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x4E4B;&#x95F4;&#x7684;&#x8026;&#x5408;&#x95EE;&#x9898;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x540C;&#x6B65;&#x7F16;&#x7A0B;&#x7684;&#x65B9;&#x5F0F;&#x53BB;&#x5199;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x3002;</h6>
+<h4 id="promise">Promise</h4>
+<h6 id="promise-&#x5BF9;&#x8C61;&#x662F;&#x4E00;&#x4E2A;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x6765;&#x751F;&#x6210;promise&#x5B9E;&#x4F8B;&#x3002;promise-&#x4EE3;&#x8868;&#x4E00;&#x4E2A;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#xFF0C;&#x6709;&#x4E09;&#x79CD;&#x72B6;&#x6001;&#xFF1A;pending&#xFF0C;resolved&#xFF08;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x6210;&#x529F;&#x7531;-pending-&#x53D8;&#x4E3A;-resolved-&#xFF09;&#xFF0C;rejected&#xFF08;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x5931;&#x8D25;&#x7531;-pending-&#x53D8;&#x4E3A;-rejected-&#xFF09;&#xFF0C;&#x4E00;&#x65E6;&#x53D8;&#x4E3A;&#x540E;&#x4E24;&#x79CD;&#x72B6;&#x6001;&#x5C06;&#x4E0D;&#x4F1A;&#x518D;&#x6539;&#x53D8;&#x3002;promise-&#x5BF9;&#x8C61;&#x4F5C;&#x4E3A;&#x6784;&#x9020;&#x51FD;&#x6570;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x800C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x53C8;&#x63A5;&#x53D7;-resolve-&#x548C;-reject-&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x505A;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x662F;js&#x5185;&#x7F6E;&#x7684;&#xFF0C;&#x65E0;&#x9700;&#x914D;&#x7F6E;&#x3002;resolve-&#x51FD;&#x6570;&#x5728;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x6210;&#x529F;&#x540E;&#x8C03;&#x7528;&#xFF0C;&#x5C06;pending&#x72B6;&#x6001;&#x53D8;&#x4E3A;resolved&#xFF0C;&#x5E76;&#x5C06;&#x5B83;&#x7684;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF1B;reject-&#x51FD;&#x6570;&#x5728;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x5931;&#x8D25;&#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x5C06;pending&#x72B6;&#x6001;&#x53D8;&#x4E3A;rejected&#xFF0C;&#x5E76;&#x5C06;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;">Promise &#x5BF9;&#x8C61;&#x662F;&#x4E00;&#x4E2A;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x6765;&#x751F;&#x6210;promise&#x5B9E;&#x4F8B;&#x3002;Promise &#x4EE3;&#x8868;&#x4E00;&#x4E2A;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#xFF0C;&#x6709;&#x4E09;&#x79CD;&#x72B6;&#x6001;&#xFF1A;pending&#xFF0C;resolved&#xFF08;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x6210;&#x529F;&#x7531; pending &#x53D8;&#x4E3A; resolved &#xFF09;&#xFF0C;rejected&#xFF08;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x5931;&#x8D25;&#x7531; pending &#x53D8;&#x4E3A; rejected &#xFF09;&#xFF0C;&#x4E00;&#x65E6;&#x53D8;&#x4E3A;&#x540E;&#x4E24;&#x79CD;&#x72B6;&#x6001;&#x5C06;&#x4E0D;&#x4F1A;&#x518D;&#x6539;&#x53D8;&#x3002;Promise &#x5BF9;&#x8C61;&#x4F5C;&#x4E3A;&#x6784;&#x9020;&#x51FD;&#x6570;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x800C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x53C8;&#x63A5;&#x53D7; resolve &#x548C; reject &#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x505A;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x662F;JS&#x5185;&#x7F6E;&#x7684;&#xFF0C;&#x65E0;&#x9700;&#x914D;&#x7F6E;&#x3002;resolve &#x51FD;&#x6570;&#x5728;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x6210;&#x529F;&#x540E;&#x8C03;&#x7528;&#xFF0C;&#x5C06;pending&#x72B6;&#x6001;&#x53D8;&#x4E3A;resolved&#xFF0C;&#x5E76;&#x5C06;&#x5B83;&#x7684;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF1B;reject &#x51FD;&#x6570;&#x5728;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x5931;&#x8D25;&#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x5C06;pending&#x72B6;&#x6001;&#x53D8;&#x4E3A;rejected&#xFF0C;&#x5E76;&#x5C06;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</h6>
+<h4 id="promiseprototypethen">Promise.prototype.then()</h4>
+<p>Promise&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#x4E0A;&#x6709;&#x4E00;&#x4E2A;then&#x65B9;&#x6CD5;&#xFF0C;&#x5B83;&#x63A5;&#x53D7;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x5206;&#x522B;&#x662F; resolved &#x72B6;&#x6001;&#x548C; rejected &#x72B6;&#x6001;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x800C;&#x8FD9;&#x4E24;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x63A5;&#x53D7;&#x7684;&#x53C2;&#x6570;&#x5206;&#x522B;&#x662F;Promise&#x5B9E;&#x4F8B;&#x4E2D;resolve&#x51FD;&#x6570;&#x548C;reject&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x53C2;&#x6570;&#x3002; &#x53E6;&#x5916;rejected&#x72B6;&#x6001;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x662F;&#x53EF;&#x7701;&#x7565;&#x7684;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4F7F;&#x7528;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code>const instance = new Promise((resolve, reject) =&gt; {
+    // &#x4E00;&#x4E9B;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;
+    if(/*&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x6210;&#x529F;*/) {
+      resolve(value);
+    } else {
+      reject(error);
+    }
+  }
+})
+instance.then(value =&gt; {
+  // do something...
+}, error =&gt; {
+  // do something...
+})
+</code></pre><p>&#x6CE8;&#x610F;Promise&#x5B9E;&#x4F8B;&#x5728;&#x751F;&#x6210;&#x540E;&#x4F1A;&#x7ACB;&#x5373;&#x6267;&#x884C;&#xFF0C;&#x800C; then &#x65B9;&#x6CD5;&#x53EA;&#x6709;&#x5728;&#x6240;&#x6709;&#x540C;&#x6B65;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x540E;&#x624D;&#x4F1A;&#x6267;&#x884C;&#xFF0C;&#x770B;&#x770B;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code>const promise = new Promise((resolve, reject) =&gt; {
+  console.log(&apos;async task begins!&apos;);
+  setTimeout(() =&gt; {
+    resolve(&apos;done, pending -&gt; resolved!&apos;);
+  }, 1000);
+})
+
+promise.then(value =&gt; {
+  console.log(value);
+}) 
+
+console.log(&apos;1.please wait&apos;);
+console.log(&apos;2.please wait&apos;);
+console.log(&apos;3.please wait&apos;);
+// async task begins!
+// 1.please wait
+// 2.please wait
+// 3.please wait
+// done, pending -&gt; resolved!
+</code></pre><p>&#x4E0A;&#x9762;&#x7684;&#x5B9E;&#x4F8B;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;Promise&#x5B9E;&#x4F8B;&#x751F;&#x6210;&#x540E;&#x7ACB;&#x5373;&#x6267;&#x884C;&#xFF0C;&#x6240;&#x4EE5;&#x9996;&#x5148;&#x8F93;&#x51FA; &apos;async task begins!&apos;&#xFF0C;&#x968F;&#x540E;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x5F02;&#x6B65;&#x64CD;&#x4F5C; setTimeout&#xFF0C;1&#x79D2;&#x540E;&#x6267;&#x884C;&#xFF0C;&#x6240;&#x4EE5;&#x65E0;&#x9700;&#x7B49;&#x5F85;&#xFF0C;&#x5411;&#x4E0B;&#x6267;&#x884C;&#xFF0C;&#x800C;then&#x65B9;&#x6CD5;&#x6307;&#x5B9A;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x8981;&#x5728;&#x6240;&#x6709;&#x540C;&#x6B65;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x540E;&#x624D;&#x6267;&#x884C;&#xFF0C;&#x6240;&#x4EE5;&#x5148;&#x8F93;&#x51FA;&#x4E86;3&#x4E2A;&apos;please wait&apos;&#xFF0C;&#x6700;&#x540E;&#x8F93;&#x51FA;&apos;done, pending -&gt; resolved!&apos;&#x3002;(&#x6B64;&#x5904;&#x7701;&#x7565;&#x4E86;then&#x65B9;&#x6CD5;&#x4E2D;&#x7684;reject&#x56DE;&#x8C03;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x5728;then&#x4E2D;&#x505A;rejected&#x72B6;&#x6001;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x800C;&#x4F7F;&#x7528;catch&#x65B9;&#x6CD5;&#x4E13;&#x95E8;&#x5904;&#x7406;&#x9519;&#x8BEF;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;.then(null, reject))</p>
+<p>&#x94FE;&#x5F0F;&#x8C03;&#x7528; then &#x65B9;&#x6CD5;
+then &#x65B9;&#x6CD5;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684; Promise &#x5B9E;&#x4F8B;&#xFF0C;&#x53EF;&#x4EE5;&#x5206;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x6765;&#x770B;&#xFF1A;</p>
+<p>&#x6307;&#x5B9A;&#x8FD4;&#x56DE;&#x503C;&#x662F;&#x65B0;&#x7684; Promise &#x5BF9;&#x8C61;&#xFF0C;&#x5982;return new Promise(...)&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x6CA1;&#x5565;&#x597D;&#x8BF4;&#x7684;&#xFF0C;&#x7531;&#x4E8E;&#x8FD4;&#x56DE;&#x7684;&#x662F; Promise&#xFF0C;&#x540E;&#x9762;&#x663E;&#x7136;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x8C03;&#x7528;then&#x65B9;&#x6CD5;&#x3002;
+&#x8FD4;&#x56DE;&#x503C;&#x4E0D;&#x662F;Promise&#xFF0C; &#x5982;&#xFF1A;return 1 &#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x8FD8;&#x662F;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; Promise&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x4E2A;Promise &#x7ACB;&#x5373;&#x6267;&#x884C;&#x56DE;&#x8C03; resolve(1)&#x3002;&#x6240;&#x4EE5;&#x4ECD;&#x7136;&#x53EF;&#x4EE5;&#x94FE;&#x5F0F;&#x8C03;&#x7528;then&#x65B9;&#x6CD5;&#x3002;&#xFF08;&#x6CE8;&#xFF1A;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6307;&#x5B9A;return&#x8BED;&#x53E5;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x8FD4;&#x56DE;&#x4E86;undefined&#xFF09;
+&#x4F7F;&#x7528; then &#x7684;&#x94FE;&#x5F0F;&#x5199;&#x6CD5;&#xFF0C;&#x6309;&#x987A;&#x5E8F;&#x5B9E;&#x73B0;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x7528;&#x540C;&#x6B65;&#x7F16;&#x7A0B;&#x7684;&#x5F62;&#x5F0F;&#x53BB;&#x5B9E;&#x73B0;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#xFF0C;&#x6765;&#x770B;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x5B9E;&#x73B0;&#x9694;&#x4E24;&#x79D2;&#x6253;&#x4E00;&#x6B21;&#x62DB;&#x547C;&#xFF1A;</p>
+<pre><code>function sayHi(name) {
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+      resolve(name);
+    }, 2000)
+  })
+}
+
+sayHi(&apos;&#x5F20;&#x4E09;&apos;)
+  .then(name =&gt; {
+    console.log(`&#x4F60;&#x597D;&#xFF0C; ${name}`);
+    return sayHi(&apos;&#x674E;&#x56DB;&apos;);    // &#x6700;&#x7EC8; resolved &#x51FD;&#x6570;&#x4E2D;&#x7684;&#x53C2;&#x6570;&#x5C06;&#x4F5C;&#x4E3A;&#x503C;&#x4F20;&#x9012;&#x7ED9;&#x4E0B;&#x4E00;&#x4E2A;then
+  })
+  // name &#x662F;&#x4E0A;&#x4E00;&#x4E2A;then&#x4F20;&#x9012;&#x51FA;&#x6765;&#x7684;&#x53C2;&#x6570;
+  .then(name =&gt; {                
+    console.log(`&#x4F60;&#x597D;&#xFF0C; ${name}`);
+    return sayHi(&apos;&#x738B;&#x4E8C;&#x9EBB;&#x5B50;&apos;);
+  })
+  .then(name =&gt; {
+    console.log(`&#x4F60;&#x597D;&#xFF0C; ${name}`);
+  })
+// &#x4F60;&#x597D;&#xFF0C; &#x5F20;&#x4E09;
+// &#x4F60;&#x597D;&#xFF0C; &#x674E;&#x56DB;
+// &#x4F60;&#x597D;&#xFF0C; &#x738B;&#x4E8C;&#x9EBB;&#x5B50;
+</code></pre><p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4F7F;&#x7528;&#x94FE;&#x5F0F;then&#x7684;&#x5199;&#x6CD5;&#xFF0C;&#x5C06;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x53D8;&#x6210;&#x4E86;&#x540C;&#x6B65;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x5E26;&#x6765;&#x4E86;&#x65B0;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5C31;&#x662F;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x53D8;&#x6210;&#x4E86;&#x5F88;&#x957F;&#x7684;then&#x94FE;&#xFF0C;&#x65B0;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x5C31;&#x662F;Generator&#xFF0C;&#x8FD9;&#x91CC;&#x8DE8;&#x8FC7;&#x5B83;&#x76F4;&#x63A5;&#x8BF4;&#x5B83;&#x7684;&#x8BED;&#x6CD5;&#x7CD6;&#xFF1A;async/await&#x3002;</p>
+<h2 id="asyncawait">async/await</h2>
+<h4 id="async">async</h4>
+<p>async/await&#x5B9E;&#x9645;&#x4E0A;&#x662F;Generator&#x7684;&#x8BED;&#x6CD5;&#x7CD6;&#x3002;&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;async&#x5173;&#x952E;&#x5B57;&#x4EE3;&#x8868;&#x540E;&#x9762;&#x7684;&#x51FD;&#x6570;&#x4E2D;&#x6709;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#xFF0C;await&#x8868;&#x793A;&#x7B49;&#x5F85;&#x4E00;&#x4E2A;&#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x3002;&#x58F0;&#x660E;&#x5F02;&#x6B65;&#x51FD;&#x6570;&#x53EA;&#x9700;&#x5728;&#x666E;&#x901A;&#x51FD;&#x6570;&#x524D;&#x9762;&#x52A0;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x5B57;async&#x5373;&#x53EF;&#xFF0C;&#x5982;&#xFF1A;</p>
+<p>async function funcA() {}
+async &#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;Promise&#x5BF9;&#x8C61;&#xFF08;&#x5982;&#x679C;&#x6307;&#x5B9A;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x4E0D;&#x662F;Promise&#x5BF9;&#x8C61;&#xFF0C;&#x4E5F;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;Promise&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x7ACB;&#x5373; resolve &#xFF0C;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x540C; then &#x65B9;&#x6CD5;&#xFF09;&#xFF0C;&#x56E0;&#x6B64; async &#x51FD;&#x6570;&#x901A;&#x8FC7; return &#x8FD4;&#x56DE;&#x7684;&#x503C;&#xFF0C;&#x4F1A;&#x6210;&#x4E3A; then &#x65B9;&#x6CD5;&#x4E2D;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#xFF1A;</p>
+<pre><code>async function funcA() {
+  return &apos;hello!&apos;;
+}
+
+funcA().then(value =&gt; {
+  console.log(value);
+})
+// hello!
+</code></pre><p>&#x5355;&#x72EC;&#x4E00;&#x4E2A; async &#x51FD;&#x6570;&#xFF0C;&#x5176;&#x5B9E;&#x4E0E;Promise&#x6267;&#x884C;&#x7684;&#x529F;&#x80FD;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x6765;&#x770B;&#x770B; await &#x90FD;&#x5E72;&#x4E86;&#x4E9B;&#x5565;&#x3002;</p>
+<h4 id="await">await</h4>
+<p>&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C; await &#x5C31;&#x662F;&#x5F02;&#x6B65;&#x7B49;&#x5F85;&#xFF0C;&#x5B83;&#x7B49;&#x5F85;&#x7684;&#x662F;&#x4E00;&#x4E2A;Promise&#xFF0C;&#x56E0;&#x6B64; await &#x540E;&#x9762;&#x5E94;&#x8BE5;&#x5199;&#x4E00;&#x4E2A;Promise&#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x662F;Promise&#x5BF9;&#x8C61;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x88AB;&#x8F6C;&#x6210;&#x4E00;&#x4E2A;&#x7ACB;&#x5373; resolve &#x7684;Promise&#x3002; async &#x51FD;&#x6570;&#x88AB;&#x8C03;&#x7528;&#x540E;&#x5C31;&#x7ACB;&#x5373;&#x6267;&#x884C;&#xFF0C;&#x4F46;&#x662F;&#x4E00;&#x65E6;&#x9047;&#x5230; await &#x5C31;&#x4F1A;&#x5148;&#x8FD4;&#x56DE;&#xFF0C;&#x7B49;&#x5230;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x6267;&#x884C;&#x5B8C;&#x6210;&#xFF0C;&#x518D;&#x63A5;&#x7740;&#x6267;&#x884C;&#x51FD;&#x6570;&#x4F53;&#x5185;&#x540E;&#x9762;&#x7684;&#x8BED;&#x53E5;&#x3002;&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#x5C31;&#x662F;&#xFF1A;async&#x51FD;&#x6570;&#x8C03;&#x7528;&#x4E0D;&#x4F1A;&#x9020;&#x6210;&#x4EE3;&#x7801;&#x7684;&#x963B;&#x585E;&#xFF0C;&#x4F46;&#x662F;await&#x4F1A;&#x5F15;&#x8D77;async&#x51FD;&#x6570;&#x5185;&#x90E8;&#x4EE3;&#x7801;&#x7684;&#x963B;&#x585E;&#x3002;&#x770B;&#x770B;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code>async function func() {
+  console.log(&apos;async function is running!&apos;);
+  const num1 = await 200;
+  console.log(`num1 is ${num1}`);
+  const num2 = await num1+ 100;
+  console.log(`num2 is ${num2}`);
+  const num3 = await num2 + 100;
+  console.log(`num3 is ${num3}`);
+}
+
+func();
+console.log(&apos;run me before await!&apos;);
+// async function is running!
+// run me before await!
+// num1 is 200
+// num2 is 300
+// num3 is 400
+</code></pre><p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x8C03;&#x7528; async func &#x51FD;&#x6570;&#x540E;&#xFF0C;&#x5B83;&#x4F1A;&#x7ACB;&#x5373;&#x6267;&#x884C;&#xFF0C;&#x9996;&#x5148;&#x8F93;&#x51FA;&#x4E86;&apos;async function is running!&apos;&#xFF0C;&#x63A5;&#x7740;&#x9047;&#x5230;&#x4E86; await &#x5F02;&#x6B65;&#x7B49;&#x5F85;&#xFF0C;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#xFF0C;&#x5148;&#x6267;&#x884C;func()&#x540E;&#x9762;&#x7684;&#x540C;&#x6B65;&#x4EFB;&#x52A1;&#xFF0C;&#x540C;&#x6B65;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x540E;&#xFF0C;&#x63A5;&#x7740;await&#x7B49;&#x5F85;&#x7684;&#x4F4D;&#x7F6E;&#x7EE7;&#x7EED;&#x5F80;&#x4E0B;&#x6267;&#x884C;&#x3002;&#x53EF;&#x4EE5;&#x8BF4;&#xFF0C;async&#x51FD;&#x6570;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x770B;&#x4F5C;&#x591A;&#x4E2A;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#xFF0C;&#x5305;&#x88C5;&#x6210;&#x7684;&#x4E00;&#x4E2A;Promise &#x5BF9;&#x8C61;&#xFF0C;&#x800C;await&#x547D;&#x4EE4;&#x5C31;&#x662F;&#x5185;&#x90E8;then&#x547D;&#x4EE4;&#x7684;&#x8BED;&#x6CD5;&#x7CD6;&#x3002;</p>
+<p>&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C; await &#x540E;&#x9762;&#x7684; Promise &#x5BF9;&#x8C61;&#x4E0D;&#x603B;&#x662F;&#x8FD4;&#x56DE; resolved &#x72B6;&#x6001;&#xFF0C;&#x53EA;&#x8981;&#x4E00;&#x4E2A; await &#x540E;&#x9762;&#x7684;Promise&#x72B6;&#x6001;&#x53D8;&#x4E3A; rejected &#xFF0C;&#x6574;&#x4E2A; async &#x51FD;&#x6570;&#x90FD;&#x4F1A;&#x4E2D;&#x65AD;&#x6267;&#x884C;&#xFF0C;&#x4E3A;&#x4E86;&#x4FDD;&#x5B58;&#x9519;&#x8BEF;&#x7684;&#x4F4D;&#x7F6E;&#x548C;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7528; try...catch &#x8BED;&#x53E5;&#x6765;&#x5C01;&#x88C5;&#x591A;&#x4E2A; await &#x8FC7;&#x7A0B;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>async function func() {
+  try {
+    const num1 = await 200;
+    console.log(`num1 is ${num1}`);
+    const num2 = await Promise.reject(&apos;num2 is wrong!&apos;);
+    console.log(`num2 is ${num2}`);
+    const num3 = await num2 + 100;
+    console.log(`num3 is ${num3}`);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+func();
+// num1 is 200
+// &#x51FA;&#x9519;&#x4E86;
+// num2 is wrong!
+</code></pre><p>&#x5982;&#x4E0A;&#x6240;&#x793A;&#xFF0C;&#x5728; num2 &#x5904; await &#x5F97;&#x5230;&#x4E86;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x4E3A; rejected &#x7684;Promise&#x5BF9;&#x8C61;&#xFF0C;&#x8BE5;&#x9519;&#x8BEF;&#x4F1A;&#x88AB;&#x4F20;&#x9012;&#x5230; catch &#x8BED;&#x53E5;&#x4E2D;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x5B9A;&#x4F4D;&#x9519;&#x8BEF;&#x53D1;&#x751F;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>async/await&#x6BD4;Promise&#x5F3A;&#x5728;&#x54EA;&#x513F;&#xFF1F;
+&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x7528;async/await&#x6539;&#x5199;&#x4E00;&#x4E0B;Promise&#x7AE0;&#x8282;&#x4E2D;&#x5173;&#x4E8E;sayHi&#x7684;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>function sayHi(name) {
+  return new Promise((resolved, rejected) =&gt; {
+    setTimeout(() =&gt; {
+      resolved(name);
+    }, 2000)
+  })
+}
+
+async function sayHi_async(name) {
+  const sayHi_1 = await sayHi(name)
+  console.log(`&#x4F60;&#x597D;&#xFF0C; ${sayHi_1}`)
+  const sayHi_2 = await sayHi(&apos;&#x674E;&#x56DB;&apos;)
+  console.log(`&#x4F60;&#x597D;&#xFF0C; ${sayHi_2}`)
+  const sayHi_3 = await sayHi(&apos;&#x738B;&#x4E8C;&#x9EBB;&#x5B50;&apos;)
+  console.log(`&#x4F60;&#x597D;&#xFF0C; ${sayHi_3}`)
+}
+
+sayHi_async(&apos;&#x5F20;&#x4E09;&apos;)
+// &#x4F60;&#x597D;&#xFF0C; &#x5F20;&#x4E09;
+// &#x4F60;&#x597D;&#xFF0C; &#x674E;&#x56DB;
+// &#x4F60;&#x597D;&#xFF0C; &#x738B;&#x4E8C;&#x9EBB;&#x5B50;
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="call & apply & bind.html" class="navigation navigation-next navigation-unique" aria-label="Next page: call & apply & bind">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"async & await","level":"1.2.1","depth":2,"next":{"title":"call & apply & bind","level":"1.2.2","depth":2,"path":"pages/js/call & apply & bind.md","ref":"pages/js/call & apply & bind.md","articles":[]},"previous":{"title":"js","level":"1.2","depth":1,"ref":"","articles":[{"title":"async & await","level":"1.2.1","depth":2,"path":"pages/js/async & await.md","ref":"pages/js/async & await.md","articles":[]},{"title":"call & apply & bind","level":"1.2.2","depth":2,"path":"pages/js/call & apply & bind.md","ref":"pages/js/call & apply & bind.md","articles":[]},{"title":"cookie & session & token","level":"1.2.3","depth":2,"path":"pages/js/cookie & session & token.md","ref":"pages/js/cookie & session & token.md","articles":[]},{"title":"cookie & session & token","level":"1.2.4","depth":2,"path":"pages/js/cookie & session & token.md","ref":"pages/js/cookie & session & token.md","articles":[]},{"title":"javaScript技巧和问题","level":"1.2.5","depth":2,"path":"pages/js/javaScript技巧和问题.md","ref":"pages/js/javaScript技巧和问题.md","articles":[]},{"title":"js隐式转换","level":"1.2.6","depth":2,"path":"pages/js/js隐式转换.md","ref":"pages/js/js隐式转换.md","articles":[]},{"title":"NodeList对象和HTMLCollection对象(DOM)","level":"1.2.7","depth":2,"path":"pages/js/NodeList对象和HTMLCollection对象.md","ref":"pages/js/NodeList对象和HTMLCollection对象.md","articles":[]},{"title":"promise && generator","level":"1.2.8","depth":2,"path":"pages/js/promise && generator.md","ref":"pages/js/promise && generator.md","articles":[]},{"title":"事件冒泡捕获委托","level":"1.2.9","depth":2,"path":"pages/js/事件冒泡_捕获_委托.md","ref":"pages/js/事件冒泡_捕获_委托.md","articles":[]},{"title":"同步异步","level":"1.2.10","depth":2,"path":"pages/js/同步异步.md","ref":"pages/js/同步异步.md","articles":[]},{"title":"数据流","level":"1.2.11","depth":2,"path":"pages/js/数据流.md","ref":"pages/js/数据流.md","articles":[]},{"title":"数组方法大全","level":"1.2.12","depth":2,"path":"pages/js/数组方法大全.md","ref":"pages/js/数组方法大全.md","articles":[]},{"title":"闭包","level":"1.2.13","depth":2,"path":"pages/js/闭包.md","ref":"pages/js/闭包.md","articles":[]},{"title":"防抖和节流","level":"1.2.14","depth":2,"path":"pages/js/防抖和节流.md","ref":"pages/js/防抖和节流.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","livereload"],"pluginsConfig":{"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"expandable-chapters":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"pages/js/async & await.md","mtime":"2021-02-26T08:53:21.639Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-21T07:34:57.153Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

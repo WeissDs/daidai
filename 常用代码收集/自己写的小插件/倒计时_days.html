@@ -12,86 +12,38 @@
 	ul, li {
 		list-style: none;
 	}
-	#show_time {
+	.show_time {
+		display: inline-block;
 		color: #CDD1E4;
 		font-size: 24px;
 		font-weight: bold;
-		width:100%;
 		text-align:center;
 		padding-top:30px;
 	}
 	</style>
 </head>
 <body>
-	<div id="show_time"> </div>
+	<div class="show_time"><span id="show_day"></span> <span>天</span></div>
+	<div class="show_time"><span id="show_hour"></span> <span>小时</span></div>
+	<div class="show_time"><span id="show_minute"></span> <span>分</span></div>
+	<div class="show_time"><span id="show_second"></span> <span>秒</span></div>
 
 	<script type="text/javascript"> 
-
-	//days
-	function countdown(){
-	    var show_time = document.getElementById("show_time");
-	    endtime = new Date("12/31/2020 23:59:59");//结束时间
-	    today = new Date();//当前时间
-	    delta_T = endtime.getTime() - today.getTime();//时间间隔
-	    if(delta_T < 0){
-	        clearInterval(auto);
-	        show_time.innerHTML = "倒计时已经结束";
-	    }else{
-	    	window.setTimeout(countdown,1000);
-	    	total_days = delta_T/(24*60*60*1000);//总天数
-	    	total_show = Math.floor(total_days);//实际显示的天数
-	    	total_hours = (total_days - total_show)*24;//剩余小时
-	    	hours_show = Math.floor(total_hours);//实际显示的小时数
-	    	total_minutes = (total_hours - hours_show)*60;//剩余的分钟数
-	    	minutes_show = Math.floor(total_minutes);//实际显示的分钟数
-	    	total_seconds = (total_minutes - minutes_show)*60;//剩余的分钟数
-	    	seconds_show = Math.floor(total_seconds);//实际显示的秒数
-	    	show_time.innerHTML = "距离2020年还有:" + total_show + "天" + hours_show + "时" + minutes_show + "分" + seconds_show + "秒";
-	    }
-	}
-	countdown();
-
-
-	//hours
-	// function countdown(){
-
-	//     var show_time = document.getElementById("show_time");
-	//     endtime = new Date("11/9/2018 18:04:00");//结束时间
-	//     today = new Date();
-	//     delta_T = endtime.getTime() - today.getTime();
-	//     if(delta_T < 0){
-	//         show_time.innerHTML = "倒计时已经结束";
-	//     }else{
-	//     	window.setTimeout(countdown,1000);
-	//     	total_hours = delta_T/(60*60*1000);
-	//     	hours_show = Math.floor(total_hours);
-	//     	total_minutes = (total_hours - hours_show)*60;
-	//     	minutes_show = Math.floor(total_minutes);
-	//     	total_seconds = (total_minutes - minutes_show)*60;
-	//     	seconds_show = Math.floor(total_seconds);
-	//     	show_time.innerHTML = '<span class="num">'+hours_show+'</span>时<span class="num">'+minutes_show+'</span>分<span class="num">'+seconds_show+'</span>秒';
-	//     }
-	    
-	// }
-
-
 
 	//自己写一个
 	//endtime 格式 '11/13/2018 00:00:00'  月 日 年 时 分 秒
 	function Countdown(endtime){
-		this.endtime = new Date(endtime).getTime();
-
-		this.nowtime = 0;
-		this.delta_T = null;
-		this.result = [];
+		this.endtime = new Date(endtime).getTime();   	// 倒计时的到达时间（毫秒数）
+		this.nowtime = 0;								// 现在的时间
+		this.delta_T = null;							// 时间差（endtime - nowtime）
+		this.result = {};								// 输出结果{days: xx, hours: xx, minutes: xx, seconds: xx}
 
 	}
-	Countdown.prototype.day = function(){
+	Countdown.prototype.day = function(day, hour, minute, second){
 		var _that = this;
 
 		var timer = setInterval(function(){
 			_that.nowtime = new Date().getTime();
-			// console.log(_that.endtime, _that.nowtime);
 			_that.delta_T = _that.endtime - _that.nowtime;
 			if(_that.delta_T<0){
 				clearInterval(timer);
@@ -105,9 +57,12 @@
 				total_seconds = (total_minutes - minutes)*60;
 				seconds = Math.floor(total_seconds);
 
-				//我想将天数，时，分，秒的结果放到数组rusult里一起传出来，感觉这样写不是很好，对象方法里一个定时器，外面一个定时器，但是这样写可以不在Countdown中去修改样式
-				_that.result = [];
-				_that.result.push(days, hours, minutes, seconds);
+				_that.result = {};
+				_that.result={days, hours, minutes, seconds};
+				document.getElementById(day).innerHTML = days;
+				document.getElementById(hour).innerHTML = hours;
+				document.getElementById(minute).innerHTML = minutes;
+				document.getElementById(second).innerHTML = seconds;
 				// console.log(_that.result)
 			}
 
@@ -115,19 +70,9 @@
 	}
 		
 
-
-//用法
-	let bb = new Countdown('11/13/2018 11:57:00');
-	bb.day();
-
-	var timer1 = setInterval(function(){
-		if(bb.delta_T<0){
-			clearInterval(timer1)
-		}else{
-			console.log(bb.result);
-		}
-	}, 1000)
-
+	//用法
+	let bb = new Countdown('11/13/2021 11:57:00');  // 传入倒计时的到达时间
+	bb.day('show_day','show_hour','show_minute','show_second');  // 传入四个DOM的id 分别接收 天数、时、分、秒 的倒计时
 	
 	</script>
 	

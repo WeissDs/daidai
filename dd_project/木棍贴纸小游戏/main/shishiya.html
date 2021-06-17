@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="box1" style="width: 100px;margin:3000px auto 0;">
+    <img src="./assets/1.jpg" alt="" style="width: 100px;">
+  </div>
+  <div id="box2" style="width: 100px;margin-top:100px;">
+    <img src="./assets/1.jpg" alt="" style="width: 100px;">
+  </div>
+
+
+  <script>
+    window.onload = function () {
+      let $ = document.querySelectorAll.bind(document);
+      
+
+      let oDiv1 = $('#box1')[0];
+      let oDiv2 = $('#box2')[0];
+      // let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;  // 没有用到浏览器已滚动高度
+
+      function move(oDiv) {
+        let x = 0, y = 0;
+        console.log(arguments.length)
+        oDiv.addEventListener('touchstart', function (ev) {
+          // console.log(ev.targetTouches[0], ev.touches[0], oDiv.offsetLeft);
+
+          // 鼠标点击位置 - 已偏移位置(div当前的真实位置)
+          let disX = ev.targetTouches[0].clientX - x;
+          let disY = ev.targetTouches[0].clientY - y;
+          
+          // div的鼠标点击初始位置(没有用到)
+          // let startX = ev.targetTouches[0].clientX;
+          // let startY = ev.targetTouches[0].clientY;
+          
+          // 鼠标点击位置到div上下左右的距离
+          let target_divTop = ev.targetTouches[0].pageY - oDiv.offsetTop - y;
+          let target_divLeft = ev.targetTouches[0].pageX - oDiv.offsetLeft - x;
+          let target_divRight = oDiv.offsetWidth - target_divLeft;
+          let target_divBottom = oDiv.offsetHeight - target_divTop;
+          console.log(target_divTop, target_divLeft, target_divRight,target_divBottom);
+
+
+          ev.cancelBubble = true;
+          ev.preventDefault();  //让touch不影响滚动条
+
+          function fnMove(ev) {
+            // console.log(ev.targetTouches[0].clientX, disX)
+            // console.log(ev)
+            if (ev.targetTouches[0].clientX-target_divLeft <= 0 || ev.targetTouches[0].clientX+target_divRight >= window.innerWidth) {
+
+              // 左右拖拽拖出的情况
+
+              // 左右拖出画布时设置x轴固定值(吸附画布边缘)
+              if(ev.targetTouches[0].clientX-target_divLeft <= 0){
+                x = -disX+target_divLeft;
+              }else if(ev.targetTouches[0].clientX+target_divRight >= window.innerWidth){
+                x = window.innerWidth-disX-target_divRight;
+              }
+              // 上下不拖出画布的情况时y轴正常拖拽
+              if(ev.targetTouches[0].clientY-target_divTop>0 && ev.targetTouches[0].clientY+target_divBottom < window.innerHeight){
+                y = ev.targetTouches[0].clientY - disY;
+              }
+            } else if (ev.targetTouches[0].clientY-target_divTop <= 0 || ev.targetTouches[0].clientY+target_divBottom >= window.innerHeight) {
+
+              // 上下拖拽拖出的情况
+
+              // 上下拖出画布时设置y轴固定值(吸附画布边缘)
+              if(ev.targetTouches[0].clientY-target_divTop <= 0){
+                y = -disY+target_divTop;
+              }else if(ev.targetTouches[0].clientY+target_divBottom >= window.innerHeight){
+                y = window.innerHeight-disY-target_divBottom;
+              }
+              // X轴正常拖拽
+              x = ev.targetTouches[0].clientX - disX;
+            } else {
+
+              // 正常拖拽的情况
+
+              x = ev.targetTouches[0].clientX - disX;
+              y = ev.targetTouches[0].clientY - disY;
+            }
+
+            oDiv.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+          }
+
+          function fnEnd() {
+            oDiv.removeEventListener('touchmove', fnMove);
+            oDiv.removeEventListener('touchend', fnEnd);
+          }
+
+          oDiv.addEventListener('touchmove', fnMove);
+          oDiv.addEventListener('touchend', fnEnd);
+        })
+      }
+
+
+      move(oDiv1);
+      move(oDiv2);
+
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+	<script>
+		// 以下两种写法都可以
+
+		// let sock = io('http://localhost:3000');
+		let sock = io.connect('ws://localhost:3000');
+		
+		// 发送数据到服务器
+		document.onclick=function(){
+			sock.emit('a', 4, [23,45,'haha']);
+		}
+
+		// 接受服务器数据
+		sock.on('b',function(num){
+			console.log(num);
+		})
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

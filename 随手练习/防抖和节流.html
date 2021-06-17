@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,body{
+			height:300%;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">1111</button>
+	
+	<script>
+
+		function debounce(fn,wait,immediate){  // 操作函数，等待毫秒数，是否立即执行
+			let timer = null;
+			let debounced = function(){
+				let _this = this;
+				let args = arguments;
+
+				if(timer){
+					clearTimeout(timer);
+				}
+				if(immediate){
+					// 如果已经执行过，不再执行
+					var callNow = !timeout;
+					timeout = setTimeout(function(){
+						timeout = null;
+					}, wait)
+					if (callNow) result = func.apply(context, args)
+				}else{
+					timer = setTimeout(function(){
+						fn.apply(_this, args);
+					},wait);
+				}
+				
+			}
+			debounced.cancel = function(){
+				clearTimeout(timer);
+				timer=null;
+			}
+			return debounced
+		}
+
+
+
+		function showTop(){
+		  let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+		  console.log(scrollTop)
+		}
+
+		let a = debounce(showTop, 200);
+
+		let oBtn = document.getElementById('btn');
+		document.onscroll=function(){
+			a();
+		}
+		oBtn.onclick=function(){
+			a.cancel();
+		}
+
+	</script>
+</body>
+</html>
