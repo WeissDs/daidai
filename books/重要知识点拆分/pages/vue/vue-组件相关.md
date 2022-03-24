@@ -84,6 +84,11 @@ computed: {
 1. 路由传参 query 和 params
 2. bus传参
 3. vuex传参
+4. 父组件调用子组件的方法:
+```javascript
+	// child为子组件ref="name", fn为子组件方法
+	this.$refs.child.fn(this.msg)
+```
 
 ######能做到刷新页面数据不丢失的只有query传参  其他都需要配合sessionStorage来做本地储存和还原
 
