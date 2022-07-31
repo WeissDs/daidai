@@ -12,6 +12,16 @@
 
 地址 https://npm.taobao.org/ 网站有下载命令
 
+## 查看npm仓库地址
+
+	npm get registry
+	
+	默认npm仓库地址为：https://registry.npmjs.org/
+
+## 设置npm仓库地址
+
+	npm config set registry http://...
+
 ##npm更新版本
 
     npm install npm -g
