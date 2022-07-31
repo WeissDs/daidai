@@ -1,4 +1,4 @@
-// es5面先
+// es5面向对象
 class Promise2{
   constructor(fn){
     const _this=this;
