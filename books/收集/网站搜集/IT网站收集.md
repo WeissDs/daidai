@@ -1,6 +1,6 @@
-#网站搜集
+# 网站搜集
 
-##文档
+## 文档
 
 [ECMA官网 查看ECMAScript标准文档  Standards-->standards-->ECMA-262-->[历史版本]The previous replaced "historical" editions of this Ecma Standard are available here.](http://www.ecma-international.org/)
 
@@ -24,7 +24,7 @@
 
 
 
-##工具
+## 工具
 
 [站长工具 各种ip查询、代码压缩、SEO信息查询...](http://t.mb5u.com/)
 
@@ -33,17 +33,17 @@
 [阿里云](https://www.aliyun.com/)
 
 
-######代码压缩
+#### 代码压缩
 
 [还原压缩代码](http://jsbeautifier.org/)
 
-######在线编辑器
+#### 在线编辑器
 
 [codesandbox](https://codesandbox.io/)
 
 [codepen](https://codepen.io/)
 
-######查询类
+#### 查询类
 
 [stack overflow 技术查询](https://stackoverflow.com/)
 
@@ -55,11 +55,11 @@
 
 [caniuse 查询浏览器适配](https://caniuse.com/)
 
-######微信
+#### 微信
 
 [wxeditor 微信推广页面 快速编辑器](http://www.wxeditor.com/)
 
-######字体
+#### 字体
 
 [在线字体库](http://www.youziku.com/)
 
@@ -73,13 +73,13 @@
 
 
 
-##知识搜集
+## 知识搜集
 
 [中科大计算机课程](https://github.com/mbinary/USTC-CS-Courses-Resource)
 
 [前端路由的两种实现方法](https://segmentfault.com/a/1190000007238999)
 
-######样式相关
+#### 样式相关
 
 [background-blend-mode图形混合技巧](https://github.com/chokcoco/iCSS/issues/31)
 
@@ -94,7 +94,7 @@
 
 
 
-##学习
+## 学习
 
 [算法刷题网站 leetcode](https://leetcode.com/)
 
@@ -112,7 +112,7 @@
 
 [freecodecamp](https://www.freecodecamp.cn/)
 
-######代码规范
+#### 代码规范
 
 [变量命名](http://blog.csdn.net/tieshuxianrezhang/article/details/51570536)
 
@@ -126,20 +126,20 @@
 
 
 
-##库
+## 库
 
 [awesomes 各类框架排名下载](https://www.awesomes.cn/)
 
-######图标字体库
+#### 图标字体库
 
 [Font Awesome](https://fontawesome.dashgame.com/)
 
-######动画库
+#### 动画库
 
 [threejs 现在最热的3d动画库](https://threejs.org/)
 
 
-######滑动轮播
+#### 滑动轮播
 
 [Swiper(Swiper master)是**移动端**网页触摸内容滑动js插件。](http://www.swiper.com.cn/)
 
@@ -152,26 +152,26 @@
 [iscroll、hammer，自己的轮播库]
 
 
-######打包类
+#### 打包类
 
 [gulp常用插件](https://blog.csdn.net/putao2062/article/details/80037877)
 
-######vue插件
+#### vue插件
 
 [vue表单设计器————vue-form-making](https://github.com/GavinZhuLei/vue-form-making)
 
-######js常用方法库
+#### js常用方法库
 
 [js常用方法 lodash](https://www.lodashjs.com/docs/latest)
 
 
-######应用程序框架
+#### 应用程序框架
 
 [Flutter 移动端应用程序框架？？](https://flutterchina.club/)
 
 [electron pc应用程序框架(执法风险评估的小助手使用了electron)](https://electronjs.org/)
 
-######验证
+#### 验证
 
 [网易易盾 网易验证码插件比较全 blue推荐](http://dun.163.com/)
 
@@ -183,9 +183,9 @@
 
 
 
-##组件
+## 组件
 
-######动画组件下载
+#### 动画组件下载
 
 [QQ登陆](http://www.5iweb.com.cn/)
 
@@ -195,7 +195,7 @@
 
 [懒人之家](http://www.lanrenzhijia.com/)
 
-######JQuery 插件下载
+#### JQuery 插件下载
 
 [JQuery插件库](http://www.jq22.com/)
 
@@ -205,7 +205,7 @@
 
 
 
-##模板
+## 模板
 
 [响应式模板 米拓 收费，门户网站可以参考](https://www=.metinfo.cn/)
 
@@ -216,7 +216,7 @@
 
 
 
-##搞不清干嘛的框架们
+## 搞不清干嘛的框架们
 
 [freemarker 一个模板引擎，可能和ejs差不多](https://freemarker.apache.org/)
 
@@ -232,7 +232,7 @@
 
 
 
-##私活
+## 私活
 
 [码市](https://codemart.com/developers)
 
