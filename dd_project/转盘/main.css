@@ -1,0 +1,201 @@
+* { /* 重置默认样式 */
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  user-select: none;
+}
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  width: 100%;
+  height: 100%;
+  background: url('https://img2.baidu.com/it/u=1970607438,2737872407&fm=253&fmt=auto&app=138&f=JPEG?w=780&h=361') no-repeat;
+  background-size: auto 100%;
+}
+.wrapper {
+  margin: 100px auto;
+    position: relative;
+    height: 200px;
+    width: 200px;
+    padding: 20px;
+    /* margin: 20px; */
+    /* background-color: #ff5555; */
+    background-color: #ff437a;
+    box-shadow: #1d011c 0px 0px 29px 4px;
+    border-radius: 50%;
+    transform: scale(1.1);
+}
+.light {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  top: 5px;
+  left: 115px;
+  transform-origin: 5px 115px;
+}
+.light-twinkling {
+  animation: 1s twinkling 3, 100ms 3s twinkling 3;
+}
+.light:nth-child(2n) {
+  background-color: #fafce7;
+}
+.light:nth-child(2n+1) {
+  background-color: #ffe58b;
+}
+.light:nth-child(2) {
+  transform: rotate(36deg);
+}
+.light:nth-child(3) {
+  transform: rotate(72deg);
+}
+.light:nth-child(4) {
+  transform: rotate(108deg);
+}
+.light:nth-child(5) {
+  transform: rotate(144deg);
+}
+.light:nth-child(6) {
+  transform: rotate(180deg);
+}
+.light:nth-child(7) {
+  transform: rotate(216deg);
+}
+.light:nth-child(8) {
+  transform: rotate(252deg);
+}
+.light:nth-child(9) {
+  transform: rotate(288deg);
+}
+.light:nth-child(10) {
+  transform: rotate(324deg);
+}
+.panel {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  background-color: #b7b7b7;
+  border-radius: 100px;
+}
+.sector {
+  position: absolute;
+  left: 100px;
+  top: 0px;
+  width: 100px;
+  height: 200px;
+  font-size: 14px;
+  border-radius: 0px 100px 100px 0;
+  overflow: hidden;
+  transform-origin: left center;
+}
+.sector:nth-child(1) {
+  transform: rotate(-18deg);
+}
+.sector:nth-child(11) {
+  transform: rotate(-9deg);
+}
+.sector:nth-child(2) {
+  transform: rotate(18deg);
+}
+.sector:nth-child(3) {
+  transform: rotate(54deg);
+}
+.sector:nth-child(4) {
+  transform: rotate(90deg);
+}
+.sector:nth-child(5) {
+  transform: rotate(126deg);
+}
+.sector:nth-child(6) {
+  transform: rotate(162deg);
+}
+.sector:nth-child(7) {
+  transform: rotate(198deg);
+}
+.sector:nth-child(8) {
+  transform: rotate(234deg);
+}
+.sector:nth-child(9) {
+  transform: rotate(270deg);
+}
+.sector:nth-child(10) {
+  transform: rotate(306deg);
+}
+.sector:nth-child(2n+1) .sector-inner {
+  background: #fef6e0;
+  background: #fff5db;
+  /* background-color: #ffd6a1; */
+}
+.sector:nth-child(2n) .sector-inner {
+  background: #ffffff;
+  /* background-color: #4a015e; */
+}
+.sector-inner {
+  text-align: center;
+  display: block;
+  width: 40px;
+  padding: 5px 3px 0 57px;
+  height: 195px;
+  transform: translateX(-100px) rotate(36deg);
+  transform-origin: right center;
+  border-radius: 100px 0 0 100px;
+}
+.sector-inner span {
+  display: block;
+  transform-origin: center;
+  transform: rotate(-19deg);
+  /* color: #d46854; */
+  /* color: #fd4279; */
+}
+.pointer {
+  position: absolute;
+  left: 68px;
+  top: 68px;
+  /* left: 50%; */
+  /* top: 50%; */
+  /* transform: translate(-50%, -50%); */
+  z-index: 10;
+  height: 50px;
+  width: 50px;
+  padding: 6px;
+  /* background-color: #ff5350; */
+  background-color: #fd4279;
+  border-radius: 50%;
+  /* border: 1px solid #ff5350; */
+  border: 1px solid #fd4279;
+  transition: transform 3s cubic-bezier(.2,.93,.43,1);
+  box-shadow: 0px 0px 0px 5px rgb(255 145 107 / 50%);
+}
+.pointer::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -57px;
+  transform: translateX(-50%);
+  border-width: 30px 7px;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-color: #fd4279;
+  transform-origin: center;
+}
+p {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  font-size: 20px;
+  color: #FFF;
+}
+.result {
+  text-align: center;
+  margin: -28px auto;
+  color: #fff;
+}
+
+@keyframes twinkling {
+  50% { background: transparent; }
+}
