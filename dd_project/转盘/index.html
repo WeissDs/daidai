@@ -20,21 +20,22 @@
       body {
         width: 100%;
         height: 100%;
-        background: url('https://img2.baidu.com/it/u=1970607438,2737872407&fm=253&fmt=auto&app=138&f=JPEG?w=780&h=361') no-repeat;
-        background-size: auto 100%;
+        background-color: #492f88;
+        /* background: url('https://img2.baidu.com/it/u=1970607438,2737872407&fm=253&fmt=auto&app=138&f=JPEG?w=780&h=361') no-repeat; */
+        /* background-size: auto 100%; */
       }
       .wrapper {
-        margin: 100px auto;
-          position: relative;
-          height: 200px;
-          width: 200px;
-          padding: 20px;
-          /* margin: 20px; */
-          /* background-color: #ff5555; */
-          background-color: #ff437a;
-          box-shadow: #1d011c 0px 0px 29px 4px;
-          border-radius: 50%;
-          transform: scale(1.1);
+        margin: 120px auto;
+        position: relative;
+        height: 200px;
+        width: 200px;
+        padding: 20px;
+        /* margin: 20px; */
+        /* background-color: #ff5555; */
+        background-color: #ff437a;
+        box-shadow: #1d011c 0px 0px 29px 4px;
+        border-radius: 50%;
+        transform: scale(1.2);
       }
       .light {
         position: absolute;
@@ -176,6 +177,8 @@
         text-align: center;
         margin: -28px auto;
         color: #fff;
+        font-weight: bold;
+        font-size: 16px;
       }
 
       @keyframes twinkling {
@@ -213,47 +216,47 @@
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span>潮汕牛肉火锅</span>
+          <span>牛很鲜</span>
         </div>
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span>椰子鸡</span>
+          <span>鑫泽园·椰子鸡</span>
         </div>
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span>烤肉</span>
+          <span>魔宗·日式烤肉</span>
         </div>
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span></span>
+          <span>代代下厨</span>
         </div>
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span>谢谢参与</span>
+          <span>大渔铁板烧</span>
         </div>
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span>100元话费</span>
+          <span>路边摊</span>
         </div>
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span>谢谢参与</span>
+          <span>粗茶淡饭·蒸鲜</span>
         </div>
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span> 5 0 积分</span>
+          <span>O`eat</span>
         </div>
       </div>
       <div class="sector">
         <div class="sector-inner">
-          <span>10元话费</span>
+          <span>那时新疆</span>
         </div>
       </div>
       <div class="pointer">
@@ -262,6 +265,7 @@
     </div>
   </div>
   <div class="result"></div>
+  
 
   <script>
     let getEle = document.getElementsByClassName.bind(document);
@@ -271,8 +275,8 @@
     let lights = Array.prototype.slice.call(getEle('light'));
 
     let onRotation = false; // 记录当前是否正在旋转，如果正在旋转，就不能继续点击了
-    let reward = ['谢谢参与', '50积分', '谢谢参与', '100元话费', '50积分', 
-    '谢谢参与', '100元话费', '谢谢参与', '50积分', '10元话费'];
+    let reward = ['谢谢参与', '牛很鲜潮汕牛肉火锅 大奖', '鑫泽园·椰子鸡 大奖', '魔宗·日式烤肉 大奖', '代代下厨 特等奖', 
+    '大渔铁板烧 大奖', '路边摊', '粗茶淡饭·蒸鲜 大奖', 'O`eat 大奖', '那时新疆 大奖'];
 
     lights.forEach((item,index) => {
       item.style.transform = `rotate(${18*(index+1)}deg)`
@@ -288,7 +292,7 @@
         let rewardText = reward[Math.floor((currentDeg + 18) % 360 / 36)]
         return {
           deg: currentDeg,
-          text: rewardText === '谢谢参与' ? '' : '恭喜获得: ' + rewardText
+          text: rewardText === '谢谢参与' ? '菜狗' : '恭喜潘潘获得: ' + rewardText
         }
       }
     })();
