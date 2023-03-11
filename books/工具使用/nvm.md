@@ -25,7 +25,7 @@
   npm_mirror: https://npm.taobao.org/mirrors/npm/
 
 3. nvm下载后一般会自动添加环境变量 如果没有添加则需手动添加 添加内容如下：
-  ![?](./image/nvmconfig.png)
+
 
 
 ## nvm使用
